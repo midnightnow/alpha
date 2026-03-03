@@ -1,0 +1,90 @@
+[
+  {
+    "pmid": "41680865",
+    "title": "Anti-inflammatory and analgesic potential of minor cannabinoids in vivo.",
+    "abstract": "",
+    "source": "PubMed",
+    "study_type": "Observational",
+    "n": 30,
+    "p_value": 0.05,
+    "evidence_grade": "C",
+    "timestamp": "2026-02-19T13:32:15.978390"
+  },
+  {
+    "pmid": "41646286",
+    "title": "Concomitant activation of D",
+    "abstract": "Methylphenidate is commonly prescribed to manage symptoms of attention-deficit/hyperactivity disorder (ADHD), but like other stimulants it has limited effectiveness. Methylphenidate works by increasing the synaptic availability of dopamine and norepinephrine, resulting in stimulation of dopaminergic and adrenergic receptors. One hypothesis is that selective receptor targeting may be more effective clinically and have fewer side effects than non-selective stimulants.",
+    "source": "PubMed",
+    "study_type": "Observational",
+    "n": 30,
+    "p_value": 0.05,
+    "evidence_grade": "C",
+    "timestamp": "2026-02-19T13:32:15.984887"
+  },
+  {
+    "pmid": "41645347",
+    "title": "Design, synthesis, and biological profiling of fluorinated cannabidiol and cannabigerol derivatives as promising therapeutic agents.",
+    "abstract": "Cannabidiol (CBD) and cannabigerol (CBG) are non-psychotropic phytocannabinoids that have significant, broad-spectrum therapeutic potential in a variety of pharmacological areas, but their unfavorable pharmacokinetics, such as extensive first-pass metabolism and low bioavailability, hinder their effective medical applications. Therefore, there is a great need for appropriate chemical modifications to improve their physicochemical properties. Incorporation of fluorine atom(s) at appropriate positions often improves the metabolic stability of the parent compound, increasing its bioavailability, and enhances its binding affinity to therapeutic targets, making fluorine a highly valuable element in modern drug development. Furthermore, amino functional groups may improve the water solubility and bioavailability of the compounds. Building on these principles, our strategy focused on introducing groups containing mono-, di-, and trifluoroethylamine or fluorinated aniline moieties into cannabinoids to improve their pharmacokinetic and pharmacological profiles.",
+    "source": "PubMed",
+    "study_type": "Observational",
+    "n": 30,
+    "p_value": 0.05,
+    "evidence_grade": "C",
+    "timestamp": "2026-02-19T13:32:15.985281"
+  },
+  {
+    "pmid": "41633759",
+    "title": "Cannabinoids and drug-drug pharmacokinetic interactions: Deciphering the risks.",
+    "abstract": "The relationship between cannabinoids and mental health has become a major focus of scientific inquiry and public discourse. Cannabinoids are diverse chemical compounds from the Cannabis species that have been explored for their therapeutic applications in treating chronic pain, psychiatric and neurological conditions, such as depression, schizophrenia, epilepsy and anxiety. Additionally, cannabinoids are frequently used for recreational purposes. The evolving legislation surrounding cannabis has added a layer of complexity to the understanding of its pharmacological effects. Societal attitudes shifting towards a more permissive acceptance of cannabis use make it essential to balance individual freedom with public health concerns. While the use of cannabinoids remains a subject of ongoing research, clinical data have shown promise in the treatment of mental health disorders. However, debates and concerns have been raised regarding the potential pharmacokinetic (PK) drug-drug interactions that may occur, involving changes in the absorption, distribution, metabolism and excretion (ADME) of the prescribed drugs. The future prospect of patients having unrestricted access to cannabis requires special attention in case of concurrent use with the common medical treatments they may be receiving for a cardiovascular or metabolic disease or with medications related to the treatment of psychiatric disorders. This comprehensive review aims to critically discuss the main PK interactions of major cannabinoids (tetrahydrocannabinol, cannabidiol, cannabinol, cannabichromene and cannabigerol) in relation to the drugs prescribed in neuropathic pain, depression, anxiety, schizophrenia, epilepsy and cancer, as well as with the most common cardiometabolic disease treatments such as statins, beta-blockers, warfarin, insulin analogues and metformin.",
+    "source": "PubMed",
+    "study_type": "Observational",
+    "n": 30,
+    "p_value": 0.05,
+    "evidence_grade": "C",
+    "timestamp": "2026-02-19T13:32:15.985514"
+  },
+  {
+    "pmid": "41610722",
+    "title": "Glutathione peroxidase-like activity of natural and semisynthetic phenylpropanoids and cannabinoids: An analytical investigation by a GC-MS- and HPLC-DAD-based Iwaoka's assay.",
+    "abstract": "The present study explores the glutathione peroxidase (GPx)-like mimicking activity of selected natural phenylpropanoids, their oxyprenylated derivatives, and natural and semisynthetic cannabinoids using a revised version of Iwaoka's assay based on the application of GC-MS and HPLC-DAD. Thus, naturally occurring phenylpropanoids, including ferulic acid, p-coumaric acid, and umbelliferone, together with their oxyprenylated derivatives, were synthesized and tested for catalytic effects on 1,4-dithiotrhreitol (DTTred) oxidation. While ferulic acid and p-coumaric acid displayed an appreciable GPx-like activity, their oxyprenylated counterparts exhibited a reduction in catalytic efficiency, suggesting that the carboxylic acid and free phenolic hydroxyl groups play a key role in the observed activity. Coumarin derivatives showed minimal activity, likely due to their rigid ring system. Among cannabinoids, cannabidiol (CBD) and cannabigerol (CBG) enhanced DTT oxidation, with CBG displaying a nearly comparable effect to the reference catalyst Ebselen\u00ae. Structure-activity relationship analysis of semisynthetic CBG ethers and esters revealed that substitution patterns strongly influence catalytic performance, with diethyl and di-n-propyl derivatives demonstrating the highest GPx-like behavior. Overall, this work identifies cinnamic acids, CBG, and some of their etherified analogues as promising GPx mimetics and provides mechanistic insight into the redox properties of phenylpropanoids and cannabinoids, which may support future antioxidant drug design.",
+    "source": "PubMed",
+    "study_type": "Observational",
+    "n": 30,
+    "p_value": 0.05,
+    "evidence_grade": "C",
+    "timestamp": "2026-02-19T13:32:15.985725"
+  },
+  {
+    "pmid": "41478536",
+    "title": "Phytocannabinoids as anti-inflammatory agents: Synergistic effects when combined with Cannabis sativa L. matrices.",
+    "abstract": "Cannabis sativa L. has a long history of traditional use for the treatment of pain and inflammatory disorders in both Asian and European medical systems, which supports its investigation as a source of bioactive compounds with potential relevance for chronic immune-mediated diseases.",
+    "source": "PubMed",
+    "study_type": "Observational",
+    "n": 30,
+    "p_value": 0.05,
+    "evidence_grade": "C",
+    "timestamp": "2026-02-19T13:32:19.610616"
+  },
+  {
+    "pmid": "41213439",
+    "title": "Therapeutic potential of cannabidiol-rich Cannabis sativa to mitigate the severity of inflammation and pain: A pre-clinical study.",
+    "abstract": "Pain and inflammation are among the many conditions for which Cannabis sativa L. has historically been used. However, little research has been done on the potential therapeutic benefits of employing green extraction techniques to generate an extract from C. sativa that is high in cannabidiol for the treatment of severe pain and inflammation.",
+    "source": "PubMed",
+    "study_type": "Observational",
+    "n": 30,
+    "p_value": 0.05,
+    "evidence_grade": "C",
+    "timestamp": "2026-02-19T13:32:19.613682"
+  },
+  {
+    "pmid": "40920736",
+    "title": "Daily Use of a Broad-Spectrum Cannabidiol Supplement Produces Detectable Concentrations of Cannabinoids in Urine Prohibited by the World Anti-Doping Agency: An Effect Amplified by Exercise.",
+    "abstract": "Cannabidiol (CBD), a non-intoxicating phytocannabinoid, is used by athletes to enhance recovery and manage other conditions (e.g., poor sleep, anxiety). Although CBD is not prohibited by the World Anti-Doping Agency (WADA), other cannabinoids found in \"broad-spectrum\" CBD products (e.g., cannabigerol (CBG), cannabidivarin (CBDV)), remain prohibited.",
+    "source": "PubMed",
+    "study_type": "Observational",
+    "n": 30,
+    "p_value": 0.05,
+    "evidence_grade": "C",
+    "timestamp": "2026-02-19T13:32:19.614215"
+  }
+]

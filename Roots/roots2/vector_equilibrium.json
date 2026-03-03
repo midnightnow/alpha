@@ -1,0 +1,8 @@
+{
+    "basis": "Isosceles_Right_Triangle",
+    "short_side_A": 1.0,
+    "short_side_B": 1.0,
+    "hypotenuse_target": 1.41421356,
+    "oscillation_ratio": "1:sqrt(2)",
+    "status": "Incommensurable_Field_Active"
+}

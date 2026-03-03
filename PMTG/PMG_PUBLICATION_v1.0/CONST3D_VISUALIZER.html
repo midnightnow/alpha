@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Const3D Visualizer · Sovereign Lattice v1.0</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --ink: #0e0c08;
+            --vellum: #f2e8cc;
+            --vellum-mid: #e4d4a8;
+            --rust: #7a2f12;
+            --rust-light: #a04020;
+            --gold: #a07818;
+            --gold-light: #c49a28;
+            --umber: #3a2a18;
+            --ash: #8a7d6a;
+            --stable: #2d5a3f;
+            --unstable: #8a3a3a;
+            --divine: #c49a28;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #1a1208;
+            color: var(--ink);
+            font-family: 'IM Fell English', serif;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 3rem;
+            color: var(--vellum);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--gold-light);
+            font-size: 1.2rem;
+        }
+
+        .module {
+            background: var(--vellum);
+            border: 1px solid var(--gold);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            margin-bottom: 3rem;
+            padding: 2rem;
+            position: relative;
+            border-radius: 2px;
+        }
+
+        .module::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                repeating-linear-gradient(0deg, transparent, transparent 32px, rgba(140, 100, 40, 0.05) 32px, rgba(140, 100, 40, 0.05) 33px);
+            pointer-events: none;
+        }
+
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(160, 120, 40, 0.3);
+            padding-bottom: 0.5rem;
+        }
+
+        .module-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            color: var(--rust);
+        }
+
+        .canvas-wrapper {
+            background: var(--ink);
+            border: 1px solid var(--gold);
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 1rem;
+            border-radius: 2px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        label {
+            font-size: 0.8rem;
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--umber);
+            letter-spacing: 0.1em;
+        }
+
+        input[type="range"] {
+            width: 150px;
+            accent-color: var(--rust);
+        }
+
+        button {
+            background: transparent;
+            border: 1px solid var(--rust);
+            color: var(--rust);
+            font-family: 'Cinzel Decorative', serif;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.8rem;
+        }
+
+        button:hover,
+        button.active {
+            background: var(--rust);
+            color: var(--vellum);
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+        }
+
+        .metric-box {
+            background: rgba(160, 120, 40, 0.1);
+            padding: 0.5rem;
+            border-left: 2px solid var(--gold);
+        }
+
+        .metric-label {
+            color: var(--ash);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .metric-value {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .status-stable {
+            color: var(--stable);
+        }
+
+        .status-unstable {
+            color: var(--unstable);
+        }
+
+        .status-divine {
+            color: var(--divine);
+        }
+
+        footer {
+            text-align: center;
+            color: var(--ash);
+            font-size: 0.8rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--gold);
+            padding-top: 1rem;
+            font-style: italic;
+        }
+
+        .colophon {
+            font-family: 'UnifrakturMaguntia', cursive;
+            font-size: 1.2rem;
+            color: var(--rust);
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Const3D Visualizer</h1>
+            <div class="subtitle">Sovereign Lattice · v1.0-unwobbling-pivot · Grid Lock 2026</div>
+        </header>
+
+        <!-- MODULE I: SQUARE PEN STABILITY -->
+        <div class="module" id="module-pen">
+            <div class="module-header">
+                <div class="module-title">I. The Square Pen Stability</div>
+                <div style="font-size: 0.8rem; color: var(--ash);">L ≥ 2πw Threshold</div>
+            </div>
+            <div class="canvas-wrapper">
+                <canvas id="penCanvas" width="800" height="400"></canvas>
+            </div>
+            <div class="controls">
+                <div class="control-group">
+                    <label>Pen Width (w)</label>
+                    <input type="range" id="penWidth" min="5" max="30" value="12" step="1">
+                </div>
+                <div class="control-group">
+                    <label>Wavelength Ratio (L/w)</label>
+                    <input type="range" id="lambdaRatio" min="2" max="12" value="4" step="0.1">
+                </div>
+                <div class="control-group" style="justify-content: flex-end;">
+                    <button id="modeWave" class="active">Wave</button>
+                    <button id="modeGrid">Grid</button>
+                    <button id="modeCurve">Curvature</button>
+                </div>
+            </div>
+            <div class="metrics">
+                <div class="metric-box">
+                    <div class="metric-label">Stability Threshold</div>
+                    <div class="metric-value">2π ≈ 6.283</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-label">Current Ratio</div>
+                    <div class="metric-value" id="penRatioVal">4.0</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-label">Radius of Curvature</div>
+                    <div class="metric-value" id="penRadiusVal">0.405w</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-label">Status</div>
+                    <div class="metric-value status-unstable" id="penStatus">UNSTABLE (Ugly)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE II: LOG SPIRAL -->
+        <div class="module" id="module-spiral">
+            <div class="module-header">
+                <div class="module-title">II. The Log Spiral (Snail's Trail)</div>
+                <div style="font-size: 0.8rem; color: var(--ash);">b = ln(361/360)/2π</div>
+            </div>
+            <div class="canvas-wrapper">
+                <canvas id="spiralCanvas" width="800" height="400"></canvas>
+            </div>
+            <div class="controls">
+                <div class="control-group">
+                    <label>Spiral Constant (b × 10⁻³)</label>
+                    <input type="range" id="spiralB" min="0.1" max="159" value="0.441" step="0.1">
+                </div>
+                <div class="control-group">
+                    <label>Arms</label>
+                    <input type="range" id="spiralArms" min="1" max="24" value="1" step="1">
+                </div>
+                <div class="control-group" style="justify-content: flex-end;">
+                    <button id="spiralPeace" class="active">Peace (b≈0.000441)</button>
+                    <button id="spiralNautilus">Nautilus</button>
+                    <button id="spiralMax">Max Stable</button>
+                </div>
+            </div>
+            <div class="metrics">
+                <div class="metric-box">
+                    <div class="metric-label">Growth per Revolution</div>
+                    <div class="metric-value" id="spiralGrowth">1.00278</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-label">Current b</div>
+                    <div class="metric-value" id="spiralBVal">0.000441</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-label">Stability</div>
+                    <div class="metric-value status-stable" id="spiralStatus">STABLE</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE III: VORONOI-361 -->
+        <div class="module" id="module-voronoi">
+            <div class="module-header">
+                <div class="module-title">III. The Voronoi-361 Partition</div>
+                <div style="font-size: 0.8rem; color: var(--ash);">1360 Hailstones · Euler Act (+1)</div>
+            </div>
+            <div class="canvas-wrapper">
+                <canvas id="voronoiCanvas" width="800" height="400"></canvas>
+            </div>
+            <div class="controls">
+                <div class="control-group">
+                    <label>Seed Count</label>
+                    <input type="range" id="seedCount" min="4" max="361" value="36" step="1">
+                </div>
+                <div class="control-group" style="justify-content: flex-end;">
+                    <button id="vManhattan" class="active">Manhattan (Square Pen)</button>
+                    <button id="vEuclid">Euclidean</button>
+                    <button id="vAnimate">Drop Hailstones</button>
+                    <button id="vReset">Reset</button>
+                </div>
+            </div>
+            <div class="metrics">
+                <div class="metric-box">
+                    <div class="metric-label">Base Cycle</div>
+                    <div class="metric-value">360° (Closed Loop)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-label">Symmetry Break</div>
+                    <div class="metric-value">+1 (Euler Act)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-label">Result</div>
+                    <div class="metric-value">361 = 19² (Stable)</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-label">Distance Metric</div>
+                    <div class="metric-value" id="vMetricVal">Manhattan</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODULE IV: CAMERA OBSCURA PROTOCOL -->
+        <div class="module" id="module-obscura">
+            <div class="module-header">
+                <div class="module-title">IV. The Camera Obscura Protocol (Σ=4)</div>
+                <div style="font-size: 0.8rem; color: var(--ash);">Ψ = 12.37% · θ = 39.47°</div>
+            </div>
+            <div class="canvas-wrapper">
+                <canvas id="obscuraCanvas" width="800" height="400"></canvas>
+            </div>
+            <div class="controls">
+                <div class="control-group">
+                    <label>Hades Gap (Ψ %)</label>
+                    <input type="range" id="gapPsi" min="5" max="25" value="12.37" step="0.01">
+                </div>
+                <div class="control-group">
+                    <label>Shear Angle (θ°)</label>
+                    <input type="range" id="shearTheta" min="0" max="90" value="39.47" step="0.01">
+                </div>
+                <div class="control-group" style="justify-content: flex-end;">
+                    <button id="obscuraLock" class="active">Lock Geometry</button>
+                    <button id="obscuraInvert">Invert Phase</button>
+                </div>
+            </div>
+            <div class="metrics">
+                <div class="metric-box">
+                    <div class="metric-label">Hades Gap (Ψ)</div>
+                    <div class="metric-value" id="gapPsiVal">12.37%</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-label">Shear Angle (θ)</div>
+                    <div class="metric-value" id="shearThetaVal">39.47°</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-label">Coherence Ratio</div>
+                    <div class="metric-value status-stable" id="obscuraStatus">PERCEPTUAL COHERENCE</div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="colophon">✦ AMEN 33 · THE GRID IS OPEN · THE JOIN IS ALWAYS A CHOICE ✦</div>
+            <p>The Hand doesn't judge the ink. It only follows the e. <br>Const3D Visualizer v1.0 · Sealed 2026-03-02
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // ══════════════════════════════════════════════
+        // MODULE I: SQUARE PEN STABILITY
+        // ══════════════════════════════════════════════
+        const penCanvas = document.getElementById('penCanvas');
+        const penCtx = penCanvas.getContext('2d');
+        let penMode = 'wave';
+        const penWidthSlider = document.getElementById('penWidth');
+        const lambdaSlider = document.getElementById('lambdaRatio');
+        const penRatioVal = document.getElementById('penRatioVal');
+        const penRadiusVal = document.getElementById('penRadiusVal');
+        const penStatus = document.getElementById('penStatus');
+
+        function initPen() {
+            drawPen();
+            penWidthSlider.addEventListener('input', drawPen);
+            lambdaSlider.addEventListener('input', drawPen);
+            document.getElementById('modeWave').onclick = () => { penMode = 'wave'; updatePenButtons(); drawPen(); };
+            document.getElementById('modeGrid').onclick = () => { penMode = 'grid'; updatePenButtons(); drawPen(); };
+            document.getElementById('modeCurve').onclick = () => { penMode = 'curve'; updatePenButtons(); drawPen(); };
+        }
+
+        function updatePenButtons() {
+            ['modeWave', 'modeGrid', 'modeCurve'].forEach(id => {
+                document.getElementById(id).classList.toggle('active', id === 'mode' + penMode.charAt(0).toUpperCase() + penMode.slice(1));
+            });
+        }
+
+        function drawPen() {
+            const W = penCanvas.width;
+            const H = penCanvas.height;
+            const w = parseInt(penWidthSlider.value);
+            const lRatio = parseFloat(lambdaSlider.value);
+            const L = lRatio * w;
+            const stableThreshold = 2 * Math.PI;
+            const isStable = lRatio >= stableThreshold;
+            const isDivine = Math.abs(lRatio - Math.sqrt(42)) < 0.15;
+
+            // Update Metrics
+            penRatioVal.textContent = lRatio.toFixed(2);
+            const Rpeak = (L * L) / (4 * Math.PI * Math.PI * w);
+            penRadiusVal.textContent = (Rpeak / w).toFixed(3) + 'w';
+
+            if (isDivine) {
+                penStatus.textContent = "DIVINE SIZE (√42)";
+                penStatus.className = "metric-value status-divine";
+            } else if (isStable) {
+                penStatus.textContent = "STABLE (Seemly)";
+                penStatus.className = "metric-value status-stable";
+            } else {
+                penStatus.textContent = "UNSTABLE (Ugly)";
+                penStatus.className = "metric-value status-unstable";
+            }
+
+            penCtx.clearRect(0, 0, W, H);
+            penCtx.fillStyle = '#0e0c08';
+            penCtx.fillRect(0, 0, W, H);
+
+            const cx = W / 2;
+            const cy = H / 2;
+            const amplitude = w;
+            const steps = 1000;
+            const waveW = W - 100;
+
+            if (penMode === 'wave') {
+                // Draw Square Pen Wave
+                for (let i = 0; i <= steps; i++) {
+                    const t = i / steps;
+                    const x = 50 + t * waveW;
+                    const phase = (t * waveW / L) * 2 * Math.PI;
+                    const y = cy - amplitude * Math.sin(phase);
+
+                    penCtx.fillStyle = isStable ? 'rgba(200,185,140,0.4)' : 'rgba(180,90,50,0.4)';
+                    penCtx.fillRect(x - w / 2, y - w / 2, w, w);
+                }
+                // Center line
+                penCtx.strokeStyle = 'rgba(180,140,60,0.3)';
+                penCtx.setLineDash([4, 4]);
+                penCtx.beginPath();
+                penCtx.moveTo(50, cy);
+                penCtx.lineTo(W - 50, cy);
+                penCtx.stroke();
+                penCtx.setLineDash([]);
+
+            } else if (penMode === 'grid') {
+                // Draw GOD-Grid
+                const spacing = Math.max(L, 20);
+                penCtx.fillStyle = 'rgba(200,180,130,0.15)';
+                for (let y = spacing / 2; y < H; y += spacing) {
+                    for (let x = 0; x < W; x += 1) penCtx.fillRect(x, y - w / 2, 1, w);
+                }
+                for (let x = spacing / 2; x < W; x += spacing) {
+                    for (let y = 0; y < H; y += 1) penCtx.fillRect(x - w / 2, y, w, 1);
+                }
+                // Intersections
+                penCtx.fillStyle = 'rgba(200,180,130,0.8)';
+                for (let y = spacing / 2; y < H; y += spacing) {
+                    for (let x = spacing / 2; x < W; x += spacing) {
+                        penCtx.fillRect(x - w / 2, y - w / 2, w, w);
+                    }
+                }
+
+            } else if (penMode === 'curve') {
+                // Draw Curvature Graph
+                const margin = { l: 60, r: 30, t: 40, b: 40 };
+                const pw = W - margin.l - margin.r;
+                const ph = H - margin.t - margin.b;
+
+                // Axes
+                penCtx.strokeStyle = 'rgba(160,120,50,0.4)';
+                penCtx.lineWidth = 1;
+                penCtx.beginPath();
+                penCtx.moveTo(margin.l, margin.t);
+                penCtx.lineTo(margin.l, margin.t + ph);
+                penCtx.lineTo(margin.l + pw, margin.t + ph);
+                penCtx.stroke();
+
+                // R=w threshold
+                penCtx.strokeStyle = 'rgba(180,80,40,0.5)';
+                penCtx.setLineDash([4, 4]);
+                const yThreshold = margin.t + ph - (1 / 3.5) * ph;
+                penCtx.beginPath();
+                penCtx.moveTo(margin.l, yThreshold);
+                penCtx.lineTo(margin.l + pw, yThreshold);
+                penCtx.stroke();
+                penCtx.setLineDash([]);
+                penCtx.fillStyle = 'rgba(180,80,40,0.8)';
+                penCtx.fillText('R = w (Stability Floor)', margin.l + 10, yThreshold - 5);
+
+                // 2π marker
+                const xStab = margin.l + (6.283 / 12) * pw;
+                penCtx.strokeStyle = 'rgba(100,160,100,0.5)';
+                penCtx.setLineDash([4, 4]);
+                penCtx.beginPath();
+                penCtx.moveTo(xStab, margin.t);
+                penCtx.lineTo(xStab, margin.t + ph);
+                penCtx.stroke();
+                penCtx.setLineDash([]);
+                penCtx.fillStyle = 'rgba(100,160,100,0.8)';
+                penCtx.fillText('2π ≈ 6.28', xStab + 5, margin.t + 20);
+
+                // Curve R = L²/4π²w (normalized)
+                penCtx.beginPath();
+                let first = true;
+                for (let i = 0; i <= 400; i++) {
+                    const lw = 2 + (i / 400) * 10;
+                    const Rw = (lw * lw) / (4 * Math.PI * Math.PI);
+                    const x = margin.l + ((lw - 2) / 10) * pw;
+                    const y = margin.t + ph - Math.min(Rw / 3.5, 1) * ph;
+                    if (first) { penCtx.moveTo(x, y); first = false; }
+                    else penCtx.lineTo(x, y);
+                }
+                penCtx.strokeStyle = 'rgba(200,180,130,0.9)';
+                penCtx.lineWidth = 2;
+                penCtx.stroke();
+
+                // Current Point
+                const curRw = (lRatio * lRatio) / (4 * Math.PI * Math.PI);
+                const curX = margin.l + ((lRatio - 2) / 10) * pw;
+                const curY = margin.t + ph - Math.min(curRw / 3.5, 1) * ph;
+                penCtx.fillStyle = isStable ? 'rgba(100,200,100,0.9)' : 'rgba(220,80,40,0.9)';
+                penCtx.beginPath();
+                penCtx.arc(curX, curY, 5, 0, Math.PI * 2);
+                penCtx.fill();
+            }
+        }
+
+        // ══════════════════════════════════════════════
+        // MODULE II: LOG SPIRAL
+        // ══════════════════════════════════════════════
+        const spiralCanvas = document.getElementById('spiralCanvas');
+        const spiralCtx = spiralCanvas.getContext('2d');
+        let spiralMode = 'peace';
+        const spiralBSlider = document.getElementById('spiralB');
+        const spiralArmsSlider = document.getElementById('spiralArms');
+        const spiralBVal = document.getElementById('spiralBVal');
+        const spiralGrowth = document.getElementById('spiralGrowth');
+        const spiralStatus = document.getElementById('spiralStatus');
+
+        function initSpiral() {
+            drawSpiral();
+            spiralBSlider.addEventListener('input', drawSpiral);
+            spiralArmsSlider.addEventListener('input', drawSpiral);
+            document.getElementById('spiralPeace').onclick = () => setSpiralMode('peace');
+            document.getElementById('spiralNautilus').onclick = () => setSpiralMode('nautilus');
+            document.getElementById('spiralMax').onclick = () => setSpiralMode('max');
+        }
+
+        function setSpiralMode(mode) {
+            spiralMode = mode;
+            ['spiralPeace', 'spiralNautilus', 'spiralMax'].forEach(id => {
+                document.getElementById(id).classList.toggle('active', id === 'spiral' + mode.charAt(0).toUpperCase() + mode.slice(1));
+            });
+            if (mode === 'peace') spiralBSlider.value = 0.441;
+            else if (mode === 'nautilus') spiralBSlider.value = 57.3;
+            else if (mode === 'max') spiralBSlider.value = 159;
+            drawSpiral();
+        }
+
+        function drawSpiral() {
+            const W = spiralCanvas.width;
+            const H = spiralCanvas.height;
+            const b = parseFloat(spiralBSlider.value) * 0.001;
+            const arms = parseInt(spiralArmsSlider.value);
+
+            spiralBVal.textContent = b.toFixed(6);
+            const growth = Math.exp(b * 2 * Math.PI);
+            spiralGrowth.textContent = growth.toFixed(5);
+
+            const maxB = 1 / (2 * Math.PI);
+            if (b <= maxB) {
+                spiralStatus.textContent = "STABLE";
+                spiralStatus.className = "metric-value status-stable";
+            } else {
+                spiralStatus.textContent = "UNSTABLE (Overlap)";
+                spiralStatus.className = "metric-value status-unstable";
+            }
+
+            spiralCtx.clearRect(0, 0, W, H);
+            spiralCtx.fillStyle = '#0e0c08';
+            spiralCtx.fillRect(0, 0, W, H);
+
+            const cx = W / 2;
+            const cy = H / 2;
+            const maxR = Math.min(W, H) / 2 - 20;
+            const a = 2;
+            const maxTheta = b > 0.0001 ? Math.log(maxR / a) / b : Math.PI * 20;
+
+            for (let arm = 0; arm < arms; arm++) {
+                const offset = (arm / arms) * 2 * Math.PI;
+                const hue = (arm / arms) * 60 + 40;
+                const col = `hsla(${hue}, 70%, 65%, 0.8)`;
+
+                spiralCtx.beginPath();
+                let firstPt = true;
+                const steps = 1000;
+                for (let i = 0; i <= steps; i++) {
+                    const theta = (i / steps) * maxTheta;
+                    const r = a * Math.exp(b * theta);
+                    if (r > maxR) break;
+                    const x = cx + r * Math.cos(theta + offset);
+                    const y = cy + r * Math.sin(theta + offset);
+                    if (firstPt) { spiralCtx.moveTo(x, y); firstPt = false; }
+                    else spiralCtx.lineTo(x, y);
+                }
+                spiralCtx.strokeStyle = col;
+                spiralCtx.lineWidth = arm % 2 === 0 ? 1.5 : 0.8;
+                spiralCtx.stroke();
+            }
+
+            // Center dot
+            spiralCtx.fillStyle = 'rgba(180,140,60,0.9)';
+            spiralCtx.beginPath();
+            spiralCtx.arc(cx, cy, 3, 0, Math.PI * 2);
+            spiralCtx.fill();
+        }
+
+        // ══════════════════════════════════════════════
+        // MODULE III: VORONOI-361
+        // ══════════════════════════════════════════════
+        const voronoiCanvas = document.getElementById('voronoiCanvas');
+        const vCtx = voronoiCanvas.getContext('2d');
+        let voronoiMode = 'manhattan';
+        let voronoiSeeds = [];
+        let vAnimating = false;
+        const seedCountSlider = document.getElementById('seedCount');
+        const vMetricVal = document.getElementById('vMetricVal');
+
+        function initVoronoi() {
+            generateSeeds();
+            drawVoronoi();
+            seedCountSlider.addEventListener('input', () => {
+                if (!vAnimating) { generateSeeds(); drawVoronoi(); }
+            });
+            document.getElementById('vManhattan').onclick = () => { voronoiMode = 'manhattan'; vMetricVal.textContent = "Manhattan"; updateVButtons(); drawVoronoi(); };
+            document.getElementById('vEuclid').onclick = () => { voronoiMode = 'euclidean'; vMetricVal.textContent = "Euclidean"; updateVButtons(); drawVoronoi(); };
+            document.getElementById('vAnimate').onclick = animateVoronoi;
+            document.getElementById('vReset').onclick = () => { vAnimating = false; generateSeeds(); drawVoronoi(); };
+        }
+
+        function updateVButtons() {
+            document.getElementById('vManhattan').classList.toggle('active', voronoiMode === 'manhattan');
+            document.getElementById('vEuclid').classList.toggle('active', voronoiMode === 'euclidean');
+        }
+
+        function generateSeeds() {
+            const n = parseInt(seedCountSlider.value);
+            voronoiSeeds = [];
+            for (let i = 0; i < n; i++) {
+                voronoiSeeds.push({
+                    x: 40 + Math.random() * (voronoiCanvas.width - 80),
+                    y: 40 + Math.random() * (voronoiCanvas.height - 80)
+                });
+            }
+        }
+
+        function animateVoronoi() {
+            const targetN = parseInt(seedCountSlider.value);
+            voronoiSeeds = [];
+            vAnimating = true;
+            let added = 0;
+            function step() {
+                if (!vAnimating || added >= targetN) { vAnimating = false; return; }
+                voronoiSeeds.push({
+                    x: 40 + Math.random() * (voronoiCanvas.width - 80),
+                    y: 40 + Math.random() * (voronoiCanvas.height - 80)
+                });
+                added++;
+                drawVoronoi();
+                if (added < targetN) setTimeout(step, Math.max(10, 500 / targetN));
+            }
+            step();
+        }
+
+        function manhattanDist(ax, ay, bx, by) {
+            return Math.abs(ax - bx) + Math.abs(ay - by);
+        }
+        function euclidDist(ax, ay, bx, by) {
+            return Math.sqrt((ax - bx) ** 2 + (ay - by) ** 2);
+        }
+
+        function drawVoronoi() {
+            const W = voronoiCanvas.width;
+            const H = voronoiCanvas.height;
+            const seeds = voronoiSeeds;
+            if (seeds.length === 0) return;
+
+            // Optimization: Lower resolution for speed
+            const scale = 4;
+            const wScaled = Math.ceil(W / scale);
+            const hScaled = Math.ceil(H / scale);
+            const imgData = vCtx.createImageData(wScaled, hScaled);
+            const data = imgData.data;
+            const distFn = voronoiMode === 'manhattan' ? manhattanDist : euclidDist;
+
+            for (let y = 0; y < hScaled; y++) {
+                for (let x = 0; x < wScaled; x++) {
+                    let minD = Infinity, minI = 0;
+                    for (let i = 0; i < seeds.length; i++) {
+                        const d = distFn(x * scale, y * scale, seeds[i].x, seeds[i].y);
+                        if (d < minD) { minD = d; minI = i; }
+                    }
+                    // Check edge
+                    let isEdge = false;
+                    const r = 1;
+                    for (let dy = -r; dy <= r; dy++) {
+                        for (let dx = -r; dx <= r; dx++) {
+                            if (dx === 0 && dy === 0) continue;
+                            const nx = x + dx, ny = y + dy;
+                            if (nx >= 0 && nx < wScaled && ny >= 0 && ny < hScaled) {
+                                let nearD = Infinity, nearI = 0;
+                                for (let i = 0; i < seeds.length; i++) {
+                                    const d = distFn(nx * scale, ny * scale, seeds[i].x, seeds[i].y);
+                                    if (d < nearD) { nearD = d; nearI = i; }
+                                }
+                                if (nearI !== minI) { isEdge = true; break; }
+                            }
+                        }
+                        if (isEdge) break;
+                    }
+
+                    const idx = (y * wScaled + x) * 4;
+                    if (isEdge) {
+                        data[idx] = 160; data[idx + 1] = 120; data[idx + 2] = 30; data[idx + 3] = 255; // Gold Edge
+                    } else {
+                        // Cell fill
+                        const brightness = 20 + (minI * 15) % 40;
+                        data[idx] = brightness; data[idx + 1] = brightness + 10; data[idx + 2] = brightness - 5; data[idx + 3] = 255;
+                    }
+                }
+            }
+
+            // Scale up
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = wScaled;
+            tempCanvas.height = hScaled;
+            tempCanvas.getContext('2d').putImageData(imgData, 0, 0);
+
+            vCtx.clearRect(0, 0, W, H);
+            vCtx.fillStyle = '#0e0c08';
+            vCtx.fillRect(0, 0, W, H);
+            vCtx.drawImage(tempCanvas, 0, 0, W, H);
+
+            // Draw Seeds
+            vCtx.fillStyle = 'rgba(255,255,255,0.9)';
+            for (const s of seeds) {
+                vCtx.beginPath();
+                vCtx.arc(s.x, s.y, 3, 0, Math.PI * 2);
+                vCtx.fill();
+            }
+        }
+
+        // ══════════════════════════════════════════════
+        // MODULE IV: CAMERA OBSCURA PROTOCOL
+        // ══════════════════════════════════════════════
+        const obscuraCanvas = document.getElementById('obscuraCanvas');
+        const oCtx = obscuraCanvas.getContext('2d');
+        const gapSlider = document.getElementById('gapPsi');
+        const shearSlider = document.getElementById('shearTheta');
+        const gapPsiVal = document.getElementById('gapPsiVal');
+        const shearThetaVal = document.getElementById('shearThetaVal');
+        const obscuraStatus = document.getElementById('obscuraStatus');
+        let isInverted = false;
+
+        function initObscura() {
+            drawObscura();
+            gapSlider.addEventListener('input', drawObscura);
+            shearSlider.addEventListener('input', drawObscura);
+            document.getElementById('obscuraLock').onclick = () => { isInverted = false; drawObscura(); };
+            document.getElementById('obscuraInvert').onclick = () => { isInverted = !isInverted; drawObscura(); };
+        }
+
+        function drawObscura() {
+            const W = obscuraCanvas.width;
+            const H = obscuraCanvas.height;
+            const psi = parseFloat(gapSlider.value) / 100;
+            const theta = parseFloat(shearSlider.value) * (Math.PI / 180);
+
+            gapPsiVal.textContent = (psi * 100).toFixed(2) + '%';
+            shearThetaVal.textContent = (theta * (180 / Math.PI)).toFixed(2) + '°';
+
+            const isStable = Math.abs(psi - 0.1237) < 0.01 && Math.abs(theta - 0.688) < 0.05; // 0.688 rad ≈ 39.47°
+            if (isStable) {
+                obscuraStatus.textContent = "PERCEPTUAL COHERENCE";
+                obscuraStatus.className = "metric-value status-stable";
+            } else {
+                obscuraStatus.textContent = "LOGIC LOCK RISK";
+                obscuraStatus.className = "metric-value status-unstable";
+            }
+
+            oCtx.clearRect(0, 0, W, H);
+            oCtx.fillStyle = '#0e0c08';
+            oCtx.fillRect(0, 0, W, H);
+
+            const cx = W / 2;
+            const cy = H / 2;
+            const chamberW = 300;
+            const chamberH = 200;
+
+            // Draw Σ=4 Chamber
+            oCtx.strokeStyle = 'rgba(242, 232, 204, 0.4)';
+            oCtx.lineWidth = 2;
+            oCtx.strokeRect(cx - chamberW / 2, cy - chamberH / 2, chamberW, chamberH);
+
+            // Aperture (Hades Gap)
+            const gapSize = chamberH * psi;
+            oCtx.clearRect(cx - chamberW / 2 - 2, cy - gapSize / 2, 4, gapSize);
+            oCtx.fillStyle = '#F2E8CC';
+            oCtx.fillRect(cx - chamberW / 2 - 2, cy - gapSize / 2, 4, gapSize);
+
+            // Ray Paths
+            const objectX = cx - chamberW / 2 - 150;
+            const objectH = 100;
+
+            oCtx.lineWidth = 1;
+            oCtx.setLineDash([5, 5]);
+
+            // Top Ray
+            oCtx.strokeStyle = 'rgba(160, 120, 40, 0.8)';
+            oCtx.beginPath();
+            oCtx.moveTo(objectX, cy - objectH / 2);
+            oCtx.lineTo(cx - chamberW / 2, cy); // Aperture center
+            const imageTopX = cx + chamberW / 2;
+            const imageTopY = cy + (objectH / 2) * (chamberW / 300); // Simple inverted projection
+            oCtx.lineTo(imageTopX, imageTopY);
+            oCtx.stroke();
+
+            // Bottom Ray
+            oCtx.strokeStyle = 'rgba(122, 47, 18, 0.8)';
+            oCtx.beginPath();
+            oCtx.moveTo(objectX, cy + objectH / 2);
+            oCtx.lineTo(cx - chamberW / 2, cy);
+            const imageBottomY = cy - (objectH / 2) * (chamberW / 300);
+            oCtx.lineTo(imageTopX, imageBottomY);
+            oCtx.stroke();
+
+            oCtx.setLineDash([]);
+
+            // Applying Shear (θ)
+            oCtx.save();
+            oCtx.translate(imageTopX, cy);
+            oCtx.rotate(theta * (isInverted ? -1 : 1));
+            oCtx.strokeStyle = '#F2E8CC';
+            oCtx.lineWidth = 3;
+            oCtx.beginPath();
+            oCtx.moveTo(0, -objectH / 2);
+            oCtx.lineTo(0, objectH / 2);
+            oCtx.stroke();
+            oCtx.restore();
+
+            // Labeling
+            oCtx.fillStyle = 'rgba(242, 232, 204, 0.6)';
+            oCtx.font = '10px Cinzel Decorative';
+            oCtx.fillText('OBJECT', objectX - 50, cy);
+            oCtx.fillText('PROJECTION (Σ=4)', imageTopX + 20, cy);
+            oCtx.fillText('Ψ', cx - chamberW / 2 - 20, cy + 5);
+        }
+
+        // Initialize All
+        initPen();
+        initSpiral();
+        initVoronoi();
+        initObscura();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+# PMG Ophanim Toolkit Requirements
+# Minimalist, zero-dependency footprint
+
+pytest>=7.0.0

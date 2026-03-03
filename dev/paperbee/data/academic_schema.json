@@ -1,0 +1,33 @@
+{
+    "study_types": {
+        "RCT": {
+            "weight": 1.0,
+            "label": "Randomized Controlled Trial"
+        },
+        "Meta-analysis": {
+            "weight": 1.2,
+            "label": "Meta-analysis"
+        },
+        "Observational": {
+            "weight": 0.5,
+            "label": "Observational Study"
+        },
+        "Case-study": {
+            "weight": 0.2,
+            "label": "Case Study"
+        }
+    },
+    "biomarkers": [
+        "Anxiety",
+        "Memory",
+        "Inflammation",
+        "Irritability",
+        "Sleep"
+    ],
+    "grading": {
+        "A": "High Confidence (Multiple RCTs / Meta-analysis)",
+        "B": "Moderate Confidence (Large Observational / Solid RCTs)",
+        "C": "Low Confidence (Pilot studies / Case reports)",
+        "D": "Inconclusive"
+    }
+}

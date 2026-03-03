@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Hades Portal — 13th Doorway</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0f;
+            color: #e0e0e8;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 1rem 1rem;
+            background: linear-gradient(180deg, rgba(120, 80, 200, 0.08) 0%, transparent 100%);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #c8a0ff, #ff6060, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.04em;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            color: #888;
+            margin-top: 0.4rem;
+            font-weight: 300;
+        }
+
+        .stage {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 1rem 2rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .panel {
+            background: rgba(20, 20, 30, 0.85);
+            border: 1px solid rgba(140, 100, 220, 0.2);
+            border-radius: 16px;
+            padding: 1.2rem;
+            flex: 1 1 420px;
+            max-width: 640px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            background: radial-gradient(ellipse at 30% 20%, rgba(140, 100, 220, 0.06), transparent 70%);
+            pointer-events: none;
+        }
+
+        .panel h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #c8a0ff;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .controls button {
+            background: rgba(140, 100, 220, 0.15);
+            border: 1px solid rgba(140, 100, 220, 0.35);
+            color: #c8a0ff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+            letter-spacing: 0.04em;
+        }
+
+        .controls button:hover {
+            background: rgba(140, 100, 220, 0.3);
+            border-color: #c8a0ff;
+            transform: translateY(-1px);
+        }
+
+        .controls button.active {
+            background: rgba(255, 96, 96, 0.2);
+            border-color: #ff6060;
+            color: #ff8080;
+        }
+
+        .ledger {
+            margin-top: 1rem;
+            font-size: 0.82rem;
+            line-height: 1.7;
+            color: #aaa;
+        }
+
+        .ledger .row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 0.15rem 0;
+        }
+
+        .ledger .label {
+            color: #888;
+        }
+
+        .ledger .val {
+            color: #ffd700;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .ledger .val.hades {
+            color: #ff6060;
+        }
+
+        #clock-canvas {
+            cursor: pointer;
+        }
+
+        .equation {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            font-size: 1.1rem;
+            color: #c8a0ff;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        .equation strong {
+            color: #ffd700;
+            font-weight: 800;
+        }
+
+        .equation .hades-num {
+            color: #ff6060;
+            font-weight: 800;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>THE HADES PORTAL — THE 13th DOORWAY</h1>
+        <p>12 Olympians + 1 Boundary = 13 &nbsp;·&nbsp; The clock swings twice &nbsp;·&nbsp; The world inverts</p>
+    </header>
+
+    <div class="equation">
+        9 unit △ + 3 large △ = <strong>12</strong> Olympians &nbsp;+&nbsp; <span class="hades-num">1</span> Boundary
+        (Hades) = <span class="hades-num">13</span> &nbsp;→&nbsp; flip → <strong>24</strong> hours &nbsp;→&nbsp;
+        <strong>26</strong> letters
+    </div>
+
+    <div class="stage">
+
+        <!-- TRIANGLE PANEL -->
+        <div class="panel">
+            <h2>The Equilateral Triangle — 12 + 1</h2>
+            <canvas id="tri-canvas" width="560" height="480"></canvas>
+            <div class="controls">
+                <button id="btn-unit" class="active" onclick="setTriMode('unit')">9 Unit △</button>
+                <button id="btn-large" onclick="setTriMode('large')">3 Large △</button>
+                <button id="btn-whole" onclick="setTriMode('whole')">The 13th (Whole)</button>
+                <button id="btn-flip" onclick="setTriMode('flip')">Hades Flip ↕</button>
+            </div>
+            <div class="ledger">
+                <div class="row"><span class="label">Unit triangles (side 1)</span><span class="val">9</span></div>
+                <div class="row"><span class="label">Large triangles (side 2)</span><span class="val">3</span></div>
+                <div class="row"><span class="label">Sub-total (Olympians)</span><span class="val">12</span></div>
+                <div class="row"><span class="label">The Whole (Hades / Boundary)</span><span class="val hades">+1 =
+                        13</span></div>
+                <div class="row"><span class="label">Mirror (other side of horizon)</span><span class="val">× 2 = 24 (+2
+                        portals = 26)</span></div>
+            </div>
+        </div>
+
+        <!-- CLOCK PANEL -->
+        <div class="panel">
+            <h2>The 24-Hour Portal Clock</h2>
+            <canvas id="clock-canvas" width="560" height="480"></canvas>
+            <div class="controls">
+                <button onclick="toggleClock()">Start / Stop</button>
+                <button onclick="jumpToPortal()">Jump to 13 (Portal)</button>
+            </div>
+            <div class="ledger">
+                <div class="row"><span class="label">Current Hour</span><span class="val" id="clock-hour">12</span>
+                </div>
+                <div class="row"><span class="label">Phase</span><span class="val" id="clock-phase">DAY (Olympus)</span>
+                </div>
+                <div class="row"><span class="label">Direction</span><span class="val" id="clock-dir">Clockwise ↻</span>
+                </div>
+                <div class="row"><span class="label">Sun Position</span><span class="val" id="clock-sun">Above
+                        Horizon</span></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ─── TRIANGLE VISUALIZATION ───
+        const triCanvas = document.getElementById('tri-canvas');
+        const triCtx = triCanvas.getContext('2d');
+        let triMode = 'unit';
+        let flipProgress = 0;
+        let flipDir = 1;
+        let animFrame = null;
+
+        function setTriMode(mode) {
+            document.querySelectorAll('.controls button').forEach(b => b.classList.remove('active'));
+            const id = mode === 'unit' ? 'btn-unit' : mode === 'large' ? 'btn-large' : mode === 'whole' ? 'btn-whole' : 'btn-flip';
+            document.getElementById(id).classList.add('active');
+            triMode = mode;
+            if (mode === 'flip') {
+                flipProgress = 0;
+                flipDir = 1;
+            }
+            drawTriangle();
+        }
+
+        function triPoint(row, col, s, ox, oy, inverted) {
+            const h = s * Math.sqrt(3) / 2;
+            let x = ox + col * s / 2;
+            let y = inverted ? oy + row * h : oy + (3 - row) * h;
+            return [x, y];
+        }
+
+        function drawEquilateral(ctx, ax, ay, bx, by, cx, cy, fill, stroke, alpha) {
+            ctx.save();
+            ctx.globalAlpha = alpha;
+            ctx.beginPath();
+            ctx.moveTo(ax, ay);
+            ctx.lineTo(bx, by);
+            ctx.lineTo(cx, cy);
+            ctx.closePath();
+            if (fill) { ctx.fillStyle = fill; ctx.fill(); }
+            if (stroke) { ctx.strokeStyle = stroke; ctx.lineWidth = 1.5; ctx.stroke(); }
+            ctx.restore();
+        }
+
+        // Helper to build row vertices for a triangle (upright or inverted)
+        function buildRows(apex, left, right, divisions) {
+            function lerp(p1, p2, t) { return [p1[0] + (p2[0] - p1[0]) * t, p1[1] + (p2[1] - p1[1]) * t]; }
+            const rows = [];
+            for (let r = 0; r <= divisions; r++) {
+                const rowPts = [];
+                const l = lerp(apex, left, r / divisions);
+                const ri = lerp(apex, right, r / divisions);
+                for (let c = 0; c <= r; c++) {
+                    rowPts.push(r === 0 ? [...apex] : lerp(l, ri, c / r));
+                }
+                rows.push(rowPts);
+            }
+            return rows;
+        }
+
+        function getSubTriangles(rows) {
+            const tris = [];
+            for (let r = 0; r < rows.length - 1; r++) {
+                for (let c = 0; c < rows[r].length; c++) {
+                    // upward-pointing triangle
+                    tris.push([rows[r][c], rows[r + 1][c], rows[r + 1][c + 1]]);
+                }
+                // downward-pointing triangles
+                for (let c = 0; c < rows[r].length - 1; c++) {
+                    tris.push([rows[r][c], rows[r][c + 1], rows[r + 1][c + 1]]);
+                }
+            }
+            return tris;
+        }
+
+        function drawTriangle() {
+            const W = triCanvas.width, H = triCanvas.height;
+            const s = 140;
+            const h = s * Math.sqrt(3) / 2;
+            const centerX = W / 2;
+            const centerY = H / 2 + 10;
+
+            triCtx.clearRect(0, 0, W, H);
+
+            function lerp(p1, p2, t) { return [p1[0] + (p2[0] - p1[0]) * t, p1[1] + (p2[1] - p1[1]) * t]; }
+
+            const isFlipping = triMode === 'flip';
+
+            // flipProgress oscillates: 0 → π = upright→chalice, π → 2π = chalice→upright
+            // Use smooth easing: t goes 0→1 for upright→chalice
+            let t = 0; // 0 = fully upright, 1 = fully inverted (chalice)
+            if (isFlipping) {
+                t = (1 - Math.cos(flipProgress)) / 2; // smooth 0→1→0→1...
+            }
+
+            // Define the upright triangle (blade △)
+            const uprightApex = [centerX, centerY - 1.5 * h];
+            const uprightLeft = [centerX - 1.5 * s, centerY + 1.5 * h];
+            const uprightRight = [centerX + 1.5 * s, centerY + 1.5 * h];
+
+            // Define the inverted triangle (chalice ▽)
+            const invertApex = [centerX, centerY + 1.5 * h];
+            const invertLeft = [centerX - 1.5 * s, centerY - 1.5 * h];
+            const invertRight = [centerX + 1.5 * s, centerY - 1.5 * h];
+
+            // Interpolate vertices for animation
+            function lerpPt(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]; }
+            
+            let apex, left, right;
+            if (isFlipping) {
+                apex = lerpPt(uprightApex, invertApex, t);
+                left = lerpPt(uprightLeft, invertLeft, t);
+                right = lerpPt(uprightRight, invertRight, t);
+            } else {
+                apex = uprightApex;
+                left = uprightLeft;
+                right = uprightRight;
+            }
+
+            // Build subdivisions
+            const rows = buildRows(apex, left, right, 3);
+            const unitTris = getSubTriangles(rows);
+
+            // Large triangles
+            const largeTrisFixed = [
+                [rows[0][0], rows[2][0], rows[2][2]],
+                [rows[1][0], rows[3][0], rows[3][2]],
+                [rows[1][1], rows[3][1], rows[3][3]],
+            ];
+
+            // Determine dark/light phase
+            const darkSide = isFlipping && t > 0.5;
+            const dayStroke = darkSide ? '#882222' : '#cc7744';
+            const nightAccent = darkSide ? '#ff4040' : '#c8a0ff';
+
+            // ─── DRAW MODES ───
+
+            if (triMode === 'unit') {
+                let count = 0;
+                for (const [p1, p2, p3] of unitTris) {
+                    count++;
+                    const hue = `hsl(${25 + count * 8}, 70%, ${65 + count * 2}%)`;
+                    drawEquilateral(triCtx, p1[0], p1[1], p2[0], p2[1], p3[0], p3[1], hue, '#cc7744', 0.7);
+                }
+                triCtx.fillStyle = '#c8a0ff';
+                triCtx.font = '600 14px Inter';
+                triCtx.textAlign = 'center';
+                triCtx.fillText('9 UNIT △ (Daylight)', centerX, uprightApex[1] - 14);
+                // Labels
+                triCtx.font = '600 13px Inter';
+                triCtx.fillStyle = '#8888aa';
+                triCtx.fillText('C', apex[0], apex[1] - 12);
+                triCtx.fillText('A', left[0], left[1] + 18);
+                triCtx.fillText('B', right[0], right[1] + 18);
+            }
+
+            if (triMode === 'large') {
+                drawEquilateral(triCtx, left[0], left[1], right[0], right[1], apex[0], apex[1], 'rgba(100,80,60,0.1)', '#554433', 0.4);
+                for (const [p1, p2, p3] of unitTris) {
+                    drawEquilateral(triCtx, p1[0], p1[1], p2[0], p2[1], p3[0], p3[1], null, 'rgba(150,120,80,0.2)', 0.5);
+                }
+                const lgColors = ['rgba(200, 160, 255, 0.3)', 'rgba(255, 200, 100, 0.3)', 'rgba(255, 100, 100, 0.3)'];
+                const lgStrokes = ['#c8a0ff', '#ffd700', '#ff6060'];
+                for (let i = 0; i < largeTrisFixed.length; i++) {
+                    const [p1, p2, p3] = largeTrisFixed[i];
+                    drawEquilateral(triCtx, p1[0], p1[1], p2[0], p2[1], p3[0], p3[1], lgColors[i], lgStrokes[i], 0.8);
+                }
+                triCtx.fillStyle = '#c8a0ff';
+                triCtx.font = '600 14px Inter';
+                triCtx.textAlign = 'center';
+                triCtx.fillText('3 LARGE △ (side 2)', centerX, uprightApex[1] - 14);
+                triCtx.font = '600 13px Inter';
+                triCtx.fillStyle = '#8888aa';
+                triCtx.fillText('C', apex[0], apex[1] - 12);
+                triCtx.fillText('A', left[0], left[1] + 18);
+                triCtx.fillText('B', right[0], right[1] + 18);
+            }
+
+            if (triMode === 'whole') {
+                for (const [p1, p2, p3] of unitTris) {
+                    drawEquilateral(triCtx, p1[0], p1[1], p2[0], p2[1], p3[0], p3[1], 'rgba(255,180,120,0.15)', 'rgba(200,120,60,0.3)', 0.5);
+                }
+                triCtx.save();
+                triCtx.shadowColor = '#ff6060';
+                triCtx.shadowBlur = 25;
+                drawEquilateral(triCtx, left[0], left[1], right[0], right[1], apex[0], apex[1], null, '#ff6060', 1);
+                triCtx.restore();
+                drawEquilateral(triCtx, left[0], left[1], right[0], right[1], apex[0], apex[1], null, '#ff6060', 1);
+                // Circumscribed circle
+                const ccx = (apex[0] + left[0] + right[0]) / 3;
+                const ccy = (apex[1] + left[1] + right[1]) / 3;
+                const R = 3 * s / Math.sqrt(3);
+                triCtx.save();
+                triCtx.strokeStyle = '#ff4040';
+                triCtx.lineWidth = 2;
+                triCtx.globalAlpha = 0.5;
+                triCtx.shadowColor = '#ff4040';
+                triCtx.shadowBlur = 15;
+                triCtx.beginPath();
+                triCtx.arc(ccx, ccy, R, 0, Math.PI * 2);
+                triCtx.stroke();
+                triCtx.restore();
+                triCtx.fillStyle = '#ff6060';
+                triCtx.font = '800 16px Inter';
+                triCtx.textAlign = 'center';
+                triCtx.fillText('THE 13th — HADES — THE BOUNDARY', centerX, uprightApex[1] - 14);
+                triCtx.font = '300 12px Inter';
+                triCtx.fillStyle = '#ff8080';
+                triCtx.fillText('The whole IS the portal. The O is the horizon.', centerX, uprightApex[1] + 2);
+            }
+
+            if (triMode === 'flip') {
+                // Draw horizon line first (behind triangle)
+                const horizY = centerY;
+                triCtx.save();
+                triCtx.strokeStyle = 'rgba(255, 96, 96, 0.25)';
+                triCtx.lineWidth = 1;
+                triCtx.setLineDash([6, 4]);
+                triCtx.beginPath();
+                triCtx.moveTo(30, horizY);
+                triCtx.lineTo(W - 30, horizY);
+                triCtx.stroke();
+                triCtx.restore();
+
+                // Draw the 9 sub-triangles with phase-appropriate colors
+                let count = 0;
+                for (const [p1, p2, p3] of unitTris) {
+                    count++;
+                    let hue;
+                    if (darkSide) {
+                        hue = `hsl(${350 + count * 2}, ${50 + count * 2}%, ${18 + count * 3}%)`;
+                    } else {
+                        hue = `hsl(${25 + count * 8}, 70%, ${65 + count * 2}%)`;
+                    }
+                    drawEquilateral(triCtx, p1[0], p1[1], p2[0], p2[1], p3[0], p3[1], hue, dayStroke, 0.75);
+                }
+
+                // Outer boundary glow
+                triCtx.save();
+                triCtx.shadowColor = darkSide ? '#ff4040' : '#c8a0ff';
+                triCtx.shadowBlur = 20;
+                drawEquilateral(triCtx, left[0], left[1], right[0], right[1], apex[0], apex[1], null, darkSide ? '#ff4040' : '#c8a0ff', 0.8);
+                triCtx.restore();
+
+                // Phase labels
+                const isUpright = t < 0.5;
+                const phase = isUpright ? 'OLYMPUS (Light 12)' : 'UNDERWORLD (Dark 12)';
+                const shape = isUpright ? '△ BLADE' : '▽ CHALICE';
+                const col = isUpright ? '#ffd700' : '#ff4040';
+
+                triCtx.fillStyle = col;
+                triCtx.font = '800 15px Inter';
+                triCtx.textAlign = 'center';
+                triCtx.fillText(phase, centerX, H - 30);
+                triCtx.font = '600 12px Inter';
+                triCtx.fillStyle = isUpright ? '#c8a0ff' : '#ff8080';
+                triCtx.fillText(shape, centerX, H - 12);
+
+                // Horizon label
+                triCtx.fillStyle = '#ff606088';
+                triCtx.font = '300 11px Inter';
+                triCtx.fillText('— HORIZON (The Portal at 13) —', centerX, horizY - 8);
+
+                // At the portal moment (t ≈ 0.5), flash the "13"
+                if (t > 0.4 && t < 0.6) {
+                    const portalAlpha = 1 - Math.abs(t - 0.5) * 5;
+                    triCtx.save();
+                    triCtx.globalAlpha = portalAlpha;
+                    triCtx.fillStyle = '#ff4040';
+                    triCtx.font = '800 48px Inter';
+                    triCtx.textAlign = 'center';
+                    triCtx.shadowColor = '#ff4040';
+                    triCtx.shadowBlur = 30;
+                    triCtx.fillText('13', centerX, horizY + 16);
+                    triCtx.restore();
+                }
+
+                // Top label
+                triCtx.fillStyle = '#888';
+                triCtx.font = '600 12px Inter';
+                triCtx.textAlign = 'center';
+                triCtx.fillText(isUpright ? '△ → ▽' : '▽ → △', centerX, 20);
+            }
+        }
+
+        // Flip animation — smooth oscillation
+        function animateFlip() {
+            if (triMode !== 'flip') return;
+            flipProgress += 0.012;
+            drawTriangle();
+            requestAnimationFrame(animateFlip);
+        }
+
+        // Override setTriMode to start animation
+        const originalSetTriMode = setTriMode;
+        setTriMode = function (mode) {
+            originalSetTriMode(mode);
+            if (mode === 'flip') animateFlip();
+        };
+
+        // ─── CLOCK VISUALIZATION ───
+        const clockCanvas = document.getElementById('clock-canvas');
+        const clockCtx = clockCanvas.getContext('2d');
+        let clockAngle = 0; // 0 = 12 o'clock
+        let clockRunning = false;
+        let clockSpeed = 0.008;
+
+        function toggleClock() { clockRunning = !clockRunning; if (clockRunning) animateClock(); }
+        function jumpToPortal() { clockAngle = Math.PI; drawClock(); } // 13 = bottom = π
+
+        function drawClock() {
+            const W = clockCanvas.width, H = clockCanvas.height;
+            const cx = W / 2, cy = H / 2 - 10;
+            const R = 180;
+
+            clockCtx.clearRect(0, 0, W, H);
+
+            // Determine hour (0-24 mapped from angle 0 to 4π)
+            const totalAngle = ((clockAngle % (Math.PI * 4)) + Math.PI * 4) % (Math.PI * 4);
+            const hour = Math.floor((totalAngle / (Math.PI * 4)) * 24) % 24;
+            const isDay = hour < 12;
+            const isPortal = hour === 12 || hour === 0;
+            const clockwise = hour < 13;
+
+            // Background glow
+            const bgGrad = clockCtx.createRadialGradient(cx, cy, 0, cx, cy, R + 60);
+            if (isDay) {
+                bgGrad.addColorStop(0, 'rgba(255, 215, 0, 0.06)');
+                bgGrad.addColorStop(1, 'transparent');
+            } else {
+                bgGrad.addColorStop(0, 'rgba(255, 60, 60, 0.06)');
+                bgGrad.addColorStop(1, 'transparent');
+            }
+            clockCtx.fillStyle = bgGrad;
+            clockCtx.fillRect(0, 0, W, H);
+
+            // Horizon line
+            clockCtx.save();
+            clockCtx.strokeStyle = 'rgba(255, 96, 96, 0.3)';
+            clockCtx.lineWidth = 1;
+            clockCtx.setLineDash([4, 4]);
+            clockCtx.beginPath();
+            clockCtx.moveTo(cx - R - 40, cy);
+            clockCtx.lineTo(cx + R + 40, cy);
+            clockCtx.stroke();
+            clockCtx.restore();
+
+            // Day/Night semicircles
+            clockCtx.save();
+            clockCtx.globalAlpha = 0.08;
+            clockCtx.fillStyle = '#ffd700';
+            clockCtx.beginPath();
+            clockCtx.arc(cx, cy, R, Math.PI, 0);
+            clockCtx.fill();
+            clockCtx.fillStyle = '#ff4040';
+            clockCtx.beginPath();
+            clockCtx.arc(cx, cy, R, 0, Math.PI);
+            clockCtx.fill();
+            clockCtx.restore();
+
+            // Outer ring
+            clockCtx.save();
+            clockCtx.strokeStyle = isDay ? 'rgba(200, 160, 255, 0.4)' : 'rgba(255, 80, 80, 0.4)';
+            clockCtx.lineWidth = 2;
+            clockCtx.beginPath();
+            clockCtx.arc(cx, cy, R, 0, Math.PI * 2);
+            clockCtx.stroke();
+            clockCtx.restore();
+
+            // Hour markers (24)
+            for (let i = 0; i < 24; i++) {
+                const a = (i / 24) * Math.PI * 2 - Math.PI / 2;
+                const inner = i % 6 === 0 ? R - 18 : R - 10;
+                const outer = R;
+                const x1 = cx + Math.cos(a) * inner;
+                const y1 = cy + Math.sin(a) * inner;
+                const x2 = cx + Math.cos(a) * outer;
+                const y2 = cy + Math.sin(a) * outer;
+                clockCtx.strokeStyle = i === 0 || i === 12 ? '#ff6060' : (i < 12 ? 'rgba(255,215,0,0.5)' : 'rgba(255,80,80,0.4)');
+                clockCtx.lineWidth = i % 6 === 0 ? 2.5 : 1;
+                clockCtx.beginPath();
+                clockCtx.moveTo(x1, y1);
+                clockCtx.lineTo(x2, y2);
+                clockCtx.stroke();
+
+                // Number labels
+                if (i % 3 === 0) {
+                    const lx = cx + Math.cos(a) * (R + 18);
+                    const ly = cy + Math.sin(a) * (R + 18);
+                    clockCtx.fillStyle = i === 0 ? '#ffd700' : i === 12 ? '#ff6060' : '#777';
+                    clockCtx.font = (i === 0 || i === 12) ? '800 14px Inter' : '400 11px Inter';
+                    clockCtx.textAlign = 'center';
+                    clockCtx.textBaseline = 'middle';
+                    clockCtx.fillText(i === 0 ? '12/0' : i.toString(), lx, ly);
+                }
+            }
+
+            // Portal markers at 12 (top) and 12 (bottom = 13th hour)
+            // "13" label at the 12-o'clock-on-bottom (position 12 on 24h = 6 o'clock)
+            const p13a = Math.PI / 2;  // bottom
+            const p13x = cx + Math.cos(p13a) * (R + 35);
+            const p13y = cy + Math.sin(p13a) * (R + 35);
+            clockCtx.fillStyle = '#ff4040';
+            clockCtx.font = '800 13px Inter';
+            clockCtx.textAlign = 'center';
+            clockCtx.fillText('⟐ 13 ⟐', p13x, p13y);
+
+            // Sun/Moon indicator
+            const sunAngle = (totalAngle / 2) - Math.PI / 2;
+            const sunR = R - 40;
+            const sunX = cx + Math.cos(sunAngle) * sunR;
+            const sunY = cy + Math.sin(sunAngle) * sunR;
+
+            // Sun glow
+            clockCtx.save();
+            const sunGrad = clockCtx.createRadialGradient(sunX, sunY, 0, sunX, sunY, 25);
+            if (sunY < cy) {
+                sunGrad.addColorStop(0, 'rgba(255, 215, 0, 0.9)');
+                sunGrad.addColorStop(0.5, 'rgba(255, 180, 0, 0.3)');
+                sunGrad.addColorStop(1, 'transparent');
+            } else {
+                sunGrad.addColorStop(0, 'rgba(255, 60, 60, 0.8)');
+                sunGrad.addColorStop(0.5, 'rgba(255, 40, 40, 0.2)');
+                sunGrad.addColorStop(1, 'transparent');
+            }
+            clockCtx.fillStyle = sunGrad;
+            clockCtx.beginPath();
+            clockCtx.arc(sunX, sunY, 25, 0, Math.PI * 2);
+            clockCtx.fill();
+            // Core
+            clockCtx.fillStyle = sunY < cy ? '#ffd700' : '#ff4040';
+            clockCtx.beginPath();
+            clockCtx.arc(sunX, sunY, 8, 0, Math.PI * 2);
+            clockCtx.fill();
+            clockCtx.restore();
+
+            // Center triangle (the 13th)
+            const triR = 35;
+            clockCtx.save();
+            clockCtx.strokeStyle = isPortal ? '#ff4040' : 'rgba(200,160,255,0.3)';
+            clockCtx.lineWidth = isPortal ? 2.5 : 1.5;
+            if (isPortal) { clockCtx.shadowColor = '#ff4040'; clockCtx.shadowBlur = 15; }
+            clockCtx.beginPath();
+            for (let i = 0; i < 3; i++) {
+                const a = (i / 3) * Math.PI * 2 - Math.PI / 2;
+                const method = i === 0 ? 'moveTo' : 'lineTo';
+                clockCtx[method](cx + Math.cos(a) * triR, cy + Math.sin(a) * triR);
+            }
+            clockCtx.closePath();
+            clockCtx.stroke();
+            clockCtx.restore();
+
+            // Center dot
+            clockCtx.fillStyle = '#c8a0ff';
+            clockCtx.beginPath();
+            clockCtx.arc(cx, cy, 3, 0, Math.PI * 2);
+            clockCtx.fill();
+
+            // Labels: "OLYMPUS" top, "UNDERWORLD" bottom
+            clockCtx.font = '300 10px Inter';
+            clockCtx.textAlign = 'center';
+            clockCtx.fillStyle = 'rgba(255, 215, 0, 0.4)';
+            clockCtx.fillText('OLYMPUS', cx, cy - R + 25);
+            clockCtx.fillStyle = 'rgba(255, 60, 60, 0.4)';
+            clockCtx.fillText('UNDERWORLD', cx, cy + R - 18);
+
+            // Update info
+            document.getElementById('clock-hour').textContent = hour;
+            document.getElementById('clock-phase').textContent = isPortal ? '⟐ PORTAL (Hades Threshold)' : (isDay ? 'DAY (Olympus)' : 'NIGHT (Underworld)');
+            document.getElementById('clock-dir').textContent = isDay ? 'Clockwise ↻' : 'Counter-clockwise ↺ (inverted)';
+            document.getElementById('clock-sun').textContent = sunY < cy ? '☀ Above Horizon' : '☽ Below Horizon (Other Side)';
+
+            document.getElementById('clock-phase').className = 'val' + (isPortal ? ' hades' : '');
+        }
+
+        function animateClock() {
+            if (!clockRunning) return;
+            clockAngle += clockSpeed;
+            drawClock();
+            requestAnimationFrame(animateClock);
+        }
+
+        // Initial draws
+        drawTriangle();
+        drawClock();
+    </script>
+</body>
+
+</html>

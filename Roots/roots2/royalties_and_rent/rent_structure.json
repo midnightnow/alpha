@@ -1,0 +1,10 @@
+{
+    "asset_class": "Irrational_Space_Hotel",
+    "landlord": "Highered_Overseer",
+    "fee_schedule": {
+        "mezzanine_access": "0.1414 units/cycle",
+        "penthouse_rent": "0.4142 units/cycle",
+        "void_casing_tax": "10% (The Bedrock Constant)"
+    },
+    "collection_logic": "Rent is extracted from the 'Gap' where logic fails but field persists."
+}

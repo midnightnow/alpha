@@ -1,0 +1,10 @@
+{
+    "material": "Structural_Dignity_Alloy",
+    "base_resonance": "440Hz",
+    "harmonic_mappings": {
+        "root_2_shear": 622.25,
+        "root_3_volumetric": 762.10,
+        "root_5_golden": 983.90
+    },
+    "notes": "Frequencies are calculated as base_resonance * sqrt(n). These frequencies bypass the resistance of the 'Round Hole'."
+}

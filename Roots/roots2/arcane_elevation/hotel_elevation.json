@@ -1,0 +1,11 @@
+{
+    "structure": "Square_Arch_Pier",
+    "foundation_unit": 1.0,
+    "void_diameter": 1.41421356,
+    "levels": {
+        "ground_floor": "The Pit (The original hole)",
+        "mezzanine": "The Shear Point (Where 1 meets sqrt(2))",
+        "penthouse": "The Field (Antigravity lift-off)"
+    },
+    "load_bearing_logic": "Diagonal_Tension"
+}

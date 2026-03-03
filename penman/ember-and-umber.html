@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Parable of Ember & Umber</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel+Decorative:wght@400;700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1108;
+    --vellum: #f5edd6;
+    --vellum-dark: #e8d9b5;
+    --rust: #8b3a1a;
+    --gold: #b8860b;
+    --gold-light: #d4a843;
+    --umber: #4a3728;
+    --ash: #9b8e7d;
+  }
+
+  body {
+    background: var(--umber);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 3rem 1rem;
+    font-family: 'IM Fell English', serif;
+  }
+
+  .page {
+    background: var(--vellum);
+    max-width: 680px;
+    width: 100%;
+    padding: 4rem 4.5rem;
+    position: relative;
+    box-shadow:
+      inset 0 0 80px rgba(0,0,0,0.08),
+      4px 6px 40px rgba(0,0,0,0.5),
+      8px 12px 60px rgba(0,0,0,0.3);
+    /* paper texture via gradient */
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 28px,
+        rgba(160,130,80,0.07) 28px,
+        rgba(160,130,80,0.07) 29px
+      ),
+      radial-gradient(ellipse at 30% 20%, rgba(255,240,200,0.4) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(180,150,90,0.2) 0%, transparent 50%);
+  }
+
+  /* burn marks / age spots */
+  .page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 30px 20px at 92% 8%, rgba(100,60,20,0.15) 0%, transparent 100%),
+      radial-gradient(ellipse 15px 25px at 5% 95%, rgba(80,50,20,0.12) 0%, transparent 100%),
+      radial-gradient(ellipse 8px 8px at 88% 60%, rgba(120,70,20,0.08) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  /* left margin rule */
+  .page::after {
+    content: '';
+    position: absolute;
+    left: 3.2rem;
+    top: 2rem;
+    bottom: 2rem;
+    width: 1px;
+    background: rgba(180,100,60,0.25);
+  }
+
+  .dropcap-line {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.3rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .dropcap {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 5.5rem;
+    line-height: 0.82;
+    color: var(--rust);
+    float: left;
+    margin-right: 0.15rem;
+    margin-top: 0.12rem;
+    text-shadow: 2px 2px 0 rgba(180,100,60,0.2);
+  }
+
+  h1 {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 2.1rem;
+    color: var(--ink);
+    text-align: center;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    margin-bottom: 0.3rem;
+  }
+
+  .subtitle {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--ash);
+    letter-spacing: 0.12em;
+    margin-bottom: 0.15rem;
+  }
+
+  .rule {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 1rem 0;
+  }
+  .rule hr {
+    flex: 1;
+    border: none;
+    border-top: 1px solid var(--gold);
+    opacity: 0.5;
+  }
+  .rule .ornament {
+    color: var(--gold);
+    font-size: 1rem;
+    opacity: 0.7;
+  }
+
+  p {
+    font-size: 1.02rem;
+    line-height: 1.88;
+    color: var(--ink);
+    text-align: justify;
+    hyphens: auto;
+    margin-bottom: 1.1rem;
+  }
+
+  p.first::first-line {
+    letter-spacing: 0.05em;
+  }
+
+  .section-head {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--rust);
+    text-align: center;
+    text-transform: uppercase;
+    margin: 2rem 0 1rem;
+  }
+
+  em {
+    font-style: italic;
+    color: var(--umber);
+  }
+
+  strong {
+    font-weight: normal;
+    color: var(--rust);
+  }
+
+  .instruction {
+    border-left: 2px solid var(--gold-light);
+    padding: 0.6rem 1.2rem;
+    margin: 1.4rem 0;
+    background: rgba(184,134,11,0.05);
+  }
+
+  .instruction p {
+    margin: 0;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--umber);
+  }
+
+  .stroke-diagram {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 1.8rem 0;
+    align-items: flex-end;
+  }
+
+  .stroke-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .stroke-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ash);
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  svg.stroke { display: block; }
+
+  .colophon {
+    margin-top: 2.5rem;
+    text-align: center;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: var(--ash);
+    letter-spacing: 0.08em;
+  }
+
+  .flourish {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 1.4rem;
+    color: var(--rust);
+    opacity: 0.6;
+    display: block;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 600px) {
+    .page { padding: 2.5rem 2rem; }
+    h1 { font-size: 1.5rem; }
+    .dropcap { font-size: 4rem; }
+  }
+</style>
+</head>
+<body>
+<article class="page">
+
+  <p class="subtitle">Being a True & Profitable Instructionary Tale</p>
+  <h1>The Parable of Ember &amp; Umber</h1>
+  <p class="subtitle">for Aspiring Penmen of Every Station</p>
+
+  <div class="rule">
+    <hr><span class="ornament">✦</span><hr>
+  </div>
+
+  <p class="first"><span class="dropcap">I</span>n the long-ago of the scriptorium, when letters were still learning their shapes, there were born of a single pomegranate two brothers: <strong>Ember</strong>, and <strong>Umber</strong>.</p>
+
+  <p>Ember came first and made himself known immediately. He was the flesh of the fruit — red, swelling, bright as a coal, full of juice. He caught every eye that entered the room. The novices pointed. The abbot nodded. <em>Here,</em> they said, <em>is a thing of substance.</em> And Ember agreed with them, heartily.</p>
+
+  <p>Umber arrived after, and was almost thrown away.</p>
+
+  <p>He was the seed — small, dark, hard, easily lost between the flagstones. The colour of old earth, of spent charcoal. He made no noise. He offered no juice. He sat quietly in the palm of the one brother-monk who happened to notice him, and said nothing at all in his defence.</p>
+
+  <div class="rule">
+    <hr><span class="ornament">◆</span><hr>
+  </div>
+
+  <div class="section-head">II. Of Their Natures</div>
+
+  <p>Ember grew fat on admiration. In the days that followed, the novices squeezed him and his juice ran down their wrists — bright, sweet, abundant. They wrote with it. The letters came out red and vivid and caught the sun magnificently. The abbot framed them. Visitors praised them.</p>
+
+  <p>But by the fortnight's end the letters had faded. The juice had dried to nothing, leaving only a faint sticky ghost upon the vellum. <em>Where had the meaning gone?</em> The novices scratched their heads. They squeezed Ember again. He gave what he had, which was the same as before: surface, shine, and the promise of a thing rather than the thing itself.</p>
+
+  <p>Umber, meanwhile, had been pressed into a small pot of dark earth by the quiet monk, and left on the sill. Within a week he had split his hull and sent up a pale green thread. Within a month he was a plant. Within a year he had given ten thousand seeds.</p>
+
+  <div class="rule">
+    <hr><span class="ornament">✦</span><hr>
+  </div>
+
+  <div class="section-head">III. The Lesson of the Pen — Which Is the Same Lesson Told Again</div>
+
+  <p>Now hear me, Penman, for this is where the parable becomes your craft.</p>
+
+  <p>You hold the broad-edged nib as a sower holds the seed. And in that nib there live two brothers still, inseparable, though utterly unlike.</p>
+
+  <div class="instruction">
+    <p>The <strong>downstroke</strong> is Umber. It falls <em>heavy, broad, dark, direct</em> — the full width of the nib laid flat against the page. It is the seed pressed into the earth. It does not perform. It simply <em>is.</em> Bold. Present. The whole weight of the hand behind it.</p>
+  </div>
+
+  <div class="instruction">
+    <p>The <strong>hairline</strong> is Ember. It is the <em>thinnest thread of the nib's corner</em>, light as a rumour, bright as a spark. It connects. It radiates. It is necessary — but it is not the substance. It carries the eye from weight to weight, as a vine carries a fruit.</p>
+  </div>
+
+  <div class="stroke-diagram">
+    <div class="stroke-item">
+      <svg class="stroke" width="30" height="90" viewBox="0 0 30 90">
+        <rect x="5" y="8" width="20" height="74" rx="2" fill="#1a1108"/>
+      </svg>
+      <span class="stroke-label">Umber<br/>The Downstroke<br/>Broad · Dark · Full</span>
+    </div>
+    <div class="stroke-item">
+      <svg class="stroke" width="30" height="90" viewBox="0 0 30 90">
+        <line x1="15" y1="8" x2="15" y2="82" stroke="#1a1108" stroke-width="1"/>
+      </svg>
+      <span class="stroke-label">Ember<br/>The Hairline<br/>Light · Bright · Thin</span>
+    </div>
+    <div class="stroke-item">
+      <svg class="stroke" width="60" height="90" viewBox="0 0 60 90">
+        <!-- diagonal arc, the radian, the hypotenuse -->
+        <path d="M 8 82 Q 52 50 52 8" stroke="#8b3a1a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <circle cx="8" cy="82" r="3" fill="#8b3a1a"/>
+        <circle cx="52" cy="8" r="3" fill="#8b3a1a"/>
+      </svg>
+      <span class="stroke-label">The Arc<br/>The Diagonal<br/>The Meaning Found</span>
+    </div>
+  </div>
+
+  <p>Between these two — the dark weight and the bright thread — there runs a third thing: <strong>the arc.</strong> The diagonal stroke, found only when the nib is held at its true angle, neither flat nor upright but <em>across</em>. This is the hypotenuse. This is the radian. This is the stroke that connects the downstroke's foot to the hairline's head, and in doing so completes the square and reveals the letter's true proportion.</p>
+
+  <p>The arc is not dark like Umber. It is not bright like Ember. It partakes of both, and by that union it carries <em>meaning</em> — the letter made legible, the angle justified, the geometry confessed.</p>
+
+  <div class="rule">
+    <hr><span class="ornament">◆</span><hr>
+  </div>
+
+  <div class="section-head">IV. The Error of the Novice</div>
+
+  <p>The novice, seeing Ember's brightness, makes all his strokes as hairlines. The page shimmers. It catches the light magnificently. But when you stand back, there is nothing to read — only a field of radiating threads going nowhere, anchored to nothing, meaning less the more you look.</p>
+
+  <p>Another novice, hearing that the downstroke is the substance, bears down with all his force on every stroke alike. The page is dark and heavy and honest, but it too is unreadable — a row of identical posts with no vine between them, no arc to show the eye how the weights relate.</p>
+
+  <p><em>Both have mistaken the part for the whole.</em></p>
+
+  <p>The true penman knows that the bold downstroke is the seed — small in count, immense in gravity — and the hairline is the juice, necessary for life but not the life itself. You make few downstrokes. You make them with your whole arm, your whole intent, your whole faith in the mark. The hairlines come freely, almost without effort, for they cost nothing and weigh nothing. And then — <em>then</em> — with the nib at its corner angle, you draw the arc that squares the circle and earns the letter's right to stand on the page.</p>
+
+  <div class="rule">
+    <hr><span class="ornament">✦</span><hr>
+  </div>
+
+  <div class="section-head">V. The Moral, as Simply as May Be Said</div>
+
+  <p>Do not mistake the shine for the substance. A poppy seed could not be more unlike a poppy, and yet the seed <em>is</em> the poppy, and the flower is only the seed's way of becoming more seeds. The bright petals are Ember. The dark seed is Umber. Both are necessary. Only one is primary.</p>
+
+  <p>So too in your writing: let the downstroke be dark, broad, certain, and few. Let the hairline be light, brief, and subordinate. And between them, with the nib on its diagonal edge, find the arc that holds them in right relation — <em>the meaning between the weights.</em></p>
+
+  <p>All of lettering is this. All of it. Thick lines, thin lines, and the diagonal arc that squares them into sense. There is nothing else to learn, save the patience to learn it ten thousand times over.</p>
+
+  <div class="rule">
+    <hr><span class="ornament">◆</span><hr>
+  </div>
+
+  <div class="colophon">
+    Here ends the Parable of Ember &amp; Umber.<br>
+    The pen that knows its weight will never mistake the juice for the grain.<br><br>
+    <em>Push boldly. Radiate lightly. Find the square.</em>
+    <span class="flourish">✦</span>
+  </div>
+
+</article>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "interferenceA": 6.48074069840786,
+  "interferenceB": 7.14142842854285,
+  "distortion": 0.25,
+  "rotationSpeed": 0.2,
+  "activeStep": 1,
+  "fracture": false
+}

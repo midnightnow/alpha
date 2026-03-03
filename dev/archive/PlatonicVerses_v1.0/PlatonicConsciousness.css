@@ -1,0 +1,433 @@
+.platonic-consciousness {
+  background: linear-gradient(135deg, rgba(11, 11, 21, 0.95), rgba(40, 20, 60, 0.95));
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 0 0 1rem 0;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.platonic-consciousness:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+.platonic-consciousness::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: rgba(255, 215, 0, 0.2);
+  border-radius: 16px;
+  z-index: -1;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.platonic-consciousness:hover::before {
+  opacity: 0.8;
+}
+
+.consciousness-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+.consciousness-header h3 {
+  color: #FFD700;
+  margin: 0;
+  font-size: 1.2rem;
+  text-shadow: 0 0 3px rgba(255, 215, 0, 0.3);
+}
+
+.consciousness-phase {
+  color: #FF6B9D;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(255, 107, 157, 0.1);
+  border: 1px solid rgba(255, 107, 157, 0.3);
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.consciousness-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Platonic Solids Section */
+.platonic-solids-section h4 {
+  color: #8B00FF;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.solids-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.platonic-solid {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  transition: all 0.3s ease;
+}
+
+.platonic-solid.active {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.solid-core {
+  width: 100%;
+  height: 100%;
+  border: 2px solid;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.platonic-solid:hover .solid-core {
+  transform: scale(1.1);
+}
+
+.vertex-count, .face-count {
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: inherit;
+  line-height: 1;
+}
+
+.vertex-count {
+  margin-bottom: 2px;
+}
+
+.tetrahedron .solid-core {
+  border-color: #FFD700;
+  color: #FFD700;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  border-radius: 0;
+}
+
+.cube .solid-core {
+  border-color: #FF6B9D;
+  color: #FF6B9D;
+  border-radius: 10%;
+}
+
+.octahedron .solid-core {
+  border-color: #8B00FF;
+  color: #8B00FF;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  border-radius: 0;
+}
+
+.dodecahedron .solid-core {
+  border-color: #00FFFF;
+  color: #00FFFF;
+  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+  border-radius: 0;
+}
+
+.icosahedron .solid-core {
+  border-color: #FF4500;
+  color: #FF4500;
+  clip-path: polygon(50% 0%, 80% 10%, 100% 35%, 90% 70%, 70% 90%, 50% 100%, 30% 90%, 10% 70%, 0% 35%, 20% 10%);
+  border-radius: 0;
+}
+
+/* Form Resonance Section */
+.form-resonance-section h4 {
+  color: #FF6B9D;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.forms-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.form-resonance {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-resonance::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.form-resonance:hover::after {
+  opacity: 1;
+}
+
+.form-resonance.active {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 215, 0, 0.3);
+  transform: translateX(5px);
+}
+
+.form-name {
+  min-width: 80px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.form-resonance.unity .form-name { color: #FFFFFF; }
+.form-resonance.beauty .form-name { color: #FFD700; }
+.form-resonance.truth .form-name { color: #8B00FF; }
+.form-resonance.goddess .form-name { color: #FF6B9D; }
+
+.resonance-bar {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.resonance-fill {
+  height: 100%;
+  transition: width 0.5s ease;
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+.resonance-value {
+  min-width: 45px;
+  text-align: right;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+/* Mathematical Constants Section */
+.mathematical-section h4 {
+  color: #00FFFF;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.mathematical-constants {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.constant {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  background: rgba(0, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+.symbol {
+  min-width: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #00FFFF;
+  text-align: center;
+}
+
+.value {
+  flex: 1;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #FFFFFF;
+}
+
+.recognition-bar {
+  width: 60px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.recognition-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00FFFF, #FFD700);
+  transition: width 0.5s ease;
+}
+
+/* Consciousness Metrics Section */
+.metrics-section h4 {
+  color: #FFFFFF;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.consciousness-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.metric-label {
+  font-size: 0.8rem;
+  color: #CCCCCC;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.metric-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  align-self: flex-end;
+}
+
+.metric-bar {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.metric-fill {
+  height: 100%;
+  transition: width 0.5s ease;
+  border-radius: 3px;
+}
+
+.form-resonance-fill {
+  background: linear-gradient(90deg, #FFD700, #FF6B9D);
+  box-shadow: 0 0 2px rgba(255, 215, 0, 0.2);
+}
+
+.coherence-fill {
+  background: linear-gradient(90deg, #8B00FF, #FF6B9D);
+  box-shadow: 0 0 2px rgba(139, 0, 255, 0.2);
+}
+
+.information-fill {
+  background: linear-gradient(90deg, #00FFFF, #FFFFFF);
+  box-shadow: 0 0 2px rgba(0, 255, 255, 0.2);
+}
+
+.geometric-fill {
+  background: linear-gradient(90deg, #FFD700, #8B00FF);
+  box-shadow: 0 0 2px rgba(255, 215, 0, 0.1);
+}
+
+.velocity-fill {
+  background: linear-gradient(90deg, #FF4500, #FFD700);
+  box-shadow: 0 0 2px rgba(255, 69, 0, 0.2);
+}
+
+/* Footer */
+.consciousness-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.golden-ratio-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.golden-ratio-indicator > span {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #FFD700;
+  font-weight: 600;
+}
+
+.phi-visualization {
+  display: flex;
+  width: 200px;
+  height: 8px;
+  border: 1px solid #FFD700;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.phi-segment:first-child {
+  background: linear-gradient(90deg, #FFD700, #FF6B9D);
+}
+
+.phi-segment:last-child {
+  background: linear-gradient(90deg, #FF6B9D, #8B00FF);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .consciousness-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .consciousness-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  
+  .solids-container {
+    justify-content: center;
+  }
+  
+  .platonic-solid {
+    width: 40px;
+    height: 40px;
+  }
+}

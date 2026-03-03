@@ -1,0 +1,11 @@
+{
+  "pmid": "41610722",
+  "title": "Glutathione peroxidase-like activity of natural and semisynthetic phenylpropanoids and cannabinoids: An analytical investigation by a GC-MS- and HPLC-DAD-based Iwaoka's assay.",
+  "abstract": "The present study explores the glutathione peroxidase (GPx)-like mimicking activity of selected natural phenylpropanoids, their oxyprenylated derivatives, and natural and semisynthetic cannabinoids using a revised version of Iwaoka's assay based on the application of GC-MS and HPLC-DAD. Thus, naturally occurring phenylpropanoids, including ferulic acid, p-coumaric acid, and umbelliferone, together with their oxyprenylated derivatives, were synthesized and tested for catalytic effects on 1,4-dithiotrhreitol (DTTred) oxidation. While ferulic acid and p-coumaric acid displayed an appreciable GPx-like activity, their oxyprenylated counterparts exhibited a reduction in catalytic efficiency, suggesting that the carboxylic acid and free phenolic hydroxyl groups play a key role in the observed activity. Coumarin derivatives showed minimal activity, likely due to their rigid ring system. Among cannabinoids, cannabidiol (CBD) and cannabigerol (CBG) enhanced DTT oxidation, with CBG displaying a nearly comparable effect to the reference catalyst Ebselen\u00ae. Structure-activity relationship analysis of semisynthetic CBG ethers and esters revealed that substitution patterns strongly influence catalytic performance, with diethyl and di-n-propyl derivatives demonstrating the highest GPx-like behavior. Overall, this work identifies cinnamic acids, CBG, and some of their etherified analogues as promising GPx mimetics and provides mechanistic insight into the redox properties of phenylpropanoids and cannabinoids, which may support future antioxidant drug design.",
+  "source": "PubMed",
+  "study_type": "Observational",
+  "n": 30,
+  "p_value": 0.05,
+  "evidence_grade": "C",
+  "timestamp": "2026-02-19T13:32:15.985725"
+}

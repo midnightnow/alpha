@@ -1,0 +1,9 @@
+TITLE: CBG Enhances Verbal Memory Recall in Humans
+AUTHORS: Washington State University (WSU)
+DATE: July 2024
+STUDY_TYPE: RCT
+SAMPLE_SIZE: 20
+P_VALUE: 0.01
+
+ABSTRACT:
+In a randomized controlled trial (n=20), the administration of 20mg CBG was found to significantly enhance verbal memory recall (list recall) compared to placebo. Unlike THC, no intoxication was observed. Anxiety and stress levels were significantly reduced.

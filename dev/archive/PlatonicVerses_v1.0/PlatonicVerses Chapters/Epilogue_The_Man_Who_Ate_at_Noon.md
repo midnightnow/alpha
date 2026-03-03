@@ -1,0 +1,111 @@
+# Epilogue: The Man Who Ate at Noon
+
+The man was eighty years old.
+
+He had outlived three emperors, two plagues, and one very confusing week where the local currency was replaced by clamshells.
+
+He lived in a house that was neither square nor round. It was "comfortable," which is the geometric term for "I stopped measuring it forty years ago."
+
+It was noon.
+
+The man sat at his table.
+
+The table was made of olive wood. It was scratched, stained with wine, and burned in one corner where he had accidentally left a lamp burning while arguing with a neighbor about the price of figs.
+
+The plate was circular.
+
+He put bread on the plate.
+
+He put olives on the plate.
+
+He poured wine into a cup that was, structurally speaking, a cylinder, but emotionally speaking, a friend.
+
+He did not pray.
+
+He did not wind a cord.
+
+He did not calculate the ratio of the bread's circumference to its diameter in order to ensure he was not eating an irrational number.
+
+He simply... waited.
+
+He watched the shadows. Outside, the sun was at its zenith. The shadow of the cypress tree had retreated into itself, becoming a puddle of darkness at the base of the trunk.
+
+The world was holding its breath.
+
+The man took a bite of bread.
+
+He chewed. Slowly. Not because he was performing a ritual, but because he had bad teeth and good bread, and he wanted to enjoy the negotiation between them.
+
+He felt the bread become him.
+
+He felt the wine become blood.
+
+He felt the olives become... well, he wasn't sure what olives became, but he suspected it was "stubbornness."
+
+"Grandfather?"
+
+A child stood in the doorway. His grandson. Seven years old. Holding a stick that he was currently pretending was a sword, but which—if you looked closely—was actually a very crude compass.
+
+"Are you doing the ritual?" the boy asked.
+
+The man swallowed. "I am eating lunch."
+
+"But the Priest says we have to eat in sync with the Whir," the boy recited. "He says if we don't, the Zeros will leak into our bones."
+
+The man looked at his plate. He looked at the crumbs.
+
+"The Priest," the man said softly, "is very worried about the math."
+
+"Aren't you worried?"
+
+"No."
+
+"Why not?"
+
+The man picked up an olive. He held it up to the light. It was imperfect. It had a bruise on one side. It was not a sphere. It was not an ellipsoid. It was just a fruit that had survived a hot summer.
+
+"Because," the man said, "I have made a deal with the geometry."
+
+"What deal?"
+
+"I don't ask it to be perfect," the man said. "And it doesn't ask me to be eternal."
+
+He popped the olive into his mouth.
+
+"We agree," he said around the pit, "to simply be here. At the same time."
+
+The boy frowned. "That doesn't sound like a ritual."
+
+"It's the oldest ritual," the man said. "It's called 'Lunch.'"
+
+He gestured to the empty chair opposite him.
+
+"Sit," he said. "Put down the sword. Pick up a fig."
+
+The boy sat.
+
+"Do I have to calculate the latency?" the boy asked nervously.
+
+"No," the man said. "You just have to wait until you're hungry. And stop when you're full."
+
+"That's it?"
+
+"That's it."
+
+The boy took a fig. He looked at it suspiciously. Then he took a bite.
+
+The man watched him.
+
+He saw the boy's shoulders drop. He saw the tension leave his small, anxious frame. He saw the child stop being a node in a system and start being a boy eating fruit in the shade.
+
+Outside, the universe hummed. The diagonal screamed in the walls. The Zeros pooled in the corners. The great, terrifying machinery of the cosmos continued its infinite calculation, grinding stars into dust and dust into time.
+
+But in the kitchen, at the wooden table, the man and the boy were quiet.
+
+They were eating.
+
+They were solid.
+
+And for one long, golden hour, the cord was exactly long enough.
+
+**END**

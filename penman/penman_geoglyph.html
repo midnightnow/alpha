@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Penman Geoglyph — The Cubit Platform & Delian Resonance</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+  :root {
+    --void: #0a0a0f;
+    --ink: #1a1a2e;
+    --gold: #c9a84c;
+    --gold-dim: #8a6d2b;
+    --royal: #7b2d8e;
+    --delos: #e8c547;
+    --manus: #4a7c59;
+    --cubit: #2e6b8a;
+    --parchment: #f0e6d0;
+    --squid-ink: #16213e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--void);
+    color: var(--parchment);
+    font-family: 'Cormorant Garamond', serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  canvas {
+    display: block;
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 1;
+  }
+
+  #ui-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  #title-bar {
+    position: absolute;
+    top: 24px; left: 32px;
+    pointer-events: auto;
+  }
+
+  #title-bar h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(201,168,76,0.3);
+  }
+
+  #title-bar .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 14px;
+    color: rgba(240,230,208,0.5);
+    margin-top: 4px;
+    letter-spacing: 2px;
+  }
+
+  #controls {
+    position: absolute;
+    bottom: 32px; left: 32px;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .control-group {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .control-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(240,230,208,0.4);
+    width: 80px;
+    text-align: right;
+    margin-right: 8px;
+  }
+
+  .btn {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 6px 14px;
+    border: 1px solid rgba(201,168,76,0.3);
+    background: rgba(201,168,76,0.05);
+    color: var(--gold-dim);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+  }
+
+  .btn:hover {
+    background: rgba(201,168,76,0.15);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .btn.active {
+    background: rgba(201,168,76,0.2);
+    border-color: var(--gold);
+    color: var(--gold);
+    box-shadow: 0 0 12px rgba(201,168,76,0.15);
+  }
+
+  #info-panel {
+    position: absolute;
+    top: 24px; right: 32px;
+    pointer-events: auto;
+    text-align: right;
+    min-width: 240px;
+  }
+
+  .info-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-bottom: 4px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .info-key {
+    color: rgba(240,230,208,0.35);
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .info-val {
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 13px;
+    min-width: 60px;
+    text-align: right;
+  }
+
+  #delos-indicator {
+    position: absolute;
+    bottom: 32px; right: 32px;
+    pointer-events: none;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  #delos-indicator.active {
+    opacity: 1;
+  }
+
+  #delos-indicator .delos-label {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--delos);
+    text-shadow: 0 0 30px rgba(232,197,71,0.5);
+    animation: delosPulse 2s ease-in-out infinite;
+  }
+
+  #delos-indicator .delos-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--delos);
+    text-shadow: 0 0 40px rgba(232,197,71,0.4);
+  }
+
+  @keyframes delosPulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+  }
+
+  #keyboard-hints {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 16px;
+    pointer-events: none;
+    opacity: 0.3;
+    font-size: 10px;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .key-hint kbd {
+    display: inline-block;
+    padding: 2px 6px;
+    border: 1px solid rgba(240,230,208,0.3);
+    border-radius: 2px;
+    margin-right: 4px;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+  }
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<div id="ui-overlay">
+  <div id="title-bar">
+    <h1>Penman Geoglyph</h1>
+    <div class="subtitle">The Cubit Platform &amp; Delian Resonance</div>
+  </div>
+
+  <div id="controls">
+    <div class="control-group">
+      <span class="control-label">Slope</span>
+      <button class="btn active" data-slope="10" onclick="setSlope(10)">10° Copperplate</button>
+      <button class="btn" data-slope="15" onclick="setSlope(15)">15° Italic</button>
+      <button class="btn" data-slope="30" onclick="setSlope(30)">30° Royal</button>
+    </div>
+    <div class="control-group">
+      <span class="control-label">Display</span>
+      <button class="btn active" id="btn-forearm" onclick="toggleForearm()">Forearm</button>
+      <button class="btn active" id="btn-arcs" onclick="toggleArcs()">Cubit Arcs</button>
+      <button class="btn" id="btn-spiral" onclick="toggleSpiral()">Log Spiral</button>
+      <button class="btn" id="btn-delos" onclick="toggleDelos()">Delos Ring</button>
+    </div>
+    <div class="control-group">
+      <span class="control-label">Motion</span>
+      <button class="btn active" id="btn-animate" onclick="toggleAnimation()">Animate</button>
+      <button class="btn" id="btn-reverse" onclick="toggleReverse()">Reverse (Demiurge)</button>
+    </div>
+  </div>
+
+  <div id="info-panel">
+    <div class="info-row">
+      <span class="info-key">Slope (φ)</span>
+      <span class="info-val" id="val-slope">10°</span>
+    </div>
+    <div class="info-row">
+      <span class="info-key">Tilt (θ)</span>
+      <span class="info-val">3°</span>
+    </div>
+    <div class="info-row">
+      <span class="info-key">Radius</span>
+      <span class="info-val" id="val-radius">5.000</span>
+    </div>
+    <div class="info-row">
+      <span class="info-key">Volume</span>
+      <span class="info-val" id="val-volume">125.0</span>
+    </div>
+    <div class="info-row">
+      <span class="info-key">Forearm Vector</span>
+      <span class="info-val" id="val-vector">—</span>
+    </div>
+    <div class="info-row">
+      <span class="info-key">Delos Target</span>
+      <span class="info-val" style="color: rgba(232,197,71,0.7);">6.299</span>
+    </div>
+    <div class="info-row">
+      <span class="info-key">Loop Count</span>
+      <span class="info-val" id="val-loops">0</span>
+    </div>
+  </div>
+
+  <div id="delos-indicator">
+    <div class="delos-label">DELIAN RESONANCE</div>
+    <div class="delos-value">∛2 · 5 ≈ 6.299</div>
+  </div>
+
+  <div id="keyboard-hints">
+    <span class="key-hint"><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> Slopes</span>
+    <span class="key-hint"><kbd>F</kbd> Forearm</span>
+    <span class="key-hint"><kbd>A</kbd> Arcs</span>
+    <span class="key-hint"><kbd>D</kbd> Delos</span>
+    <span class="key-hint"><kbd>S</kbd> Spiral</span>
+    <span class="key-hint"><kbd>R</kbd> Reverse</span>
+    <span class="key-hint"><kbd>Space</kbd> Pause</span>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════
+// PENMAN GEOGLYPH ENGINE
+// The Cubit Platform & Delian Resonance
+// ══════════════════════════════════════════
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// ── State ──
+const state = {
+  slopeAngle: 10,        // φ: historical slope (degrees)
+  tiltAngle: 3,          // θ: Master Key (degrees)
+  showForearm: true,
+  showArcs: true,
+  showSpiral: false,
+  showDelos: false,
+  animate: true,
+  reverse: false,
+  time: 0,
+  loopCount: 0,
+  currentRadius: 5,
+  delosActive: false,
+  trail: [],
+  maxTrail: 800,
+};
+
+const DELOS_RADIUS = 5 * Math.pow(2, 1/3); // ≈ 6.299
+const DEG = Math.PI / 180;
+
+// ── Resize ──
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+// ── Projection (simple 3D → 2D with perspective) ──
+function project(x3d, y3d, z3d) {
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+  const scale = Math.min(canvas.width, canvas.height) * 0.05;
+  // Camera tilt for depth perception
+  const camAngle = 15 * DEG;
+  const yr = y3d * Math.cos(camAngle) - z3d * Math.sin(camAngle);
+  const zr = y3d * Math.sin(camAngle) + z3d * Math.cos(camAngle);
+  const perspective = 1 + zr * 0.02;
+  return {
+    x: cx + x3d * scale / perspective,
+    y: cy - yr * scale / perspective,
+    z: zr,
+    scale: scale / perspective
+  };
+}
+
+// ── Forearm Vector ──
+function forearmVector(phi, theta) {
+  const p = phi * DEG;
+  const t = theta * DEG;
+  return [
+    Math.cos(p) * Math.cos(t),
+    Math.sin(p),
+    Math.cos(p) * Math.sin(t)
+  ];
+}
+
+// ── Anticlockwise Loop Point ──
+function loopPoint(t, radius, phi, theta, zOffset) {
+  const p = phi * DEG;
+  const th = theta * DEG;
+  // Anticlockwise in XY plane
+  let x = radius * Math.cos(-t); // negative for anticlockwise
+  let y = radius * Math.sin(-t);
+  let z = zOffset;
+  // Apply 3° tilt (Neusis precession)
+  const xr = x * Math.cos(th) - z * Math.sin(th);
+  const zr = x * Math.sin(th) + z * Math.cos(th);
+  // Apply slope rotation around X axis
+  const yr2 = y * Math.cos(p * 0.1) - zr * Math.sin(p * 0.1);
+  const zr2 = y * Math.sin(p * 0.1) + zr * Math.cos(p * 0.1);
+  return [xr, yr2, zr2];
+}
+
+// ── Drawing Helpers ──
+function drawCircle3D(cx3d, cy3d, cz3d, radius, segments, color, alpha, lineWidth) {
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.globalAlpha = alpha;
+  ctx.lineWidth = lineWidth;
+  for (let i = 0; i <= segments; i++) {
+    const angle = (i / segments) * Math.PI * 2;
+    const x = cx3d + radius * Math.cos(angle);
+    const y = cy3d + radius * Math.sin(angle);
+    const p = project(x, y, cz3d);
+    if (i === 0) ctx.moveTo(p.x, p.y);
+    else ctx.lineTo(p.x, p.y);
+  }
+  ctx.stroke();
+  ctx.globalAlpha = 1;
+}
+
+function drawLine3D(x1, y1, z1, x2, y2, z2, color, alpha, lineWidth) {
+  const p1 = project(x1, y1, z1);
+  const p2 = project(x2, y2, z2);
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.globalAlpha = alpha;
+  ctx.lineWidth = lineWidth;
+  ctx.moveTo(p1.x, p1.y);
+  ctx.lineTo(p2.x, p2.y);
+  ctx.stroke();
+  ctx.globalAlpha = 1;
+}
+
+function drawPoint3D(x, y, z, color, alpha, size) {
+  const p = project(x, y, z);
+  ctx.beginPath();
+  ctx.fillStyle = color;
+  ctx.globalAlpha = alpha;
+  ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.globalAlpha = 1;
+}
+
+// ── Draw Equilateral Triangle ──
+function drawEquilateral3D(cx, cy, cz, size, rotation, color, alpha) {
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.globalAlpha = alpha;
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 3; i++) {
+    const angle = rotation + (i / 3) * Math.PI * 2;
+    const x = cx + size * Math.cos(angle);
+    const y = cy + size * Math.sin(angle);
+    const p = project(x, y, cz);
+    if (i === 0) ctx.moveTo(p.x, p.y);
+    else ctx.lineTo(p.x, p.y);
+  }
+  ctx.stroke();
+  ctx.globalAlpha = 1;
+}
+
+// ── Log Spiral ──
+function drawLogSpiral(centerX, centerY, centerZ, growthFactor, maxAngle, color, alpha) {
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.globalAlpha = alpha;
+  ctx.lineWidth = 1.2;
+  const steps = 300;
+  for (let i = 0; i <= steps; i++) {
+    const angle = (i / steps) * maxAngle;
+    const r = 0.5 * Math.exp(growthFactor * angle);
+    const x = centerX + r * Math.cos(-angle);
+    const y = centerY + r * Math.sin(-angle);
+    const z = centerZ + angle * 0.05;
+    const p = project(x, y, z);
+    if (i === 0) ctx.moveTo(p.x, p.y);
+    else ctx.lineTo(p.x, p.y);
+  }
+  ctx.stroke();
+  ctx.globalAlpha = 1;
+}
+
+// ── Background Grid (Void) ──
+function drawVoidGrid() {
+  const cx = canvas.width / 2;
+  const cy = canvas.height / 2;
+  ctx.strokeStyle = 'rgba(201,168,76,0.03)';
+  ctx.lineWidth = 0.5;
+  // Radial lines
+  for (let i = 0; i < 12; i++) {
+    const angle = (i / 12) * Math.PI * 2;
+    const r = Math.min(canvas.width, canvas.height) * 0.45;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + r * Math.cos(angle), cy + r * Math.sin(angle));
+    ctx.stroke();
+  }
+  // Concentric rings
+  for (let r = 1; r <= 10; r++) {
+    const scale = Math.min(canvas.width, canvas.height) * 0.05;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r * scale, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+}
+
+// ── Main Render ──
+function render() {
+  // Clear
+  ctx.fillStyle = state.reverse ? '#0f0a1a' : 'var(--void)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Gradient background
+  const grad = ctx.createRadialGradient(
+    canvas.width/2, canvas.height/2, 0,
+    canvas.width/2, canvas.height/2, canvas.width * 0.6
+  );
+  grad.addColorStop(0, state.reverse ? 'rgba(30,10,50,1)' : 'rgba(10,10,15,1)');
+  grad.addColorStop(0.5, state.reverse ? 'rgba(15,5,30,1)' : 'rgba(8,8,12,1)');
+  grad.addColorStop(1, 'rgba(5,5,8,1)');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  drawVoidGrid();
+
+  const phi = state.slopeAngle;
+  const theta = state.tiltAngle;
+  const fv = forearmVector(phi, theta);
+
+  // ── Cubit Arcs ──
+  if (state.showArcs) {
+    // Manus (5)
+    drawCircle3D(0, 0, 0, 5, 64, 'rgba(74,124,89,0.4)', 0.4, 1);
+    // Cubit (6)
+    drawCircle3D(0, 0, 0, 6, 64, 'rgba(46,107,138,0.4)', 0.4, 1);
+    // Royal (7)
+    drawCircle3D(0, 0, 0, 7, 64, 'rgba(123,45,142,0.3)', 0.3, 1);
+
+    // Labels
+    const p5 = project(5.2, 0.3, 0);
+    const p6 = project(6.2, 0.3, 0);
+    const p7 = project(7.2, 0.3, 0);
+    ctx.font = '10px Cinzel';
+    ctx.fillStyle = 'rgba(74,124,89,0.5)';
+    ctx.fillText('MANUS (5)', p5.x, p5.y);
+    ctx.fillStyle = 'rgba(46,107,138,0.5)';
+    ctx.fillText('CUBIT (6)', p6.x, p6.y);
+    ctx.fillStyle = 'rgba(123,45,142,0.4)';
+    ctx.fillText('ROYAL (7)', p7.x, p7.y);
+  }
+
+  // ── Delos Ring ──
+  if (state.showDelos) {
+    const pulse = 0.5 + 0.5 * Math.sin(state.time * 2);
+    const delosAlpha = 0.3 + 0.4 * pulse;
+    drawCircle3D(0, 0, 0, DELOS_RADIUS, 96, `rgba(232,197,71,${delosAlpha})`, 1, 1.5 + pulse);
+
+    // Delos label
+    const pd = project(DELOS_RADIUS + 0.3, -0.5, 0);
+    ctx.font = '11px Cinzel';
+    ctx.fillStyle = `rgba(232,197,71,${delosAlpha})`;
+    ctx.fillText('∛2·5 ≈ 6.299', pd.x, pd.y);
+  }
+
+  // ── Forearm (Cubit Platform) ──
+  if (state.showForearm) {
+    const armLen = 6; // 1 cubit = 6 manus
+    const ex = fv[0] * armLen;
+    const ey = fv[1] * armLen;
+    const ez = fv[2] * armLen;
+
+    // Forearm line
+    drawLine3D(0, 0, 0, -ex, -ey, -ez, 'rgba(201,168,76,0.6)', 0.6, 2);
+
+    // Elbow point
+    drawPoint3D(-ex, -ey, -ez, '#c9a84c', 0.7, 4);
+
+    // Pen tip (origin)
+    drawPoint3D(0, 0, 0, '#e8c547', 1, 3);
+
+    // Equilateral at forearm terminus
+    drawEquilateral3D(-ex * 0.5, -ey * 0.5, -ez * 0.5, 1.5, state.time * 0.2, 'rgba(201,168,76,0.25)', 0.25);
+
+    // Support circle
+    drawCircle3D(-ex * 0.5, -ey * 0.5, -ez * 0.5, 1.5, 32, 'rgba(201,168,76,0.15)', 0.15, 0.8);
+
+    // Forearm label
+    const pArm = project(-ex * 0.5, -ey * 0.5 - 0.8, -ez * 0.5);
+    ctx.font = '9px Cinzel';
+    ctx.fillStyle = 'rgba(201,168,76,0.4)';
+    ctx.fillText('CUBIT PLATFORM', pArm.x - 40, pArm.y);
+  }
+
+  // ── Log Spiral Pyramid ──
+  if (state.showSpiral) {
+    // Growth factor tuned so that at ~5 radians, radius ≈ DELOS_RADIUS
+    const gf = Math.log(DELOS_RADIUS / 0.5) / (5 * Math.PI);
+    drawLogSpiral(0, 0, 0, gf, 8 * Math.PI, 'rgba(201,168,76,0.3)', 0.3);
+
+    // Draw pyramid edges (3 faces from spiral)
+    for (let f = 0; f < 3; f++) {
+      const angle = (f / 3) * Math.PI * 2 + state.time * 0.1;
+      const tipX = 0, tipY = 0, tipZ = 3;
+      const baseR = 5;
+      const bx = baseR * Math.cos(angle);
+      const by = baseR * Math.sin(angle);
+      drawLine3D(tipX, tipY, tipZ, bx, by, 0, 'rgba(201,168,76,0.12)', 0.12, 0.5);
+    }
+  }
+
+  // ── Anticlockwise Loop Trail ──
+  if (state.trail.length > 1) {
+    for (let i = 1; i < state.trail.length; i++) {
+      const t = state.trail[i];
+      const prev = state.trail[i - 1];
+      const age = i / state.trail.length;
+      const p1 = project(prev[0], prev[1], prev[2]);
+      const p2 = project(t[0], t[1], t[2]);
+
+      // Color based on radius from origin
+      const r = Math.sqrt(t[0]*t[0] + t[1]*t[1] + t[2]*t[2]);
+      let color;
+      if (r < 5.5) color = `rgba(74,124,89,${age * 0.8})`;       // Manus green
+      else if (r < 6.15) color = `rgba(46,107,138,${age * 0.8})`; // Cubit blue
+      else if (Math.abs(r - DELOS_RADIUS) < 0.15) color = `rgba(232,197,71,${age})`;  // Delos gold
+      else color = `rgba(123,45,142,${age * 0.8})`;                // Royal purple
+
+      ctx.beginPath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1 + age * 1.5;
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+    }
+  }
+
+  // ── Pen Tip Glow ──
+  if (state.trail.length > 0) {
+    const tip = state.trail[state.trail.length - 1];
+    const pt = project(tip[0], tip[1], tip[2]);
+    const r = Math.sqrt(tip[0]*tip[0] + tip[1]*tip[1] + tip[2]*tip[2]);
+    const isNearDelos = Math.abs(r - DELOS_RADIUS) < 0.2;
+
+    const glowGrad = ctx.createRadialGradient(pt.x, pt.y, 0, pt.x, pt.y, isNearDelos ? 20 : 10);
+    glowGrad.addColorStop(0, isNearDelos ? 'rgba(232,197,71,0.8)' : 'rgba(240,230,208,0.6)');
+    glowGrad.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = glowGrad;
+    ctx.fillRect(pt.x - 25, pt.y - 25, 50, 50);
+  }
+
+  // ── Update Info Panel ──
+  document.getElementById('val-slope').textContent = phi + '°';
+  document.getElementById('val-radius').textContent = state.currentRadius.toFixed(3);
+  document.getElementById('val-volume').textContent = Math.pow(state.currentRadius, 3).toFixed(1);
+  document.getElementById('val-vector').textContent = `[${fv[0].toFixed(3)}, ${fv[1].toFixed(3)}, ${fv[2].toFixed(3)}]`;
+  document.getElementById('val-loops').textContent = Math.floor(state.loopCount);
+
+  // Delos indicator
+  const delosEl = document.getElementById('delos-indicator');
+  if (state.delosActive) {
+    delosEl.classList.add('active');
+  } else {
+    delosEl.classList.remove('active');
+  }
+}
+
+// ── Animation Loop ──
+function update() {
+  if (state.animate) {
+    const dt = 0.016;
+    const direction = state.reverse ? -1 : 1;
+    state.time += dt * direction;
+
+    // Expanding radius based on slope
+    const targetR = state.slopeAngle === 10 ? 5 :
+                    state.slopeAngle === 15 ? 6 :
+                    7;
+
+    // Smooth radius transition
+    state.currentRadius += (targetR - state.currentRadius) * 0.01;
+
+    // Generate loop points
+    const loopSpeed = 1.2;
+    const t = state.time * loopSpeed;
+    const zOff = state.loopCount * Math.sin(state.tiltAngle * DEG) * state.currentRadius;
+
+    // Anticlockwise spiral with expanding radius
+    const dynamicR = 5 + (state.currentRadius - 5) * (0.5 + 0.5 * Math.sin(t * 0.3));
+    const pt = loopPoint(t, dynamicR, state.slopeAngle, state.tiltAngle, zOff * 0.1);
+
+    state.trail.push(pt);
+    if (state.trail.length > state.maxTrail) {
+      state.trail.shift();
+    }
+
+    // Loop counting
+    state.loopCount = Math.abs(state.time * loopSpeed) / (Math.PI * 2);
+
+    // Check Delos resonance
+    const currentR = Math.sqrt(pt[0]*pt[0] + pt[1]*pt[1] + pt[2]*pt[2]);
+    state.delosActive = Math.abs(currentR - DELOS_RADIUS) < 0.3 && state.showDelos;
+  }
+
+  render();
+  requestAnimationFrame(update);
+}
+
+// ── Controls ──
+function setSlope(degrees) {
+  state.slopeAngle = degrees;
+  document.querySelectorAll('[data-slope]').forEach(btn => {
+    btn.classList.toggle('active', parseInt(btn.dataset.slope) === degrees);
+  });
+  // Clear trail on slope change for clean transition
+  state.trail = [];
+}
+
+function toggleForearm() {
+  state.showForearm = !state.showForearm;
+  document.getElementById('btn-forearm').classList.toggle('active');
+}
+
+function toggleArcs() {
+  state.showArcs = !state.showArcs;
+  document.getElementById('btn-arcs').classList.toggle('active');
+}
+
+function toggleSpiral() {
+  state.showSpiral = !state.showSpiral;
+  document.getElementById('btn-spiral').classList.toggle('active');
+}
+
+function toggleDelos() {
+  state.showDelos = !state.showDelos;
+  document.getElementById('btn-delos').classList.toggle('active');
+}
+
+function toggleAnimation() {
+  state.animate = !state.animate;
+  document.getElementById('btn-animate').classList.toggle('active');
+}
+
+function toggleReverse() {
+  state.reverse = !state.reverse;
+  document.getElementById('btn-reverse').classList.toggle('active');
+}
+
+// ── Keyboard Shortcuts ──
+document.addEventListener('keydown', (e) => {
+  switch(e.key) {
+    case '1': setSlope(10); break;
+    case '2': setSlope(15); break;
+    case '3': setSlope(30); break;
+    case 'f': case 'F': toggleForearm(); break;
+    case 'a': case 'A': toggleArcs(); break;
+    case 'd': case 'D': toggleDelos(); break;
+    case 's': case 'S': toggleSpiral(); break;
+    case 'r': case 'R': toggleReverse(); break;
+    case ' ': e.preventDefault(); toggleAnimation(); break;
+  }
+});
+
+// ── Start ──
+update();
+</script>
+</body>
+</html>

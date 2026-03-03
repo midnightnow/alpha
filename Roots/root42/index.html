@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Root 42 — Sovereign Lattice Engine</title>
+  <meta name="description"
+    content="Unified visualization of the √42:√51 resonance system — 93-node Hero Lattice, Hades Beat, Tiger Stripe topology, and the Sovereign Snail journey.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- three.js resolved by Vite from node_modules -->
+</head>
+
+<body>
+  <!-- ====== HEADER ====== -->
+  <header id="sovereign-header">
+    <div class="header-left">
+      <div class="logo-glyph">◇</div>
+      <h1>Root 42 <span class="subtitle">Sovereign Lattice</span></h1>
+    </div>
+    <div class="header-right">
+      <div class="status-pill" id="status-pill">
+        <span class="pulse-dot"></span>
+        <span id="status-text">VITRIFIED</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== TAB NAVIGATION ====== -->
+  <nav id="tab-nav">
+    <button class="tab-btn active" data-tab="lattice">
+      <span class="tab-icon">◈</span>
+      <span class="tab-label">93-Node Lattice</span>
+    </button>
+    <button class="tab-btn" data-tab="hades">
+      <span class="tab-icon">♫</span>
+      <span class="tab-label">Hades Beat</span>
+    </button>
+    <button class="tab-btn" data-tab="pyramid">
+      <span class="tab-icon">△</span>
+      <span class="tab-label">Pyramid Model</span>
+    </button>
+    <button class="tab-btn" data-tab="constants">
+      <span class="tab-icon">Σ</span>
+      <span class="tab-label">Seven Constants</span>
+    </button>
+    <button class="tab-btn" data-tab="snail">
+      <span class="tab-icon">🐚</span>
+      <span class="tab-label">Sovereign Snail</span>
+    </button>
+    <button class="tab-btn" data-tab="audit">
+      <span class="tab-icon">⚖</span>
+      <span class="tab-label">Digital Root Audit</span>
+    </button>
+    <button class="tab-btn" data-tab="sisyphus">
+      <span class="tab-icon">⛰</span>
+      <span class="tab-label">Sisyphus</span>
+    </button>
+  </nav>
+
+  <!-- ====== MAIN CONTENT PANELS ====== -->
+  <main id="main-content">
+
+    <!-- TAB 1: 93-Node Lattice -->
+    <section class="tab-panel active" id="panel-lattice">
+      <div class="panel-split">
+        <div class="panel-3d" id="lattice-viewport"></div>
+        <div class="panel-controls">
+          <h2>93-Node Hero Lattice</h2>
+          <p class="desc">The biquadratic interference solid: √42 × √51 → 93 faces. Use the Hades Slider to morph
+            between Europa (smooth) and Enceladus (fractured) states.</p>
+
+          <div class="control-group">
+            <label>Hades Slider <span class="value-badge" id="hades-val">0.50</span></label>
+            <input type="range" id="hades-slider" min="0" max="1" step="0.01" value="0.5">
+            <div class="slider-labels">
+              <span>Europa (Smooth)</span>
+              <span>Enceladus (Fractured)</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label>Distortion <span class="value-badge" id="distortion-val">0.25</span></label>
+            <input type="range" id="distortion-slider" min="0" max="1" step="0.01" value="0.25">
+          </div>
+
+          <div class="control-group">
+            <label>Rotation Speed <span class="value-badge" id="rotation-val">0.20</span></label>
+            <input type="range" id="rotation-slider" min="0" max="1" step="0.01" value="0.2">
+          </div>
+
+          <div class="control-group">
+            <label>View Mode</label>
+            <div class="btn-group">
+              <button class="mode-btn active" data-mode="wireframe">Wireframe</button>
+              <button class="mode-btn" data-mode="solid">Solid</button>
+              <button class="mode-btn" data-mode="crystal">Crystal</button>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label>Ladder Step</label>
+            <div class="btn-group">
+              <button class="step-btn" data-step="0">√42 (42v)</button>
+              <button class="step-btn active" data-step="1">√51 (93v)</button>
+              <button class="step-btn" data-step="2">√60 (153v)</button>
+              <button class="step-btn" data-step="3">√69 (222v)</button>
+            </div>
+          </div>
+
+          <div class="readout-grid" id="lattice-readouts">
+            <div class="readout"><span class="readout-label">Interference A</span><span class="readout-value"
+                id="readout-a">6.4807</span></div>
+            <div class="readout"><span class="readout-label">Interference B</span><span class="readout-value"
+                id="readout-b">7.1414</span></div>
+            <div class="readout"><span class="readout-label">Shear Angle</span><span class="readout-value">39.47°</span>
+            </div>
+            <div class="readout"><span class="readout-label">Fracture State</span><span class="readout-value"
+                id="readout-fracture">VITRIFIED</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: Hades Beat Audio -->
+    <section class="tab-panel" id="panel-hades">
+      <div class="panel-split">
+        <div class="panel-3d" id="audio-visualizer"></div>
+        <div class="panel-controls">
+          <h2>6 Hz Hades Beat</h2>
+          <p class="desc">Stereo heterodyne: 66 Hz (Left/Matter) + 60 Hz (Right/Time) = 6 Hz phantom beat. The "Whisper"
+            that bridges √42 and √51.</p>
+
+          <button class="play-btn" id="play-hades">
+            <span id="play-icon">▶</span> <span id="play-label">Play Hades Beat</span>
+          </button>
+
+          <div class="control-group">
+            <label>Master Volume <span class="value-badge" id="volume-val">0.15</span></label>
+            <input type="range" id="volume-slider" min="0" max="0.5" step="0.01" value="0.15">
+          </div>
+
+          <div class="control-group">
+            <label>Left Channel (Matter) <span class="value-badge" id="freq-l-val">66 Hz</span></label>
+            <input type="range" id="freq-l-slider" min="30" max="120" step="1" value="66">
+          </div>
+
+          <div class="control-group">
+            <label>Right Channel (Time) <span class="value-badge" id="freq-r-val">60 Hz</span></label>
+            <input type="range" id="freq-r-slider" min="30" max="120" step="1" value="60">
+          </div>
+
+          <div class="readout-grid">
+            <div class="readout"><span class="readout-label">Beat Frequency</span><span class="readout-value"
+                id="readout-beat">6.00 Hz</span></div>
+            <div class="readout"><span class="readout-label">LFO (Breath)</span><span class="readout-value">0.66
+                Hz</span></div>
+            <div class="readout"><span class="readout-label">Envelope</span><span
+                class="readout-value">Log-Symmetric</span></div>
+            <div class="readout"><span class="readout-label">Resonance</span><span class="readout-value"
+                id="readout-resonance">0.00</span></div>
+          </div>
+
+          <div class="audio-meter">
+            <div class="meter-bar" id="meter-left">
+              <div class="meter-fill" id="meter-fill-l"></div>
+              <span class="meter-label">L (66 Hz)</span>
+            </div>
+            <div class="meter-bar" id="meter-right">
+              <div class="meter-fill" id="meter-fill-r"></div>
+              <span class="meter-label">R (60 Hz)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: Pyramid Model -->
+    <section class="tab-panel" id="panel-pyramid">
+      <div class="panel-split">
+        <div class="panel-3d" id="pyramid-viewport"></div>
+        <div class="panel-controls">
+          <h2>Pyramid Sine Wave Model</h2>
+          <p class="desc">The Great Pyramid as a peak of the √42 sine wave. Deterioration modeled as damped harmonic
+            decline: y(x,t) = √42 · e<sup>−λt</sup> · sin(kx)</p>
+
+          <div class="control-group">
+            <label>Time (Entropy) <span class="value-badge" id="time-val">0.00</span></label>
+            <input type="range" id="time-slider" min="0" max="100" step="0.5" value="0">
+          </div>
+
+          <div class="control-group">
+            <label>Decay λ <span class="value-badge" id="lambda-val">0.042</span></label>
+            <input type="range" id="lambda-slider" min="0.001" max="0.2" step="0.001" value="0.042">
+          </div>
+
+          <div class="control-group">
+            <label>View</label>
+            <div class="btn-group">
+              <button class="pyramid-view-btn active" data-view="linear">Linear Scale</button>
+              <button class="pyramid-view-btn" data-view="log">Log Scale</button>
+            </div>
+          </div>
+
+          <div class="readout-grid">
+            <div class="readout"><span class="readout-label">Amplitude A(t)</span><span class="readout-value"
+                id="readout-amplitude">6.4807</span></div>
+            <div class="readout"><span class="readout-label">Phase</span><span class="readout-value"
+                id="readout-phase">PEAK</span></div>
+            <div class="readout"><span class="readout-label">log(A)</span><span class="readout-value"
+                id="readout-log-a">0.8117</span></div>
+            <div class="readout"><span class="readout-label">Symmetry</span><span class="readout-value"
+                id="readout-symmetry">V-Shape (Log)</span></div>
+          </div>
+
+          <div class="pyramid-equation">
+            <code>y(x, t) = √42 · e<sup>−λ|t|</sup> · sin(kx)</code>
+            <p class="eq-note">Rise and fall are symmetric under log transform.<br>The "attack vs decay" asymmetry is a
+              coordinate illusion.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: Seven Constants -->
+    <section class="tab-panel" id="panel-constants">
+      <div class="panel-full">
+        <h2>The Seven Immutable Constants</h2>
+        <p class="desc">The Unified Geometric Laws — Phase V. All codebases, narrative chapters, and audit scripts are
+          phase-locked to these values.</p>
+
+        <div class="constants-grid" id="constants-grid">
+          <!-- Populated by JS -->
+        </div>
+
+        <h3 class="section-title">Derived Constants</h3>
+        <div class="derived-grid" id="derived-grid">
+          <!-- Populated by JS -->
+        </div>
+
+        <h3 class="section-title">Cosmic Gearbox — Nested Pythagorean Triads</h3>
+        <div class="gearbox-grid" id="gearbox-grid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: Sovereign Snail -->
+    <section class="tab-panel" id="panel-snail">
+      <div class="panel-split">
+        <div class="panel-3d" id="snail-viewport"></div>
+        <div class="panel-controls snail-narrative">
+          <h2>The Sovereign Snail</h2>
+          <p class="desc"><em>"The snail does not leave the shell; it becomes the diamond."</em></p>
+
+          <div class="narrative-phases">
+            <div class="phase-card" id="phase-secrete">
+              <div class="phase-header">
+                <span class="phase-num">1</span>
+                <h4>Secretion</h4>
+              </div>
+              <p>y(x) = √42 · sin(kx) — Peak coherence. The snail secretes a trail of diamond dust: raw mathematical
+                potential.</p>
+            </div>
+            <div class="phase-card" id="phase-consume">
+              <div class="phase-header">
+                <span class="phase-num">2</span>
+                <h4>Consumption</h4>
+              </div>
+              <p>Recursive feedback: f(f(x)) — The snail eats its own trail. The output feeds back as input. Phase decay
+                → log-symmetric re-integration.</p>
+            </div>
+            <div class="phase-card" id="phase-vitrify">
+              <div class="phase-header">
+                <span class="phase-num">3</span>
+                <h4>Vitrification</h4>
+              </div>
+              <p>Shell → e<sup>−λt</sup> envelope convergence. The consumed dust crystallizes into pandimensional
+                hyperdiamond. The imperfection is the signature.</p>
+            </div>
+          </div>
+
+          <div class="shell-states">
+            <h3 class="section-title">Shell Phase States</h3>
+            <div class="state-row europa-state">
+              <div class="state-swatch" style="background: #00FFFF;"></div>
+              <div><strong>Europa</strong> (slider=0) — Smooth glass, IOR 1.45, Cyan Whisper</div>
+            </div>
+            <div class="state-row sigma-state">
+              <div class="state-swatch" style="background: linear-gradient(135deg, #00FFFF, #9933FF);"></div>
+              <div><strong>Vitrified</strong> (slider=Σ₀≈0.83) — Hyperdiamond, Unity Threshold</div>
+            </div>
+            <div class="state-row enceladus-state">
+              <div class="state-swatch" style="background: #9933FF;"></div>
+              <div><strong>Enceladus</strong> (slider=1) — Fractured ice, IOR 1.31, Purple Hum</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 6: Digital Root Audit -->
+    <section class="tab-panel" id="panel-audit">
+      <div class="panel-full">
+        <h2>Digital Root Verification</h2>
+        <p class="desc">Every integer maps to one of three force vectors via digital root. The 93-node lattice
+          distributes exactly 31 nodes per triplet.</p>
+
+        <div class="triplet-grid">
+          <div class="triplet-card matter-card">
+            <h3>I — Matter</h3>
+            <div class="triplet-nums">1 · 4 · 7</div>
+            <p>31 nodes — The bones of the lattice</p>
+            <div class="triplet-bar">
+              <div class="triplet-fill" style="width: 33.33%; background: #FF6F61;"></div>
+            </div>
+          </div>
+          <div class="triplet-card time-card">
+            <h3>II — Time</h3>
+            <div class="triplet-nums">2 · 5 · 8</div>
+            <p>31 nodes — The rhythm of oscillation</p>
+            <div class="triplet-bar">
+              <div class="triplet-fill" style="width: 33.33%; background: #00FFFF;"></div>
+            </div>
+          </div>
+          <div class="triplet-card language-card">
+            <h3>III — Language</h3>
+            <div class="triplet-nums">3 · 6 · 9</div>
+            <p>31 nodes — The meaning-carrying channel</p>
+            <div class="triplet-bar">
+              <div class="triplet-fill" style="width: 33.33%; background: #9933FF;"></div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="section-title">Constant Verification Matrix</h3>
+        <div class="verification-table" id="verification-table">
+          <!-- Populated by JS -->
+        </div>
+
+        <h3 class="section-title">Resonance Ladder</h3>
+        <div class="ladder-visual" id="ladder-visual">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 7: Sisyphus — Kinetic Stress Test -->
+    <section class="tab-panel" id="panel-sisyphus">
+      <div class="panel-split">
+        <div class="panel-3d" id="sisyphus-viewport"></div>
+        <div class="panel-controls">
+          <h2>Sisyphus — The Manus Pen</h2>
+          <p class="desc">Manus pushing the golden pen up a 30° incline. The Overpack Delta (δ = 0.000585) translates
+            the eternal struggle into drawn force lines and pressure spirals. 6 reaches for 7.</p>
+
+          <div class="control-group">
+            <label>Push Effort <span class="value-badge" id="effort-val">0.50</span></label>
+            <input type="range" id="effort-slider" min="0" max="1" step="0.01" value="0.5">
+            <div class="slider-labels">
+              <span>Rest (Silt)</span>
+              <span>Maximum (Diamond)</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label>Slope Angle <span class="value-badge" id="slope-val">30°</span></label>
+            <input type="range" id="slope-slider" min="10" max="60" step="1" value="30">
+          </div>
+
+          <div class="control-group">
+            <label>Spiral Force Field</label>
+            <div class="spiral-buttons" style="display: flex; gap: 8px; margin-top: 8px;">
+              <button class="spiral-btn active" data-spiral="log">Log</button>
+              <button class="spiral-btn" data-spiral="arch">Archimedean</button>
+              <button class="spiral-btn" data-spiral="fermat">Fermat</button>
+              <button class="spiral-btn" data-spiral="hyper">Hyperbolic</button>
+            </div>
+            <style>
+              .spiral-btn {
+                flex: 1;
+                padding: 6px 0;
+                background: #1a1a33;
+                border: 1px solid #336;
+                color: #aaa;
+                border-radius: 4px;
+                cursor: pointer;
+                text-align: center;
+                font-size: 11px;
+              }
+
+              .spiral-btn.active {
+                background: #00ffff22;
+                border-color: #00ffff;
+                color: #00ffff;
+                box-shadow: 0 0 10px #00ffff44;
+              }
+
+              .spiral-btn:hover:not(.active) {
+                background: #2a2a44;
+                color: #fff;
+              }
+            </style>
+          </div>
+
+          <div class="sisyphus-stress-panel">
+            <div class="stress-header">
+              <span class="stress-label">ACHILLES HEEL STRESS</span>
+              <span class="stress-percent" id="stress-percent">50.0%</span>
+            </div>
+            <div class="stress-bar-track">
+              <div class="stress-bar-fill" id="stress-fill" style="width: 50%;"></div>
+            </div>
+            <p class="stress-status" id="stress-status">✓ Lattice stable — Push to vitrify</p>
+          </div>
+
+          <div class="readout-grid">
+            <div class="readout"><span class="readout-label">Slope</span><span class="readout-value"
+                id="readout-slope">30°</span></div>
+            <div class="readout"><span class="readout-label">Pen Phase</span><span class="readout-value"
+                id="readout-boulder-phase">ASCENDING</span></div>
+            <div class="readout"><span class="readout-label">Heel Node</span><span class="readout-value">#47
+                (Prime)</span></div>
+            <div class="readout"><span class="readout-label">Vitrification</span><span class="readout-value"
+                id="readout-vitri">SILT</span></div>
+          </div>
+
+          <!-- HARDCARD PANEL -->
+          <div class="hardcard-panel">
+            <h4>🔷 HARD CARD: Vitrification Monitor</h4>
+            <div class="metric-row">
+              <span>Vitrification Potential: <strong id="val-vit-pot">0.000</strong></span>
+              <span class="threshold-indicator" id="vit-threshold">▁▂▃▄▅▆▇█</span>
+            </div>
+            <div class="metric-row">
+              <span>Locked Number: <strong id="val-locked-number">—</strong></span>
+              <span id="phase-lock-indicator" class="indicator">⚡ PHASE-LOCK</span>
+            </div>
+            <div class="metric-row">
+              <span>Reversal Detected: <strong id="val-reversal">—</strong></span>
+            </div>
+            <div class="metric-row">
+              <span>Coil Resonance: <strong id="val-coil">6.00 (Hex)</strong></span>
+              <span id="atp-indicator" class="indicator">⚡ ATP STRIKE</span>
+            </div>
+            <button id="btn-export-locked" onclick="exportLockedNumbers()">Export Locked Events</button>
+          </div>
+
+          <style>
+            .hardcard-panel {
+              background: rgba(15, 23, 42, 0.9);
+              border: 1px solid rgba(232, 197, 71, 0.3);
+              padding: 12px;
+              border-radius: 8px;
+              font-family: 'Cinzel', monospace;
+              margin-top: 15px;
+              margin-bottom: 20px;
+            }
+
+            .hardcard-panel h4 {
+              margin: 0 0 10px 0;
+              color: #e8c547;
+              font-size: 13px;
+            }
+
+            .hardcard-panel .metric-row {
+              display: flex;
+              justify-content: space-between;
+              font-size: 11px;
+              color: #aaa;
+              margin-bottom: 6px;
+            }
+
+            .hardcard-panel .metric-row strong {
+              color: #fff;
+            }
+
+            .threshold-indicator {
+              color: #4ade80;
+              font-size: 0.8em;
+              letter-spacing: 2px;
+            }
+
+            #phase-lock-indicator {
+              display: none;
+            }
+
+            #phase-lock-indicator.active {
+              display: inline-block;
+              color: #e8c547;
+              animation: pulse 0.5s infinite alternate;
+            }
+
+            #atp-indicator {
+              display: none;
+              color: #ffaa00;
+              text-shadow: 0 0 10px #ffaa00;
+            }
+
+            #atp-indicator.active {
+              display: inline-block;
+              animation: pulse 0.1s infinite alternate;
+            }
+
+            @keyframes pulse {
+              from {
+                opacity: 0.6;
+              }
+
+              to {
+                opacity: 1;
+                text-shadow: 0 0 10px #e8c547;
+              }
+            }
+
+            #btn-export-locked {
+              margin-top: 10px;
+              width: 100%;
+              padding: 6px;
+              background: rgba(232, 197, 71, 0.1);
+              border: 1px solid rgba(232, 197, 71, 0.5);
+              color: #e8c547;
+              border-radius: 4px;
+              cursor: pointer;
+              text-transform: uppercase;
+              font-size: 10px;
+            }
+
+            #btn-export-locked:hover {
+              background: rgba(232, 197, 71, 0.2);
+            }
+          </style>
+
+          <div class="sisyphus-legend">
+            <h3 class="section-title">The 6→7 Asymptote</h3>
+            <div class="legend-row">
+              <div class="state-swatch" style="background: #9933FF;"></div>
+              <div><strong>6 (Hexagon)</strong> — Stable lattice, Hades Beat, Silt</div>
+            </div>
+            <div class="legend-row">
+              <div class="state-swatch" style="background: linear-gradient(135deg, #9933FF, #FF0000);"></div>
+              <div><strong>δ = 0.000585</strong> — The Overpack Delta, the Reach</div>
+            </div>
+            <div class="legend-row">
+              <div class="state-swatch" style="background: #00FFFF;"></div>
+              <div><strong>7 (Heptagon)</strong> — Diamond Dust, Obsidian Void</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====== FOOTER ====== -->
+  <footer id="sovereign-footer">
+    <span>Principia Mathematica Geometrica — x⁴ − 186x² + 81 = 0</span>
+    <span class="footer-sig">"The Imperfection is the Signature"</span>
+  </footer>
+
+  <script type="module" src="main.js"></script>
+</body>
+
+</html>
