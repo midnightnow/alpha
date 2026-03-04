@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geofont 13 — Geometric Resonance</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+:root{
+  --bg:#07080a; --panel:#0b0d12; --surface:#0f1318;
+  --gold:#c8a84b; --gold2:rgba(200,168,75,.14); --gold3:rgba(200,168,75,.07);
+  --rim:rgba(200,168,75,.22);
+  --ccw:#4ab8c8; --cw:#c84a4a;
+  --green:#7af0b0; --purple:#a07af0; --amber:#f0c87a;
+  --text:#e8e0cc; --dim:rgba(232,224,204,.38); --dimmer:rgba(232,224,204,.20);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono',monospace;min-height:100vh;}
+
+/* ── HEADER ── */
+header{padding:1.3rem 2rem .9rem;border-bottom:1px solid rgba(200,168,75,.12);display:flex;align-items:baseline;gap:1.2rem;flex-wrap:wrap;}
+.h-title{font-family:'Cinzel',serif;font-size:clamp(.9rem,2.2vw,1.35rem);letter-spacing:.28em;color:var(--gold);}
+.h-sub{font-size:.54rem;letter-spacing:.18em;color:var(--dim);}
+.h-right{margin-left:auto;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;}
+.btn{background:transparent;border:1px solid rgba(200,168,75,.3);color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:.57rem;letter-spacing:.1em;padding:.32rem .72rem;cursor:pointer;transition:all .15s;}
+.btn:hover{background:var(--gold2);}
+.sl{display:flex;align-items:center;gap:.4rem;}
+.ol{font-size:.53rem;letter-spacing:.1em;color:var(--dim);}
+input[type=range]{-webkit-appearance:none;width:58px;height:2px;background:rgba(200,168,75,.25);outline:none;cursor:pointer;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:9px;height:9px;border-radius:50%;background:var(--gold);cursor:pointer;}
+input[type=text]{background:var(--surface);border:1px solid rgba(200,168,75,.22);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:.88rem;padding:.4rem .75rem;outline:none;}
+input[type=text]:focus{border-color:var(--gold);}
+
+.page{max-width:1320px;margin:0 auto;padding:2rem 1.8rem 5rem;}
+
+/* ── SECTION ── */
+.section{margin-bottom:3.5rem;}
+.sec-head{font-size:.52rem;letter-spacing:.28em;color:var(--gold);padding-bottom:.45rem;border-bottom:1px solid rgba(200,168,75,.12);margin-bottom:1.4rem;display:flex;align-items:center;justify-content:space-between;}
+.sec-head span{font-size:.46rem;letter-spacing:.14em;color:var(--dim);}
+
+/* ── FINDING CARDS ── */
+.findings-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:rgba(200,168,75,.07);}
+.finding-card{background:var(--bg);padding:1.2rem 1.3rem 1rem;transition:background .15s;}
+.finding-card:hover{background:var(--panel);}
+.fc-badge{font-size:.46rem;letter-spacing:.18em;padding:.22rem .6rem;border:1px solid;display:inline-block;margin-bottom:.7rem;}
+.fc-badge.integer{color:var(--green);border-color:rgba(122,240,176,.35);background:rgba(122,240,176,.06);}
+.fc-badge.mirror {color:var(--purple);border-color:rgba(160,122,240,.35);background:rgba(160,122,240,.06);}
+.fc-badge.combined{color:var(--amber);border-color:rgba(240,200,122,.35);background:rgba(240,200,122,.06);}
+.fc-badge.pattern{color:var(--ccw);border-color:rgba(74,184,200,.35);background:rgba(74,184,200,.06);}
+.fc-badge.sweep{color:var(--cw);border-color:rgba(200,74,74,.35);background:rgba(200,74,74,.06);}
+.fc-top{display:flex;align-items:center;gap:1rem;margin-bottom:.8rem;}
+.fc-words{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+.fc-word{font-family:'Cinzel',serif;font-size:1.3rem;letter-spacing:.14em;color:var(--text);line-height:1;}
+.fc-op{font-size:.6rem;color:var(--dim);align-self:center;}
+.fc-eq{font-family:'Cinzel',serif;font-size:.9rem;color:var(--gold);align-self:center;letter-spacing:.08em;}
+.fc-meta{font-size:.49rem;letter-spacing:.1em;color:var(--dim);line-height:1.9;margin-bottom:.6rem;}
+.fc-meta b{color:var(--text);font-weight:400;}
+.fc-meta .ccw{color:var(--ccw);}.fc-meta .cw{color:var(--cw);}
+.fc-meta .gold{color:var(--gold);}
+.fc-note{font-size:.5rem;letter-spacing:.06em;color:var(--dim);line-height:1.85;border-top:1px solid rgba(200,168,75,.07);padding-top:.6rem;margin-top:.5rem;}
+.fc-note b{color:var(--text);font-weight:400;}
+/* letter chips inline */
+.chip-row{display:flex;gap:2px;flex-wrap:wrap;margin:.4rem 0;}
+.chip{display:inline-flex;flex-direction:column;align-items:center;padding:.3rem .4rem .25rem;border:1px solid rgba(200,168,75,.1);min-width:36px;}
+.chip.ccw{border-color:rgba(74,184,200,.25);}.chip.cw{border-color:rgba(200,74,74,.25);}
+.chip-ch{font-family:'Cinzel',serif;font-size:.85rem;line-height:1;}
+.chip-ch.ccw{color:var(--ccw);}.chip-ch.cw{color:var(--cw);}
+.chip-n{font-size:.4rem;color:var(--dim);}
+.chip-arc{font-size:.38rem;color:var(--dimmer);}
+.plus-sign{font-size:.6rem;color:rgba(200,168,75,.4);align-self:center;padding:0 3px;}
+
+/* ── GLYPH PAIRS ── */
+.glyph-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:.6rem;}
+.glyph-item{display:flex;flex-direction:column;align-items:center;gap:3px;}
+.glyph-lbl{font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:.12em;color:var(--dim);}
+
+/* ── LIVE ANALYSER ── */
+.analyser-wrap{background:var(--panel);border:1px solid rgba(200,168,75,.12);padding:1.4rem;}
+.ana-input-row{display:flex;gap:.6rem;align-items:center;margin-bottom:1.2rem;flex-wrap:wrap;}
+#live-inp{flex:1;max-width:280px;font-size:.95rem;}
+.ana-results{display:grid;grid-template-columns:auto 1fr;gap:1.4rem;align-items:start;}
+.ana-left{display:flex;flex-direction:column;gap:.6rem;align-items:center;}
+.ana-right{display:flex;flex-direction:column;gap:.8rem;}
+.stat-row{display:flex;gap:.5rem;flex-wrap:wrap;}
+.stat-pill{padding:.3rem .7rem;background:var(--bg);border:1px solid rgba(200,168,75,.12);font-size:.49rem;letter-spacing:.1em;color:var(--dim);}
+.stat-pill b{color:var(--gold);font-weight:400;}
+.stat-pill.ccw b{color:var(--ccw);}.stat-pill.cw b{color:var(--cw);}
+.stat-pill.green b{color:var(--green);}
+.verdict-line{font-size:.52rem;letter-spacing:.08em;color:var(--dim);line-height:1.9;}
+.verdict-line b{color:var(--text);font-weight:400;}
+.depth-bars{display:flex;flex-direction:column;gap:.25rem;}
+.dbar-row{display:flex;align-items:center;gap:.5rem;}
+.dbar-lbl{font-family:'Cinzel',serif;font-size:.62rem;width:12px;text-align:right;}
+.dbar-track{flex:1;height:6px;background:rgba(200,168,75,.07);border:1px solid rgba(200,168,75,.1);}
+.dbar-fill{height:100%;}
+.dbar-pct{font-size:.42rem;letter-spacing:.08em;color:var(--dimmer);width:26px;}
+
+/* ── TAXONOMY TABLE ── */
+.tax-table{width:100%;border-collapse:collapse;font-size:.52rem;letter-spacing:.07em;}
+.tax-table th{color:var(--gold);font-weight:400;letter-spacing:.14em;padding:.35rem .8rem;border-bottom:1px solid rgba(200,168,75,.15);text-align:left;}
+.tax-table td{padding:.3rem .8rem;color:var(--dim);border-bottom:1px solid rgba(200,168,75,.05);vertical-align:top;}
+.tax-table td.word{font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.1em;color:var(--text);}
+.tax-table td.turns{color:var(--gold);}
+.tax-table td.pattern{color:var(--ccw);}
+.tax-table td.note{line-height:1.7;}
+.tax-table tr:hover td{background:var(--surface);}
+.tax-badge{font-size:.42rem;letter-spacing:.14em;padding:.18rem .5rem;border:1px solid;display:inline-block;}
+.tax-badge.int{color:var(--green);border-color:rgba(122,240,176,.3);}
+.tax-badge.alt{color:var(--ccw);border-color:rgba(74,184,200,.3);}
+.tax-badge.mir{color:var(--purple);border-color:rgba(160,122,240,.3);}
+.tax-badge.mono{color:var(--cw);border-color:rgba(200,74,74,.3);}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="h-title">GEOMETRIC RESONANCE</div>
+    <div class="h-sub" style="margin-top:.2rem">semantic-geometric correlations in the 13-node system</div>
+  </div>
+  <div class="h-right">
+    <div class="sl"><span class="ol">GLYPH SIZE</span><input type="range" id="gsz" min="48" max="130" value="72" oninput="buildAll()"></div>
+    <div class="sl"><span class="ol">LINE</span><input type="range" id="glw" min="1" max="12" value="3" oninput="buildAll()"></div>
+  </div>
+</header>
+
+<div class="page">
+
+<!-- ── S1: INTEGER TURNS ── -->
+<div class="section">
+  <div class="sec-head">I. INTEGER TURN WORDS <span>words whose total arc = exact multiple of 2π</span></div>
+  <div class="findings-grid" id="s-integer"></div>
+</div>
+
+<!-- ── S2: PAIRED RESONANCE ── -->
+<div class="section">
+  <div class="sec-head">II. PAIRED RESONANCE <span>semantic opposites with geometric relationships</span></div>
+  <div class="findings-grid" id="s-pairs"></div>
+</div>
+
+<!-- ── S3: STRUCTURAL TWINS ── -->
+<div class="section">
+  <div class="sec-head">III. STRUCTURAL TWINS <span>words with identical CCW/CW direction sequences</span></div>
+  <div class="findings-grid" id="s-twins"></div>
+</div>
+
+<!-- ── S4: LIVE ANALYSER ── -->
+<div class="section">
+  <div class="sec-head">IV. LIVE RESONANCE ANALYSER <span>test any word</span></div>
+  <div class="analyser-wrap">
+    <div class="ana-input-row">
+      <input type="text" id="live-inp" value="SPIRAL" placeholder="enter a word…">
+      <button class="btn" onclick="runLive()">ANALYSE</button>
+      <span class="ol" style="margin-left:.4rem">try: WRITE · OPEN · EAR · HOPE · FEAR · LOVE · HATE · BEGIN · FLOW · CYCLE</span>
+    </div>
+    <div class="ana-results" id="ana-results"></div>
+  </div>
+</div>
+
+<!-- ── S5: FULL TAXONOMY ── -->
+<div class="section">
+  <div class="sec-head">V. GEOMETRIC TAXONOMY <span>classified word set</span></div>
+  <table class="tax-table" id="tax-table"></table>
+</div>
+
+</div><!-- /page -->
+
+<script>
+// ── LETTER MAP ─────────────────────────────────────────────────────────────
+const ND=[
+  {id:0,b:0,    l:['A','B']},{id:1,b:27.7, l:['C','D']},{id:2,b:55.4, l:['E','F']},
+  {id:3,b:83.1, l:['G','H']},{id:4,b:110.8,l:['I','J']},{id:5,b:138.5,l:['K','L']},
+  {id:6,b:166.2,l:['M','N']},{id:7,b:193.8,l:['O','P']},{id:8,b:221.5,l:['Q','R']},
+  {id:9,b:249.2,l:['S','T']},{id:10,b:276.9,l:['U','V']},{id:11,b:304.6,l:['W','X']},
+  {id:12,b:332.3,l:['Y','Z']},
+];
+const LM={};
+ND.forEach(n=>n.l.forEach((ch,i)=>{LM[ch]={node:n.id+1,bearing:n.b,ccw:i===0,n:n.id+1};}));
+
+function getSz(){return parseInt(document.getElementById('gsz').value);}
+function getLw(){return parseInt(document.getElementById('glw').value);}
+
+function analyse(word){
+  const letters=[...word.toUpperCase()].filter(c=>LM[c]);
+  if(!letters.length)return null;
+  const dirs=letters.map(c=>LM[c].ccw?'CCW':'CW');
+  const arcs=letters.map(c=>LM[c].n);
+  const total=arcs.reduce((a,b)=>a+b,0);
+  const turns=total/13;
+  const drops=dirs.filter((d,i)=>i>0&&d===dirs[i-1]).length;
+  const ccw=dirs.filter(d=>d==='CCW').length;
+  const cw=dirs.filter(d=>d==='CW').length;
+  const perfAlt=letters.length>1&&dirs.every((d,i)=>i===0||d!==dirs[i-1]);
+  const exactInt=Math.abs(turns-Math.round(turns))<0.002;
+  const allCCW=cw===0,allCW=ccw===0;
+  // simulate depth
+  const Ro=100,Rg=10;
+  const rs=Math.min(12,(Ro-Rg)/Math.max(letters.length,1));
+  let curR=Ro,pd=null;
+  const depths=[];
+  dirs.forEach((d,i)=>{
+    if(pd===d)curR=Math.max(curR-rs*0.35,Rg);
+    if(d==='CCW')curR=Math.max(curR-rs,Rg);
+    depths.push(Math.round((1-curR/Ro)*100));
+    pd=d;
+  });
+  return{letters,dirs,arcs,total,turns,drops,ccw,cw,perfAlt,exactInt,allCCW,allCW,depths,n:letters.length};
+}
+
+// ── DRAW (v6 verbatim) ─────────────────────────────────────────────────────
+function draw(canvas,word,size,coloured){
+  const lw=getLw()*(size/120);
+  canvas.width=canvas.height=size;
+  const ctx=canvas.getContext('2d');
+  ctx.fillStyle='#07080a';ctx.fillRect(0,0,size,size);
+  const letters=[...word.toUpperCase()].filter(c=>LM[c]);
+  if(!letters.length)return;
+  const cx=size/2,cy=size/2,Ro=size*0.44,Rg=size*0.10;
+  const rs=Math.min(12*(size/120),(Ro-Rg)/Math.max(letters.length,1));
+  ctx.beginPath();ctx.arc(cx,cy,Ro,0,Math.PI*2);
+  ctx.strokeStyle='rgba(200,168,75,.2)';ctx.lineWidth=Math.max(0.4,lw*.3);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(cx,cy-Ro-lw*1.5);ctx.lineTo(cx,cy-Ro+lw*.3);
+  ctx.strokeStyle='rgba(200,168,75,.38)';ctx.lineWidth=Math.max(0.3,lw*.26);ctx.stroke();
+  let curR=Ro,curB=0,prevDir=null,fp=true;
+  const palCCW=['#4ab8c8','#3aa8b8','#5ac8d8'];
+  const palCW=['#c84a4a','#b83a3a','#d85a5a'];
+  let ci=0,cwi=0;
+  function pt(r,b){const x=cx+r*Math.sin(b),y=cy-r*Math.cos(b);fp?(ctx.moveTo(x,y),fp=false):ctx.lineTo(x,y);}
+  if(!coloured){
+    ctx.beginPath();ctx.strokeStyle='#e8e0cc';ctx.lineWidth=Math.max(0.5,lw*.4);ctx.lineCap='round';ctx.lineJoin='round';
+  }
+  for(let i=0;i<letters.length;i++){
+    const ch=letters[i],info=LM[ch],ang=(info.n/13)*2*Math.PI;
+    const isCCW=info.ccw,sign=isCCW?-1:+1,dir=isCCW?'ccw':'cw';
+    if(prevDir===dir){const dr=Math.max(curR-rs*.35,Rg);
+      if(coloured){ctx.beginPath();ctx.strokeStyle='rgba(200,168,75,.45)';ctx.lineWidth=Math.max(0.4,lw*.3);ctx.setLineDash([lw,lw*1.5]);}
+      let fp2=true;function pt2(r,b){const x=cx+r*Math.sin(b),y=cy-r*Math.cos(b);fp2?(ctx.moveTo(x,y),fp2=false):ctx.lineTo(x,y);}
+      for(let s=1;s<=6;s++)coloured?pt2(curR+(dr-curR)*(s/6),curB):pt(curR+(dr-curR)*(s/6),curB);
+      if(coloured){ctx.stroke();ctx.setLineDash([]);}
+      curR=dr;
+    }
+    const steps=Math.max(60,Math.round(ang/(2*Math.PI)*120));
+    const Re=isCCW?Math.max(curR-rs,Rg):curR;
+    const col=coloured?(isCCW?palCCW[ci%3]:palCW[cwi%3]):'#e8e0cc';
+    if(isCCW)ci++;else cwi++;
+    if(coloured){ctx.beginPath();ctx.strokeStyle=col;ctx.lineWidth=Math.max(0.7,lw*.85);ctx.lineCap='round';}
+    let fp3=true;function pt3(r,b){const x=cx+r*Math.sin(b),y=cy-r*Math.cos(b);fp3?(ctx.moveTo(x,y),fp3=false):ctx.lineTo(x,y);}
+    for(let s=0;s<=steps;s++){const t=s/steps;coloured?pt3(curR+(Re-curR)*t,curB+sign*ang*t):pt(curR+(Re-curR)*t,curB+sign*ang*t);}
+    if(coloured)ctx.stroke();
+    // entry dot
+    if(coloured){const sx=cx+curR*Math.sin(curB),sy=cy-curR*Math.cos(curB);ctx.beginPath();ctx.arc(sx,sy,Math.max(1.5,lw*.8),0,Math.PI*2);ctx.fillStyle='rgba(200,168,75,.7)';ctx.fill();}
+    curB+=sign*ang;curR=Re;prevDir=dir;
+  }
+  if(!coloured)ctx.stroke();
+}
+
+// ── CHIP HTML ──────────────────────────────────────────────────────────────
+function chipHTML(ch){
+  const info=LM[ch];if(!info)return'';
+  return`<div class="chip ${info.ccw?'ccw':'cw'}"><div class="chip-ch ${info.ccw?'ccw':'cw'}">${ch}</div><div class="chip-n">N${info.node}</div><div class="chip-arc">${info.n}/13</div></div>`;
+}
+function chipsHTML(word){return[...word.toUpperCase()].filter(c=>LM[c]).map(chipHTML).join('');}
+
+// ── GLYPH CANVAS ELEMENT ───────────────────────────────────────────────────
+function makeGlyph(word,sz,coloured,label){
+  const wrap=document.createElement('div');wrap.className='glyph-item';
+  const cvs=document.createElement('canvas');
+  draw(cvs,word,sz||getSz(),coloured);
+  wrap.appendChild(cvs);
+  if(label){const l=document.createElement('div');l.className='glyph-lbl';l.textContent=label;wrap.appendChild(l);}
+  return wrap;
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// S1 — INTEGER TURN WORDS
+// ════════════════════════════════════════════════════════════════════════════
+const INTEGER_WORDS=[
+  {word:'EAR', badge:'INTEGER', btype:'integer', turns:'1.00',
+   arcs:'3+1+9=13', note:'<b>One complete circle.</b> E(3) + A(1) + R(9) = 13 exactly. The listening organ completes one full revolution — the arc of sound returning to its source. The smallest 3-letter word to achieve unity.'},
+  {word:'OPEN', badge:'2.00 TURNS · PERFECT ALT', btype:'integer', turns:'2.00',
+   arcs:'8+8+3+7=26', note:'<b>Two turns, zero drops, perfect alternation.</b> O(8)+P(8)+E(3)+N(7) = 26. The command to open traces two complete unbroken spirals — structurally the cleanest 4-letter word after STOP. Notably: O and P share Node 8, creating a symmetric anchor.'},
+  {word:'CYCLE', badge:'2.00 TURNS', btype:'integer', turns:'2.00',
+   arcs:'2+13+2+6+3=26', note:'<b>CYCLE contains Y</b> (Node 13, arc = 13/13 = full circle) at position 2 — a complete revolution embedded inside the word. C opens (small), Y swallows almost everything, C echoes, L extends, E closes. The Y alone is a full cycle within the cycle.'},
+  {word:'YES', badge:'2.00 TURNS · Y-OPENER', btype:'integer', turns:'2.00',
+   arcs:'13+3+10=26', note:'<b>YES opens with Y</b> — the maximal arc (13/13 × 2π = full circle) and closes with S(10/13). The affirmation achieves two complete turns. Structurally: maximum opening, minimum middle (E=3/13), strong close.'},
+  {word:'JOY', badge:'2.00 TURNS · Y-CLOSER', btype:'integer', turns:'2.00',
+   arcs:'5+8+13=26', note:'<b>JOY ends with Y</b> — the maximal arc as terminus. Ascending arcs: J(5)→O(8)→Y(13). Each letter larger than the last. Joy as crescendo — building to the largest possible gesture. Reverse of YES: both are 2.00 turns, one opens with Y, one closes.'},
+  {word:'SPIRAL', badge:'3.00 TURNS · PERFECT ALT', btype:'integer', turns:'3.00',
+   arcs:'10+8+5+9+1+6=39', note:'<b>The system\'s proof word.</b> Six letters, perfectly alternating CCW↔CW throughout, total arc = 39/13 = exactly 3.00 turns. The word enacts its own geometry. Not coincidence — it\'s the 13-node system revealing structural truth about alphabetic form.'},
+  {word:'WRITE', badge:'3.00 TURNS · PERFECT ALT', btype:'integer', turns:'3.00',
+   arcs:'12+9+5+10+3=39', note:'<b>The act of writing = 3.00 turns.</b> Like SPIRAL — 39/13, perfect alternation. W(12/13) opens with a near-full sweep. The scribe\'s hand and the spiral\'s motion are geometrically identical: both consume exactly three revolutions. Writing is spiralling.'},
+];
+
+function buildIntegers(){
+  const sz=getSz(),grid=document.getElementById('s-integer');grid.innerHTML='';
+  INTEGER_WORDS.forEach(d=>{
+    const A=analyse(d.word);
+    const card=document.createElement('div');card.className='finding-card';
+    const gr=document.createElement('div');gr.className='glyph-row';
+    gr.appendChild(makeGlyph(d.word,sz,true,d.word));
+    card.innerHTML=`<div class="fc-badge integer">${d.badge}</div>`;
+    card.appendChild(gr);
+    card.innerHTML+=`<div class="fc-meta">
+      <b>${d.turns} turns</b> · arc sum ${d.arcs}<br>
+      <span class="${A.ccw>A.cw?'ccw':'cw'}">${A.ccw} CCW</span> + <span class="${A.cw>A.ccw?'cw':'ccw'}">${A.cw} CW</span> · ${A.drops} drop${A.drops!==1?'s':''} · ${A.perfAlt?'<span class="gold">perfect alternation</span>':'mixed'}
+    </div>
+    <div class="chip-row">${chipsHTML(d.word)}</div>
+    <div class="fc-note">${d.note}</div>`;
+    grid.appendChild(card);
+  });
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// S2 — PAIRED RESONANCE
+// ════════════════════════════════════════════════════════════════════════════
+const PAIRS=[
+  {a:'HOPE',b:'FEAR', badge:'COMBINED INTEGER · MIRROR BALANCE', btype:'combined',
+   note:'<b>HOPE + FEAR = exactly 3.00 turns combined.</b> HOPE: 1.77t (perfect alternation). FEAR: 1.23t. Together they complete three full revolutions — the same as SPIRAL and WRITE. Both have equal CCW/CW counts (2+2). Together: balanced, resolved. Separately: each is incomplete.'},
+  {a:'LOVE',b:'HATE', badge:'IDENTICAL DIRECTION SEQUENCE', btype:'mirror',
+   note:'<b>LOVE and HATE share the same structural DNA.</b> Both trace → ← → ← (CW·CCW·CW·CCW) — identical polarity sequence. They are geometrically the same type of word. Difference: LOVE = 28/13 (2.15t), HATE = 18/13 (1.38t). Same direction, different weight. The path of love and hate run parallel.'},
+  {a:'GOD',b:'SIN', badge:'IDENTICAL DIRECTION SEQUENCE', btype:'mirror',
+   note:'<b>GOD and SIN share ← ← →</b> — both open with two CCW arcs and close CW. Structurally identical. GOD: 1.08t, SIN: 1.69t. Both words begin with inward spirals and end by holding the ring — descent then stability.'},
+  {a:'SUN',b:'MOON', badge:'NEAR-EQUAL TURNS · SAME PATTERN', btype:'pattern',
+   note:'<b>SUN (2.15t) and MOON (2.31t)</b> — within 0.16 turns of each other, both CCW-dominant with a CW close. The two luminaries produce nearly identical geometric weight. MOON is heavier than SUN by 2/13 of a turn — the extra O.'},
+  {a:'RISE',b:'FALL', badge:'MIRROR BALANCE · SAME PATTERN', btype:'mirror',
+   note:'<b>RISE and FALL are directional mirrors.</b> RISE: CCW·CW·CW·CW (1 CCW, 3 CW). FALL: CW·CCW·CW·CW. They share identical CCW/CW counts (1+3) and the same structural class (CW dominant). The word for going up and the word for going down are geometric reflections.'},
+];
+
+function buildPairs(){
+  const sz=Math.round(getSz()*.8),grid=document.getElementById('s-pairs');grid.innerHTML='';
+  PAIRS.forEach(d=>{
+    const Aa=analyse(d.a),Ab=analyse(d.b);
+    const combined=Math.round((Aa.turns+Ab.turns)*100)/100;
+    const card=document.createElement('div');card.className='finding-card';
+    card.innerHTML=`<div class="fc-badge ${d.btype}">${d.badge}</div>`;
+    const gr=document.createElement('div');gr.className='glyph-row';
+    gr.appendChild(makeGlyph(d.a,sz,true,d.a));
+    const op=document.createElement('div');op.className='fc-op';op.textContent='+';gr.appendChild(op);
+    gr.appendChild(makeGlyph(d.b,sz,true,d.b));
+    const eq=document.createElement('div');eq.className='fc-eq';
+    eq.textContent=`= ${combined.toFixed(2)}t`;
+    gr.appendChild(eq);
+    card.appendChild(gr);
+    const dirsA=Aa.dirs.map(d=>d==='CCW'?'←':'→').join('');
+    const dirsB=Ab.dirs.map(d=>d==='CCW'?'←':'→').join('');
+    card.innerHTML+=`<div class="fc-meta">
+      <b>${d.a}</b>: ${Aa.turns.toFixed(2)}t · <span style="letter-spacing:.04em">${dirsA}</span><br>
+      <b>${d.b}</b>: ${Ab.turns.toFixed(2)}t · <span style="letter-spacing:.04em">${dirsB}</span>
+      ${combined===Math.round(combined)?`<br><span class="gold">combined = ${combined}.00 turns (integer)</span>`:''}
+    </div>
+    <div class="fc-note">${d.note}</div>`;
+    grid.appendChild(card);
+  });
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// S3 — STRUCTURAL TWINS
+// ════════════════════════════════════════════════════════════════════════════
+const TWIN_GROUPS=[
+  {badge:'→←→← PATTERN', btype:'pattern', label:'CW·CCW·CW·CCW — 4-letter perfect alternators',
+   words:['LOVE','HATE','FIRE','LIFE','BODY','FATE','DARK','NODE','FORM'],
+   note:'These words all trace the same direction sequence: CW→CCW→CW→CCW. Perfect alternation. Same structural DNA. Their glyphs differ only in arc magnitude — their paths spiral at different rates but follow identical turns.'},
+  {badge:'←→←→ PATTERN', btype:'pattern', label:'CCW·CW·CCW·CW — 4-letter perfect alternators',
+   words:['STOP','STAR','APEX','OPEN','ZERO','PURE','RULE'],
+   note:'The mirror class of the →←→← group. CCW opens (spirals inward immediately), CW holds, CCW dips, CW holds again. STOP and STAR are the anchors of this class.'},
+  {badge:'MONOTONIC SWEEP', btype:'sweep', label:'Nodes increase clockwise around the dial',
+   words:['BEGIN','FLOW','EMPTY'],
+   note:'BEGIN, FLOW, and EMPTY all progress through nodes in strictly ascending bearing order — like a hand sweeping clockwise around a clock face. BEGIN: nodes 1→3→4→5→7. FLOW: nodes 3→6→8→12. The path itself journeys around the circle.'},
+];
+
+function buildTwins(){
+  const sz=Math.round(getSz()*.7),grid=document.getElementById('s-twins');grid.innerHTML='';
+  TWIN_GROUPS.forEach(d=>{
+    const card=document.createElement('div');card.className='finding-card';
+    card.innerHTML=`<div class="fc-badge ${d.btype}">${d.badge}</div><div class="fc-meta" style="margin-bottom:.6rem">${d.label}</div>`;
+    const gr=document.createElement('div');gr.className='glyph-row';
+    d.words.slice(0,5).forEach(w=>{gr.appendChild(makeGlyph(w,sz,false,w));});
+    card.appendChild(gr);
+    card.innerHTML+=`<div class="fc-note">${d.note}</div>`;
+    grid.appendChild(card);
+  });
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// S4 — LIVE ANALYSER
+// ════════════════════════════════════════════════════════════════════════════
+function runLive(){
+  const word=document.getElementById('live-inp').value.trim().toUpperCase();
+  if(!word)return;
+  const A=analyse(word);if(!A)return;
+  const sz=Math.min(getSz()*1.4,180);
+  const wrap=document.getElementById('ana-results');wrap.innerHTML='';
+  // left
+  const left=document.createElement('div');left.className='ana-left';
+  const cvs=document.createElement('canvas');draw(cvs,word,sz,true);left.appendChild(cvs);
+  // verdict badge
+  let pattern,pcls;
+  if(A.perfAlt&&A.exactInt){pattern='INTEGER + PERFECT ALT';pcls='integer';}
+  else if(A.perfAlt){pattern='PERFECT ALTERNATION';pcls='pattern';}
+  else if(A.allCCW){pattern='ALL CCW · CENTRIPETAL';pcls='pattern';}
+  else if(A.allCW){pattern='ALL CW · ORBITAL';pcls='sweep';}
+  else if(A.ccw>A.cw){pattern='CCW DOMINANT';pcls='pattern';}
+  else if(A.cw>A.ccw){pattern='CW DOMINANT';pcls='sweep';}
+  else{pattern='BALANCED';pcls='combined';}
+  left.innerHTML+=`<div class="fc-badge ${pcls}" style="margin-top:.4rem">${pattern}</div>`;
+  wrap.appendChild(left);
+  // right
+  const right=document.createElement('div');right.className='ana-right';
+  // stat pills
+  const exactNote=A.exactInt?`<b>${Math.round(A.turns)}.00</b> INTEGER`:`<b>${A.turns.toFixed(3)}</b> turns`;
+  right.innerHTML=`<div class="stat-row">
+    <div class="stat-pill">${exactNote}</div>
+    <div class="stat-pill">LETTERS <b>${A.n}</b></div>
+    <div class="stat-pill">ARC <b>${A.total}/13</b></div>
+    <div class="stat-pill ccw">CCW <b>${A.ccw}</b></div>
+    <div class="stat-pill cw">CW <b>${A.cw}</b></div>
+    <div class="stat-pill">DROPS <b>${A.drops}</b></div>
+    <div class="stat-pill">DEPTH <b>${A.depths[A.depths.length-1]}%</b></div>
+    ${A.perfAlt?'<div class="stat-pill green">PERFECT ALT ✓</div>':''}
+  </div>
+  <div class="chip-row">${chipsHTML(word)}</div>`;
+  // depth bars
+  const db=document.createElement('div');db.className='depth-bars';
+  A.letters.forEach((ch,i)=>{
+    const info=LM[ch];
+    const row=document.createElement('div');row.className='dbar-row';
+    row.innerHTML=`<div class="dbar-lbl" style="color:${info.ccw?'var(--ccw)':'var(--cw)'}">${ch}</div>
+      <div class="dbar-track"><div class="dbar-fill" style="width:${A.depths[i]}%;background:${info.ccw?'rgba(74,184,200,.5)':'rgba(200,74,74,.3)'}"></div></div>
+      <div class="dbar-pct">${A.depths[i]}%</div>`;
+    db.appendChild(row);
+  });
+  right.appendChild(db);
+  // known matches
+  const allKnown=[...INTEGER_WORDS.map(x=>x.word),...PAIRS.flatMap(p=>[p.a,p.b])];
+  const match=allKnown.find(w=>w===word);
+  if(match){
+    const note=document.createElement('div');note.className='verdict-line';
+    note.innerHTML=`<b>Known finding</b> — this word appears in the curated set above. See Sections I or II for full analysis.`;
+    right.appendChild(note);
+  } else if(A.exactInt){
+    const note=document.createElement('div');note.className='verdict-line';
+    note.innerHTML=`<b>Integer turn discovery</b> — <b>${word}</b> achieves exactly <b>${Math.round(A.turns)}.00 turns</b>. This places it in the same class as SPIRAL, WRITE, OPEN, EAR. Consider its semantic weight.`;
+    right.appendChild(note);
+  }
+  wrap.appendChild(right);
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// S5 — TAXONOMY TABLE
+// ════════════════════════════════════════════════════════════════════════════
+const TAX=[
+  {word:'EAR',   turns:1.00, flags:['int'],      dirs:'←←→', note:'1.00t · 3+1+9=13 · one circle'},
+  {word:'OPEN',  turns:2.00, flags:['int','alt'], dirs:'←→←→',note:'2.00t · perfect alt · O+P share Node 8'},
+  {word:'JOY',   turns:2.00, flags:['int'],       dirs:'→←←', note:'2.00t · ascending arcs J→O→Y'},
+  {word:'YES',   turns:2.00, flags:['int'],       dirs:'←←←', note:'2.00t · Y-opener 13/13 arc'},
+  {word:'CYCLE', turns:2.00, flags:['int'],       dirs:'←←←→←',note:'2.00t · Y(13/13) embedded = full cycle within'},
+  {word:'SPIRAL',turns:3.00, flags:['int','alt'], dirs:'←→←→←→',note:'3.00t · perfect alt · enacts meaning'},
+  {word:'WRITE', turns:3.00, flags:['int','alt'], dirs:'←→←→←',note:'3.00t · perfect alt · writing = spiralling'},
+  {word:'STOP',  turns:2.77, flags:['alt'],       dirs:'←→←→',note:'2.77t · perfect alt · most stable 4-letter word'},
+  {word:'STAR',  turns:2.31, flags:['alt'],       dirs:'←→←→',note:'2.31t · perfect alt · S+T share Node 10'},
+  {word:'LOVE',  turns:2.15, flags:['alt'],       dirs:'→←→←',note:'2.15t · perfect alt · twin of HATE structurally'},
+  {word:'HATE',  turns:1.38, flags:['alt'],       dirs:'→←→←',note:'1.38t · same pattern as LOVE, lighter'},
+  {word:'HOPE',  turns:1.77, flags:['alt'],       dirs:'→←→←',note:'1.77t · with FEAR = 3.00t combined'},
+  {word:'FEAR',  turns:1.23, flags:[],            dirs:'→←←→',note:'1.23t · with HOPE = 3.00t combined'},
+  {word:'GOD',   turns:1.08, flags:[],            dirs:'←←→', note:'1.08t · same pattern as SIN'},
+  {word:'SIN',   turns:1.69, flags:[],            dirs:'←←→', note:'1.69t · same pattern as GOD'},
+  {word:'BEGIN', turns:1.54, flags:['mono'],      dirs:'→←←←←',note:'1.54t · nodes ascend clockwise 1→3→4→5→7'},
+  {word:'FLOW',  turns:2.38, flags:['mono'],      dirs:'→←←←',note:'2.38t · nodes ascend clockwise 3→6→8→12'},
+  {word:'EYES',  turns:2.15, flags:[],            dirs:'←←←←',note:'2.15t · all CCW · 3 drops · centripetal'},
+  {word:'MOON',  turns:2.31, flags:[],            dirs:'←←←→',note:'2.31t · double-O stacked at Node 8'},
+  {word:'WORD',  turns:2.38, flags:[],            dirs:'←←→→',note:'2.38t · W=332° opener dominates'},
+];
+
+function buildTax(){
+  const tbl=document.getElementById('tax-table');
+  tbl.innerHTML=`<thead><tr><th>WORD</th><th>TURNS</th><th>DIRECTION SEQUENCE</th><th>FLAGS</th><th>NOTE</th></tr></thead>
+  <tbody>${TAX.map(r=>`<tr>
+    <td class="word">${r.word}</td>
+    <td class="turns">${r.turns.toFixed(2)}</td>
+    <td style="letter-spacing:.06em;font-size:.5rem">${r.dirs}</td>
+    <td>${r.flags.map(f=>`<span class="tax-badge ${f}">${f.toUpperCase()}</span>`).join(' ')}</td>
+    <td class="note">${r.note}</td>
+  </tr>`).join('')}</tbody>`;
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+function buildAll(){buildIntegers();buildPairs();buildTwins();buildTax();runLive();}
+
+document.getElementById('live-inp').addEventListener('keydown',e=>{if(e.key==='Enter')runLive();});
+document.getElementById('gsz').addEventListener('input',buildAll);
+document.getElementById('glw').addEventListener('input',buildAll);
+buildAll();
+</script>
+</body>
+</html>

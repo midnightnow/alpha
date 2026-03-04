@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VORTEX-13 | Euclidean Reservoir of Language</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --card: #161e2e;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --teal: #1abc9c;
+            --rust: #eb4d4b;
+            --primary: #6366f1;
+            --accent: #f59e0b;
+            --high: #2ecc71;
+            --mod: #f1c40f;
+            --conflict: #e74c3c;
+            --glass: rgba(22, 30, 46, 0.9);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1e293b 0%, #0b0f19 80%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin: 0;
+            letter-spacing: -0.05em;
+            background: linear-gradient(to bottom, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            z-index: 10;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            z-index: 10;
+            margin-top: 10px;
+        }
+
+        #hero-svg {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            opacity: 0.15;
+            animation: spin 180s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* --- NAV --- */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid #334155;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--teal);
+        }
+
+        /* --- CONTENT --- */
+        section {
+            padding: 100px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .label {
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid #334155;
+            margin-bottom: 40px;
+        }
+
+        /* --- MECHANICS --- */
+        .math-block {
+            background: #0f172a;
+            padding: 24px;
+            border-radius: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            border-left: 4px solid var(--teal);
+            margin: 20px 0;
+        }
+
+        .math-title {
+            color: var(--teal);
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .triple-viz {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .triangle-svg {
+            width: 300px;
+            height: 300px;
+        }
+
+        .triad-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .triad-card {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 12px;
+            border-top: 4px solid var(--primary);
+            text-align: center;
+        }
+
+        .triad-word {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            display: block;
+        }
+
+        /* --- ANALYZER --- */
+        #analyzer-ui {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        #word-in {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid #334155;
+            color: white;
+            font-size: 4rem;
+            font-family: 'JetBrains Mono', monospace;
+            text-align: center;
+            margin-bottom: 30px;
+            transition: border-color 0.3s;
+        }
+
+        #word-in:focus {
+            outline: none;
+            border-color: var(--teal);
+        }
+
+        .stat-card {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #1e293b;
+        }
+
+        .stat-num {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--teal);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        #vector-dot {
+            width: 300px;
+            height: 300px;
+            background: #0f172a;
+            border-radius: 50%;
+            margin: 20px auto;
+            position: relative;
+            border: 1px solid #334155;
+        }
+
+        .v-point {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* --- TABLE --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            color: var(--muted);
+            padding: 12px;
+            border-bottom: 1px solid #334155;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #1e293b;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .tag {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.7rem;
+        }
+
+        .tag-high {
+            background: var(--high);
+            color: #000;
+        }
+
+        .tag-mod {
+            background: var(--mod);
+            color: #000;
+        }
+
+        .tag-conflict {
+            background: var(--conflict);
+            color: #fff;
+        }
+
+        /* Predicted/Actual comparison */
+        .res-bar {
+            position: relative;
+        }
+
+        .res-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px dashed var(--gold);
+            border-radius: 2px;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        .word-row .wbar {
+            position: relative;
+            height: 8px;
+        }
+
+        .word-row .wbar::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            right: 0;
+            bottom: -1px;
+            border: 1px dashed var(--accent);
+            border-radius: 2px;
+            opacity: 0.7;
+        }
+
+        /* --- AUTH & GATING --- */
+        .auth-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-auth {
+            background: var(--rust);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(235, 77, 75, 0.3);
+        }
+
+        .btn-auth:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(235, 77, 75, 0.4);
+        }
+
+        .pro-gate {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid var(--accent);
+            padding: 24px;
+            border-radius: 16px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pro-gate h4 {
+            color: var(--accent);
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .pro-gate p {
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero" id="home">
+        <svg id="hero-svg" viewBox="-500 -500 1000 1000"></svg>
+        <div class="hero-content">
+            <h1>VORTEX-13</h1>
+            <p>Euclidean Mechanics of language</p>
+        </div>
+    </section>
+
+    <nav>
+        <div style="display: flex; gap: 2.5rem; align-items: center;">
+            <a href="#home">Home</a>
+            <a href="#mechanics">Mechanics</a>
+            <a href="#compass">Compass</a>
+            <a href="#analyzer">Analyzer</a>
+        </div>
+        <div class="auth-controls">
+            <span id="user-status" style="font-size: 0.8rem; color: var(--muted); font-weight: 600;"></span>
+            <button id="auth-btn" class="btn-auth">Sign In</button>
+        </div>
+    </nav>
+
+    <section id="mechanics">
+        <span class="label">Mechanism</span>
+        <h2>The 5-12-13 Engine</h2>
+        <div class="card">
+            <p>To move from "Alphabetical Astrology" to <strong>Euclidean Mechanics</strong>, we use the 5-12-13
+                Pythagorean triple as the coordinate engine. In this model, the hypotenuse (r=13) represents the
+                Resultant Vector of Language.</p>
+
+            <div class="math-block">
+                <span class="math-title">Vector Proof: Node 9 (249.23°)</span>
+                <ul>
+                    <li><strong>Angle of Incidence:</strong> arcsin(5/13) ≈ 22.6°</li>
+                    <li><strong>Nodal Separation:</strong> 360° / 13 ≈ 27.69°</li>
+                    <li><strong>Torque Constant (Δ):</strong> 27.69° - 22.6° ≈ 5°</li>
+                </ul>
+                <p>This 5° leakage is the <strong>Torque Constant</strong>. In the letter S, it represents the
+                    mechanical twist required to reconcile the rectilinear grid with the curvilinear circle.</p>
+            </div>
+
+            <div class="triple-viz">
+                <svg class="triangle-svg" viewBox="0 0 100 100">
+                    <polygon points="10,90 10,41 48,90" fill="none" stroke="var(--teal)" stroke-width="2" />
+                    <text x="5" y="65" fill="var(--teal)" font-size="5">12</text>
+                    <text x="25" y="95" fill="var(--teal)" font-size="5">5</text>
+                    <text x="30" y="60" fill="var(--teal)" font-size="5" transform="rotate(-45 30 60)">13</text>
+                    <text x="12" y="85" fill="white" font-size="4">θ ≈ 22.6°</text>
+                </svg>
+                <div style="max-width: 400px;">
+                    <h3>P.L.A.T.O. Derivation</h3>
+                    <table>
+                        <tr>
+                            <th>Stage</th>
+                            <th>Form</th>
+                        </tr>
+                        <tr>
+                            <td>Point</td>
+                            <td>(i, j) Dots</td>
+                        </tr>
+                        <tr>
+                            <td>Line</td>
+                            <td>(B, D, P) Spines</td>
+                        </tr>
+                        <tr>
+                            <td>Angle</td>
+                            <td>(X, Y, Z) Slants</td>
+                        </tr>
+                        <tr>
+                            <td>Triangle</td>
+                            <td>(A, V, M) Peaks</td>
+                        </tr>
+                        <tr>
+                            <td>On-Circle</td>
+                            <td>(O, C, G) Bowls</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="compass">
+        <span class="label">Navigation</span>
+        <h2>Resonance Map</h2>
+        <div class="card compass-layout">
+            <div id="main-map-mount" style="max-width: 600px; margin: 0 auto;"></div>
+            <div id="letter-detail">
+                <div class="panel-title">Letter / Node Detail</div>
+                <p style="color: var(--text-dim); font-size: 0.8rem;">Select a node on the compass to view its vector
+                    interaction and predicted vs actual resonance data.</p>
+            </div>
+        </div>
+        <div
+            style="margin-top:20px; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-dim);">
+            <div class="li"><span style="color:var(--gold)">Futura Medium</span> Primary analysis font</div>
+            <div class="li"><span style="color:var(--gold)">(rotated)</span> Letter modified for tangent alignment</div>
+        </div>
+    </section>
+
+    <!-- CHAPTER V -->
+    <section id="triad">
+        <span class="chapter-label">Chapter V</span>
+        <h2>The Cosmological Triad</h2>
+        <div class="card">
+            <p>The "Constants" of human experience are hard-coded into the 13-node wheel. These words don't just land
+                randomly; they land on the specific stations that match their philosophical definitions.</p>
+            <div class="triad-grid">
+                <div class="triad-card" style="border-color: var(--conflict);">
+                    <span class="triad-word">TIME</span>
+                    <span class="label" style="font-size: 0.7rem;">Node 2 | 55.4°</span>
+                    <p style="font-size: 0.8rem; color: var(--muted);">The Initial Pulse (Fire)</p>
+                </div>
+                <div class="triad-card" style="border-color: var(--accent);">
+                    <span class="triad-word">SPACE</span>
+                    <span class="label" style="font-size: 0.7rem;">Node 12 | 332.3°</span>
+                    <p style="font-size: 0.8rem; color: var(--muted);">The Exit Gate (Aether)</p>
+                </div>
+                <div class="triad-card" style="border-color: var(--teal);">
+                    <span class="triad-word">LIGHT</span>
+                    <span class="label" style="font-size: 0.7rem;">Node 4 | 110.8°</span>
+                    <p style="font-size: 0.8rem; color: var(--muted);">The Linear Ray (Bridge)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="analyzer">
+        <span class="chapter-label">Chapter VI</span>
+        <h2>Live Word Analyzer</h2>
+        <div class="card">
+            <input type="text" id="word-in" value="STOP">
+            <div id="analyzer-ui">
+                <div id="pro-gate-ui" class="pro-gate">
+                    <h4>Euclidean Restriction</h4>
+                    <p id="pro-gate-msg">Free tier supports analysis of words up to 5 letters. To unlock longer words
+                        and deeper vector chains, please sign in.</p>
+                    <button class="btn-auth" onclick="handleAuth()">Sign In with Google</button>
+                </div>
+
+                <div id="word-results-container">
+                    <div class="analysis-results"
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                        <div class="stat-card" style="grid-column: span 2;">
+                            <span class="stat-num" id="res-angle">0°</span>
+                            <span class="stat-label">Resultant Angle</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-num" id="res-score">&lt; 0.001</span>
+                            <span class="stat-label">P-Value Signal</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-num" id="res-balance">0.0</span>
+                            <span class="stat-label">Balance Score</span>
+                        </div>
+                    </div>
+                    <div id="word-results"></div>
+                </div>
+            </div>
+            <div style="text-align: center;">
+                <div id="vector-dot">
+                    <!-- Resultant vector pointer -->
+                    <div id="res-pointer"
+                        style="position: absolute; top: 50%; left: 50%; width: 2px; height: 130px; background: var(--rust); transform-origin: top; transform: rotate(180deg);">
+                    </div>
+                </div>
+                <p id="res-verdict"
+                    style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--accent); margin-top: 10px;">
+                    --</p>
+                <div id="collision-output"
+                    style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-dim); margin-top: 10px; text-align: left; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px;">
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <script>
+        const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        // ND DATA STRUCTURE
+        const ND = [
+            { id: 0, b: 0, l: ['A', 'B'], c: 'N · Cardinal', cl: 'spine', r: [72, 58], p: [75, 60], a: [72, 58], f: ['Futura Medium', 'Futura Medium'], d: ['Tangent peak at true North. CCW apex with splayed legs — the archetype of emergence.', 'Dual CW loops on a vertical spine at North. Dual closure vs A\'s open peak.'], t: 'cardinal' },
+            { id: 1, b: 27.7, l: ['C', 'D'], c: 'NNE', cl: 'spine', r: [94, 91], p: [95, 92], a: [94, 91], f: ['Futura Medium', 'Futura Medium'], d: ['Near-perfect CCW arc. Open curve with zero tangent conflict — the model pair.', 'Closed CW arc + vertical spine. Same curve as C completed.'], t: 'standard' },
+            { id: 2, b: 55.4, l: ['E', 'F'], c: 'NE', cl: 'spine', r: [34, 31], p: [78, 74], a: [34, 31], f: ['Futura Medium (rotated)', 'Futura Medium (rotated)'], d: ['Horizontal bars ⊥ to tangent: fundamental conflict. 78% if rotated 90°.', 'Same conflict as E. Missing bottom bar does not resolve tangent. 74% rotated.'], t: 'conflict' },
+            { id: 3, b: 83.1, l: ['G', 'H'], c: 'E near Cardinal', cl: 'bridge', r: [67, 45], p: [70, 68], a: [67, 45], f: ['Futura Medium', 'Futura Medium'], d: ['CCW arc at East equatorial node — fighting gravity. The inward spur arrests a complete circle.', 'Dual vertical stems + crossbar. Neutral gear: refuses curve, enforces bilateral architecture.'], t: 'standard' },
+            { id: 4, b: 110.8, l: ['I', 'J'], c: 'ESE', cl: 'bridge', r: [78, 88], p: [80, 88], a: [78, 88], f: ['Futura Medium', 'Futura Medium'], d: ['Vertical axis at ESE — minimal stroke, pure radial alignment. Dot adds sky tier.', 'Hooked CW stem with descender. Hook follows tangent cleanly. High fit.'], t: 'standard' },
+            { id: 5, b: 138.5, l: ['K', 'L'], c: 'SE', cl: 'bridge', r: [63, 52], p: [68, 70], a: [63, 52], f: ['Futura Medium', 'Futura Medium'], d: ['Diagonal branching from stem. Partial tangent alignment — complex geometry.', 'Right-angle corner. Architectural refusal of the curve at SE.'], t: 'standard' },
+            { id: 6, b: 166.2, l: ['M', 'N'], c: 'SSE', cl: 'loop', r: [71, 69], p: [72, 70], a: [71, 69], f: ['Futura Medium', 'Futura Medium'], d: ['CCW bilateral double-peak. Symmetric arches mirror each other.', 'Single diagonal CW stroke. Simplified version of M\'s energy.'], t: 'standard' },
+            { id: 7, b: 193.8, l: ['O', 'P'], c: 'S · Cardinal', cl: 'loop', r: [98, 93], p: [98, 94], a: [98, 93], f: ['Futura Medium', 'Futura Medium'], d: ['Perfect closed CCW circle at compass nadir. Theoretical maximum: 98%.', 'Half-circle CW loop + descending stem. O\'s partner at South.'], t: 'cardinal' },
+            { id: 8, b: 221.5, l: ['Q', 'R'], c: 'SSW', cl: 'loop', r: [89, 84], p: [90, 85], a: [89, 84], f: ['Futura Medium', 'Futura Medium'], d: ['O-variant with exit tail. Circle + departure vector = motion encoded.', 'CW stem + composite leg. High resonance with complex geometry.'], t: 'standard' },
+            { id: 9, b: 249.2, l: ['S', 'T'], c: 'SW · Power Zone', cl: 'angle', r: [96, 47], p: [96, 89], a: [96, 47], f: ['Futura Medium', 'Futura Medium (rotated)'], d: ['Double-reverse curve at maximum torque. 249° matches Western cursive ductus axis exactly.', 'Crossbar ⊥ tangent at rest (47%). Rotated 90° = 89%. Grounds S\'s energy.'], t: 'power' },
+            { id: 10, b: 276.9, l: ['U', 'V'], c: 'W · Cardinal', cl: 'angle', r: [92, 87], p: [93, 88], a: [92, 87], f: ['Futura Medium', 'Futura Medium'], d: ['Open CCW bowl at West node — catches leftward energy with open top.', 'Same node CW — sharpens bowl to a vertex. Directional arrow made letter.'], t: 'cardinal' },
+            { id: 11, b: 304.6, l: ['W', 'X'], c: 'WNW', cl: 'angle', r: [74, 91], p: [76, 92], a: [74, 91], f: ['Futura Medium', 'Futura Medium'], d: ['Double-V compound form. Extended version of V\'s angular energy.', 'Crossed diagonals at WNW — counter-rotation of two strokes.'], t: 'standard' },
+            { id: 12, b: 332.3, l: ['Y', 'Z'], c: 'NNW', cl: 'angle', r: [68, 43], p: [70, 81], a: [68, 43], f: ['Futura Medium', 'Futura Medium (rotated)'], d: ['Branching CCW convergence before cycle reset. V with descending stem.', 'Zigzag horizontal (43%). 81% when rotated 45°. Terminal exit.'], t: 'standard' },
+        ];
+
+        // Letter Map for quick lookup
+        const LM = {};
+        ND.forEach(n => {
+            n.l.forEach((l, i) => {
+                LM[l] = { node: n.id, b: n.b, dir: i === 0 ? 'CCW' : 'CW', cl: n.cl };
+            });
+        });
+
+        function rc(r) {
+            if (r >= 85) return 'var(--high)';
+            if (r >= 60) return 'var(--moderate)';
+            return 'var(--conflict)';
+        }
+
+        function ccl(c) {
+            return c.toLowerCase();
+        }
+
+        // Letter Inspector
+        function sel(nid) {
+            const n = ND[nid];
+            const cc = { spine: '#7ab0f0', bridge: '#aaa', loop: '#7af0b0', angle: '#f0b07a' }[n.cl];
+            let h = `<div class="panel-title">Letter / Node Detail</div><div style="display:flex;gap:16px">`;
+            n.l.forEach((l, i) => {
+                const d = i === 0 ? 'ccw' : 'cw', p = n.p[i], a = n.a[i], font = n.f[i], rc2 = rc(a);
+                const delta = p - a; const dl = delta >= 0 ? `+${delta}` : `${delta}`; const dc = delta >= 0 ? 'var(--high)' : 'var(--conflict)';
+                h += `<div style="flex:1;border:1px solid var(--border);border-radius:6px;padding:12px;background:var(--panel)">
+                    <div class="detail-letter ${d}">${l}</div>
+                    <div class="detail-meta" style="margin-bottom:8px">Pos: <span>${n.id * 2 + i + 1}</span> · Node: <span>${n.id}</span><br>Bearing: <span>${n.b}°</span><br>Dir: <span style="color:${d === 'ccw' ? 'var(--ccw)' : 'var(--cw)'}">${i === 0 ? 'CCW' : 'CW'}</span><br>Font: <span style="color:var(--gold)">${font}</span></div>
+                    <div style="margin:8px 0"><div style="font-family:'JetBrains Mono',monospace;font-size:0.63rem;color:var(--text-dim);margin-bottom:3px">Predicted vs Actual</div>
+                    <div style="display:flex;align-items:center;gap:8px">
+                        <div style="flex:1"><div class="res-label"><span>Predicted</span><span style="color:var(--gold)">${p}%</span></div><div class="res-bar" title="Predicted: ${p}%"><div class="res-fill" style="width:${p}%;background:var(--gold)"></div></div></div>
+                        <div style="flex:1"><div class="res-label"><span>Actual</span><span style="color:${rc2}">${a}%</span></div><div class="res-bar" title="Actual: ${a}%"><div class="res-fill" style="width:${a}%;background:${rc2}"></div></div></div>
+                    </div>
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:${dc};text-align:center;margin-top:4px">Δ ${dl}</div>
+                    </div>
+                    <div class="detail-desc">${n.d[i]}</div></div>`;
+            });
+            h += `</div><div style="margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:0.67rem;color:var(--text-dim);padding:9px;background:var(--panel);border-left:2px solid ${cc}">${n.c} &nbsp;·&nbsp; <span style="color:${cc}">${n.cl.toUpperCase()}</span> cluster</div>`;
+            document.getElementById('letter-detail').innerHTML = h;
+        }
+
+        // Word Analyzer
+        function doWord() {
+            const rawW = document.getElementById('word-in').value.toUpperCase().replace(/[^A-Z]/g, '');
+            if (!rawW) {
+                document.getElementById('word-results').innerHTML = '';
+                document.getElementById('res-angle').innerText = '0°';
+                document.getElementById('res-score').innerText = '< 0.001';
+                document.getElementById('res-balance').innerText = '0.0';
+                document.getElementById('res-verdict').innerText = '--';
+                return;
+            };
+
+            // Freemium Gating Logic
+            const MAX_FREE_LENGTH = 5;
+            const isUserLoggedIn = window.currentUser !== null;
+            const isPro = window.isProAccount === true;
+
+            if (rawW.length > MAX_FREE_LENGTH && !isUserLoggedIn && !isPro) {
+                document.getElementById('pro-gate-ui').style.display = 'block';
+                document.getElementById('word-results-container').style.opacity = '0.3';
+                document.getElementById('word-results-container').style.pointerEvents = 'none';
+            } else {
+                document.getElementById('pro-gate-ui').style.display = 'none';
+                document.getElementById('word-results-container').style.opacity = '1';
+                document.getElementById('word-results-container').style.pointerEvents = 'auto';
+            }
+
+            const w = rawW;
+
+            let totX = 0, totY = 0, totA = 0, bs = [], cls = {}, fonts = {};
+            let rows = `<div class="word-row hdr"><div>L</div><div>NODE</div><div>BEARING</div><div>RES (P/A)</div><div>Δ</div></div>`;
+
+            w.split('').forEach((l, i) => {
+                const d = LM[l]; if (!d) return;
+                const n = ND[d.node];
+                const idx = n.l.indexOf(l);
+                const pred = n.p[idx], act = n.a[idx], font = n.f[idx];
+                const delta = pred - act; const dl = delta >= 0 ? `+${delta}` : `${delta}`; const dc = delta >= 0 ? 'var(--high)' : 'var(--conflict)';
+
+                totA += act; bs.push(d.b); cls[d.cl] = (cls[d.cl] || 0) + 1;
+                if (!fonts[font]) fonts[font] = []; fonts[font].push(l);
+
+                const rad = (d.b - 90) * (Math.PI / 180);
+                totX += 13 * Math.cos(rad);
+                totY += 13 * Math.sin(rad);
+
+                const c = rc(act);
+                rows += `<div class="word-row"><div class="wl ${d.dir.toLowerCase()}">${l}</div><div class="wm">${d.node}</div><div class="wm">${d.b}°</div><div style="display:flex;gap:4px;align-items:center;flex:1"><div class="wbar" style="width:${act}%;background:${c};border:1px solid ${pred >= act ? 'var(--gold)' : 'var(--conflict)'};flex:1" title="Predicted: ${pred}%"></div><span style="font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:${c}">${act}</span></div><div class="ws" style="color:${dc};font-family:'JetBrains Mono',monospace;font-size:0.6rem;text-align:right">${dl}</div></div>`;
+            });
+
+            const magnitude = Math.sqrt(totX ** 2 + totY ** 2);
+            const balance = magnitude / (13 * w.length);
+            let finalAng = Math.atan2(totY, totX) * (180 / Math.PI) + 90;
+            if (finalAng < 0) finalAng += 360;
+
+            const avgAct = Math.round(totA / w.length), span = bs.length > 1 ? Math.round(Math.max(...bs) - Math.min(...bs)) : 0;
+            let stab = 'BALANCED', sc = 'var(--moderate)';
+            if (balance > 0.8) { stab = 'RESONANT'; sc = 'var(--high)'; }
+            else if (balance < 0.4) { stab = 'BALANCED'; sc = 'var(--teal)'; }
+            else { stab = 'MIXED'; sc = 'var(--moderate)'; }
+
+            const badges = Object.entries(cls).map(([c, n]) => `<span class="cb ${ccl(c)}">${c.toUpperCase()}×${n}</span>`).join('');
+            const fontList = Object.entries(fonts).map(([f, ls]) => `<span style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--gold)">${f}</span>: ${ls.join(', ')}`).join(' · ');
+
+            document.getElementById('res-angle').innerText = `${Math.round(finalAng)}°`;
+            document.getElementById('res-balance').innerText = balance.toFixed(2);
+            document.getElementById('res-score').innerText = balance < 0.3 ? "< 0.001" : "> 0.05";
+            document.getElementById('res-pointer').style.transform = `rotate(${finalAng}deg)`;
+
+            const nodesInRange = ND.find(n => Math.abs(n.b - finalAng) < 15);
+            let verdict = "DECENTRALIZED";
+            if (nodesInRange) { verdict = `RESOLVES TO NODE ${nodesInRange.id} (${nodesInRange.l[0]}/${nodesInRange.l[1]})`; }
+            document.getElementById('res-verdict').innerText = verdict;
+
+            document.getElementById('word-results').innerHTML = rows + `<div class="word-sum"><strong>${w}</strong> · avg <strong style="color:var(--high)">${avgAct}%</strong> · span ${span}° · <strong style="color:${sc}">${stab}</strong><br><div style="margin-top:6px">${badges}</div><div style="margin-top:8px;font-size:0.75rem;color:var(--text-dim)"><span style="color:var(--gold)">Fonts:</span> ${fontList}</div></div>`;
+        }
+
+        function createCompass(containerId) {
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("viewBox", "-600 -600 1200 1200");
+            svg.style.width = "100%";
+
+            const ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            ring.setAttribute("r", "500"); ring.setAttribute("fill", "none"); ring.setAttribute("stroke", "#334155"); ring.setAttribute("stroke-width", "2");
+            svg.appendChild(ring);
+
+            ND.forEach(n => {
+                const rad = (n.b - 90) * (Math.PI / 180);
+                const x = Math.cos(rad) * 480;
+                const y = Math.sin(rad) * 480;
+
+                const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                g.classList.add('node-group');
+                g.onclick = () => sel(n.id);
+
+                const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                c.setAttribute("cx", x); c.setAttribute("cy", y); c.setAttribute("r", "18");
+                c.setAttribute("fill", rc(n.a[0]));
+
+                const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                t.setAttribute("x", x * 1.15); t.setAttribute("y", y * 1.15); t.setAttribute("fill", "#fff");
+                t.setAttribute("font-size", "35"); t.setAttribute("text-anchor", "middle"); t.setAttribute("dominant-baseline", "central");
+                t.textContent = n.l[0];
+
+                g.appendChild(c); g.appendChild(t); svg.appendChild(g);
+            });
+
+            document.getElementById(containerId).appendChild(svg);
+        }
+
+        // Hero SVG
+        const heroSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        heroSvg.setAttribute("viewBox", "-600 -600 1200 1200");
+        const sr = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        sr.setAttribute("r", "500"); sr.setAttribute("fill", "none"); sr.setAttribute("stroke", "#334155"); sr.setAttribute("stroke-width", "2");
+        heroSvg.appendChild(sr);
+        ND.forEach(n => {
+            const rad = (n.b - 90) * (Math.PI / 180);
+            const x = Math.cos(rad) * 480; const y = Math.sin(rad) * 480;
+            const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            c.setAttribute("cx", x); c.setAttribute("cy", y); c.setAttribute("r", "10");
+            c.setAttribute("fill", "var(--primary)"); heroSvg.appendChild(c);
+        });
+        document.getElementById('hero-svg').appendChild(heroSvg);
+
+        createCompass("main-map-mount");
+        document.getElementById('word-in').addEventListener('input', doWord);
+        doWord();
+
+        // FIREBASE INTEGRATION
+        window.currentUser = null;
+        window.isProAccount = false;
+
+        function handleAuth() {
+            // Placeholder for Firebase Auth redirect
+            console.log("Auth triggered");
+            alert("Firebase Auth setup required. Please run 'firebase login' and provide configuration.");
+        }
+
+        document.getElementById('auth-btn').onclick = handleAuth;
+
+    </script>
+
+    <!-- Firebase SDK (to be configured) -->
+    <!-- 
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+      import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        // To be populated after 'firebase projects:create'
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const provider = new GoogleAuthProvider();
+
+      onAuthStateChanged(auth, (user) => {
+        window.currentUser = user;
+        if (user) {
+          document.getElementById('user-status').textContent = user.displayName;
+          document.getElementById('auth-btn').textContent = "Sign Out";
+          document.getElementById('auth-btn').onclick = () => signOut(auth);
+        } else {
+          document.getElementById('user-status').textContent = "";
+          document.getElementById('auth-btn').textContent = "Sign In";
+          document.getElementById('auth-btn').onclick = () => signInWithPopup(auth, provider);
+        }
+        doWord();
+      });
+    </script>
+    -->
+</body>
+
+</html>

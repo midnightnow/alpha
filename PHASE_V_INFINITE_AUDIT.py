@@ -23,6 +23,9 @@ CONSTANTS = {
     "θ  (Shear Angle)":     {"expected": 39.47, "formula": lambda: math.degrees(math.atan(14 / 17))},
     "β  (Beat Frequency)":  {"expected": 0.6606, "formula": lambda: math.sqrt(51) - math.sqrt(42)},
     "Σ₀ (Unity Threshold)": {"expected": 0.8254, "formula": lambda: (14/17) + (DELTA_PHI / 42)},
+    "Eₓ (Cubit Expansion)": {"expected": 1.7183, "formula": lambda: math.e - 1},
+    "Cₘ (Coolant)":         {"expected": 0.5236, "formula": lambda: math.pi / 6},
+    "χ  (Exergy Solvent)":  {"expected": 0.0864, "formula": lambda: ((math.e - 1) * (math.e / 22)) / ((math.pi / 6) * math.log(108))}
 }
 
 # ============================================================================

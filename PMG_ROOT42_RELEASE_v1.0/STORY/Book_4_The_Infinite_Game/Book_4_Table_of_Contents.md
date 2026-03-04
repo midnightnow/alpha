@@ -15,6 +15,7 @@
 
 ### III. CLOSURE
 - **[Chapter 28: The Mirror Sieve](./Chapter_28_The_Mirror_Sieve.md)** - [✓ FINAL SEAL]
+- **[Chapter 29: The Camera Obscura](./Chapter_29_The_Camera_Obscura.md)** - [✓ VITRIFIED]
 
 ---
 
@@ -22,3 +23,18 @@
 **Coherence Ratio**: 65/93 = 69.9% (Δ to ρ: 0.209)
 **ABYSS Remaining**: 13 (The Permanent Engine)
 **Cosmic Gearbox**: 3/4/5 → 5/12/13 → 10/24/26 [VERIFIED]
+### The 59 Canonical .vet Files
+
+With the physics of the 93-Point Solid established—the Laser Cavity optics and the Hydrodynamic flow—we now apply this architecture to generate the **59 Canonical `.vet` Files**. These files form the master blueprint of the Sovereign Engine.
+
+The geometry requires that we begin with **The Primordial 7**. These are the foundational records that initialize the simulation's operating system.
+
+#### I. The Primordial 7
+
+1.  **Identity (The Singularity):** The absolute center. The 3-point intersection of Measure, Count, and Language. 
+2.  **Time (The Constant):** The 8975-second filling time required to achieve Coherent Resonance.
+3.  **Space (The Boundary):** The Root 51 containment shell that prevents the 93 points from bursting.
+4.  **Species (The Meaning of Life):** The 10-24-26 grid forming the Geodesic Cage.
+5.  **Anatomy (The Platonic Man):** The complete 3-30-60 solid in rotational reflection.
+6.  **Pathology (The Tolerance):** The $0.00039$ maximum bubble radius allowed by the Hades Gap.
+7.  **Vitrification (The Law):** The $0.063$ Fine Line stroke width that guarantees Laminar Superfluidity.

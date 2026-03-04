@@ -1,0 +1,62 @@
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
+    </marker>
+  </defs>
+  <circle cx="250" cy="250" r="200" fill="none" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5" />
+  <circle cx="250" cy="250" r="140.0" fill="none" stroke="#eee" stroke-width="1" />
+  <circle cx="250" cy="250" r="80.0" fill="none" stroke="#eee" stroke-width="1" />
+  <line x1="250" y1="250" x2="250.0" y2="50.0" stroke="#ccc" stroke-width="0.5" />
+  <text x="238.7546869140974" y="25.281191411132596" font-family="Arial" font-size="16" fill="#2d9a9a" text-anchor="middle">Α</text>
+  <text x="261.24531308590264" y="25.281191411132596" font-family="Arial" font-size="16" fill="#b94a48" text-anchor="middle">Β</text>
+  <text x="250.00000000000003" y="0.0" font-family="Arial" font-size="10" fill="#999" text-anchor="middle">N0</text>
+  <line x1="250" y1="250" x2="350.0" y2="76.79491924311228" stroke="#ccc" stroke-width="0.5" />
+  <text x="352.62067748853246" y="49.76514651091682" font-family="Arial" font-size="16" fill="#2d9a9a" text-anchor="middle">Γ</text>
+  <text x="372.09813110033497" y="61.01045959681946" font-family="Arial" font-size="16" fill="#b94a48" text-anchor="middle">Δ</text>
+  <text x="375.0" y="33.49364905389035" font-family="Arial" font-size="10" fill="#999" text-anchor="middle">N1</text>
+  <line x1="250" y1="250" x2="423.20508075688775" y2="150.0" stroke="#ccc" stroke-width="0.5" />
+  <text x="438.98954040318057" y="127.90186889966506" font-family="Arial" font-size="16" fill="#2d9a9a" text-anchor="middle">Ε</text>
+  <text x="450.2348534890832" y="147.37932251146754" font-family="Arial" font-size="16" fill="#b94a48" text-anchor="middle">Ζ</text>
+  <text x="466.5063509461097" y="125.00000000000001" font-family="Arial" font-size="10" fill="#999" text-anchor="middle">N2</text>
+  <line x1="250" y1="250" x2="450.0" y2="250.0" stroke="#ccc" stroke-width="0.5" />
+  <text x="474.71880858886743" y="238.75468691409736" font-family="Arial" font-size="16" fill="#2d9a9a" text-anchor="middle">Η</text>
+  <text x="474.71880858886743" y="261.24531308590264" font-family="Arial" font-size="16" fill="#b94a48" text-anchor="middle">Θ</text>
+  <text x="500.0" y="250.0" font-family="Arial" font-size="10" fill="#999" text-anchor="middle">N3</text>
+  <line x1="250" y1="250" x2="423.20508075688775" y2="350.0" stroke="#ccc" stroke-width="0.5" />
+  <text x="450.2348534890832" y="352.62067748853246" font-family="Arial" font-size="16" fill="#2d9a9a" text-anchor="middle">Ι</text>
+  <text x="438.98954040318057" y="372.09813110033497" font-family="Arial" font-size="16" fill="#b94a48" text-anchor="middle">Κ</text>
+  <text x="466.5063509461097" y="375.0" font-family="Arial" font-size="10" fill="#999" text-anchor="middle">N4</text>
+  <line x1="250" y1="250" x2="350.0" y2="423.2050807568877" stroke="#ccc" stroke-width="0.5" />
+  <text x="372.09813110033497" y="438.9895404031805" font-family="Arial" font-size="16" fill="#2d9a9a" text-anchor="middle">Λ</text>
+  <text x="352.62067748853246" y="450.2348534890832" font-family="Arial" font-size="16" fill="#b94a48" text-anchor="middle">Μ</text>
+  <text x="375.0" y="466.50635094610965" font-family="Arial" font-size="10" fill="#999" text-anchor="middle">N5</text>
+  <line x1="250" y1="250" x2="250.0" y2="450.0" stroke="#ccc" stroke-width="0.5" />
+  <text x="261.24531308590264" y="474.71880858886743" font-family="Arial" font-size="16" fill="#2d9a9a" text-anchor="middle">Ν</text>
+  <text x="238.7546869140974" y="474.71880858886743" font-family="Arial" font-size="16" fill="#b94a48" text-anchor="middle">Ξ</text>
+  <text x="250.00000000000003" y="500.0" font-family="Arial" font-size="10" fill="#999" text-anchor="middle">N6</text>
+  <line x1="250" y1="250" x2="150.00000000000003" y2="423.20508075688775" stroke="#ccc" stroke-width="0.5" />
+  <text x="147.37932251146754" y="450.2348534890832" font-family="Arial" font-size="16" fill="#2d9a9a" text-anchor="middle">Ο</text>
+  <text x="127.9018688996651" y="438.9895404031806" font-family="Arial" font-size="16" fill="#b94a48" text-anchor="middle">Π</text>
+  <text x="125.00000000000004" y="466.5063509461097" font-family="Arial" font-size="10" fill="#999" text-anchor="middle">N7</text>
+  <line x1="250" y1="250" x2="76.79491924311225" y2="350.0" stroke="#ccc" stroke-width="0.5" />
+  <text x="61.0104595968194" y="372.0981311003349" font-family="Arial" font-size="16" fill="#2d9a9a" text-anchor="middle">Ρ</text>
+  <text x="49.76514651091682" y="352.62067748853246" font-family="Arial" font-size="16" fill="#b94a48" text-anchor="middle">Σ</text>
+  <text x="33.49364905389032" y="375.0" font-family="Arial" font-size="10" fill="#999" text-anchor="middle">N8</text>
+  <line x1="250" y1="250" x2="50.0" y2="250.00000000000003" stroke="#ccc" stroke-width="0.5" />
+  <text x="25.281191411132596" y="261.24531308590264" font-family="Arial" font-size="16" fill="#2d9a9a" text-anchor="middle">Τ</text>
+  <text x="25.281191411132596" y="238.75468691409745" font-family="Arial" font-size="16" fill="#b94a48" text-anchor="middle">Υ</text>
+  <text x="0.0" y="250.00000000000003" font-family="Arial" font-size="10" fill="#999" text-anchor="middle">N9</text>
+  <line x1="250" y1="250" x2="76.79491924311228" y2="149.99999999999997" stroke="#ccc" stroke-width="0.5" />
+  <text x="49.76514651091685" y="147.37932251146748" font-family="Arial" font-size="16" fill="#2d9a9a" text-anchor="middle">Φ</text>
+  <text x="61.01045959681943" y="127.90186889966506" font-family="Arial" font-size="16" fill="#b94a48" text-anchor="middle">Χ</text>
+  <text x="33.49364905389035" y="124.99999999999997" font-family="Arial" font-size="10" fill="#999" text-anchor="middle">N10</text>
+  <line x1="250" y1="250" x2="149.99999999999991" y2="76.79491924311233" stroke="#ccc" stroke-width="0.5" />
+  <text x="127.90186889966499" y="61.01045959681949" font-family="Arial" font-size="16" fill="#2d9a9a" text-anchor="middle">Ψ</text>
+  <text x="147.37932251146742" y="49.76514651091688" font-family="Arial" font-size="16" fill="#b94a48" text-anchor="middle">Ω</text>
+  <text x="124.99999999999989" y="33.49364905389041" font-family="Arial" font-size="10" fill="#999" text-anchor="middle">N11</text>
+  <text x="250" y="30" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle">GREEK 12-NODE "OCTAVE SIEVE"</text>
+  <text x="250" y="50" font-family="Arial" font-size="12" fill="#666" text-anchor="middle">Material Perimeter (24 Vectors)</text>
+  <text x="20" y="470" font-family="Arial" font-size="12" fill="#2d9a9a">Teal: CCW Polarity</text>
+  <text x="20" y="485" font-family="Arial" font-size="12" fill="#b94a48">Rust: CW Polarity</text>
+</svg>

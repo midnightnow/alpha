@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geofont 13 — Word Studies</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+:root {
+  --bg:      #07080a;
+  --panel:   #0b0d11;
+  --surface: #0f1218;
+  --gold:    #c8a84b;
+  --gold-d:  rgba(200,168,75,0.14);
+  --gold-rim:rgba(200,168,75,0.22);
+  --ccw:     #4ab8c8;
+  --cw:      #c84a4a;
+  --text:    #e8e0cc;
+  --dim:     rgba(232,224,204,0.38);
+  --dimmer:  rgba(232,224,204,0.20);
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+header {
+  padding: 1.4rem 2.6rem 1rem;
+  border-bottom: 1px solid rgba(200,168,75,.12);
+  display: flex; align-items: baseline;
+  justify-content: space-between; flex-wrap: wrap; gap:.5rem;
+}
+.h-left h1 {
+  font-family:'Cinzel',serif;
+  font-size:clamp(.9rem,2.2vw,1.4rem);
+  letter-spacing:.3em; color:var(--gold);
+}
+.h-left .sub {
+  font-size:.54rem; letter-spacing:.2em;
+  color:var(--dim); margin-top:.2rem;
+}
+.h-right {
+  display:flex; gap:.5rem; align-items:center; flex-wrap:wrap;
+}
+.btn {
+  background:transparent;
+  border:1px solid rgba(200,168,75,.35);
+  color:var(--gold);
+  font-family:'JetBrains Mono',monospace;
+  font-size:.58rem; letter-spacing:.1em;
+  padding:.36rem .8rem; cursor:pointer; transition:all .15s;
+}
+.btn:hover { background:var(--gold-d); }
+.btn.on { background:var(--gold-d); border-color:var(--gold); }
+.sl-row { display:flex; align-items:center; gap:.4rem; }
+.ol { font-size:.54rem; letter-spacing:.1em; color:var(--dim); }
+input[type=range] {
+  -webkit-appearance:none; width:65px; height:2px;
+  background:rgba(200,168,75,.25); outline:none; cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance:none; width:9px; height:9px;
+  border-radius:50%; background:var(--gold); cursor:pointer;
+}
+
+/* ── RULE STRIP ── */
+.rule-strip {
+  display:flex; flex-wrap:wrap; gap:0;
+  border-bottom: 1px solid rgba(200,168,75,.08);
+}
+.rule-item {
+  padding:.55rem 1.4rem;
+  border-right:1px solid rgba(200,168,75,.08);
+  font-size:.52rem; letter-spacing:.12em; color:var(--dim);
+  line-height:1.6;
+}
+.rule-item b { color:var(--gold); font-weight:400; }
+.rule-item .ccw { color:var(--ccw); }
+.rule-item .cw  { color:var(--cw);  }
+
+/* ── PAGE LAYOUT ── */
+.page { max-width:1360px; margin:0 auto; padding:2.4rem 2rem 4rem; }
+
+/* ── SECTION HEADS ── */
+.section-head {
+  font-size:.54rem; letter-spacing:.28em;
+  color:var(--gold); margin-bottom:1.2rem;
+  padding-bottom:.4rem;
+  border-bottom:1px solid rgba(200,168,75,.12);
+  display:flex; align-items:center; gap:1rem;
+}
+.section-head span { color:var(--dim); font-size:.48rem; letter-spacing:.14em; }
+
+/* ── WORD STUDY CARD ── */
+.studies-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px,1fr));
+  gap:1px;
+  background:rgba(200,168,75,.06);
+  margin-bottom:3rem;
+}
+.study-card {
+  background:var(--bg);
+  padding:1.4rem 1.4rem 1.2rem;
+  transition:background .15s;
+}
+.study-card:hover { background:var(--panel); }
+
+/* top row: glyph + word title */
+.card-top {
+  display:flex; align-items:center; gap:1.2rem;
+  margin-bottom:.9rem;
+}
+.card-glyph { flex-shrink:0; }
+
+.card-word {
+  font-family:'Cinzel',serif;
+  font-size:1.6rem; letter-spacing:.18em;
+  color:var(--text); line-height:1;
+}
+.card-tag {
+  font-size:.5rem; letter-spacing:.18em;
+  color:var(--gold); margin-top:.3rem;
+}
+
+/* letter breakdown row */
+.card-letters {
+  display:flex; gap:2px; margin-bottom:.8rem; flex-wrap:wrap;
+}
+.ltr-block {
+  display:flex; flex-direction:column; align-items:center;
+  padding:.35rem .45rem .3rem;
+  border:1px solid rgba(200,168,75,.1);
+  min-width:38px;
+  background:rgba(255,255,255,.015);
+}
+.ltr-block.ccw { border-color:rgba(74,184,200,.22); }
+.ltr-block.cw  { border-color:rgba(200,74,74,.22); }
+.ltr-ch {
+  font-family:'Cinzel',serif; font-size:1rem;
+  line-height:1; margin-bottom:.2rem;
+}
+.ltr-ch.ccw { color:var(--ccw); }
+.ltr-ch.cw  { color:var(--cw);  }
+.ltr-n {
+  font-size:.46rem; letter-spacing:.06em; color:var(--dim);
+}
+.ltr-arc {
+  font-size:.44rem; letter-spacing:.04em; color:var(--dimmer);
+}
+.ltr-dir {
+  font-size:.43rem; letter-spacing:.08em; margin-top:.1rem;
+}
+.ltr-dir.ccw { color:var(--ccw); }
+.ltr-dir.cw  { color:var(--cw); }
+
+/* drop marker in letter sequence */
+.drop-marker {
+  display:flex; align-items:center;
+  padding:0 3px;
+  font-size:.7rem; color:rgba(200,168,75,.5);
+  align-self:center;
+}
+
+/* stat row */
+.card-stats {
+  display:flex; gap:.7rem; flex-wrap:wrap;
+  font-size:.49rem; letter-spacing:.1em;
+}
+.stat { color:var(--dim); }
+.stat b { color:var(--gold); font-weight:400; }
+.stat.ccw b { color:var(--ccw); }
+.stat.cw  b { color:var(--cw); }
+
+/* narrative */
+.card-note {
+  font-size:.52rem; line-height:1.8; letter-spacing:.06em;
+  color:var(--dim); margin-top:.65rem;
+  padding-top:.65rem;
+  border-top:1px solid rgba(200,168,75,.07);
+}
+.card-note b { color:var(--text); font-weight:400; }
+
+/* ── A vs B panel ── */
+.ab-panel {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:1px; background:rgba(200,168,75,.06);
+  margin-bottom:3rem;
+}
+.ab-card {
+  background:var(--bg);
+  padding:1.6rem 1.8rem;
+  display:flex; flex-direction:column; align-items:center; gap:.8rem;
+}
+.ab-lbl {
+  font-family:'Cinzel',serif; font-size:2.2rem;
+  letter-spacing:.2em; line-height:1;
+}
+.ab-lbl.ccw { color:var(--ccw); }
+.ab-lbl.cw  { color:var(--cw); }
+.ab-desc {
+  font-size:.53rem; letter-spacing:.12em; color:var(--dim);
+  text-align:center; line-height:1.9;
+}
+.ab-desc b { color:var(--text); font-weight:400; }
+
+/* ── COMPONENT DIAGRAM ── */
+.component-panel {
+  background:var(--panel);
+  border:1px solid rgba(200,168,75,.1);
+  padding:1.6rem;
+  margin-bottom:3rem;
+  display:flex; gap:2.4rem; flex-wrap:wrap; align-items:flex-start;
+}
+.comp-diagram { flex-shrink:0; }
+.comp-key {
+  flex:1; min-width:200px;
+  display:flex; flex-direction:column; gap:.7rem;
+}
+.comp-item {
+  display:flex; align-items:flex-start; gap:.8rem;
+}
+.comp-dot {
+  width:8px; height:8px; border-radius:50%;
+  flex-shrink:0; margin-top:.15rem;
+}
+.comp-text {
+  font-size:.52rem; letter-spacing:.08em; color:var(--dim); line-height:1.8;
+}
+.comp-text b { color:var(--text); font-weight:400; }
+
+/* ── PATTERN GALLERY ── */
+.pattern-row {
+  display:flex; gap:1px;
+  background:rgba(200,168,75,.06);
+  margin-bottom:3rem; flex-wrap:wrap;
+}
+.pattern-card {
+  background:var(--bg);
+  padding:1.2rem 1rem;
+  flex:1; min-width:160px;
+  display:flex; flex-direction:column; align-items:center; gap:.5rem;
+}
+.pat-label {
+  font-size:.49rem; letter-spacing:.18em;
+  color:var(--gold); text-align:center;
+}
+.pat-sublabel {
+  font-size:.46rem; letter-spacing:.1em;
+  color:var(--dim); text-align:center;
+  line-height:1.7;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="h-left">
+    <h1>GEOFONT 13 — WORD STUDIES</h1>
+    <div class="sub">component analysis · pattern taxonomy · structural logic</div>
+  </div>
+  <div class="h-right">
+    <div class="sl-row">
+      <span class="ol">SIZE</span>
+      <input type="range" id="sz" min="60" max="200" value="110" oninput="buildAll()">
+    </div>
+    <div class="sl-row">
+      <span class="ol">LINE</span>
+      <input type="range" id="lw" min="1" max="14" value="3" oninput="buildAll()">
+    </div>
+    <button class="btn on" id="bCol" onclick="togCol()">COLOUR</button>
+    <button class="btn" onclick="exportPNG()">↓ PNG</button>
+  </div>
+</header>
+
+<div class="rule-strip">
+  <div class="rule-item"><b>ORIGIN</b><br>all glyphs start<br>at North rim</div>
+  <div class="rule-item"><b class="ccw">CCW letters</b><br>arc spirals <b>inward</b><br>radius decreases</div>
+  <div class="rule-item"><b class="cw">CW letters</b><br>arc holds <b>ring</b><br>radius constant</div>
+  <div class="rule-item"><b>ARC LENGTH</b><br>node n → arc<br>= n/13 × 2π</div>
+  <div class="rule-item"><b>SAME DIR BACK-TO-BACK</b><br>radial drop marker<br>inserted between</div>
+  <div class="rule-item"><b>CONTINUOUS PATH</b><br>one unbroken line<br>letter to letter</div>
+</div>
+
+<div class="page">
+
+  <!-- ── SECTION 0: A vs B ── -->
+  <div class="section-head">
+    THE SIMPLEST PAIR — A &amp; B
+    <span>same node · same arc · opposite polarity</span>
+  </div>
+  <div class="ab-panel" id="ab-panel"></div>
+
+  <!-- ── SECTION 1: COMPONENT DIAGRAM ── -->
+  <div class="section-head">
+    ANATOMY OF A GLYPH
+    <span>reading the components of a single word</span>
+  </div>
+  <div class="component-panel">
+    <div class="comp-diagram">
+      <canvas id="comp-canvas"></canvas>
+    </div>
+    <div class="comp-key" id="comp-key"></div>
+  </div>
+
+  <!-- ── SECTION 2: WORD STUDIES ── -->
+  <div class="section-head">
+    WORD STUDIES
+    <span>six words — six structural lessons</span>
+  </div>
+  <div class="studies-grid" id="studies-grid"></div>
+
+  <!-- ── SECTION 3: PATTERN GALLERY ── -->
+  <div class="section-head">
+    PATTERN TAXONOMY
+    <span>words grouped by structural type</span>
+  </div>
+  <div class="pattern-row" id="pattern-row"></div>
+
+</div>
+
+<script>
+// ── LETTER MAP ─────────────────────────────────────────────────────────────
+const ND=[
+  {id:0, b:0,    l:['A','B'],r:[72,58]},
+  {id:1, b:27.7, l:['C','D'],r:[94,91]},
+  {id:2, b:55.4, l:['E','F'],r:[34,31]},
+  {id:3, b:83.1, l:['G','H'],r:[67,45]},
+  {id:4, b:110.8,l:['I','J'],r:[78,88]},
+  {id:5, b:138.5,l:['K','L'],r:[63,52]},
+  {id:6, b:166.2,l:['M','N'],r:[71,69]},
+  {id:7, b:193.8,l:['O','P'],r:[98,93]},
+  {id:8, b:221.5,l:['Q','R'],r:[89,84]},
+  {id:9, b:249.2,l:['S','T'],r:[96,47]},
+  {id:10,b:276.9,l:['U','V'],r:[92,87]},
+  {id:11,b:304.6,l:['W','X'],r:[74,91]},
+  {id:12,b:332.3,l:['Y','Z'],r:[68,43]},
+];
+const LM={};
+ND.forEach(n=>n.l.forEach((ch,i)=>{
+  LM[ch]={node:n.id,bearing:n.b,ccw:i===0,n:n.id+1,res:n.r[i]};
+}));
+
+let showColor=true;
+function togCol(){
+  showColor=!showColor;
+  document.getElementById('bCol').classList.toggle('on',showColor);
+  buildAll();
+}
+
+// ── CORE DRAW (v6 verbatim) ────────────────────────────────────────────────
+function drawWord(canvas,word,size,lwOverride){
+  const lw_raw=lwOverride!==undefined?lwOverride:parseInt(document.getElementById('lw').value);
+  const lw=lw_raw*(size/120);
+  canvas.width=canvas.height=size;
+  const ctx=canvas.getContext('2d');
+  ctx.fillStyle='#07080a';ctx.fillRect(0,0,size,size);
+  const letters=word.toUpperCase().split('').filter(c=>LM[c]);
+  if(!letters.length)return;
+  const cx=size/2,cy=size/2;
+  const R_outer=size*0.44,R_guard=size*0.10;
+  const ringStep=Math.min(12*(size/120),(R_outer-R_guard)/Math.max(letters.length,1));
+
+  // outer circle
+  ctx.beginPath();ctx.arc(cx,cy,R_outer,0,Math.PI*2);
+  ctx.strokeStyle='rgba(200,168,75,0.2)';ctx.lineWidth=Math.max(0.4,lw*0.3);ctx.stroke();
+
+  // north tick
+  ctx.beginPath();ctx.moveTo(cx,cy-R_outer-lw*1.5);ctx.lineTo(cx,cy-R_outer+lw*0.3);
+  ctx.strokeStyle='rgba(200,168,75,0.38)';ctx.lineWidth=Math.max(0.3,lw*0.26);ctx.stroke();
+
+  let curR=R_outer,curBearing=0,prevDir=null,firstPoint=true;
+  function pt(r,b){
+    const x=cx+r*Math.sin(b),y=cy-r*Math.cos(b);
+    if(firstPoint){ctx.moveTo(x,y);firstPoint=false;}else ctx.lineTo(x,y);
+  }
+  ctx.beginPath();
+  ctx.strokeStyle=showColor?'#e8e0cc':'rgba(232,224,204,0.85)';
+  ctx.lineWidth=Math.max(0.5,lw*0.4);ctx.lineCap='round';ctx.lineJoin='round';
+
+  for(let i=0;i<letters.length;i++){
+    const ch=letters[i],info=LM[ch];
+    if(curR<=R_guard)break;
+    const totalAngle=(info.n/13)*2*Math.PI;
+    const isCCW=info.ccw,sign=isCCW?-1:+1,thisDir=isCCW?'ccw':'cw';
+    if(prevDir===thisDir){
+      const dropR=Math.max(curR-ringStep*0.35,R_guard);
+      for(let s=1;s<=6;s++)pt(curR+(dropR-curR)*(s/6),curBearing);
+      curR=dropR;
+    }
+    const steps=Math.max(60,Math.round(totalAngle/(2*Math.PI)*120));
+    const R_end=isCCW?Math.max(curR-ringStep,R_guard):curR;
+    for(let s=0;s<=steps;s++){
+      const t=s/steps;
+      pt(curR+(R_end-curR)*t,curBearing+sign*totalAngle*t);
+    }
+    curBearing+=sign*totalAngle;curR=R_end;prevDir=thisDir;
+  }
+  ctx.stroke();
+}
+
+// ── ANNOTATED DRAW (for component diagram) ────────────────────────────────
+function drawAnnotated(canvas, word, size) {
+  const lw_raw = parseInt(document.getElementById('lw').value);
+  const lw = lw_raw * (size / 120);
+  canvas.width = canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#07080a'; ctx.fillRect(0,0,size,size);
+
+  const letters = word.toUpperCase().split('').filter(c=>LM[c]);
+  if (!letters.length) return;
+  const cx=size/2, cy=size/2;
+  const R_outer=size*0.44, R_guard=size*0.10;
+  const ringStep=Math.min(12*(size/120),(R_outer-R_guard)/Math.max(letters.length,1));
+
+  // outer circle — gold
+  ctx.beginPath(); ctx.arc(cx,cy,R_outer,0,Math.PI*2);
+  ctx.strokeStyle='rgba(200,168,75,0.5)'; ctx.lineWidth=Math.max(0.5,lw*0.35); ctx.stroke();
+
+  // north tick + label
+  ctx.beginPath(); ctx.moveTo(cx,cy-R_outer-lw*2.2); ctx.lineTo(cx,cy-R_outer+lw*0.5);
+  ctx.strokeStyle='rgba(200,168,75,0.7)'; ctx.lineWidth=Math.max(0.4,lw*0.3); ctx.stroke();
+  ctx.font=`${Math.round(lw*4.5)}px "JetBrains Mono",monospace`;
+  ctx.fillStyle='rgba(200,168,75,0.6)'; ctx.textAlign='center';
+  ctx.fillText('N', cx, cy-R_outer-lw*2.8);
+
+  // draw word path, coloured per letter
+  let curR=R_outer, curBearing=0, prevDir=null;
+
+  const segColors = letters.map(c => {
+    const info=LM[c];
+    if(!showColor) return '#e8e0cc';
+    return info.ccw ? '#4ab8c8' : '#c84a4a';
+  });
+
+  let segIdx = 0;
+  let curRTrack = R_outer, curBearingTrack = 0, prevDirTrack = null;
+  const segments = [];
+
+  // pre-compute segments
+  for(let i=0;i<letters.length;i++){
+    const ch=letters[i], info=LM[ch];
+    if(curRTrack<=R_guard)break;
+    const totalAngle=(info.n/13)*2*Math.PI;
+    const isCCW=info.ccw, sign=isCCW?-1:+1, thisDir=isCCW?'ccw':'cw';
+    let dropPoints=null;
+    if(prevDirTrack===thisDir){
+      const dropR=Math.max(curRTrack-ringStep*0.35,R_guard);
+      dropPoints={fromR:curRTrack,toR:dropR,bearing:curBearingTrack};
+      curRTrack=dropR;
+    }
+    const steps=Math.max(60,Math.round(totalAngle/(2*Math.PI)*120));
+    const R_end=isCCW?Math.max(curRTrack-ringStep,R_guard):curRTrack;
+    const pts=[];
+    for(let s=0;s<=steps;s++){
+      const t=s/steps;
+      const r=curRTrack+(R_end-curRTrack)*t;
+      const b=curBearingTrack+sign*totalAngle*t;
+      pts.push({r,b});
+    }
+    segments.push({ch,info,dropPoints,pts,startR:curRTrack,startB:curBearingTrack,endR:R_end,endB:curBearingTrack+sign*totalAngle});
+    curBearingTrack+=sign*totalAngle; curRTrack=R_end; prevDirTrack=thisDir;
+  }
+
+  // draw each segment with its colour
+  segments.forEach((seg,i)=>{
+    const col = segColors[i] || '#e8e0cc';
+
+    // drop marker
+    if(seg.dropPoints){
+      const {fromR,toR,bearing}=seg.dropPoints;
+      ctx.beginPath();
+      for(let s=0;s<=6;s++){
+        const r=fromR+(toR-fromR)*(s/6);
+        const x=cx+r*Math.sin(bearing), y=cy-r*Math.cos(bearing);
+        s===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.strokeStyle='rgba(200,168,75,0.6)'; ctx.lineWidth=Math.max(0.5,lw*0.4);
+      ctx.setLineDash([lw*1.5,lw*1.5]); ctx.stroke(); ctx.setLineDash([]);
+    }
+
+    // arc
+    ctx.beginPath();
+    seg.pts.forEach((p,j)=>{
+      const x=cx+p.r*Math.sin(p.b), y=cy-p.r*Math.cos(p.b);
+      j===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    });
+    ctx.strokeStyle=col; ctx.lineWidth=Math.max(0.8,lw*0.85);
+    ctx.lineCap='round'; ctx.stroke();
+
+    // start dot
+    const sx=cx+seg.startR*Math.sin(seg.startB), sy=cy-seg.startR*Math.cos(seg.startB);
+    ctx.beginPath(); ctx.arc(sx,sy,Math.max(1.5,lw*0.85),0,Math.PI*2);
+    ctx.fillStyle='rgba(200,168,75,0.8)'; ctx.fill();
+
+    // letter label near midpoint of arc
+    const mid=seg.pts[Math.floor(seg.pts.length/2)];
+    const mx=cx+mid.r*Math.sin(mid.b), my=cy-mid.r*Math.cos(mid.b);
+    // offset label outward from centre
+    const angle=Math.atan2(my-cy,mx-cx);
+    const labelR=mid.r+lw*5;
+    const lx=cx+labelR*Math.cos(angle), ly=cy+labelR*Math.sin(angle);
+    ctx.font=`500 ${Math.round(lw*4)}px "JetBrains Mono",monospace`;
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillStyle=col; ctx.fillText(seg.ch,lx,ly);
+  });
+}
+
+// ── SECTION: A vs B ────────────────────────────────────────────────────────
+function buildAB(){
+  const sz=Math.min(parseInt(document.getElementById('sz').value),140);
+  const panel=document.getElementById('ab-panel');
+  panel.innerHTML='';
+
+  ['A','B'].forEach(ch=>{
+    const info=LM[ch];
+    const isCCW=info.ccw;
+    const card=document.createElement('div');
+    card.className='ab-card';
+
+    const lbl=document.createElement('div');
+    lbl.className='ab-lbl '+(isCCW?'ccw':'cw');
+    lbl.textContent=ch;
+    card.appendChild(lbl);
+
+    const cvs=document.createElement('canvas');
+    drawWord(cvs,ch,sz);
+    card.appendChild(cvs);
+
+    const desc=document.createElement('div');
+    desc.className='ab-desc';
+    if(isCCW){
+      desc.innerHTML=`<b>Node 1 · North · CCW</b><br>Arc = 1/13 × 2π = 27.7°<br>Bearing: 0° (starts at North)<br>Direction: anticlockwise<br>Radius: decreases as it arcs<br><span style="color:var(--ccw)">spiral inward</span>`;
+    } else {
+      desc.innerHTML=`<b>Node 1 · North · CW</b><br>Arc = 1/13 × 2π = 27.7°<br>Bearing: 0° (starts at North)<br>Direction: clockwise<br>Radius: constant (holds ring)<br><span style="color:var(--cw)">ring arc, no inward movement</span>`;
+    }
+    card.appendChild(desc);
+    panel.appendChild(card);
+  });
+}
+
+// ── SECTION: COMPONENT DIAGRAM ─────────────────────────────────────────────
+function buildComponent(){
+  const sz=parseInt(document.getElementById('sz').value);
+  const cvs=document.getElementById('comp-canvas');
+  drawAnnotated(cvs,'DOG',sz);
+
+  const key=document.getElementById('comp-key');
+  key.innerHTML=`
+    <div style="font-size:.54rem;letter-spacing:.18em;color:var(--gold);margin-bottom:.9rem">DOG — annotated</div>
+    <div class="comp-item">
+      <div class="comp-dot" style="background:rgba(200,168,75,0.7)"></div>
+      <div class="comp-text"><b>Outer circle</b> — the unit boundary. All glyphs fit within this. Like a letter's em-square. The faint rim is the same for every glyph.</div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-dot" style="background:rgba(200,168,75,0.5)"></div>
+      <div class="comp-text"><b>North tick</b> — apex marker at 0°. The constant reference point. Every glyph begins at North rim regardless of its first letter.</div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-dot" style="background:rgba(200,168,75,0.8)"></div>
+      <div class="comp-text"><b>Entry dot (gold)</b> — marks where each letter's arc begins. Position on rim = letter's node bearing from North.</div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-dot" style="background:#c84a4a"></div>
+      <div class="comp-text"><b>D — CW arc</b> · Node 2 · 27.7° bearing · arc = 2/13 × 2π · <em>holds ring radius</em>. Even letter → clockwise. Arc sweeps right.</div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-dot" style="background:#4ab8c8"></div>
+      <div class="comp-text"><b>O — CCW arc</b> · Node 8 · 193.8° bearing · arc = 8/13 × 2π · <em>spirals inward</em>. Odd letter → anticlockwise. Radius decreases through arc.</div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-dot" style="background:#4ab8c8"></div>
+      <div class="comp-text"><b>G — CCW arc</b> · Node 4 · 83.1° bearing · arc = 4/13 × 2π · <em>spirals inward</em>. Same direction as O → <b>radial drop</b> (dashed) inserted before G begins.</div>
+    </div>
+    <div class="comp-item">
+      <div class="comp-dot" style="background:transparent;border:1px dashed rgba(200,168,75,0.5)"></div>
+      <div class="comp-text"><b>Radial drop</b> — when two consecutive letters share the same direction (both CCW or both CW), a short inward radial segment separates them. This is the only time the path moves purely radially.</div>
+    </div>
+  `;
+}
+
+// ── WORD STUDY DATA ────────────────────────────────────────────────────────
+const STUDIES = [
+  {
+    word: 'STOP',
+    tag: 'PERFECT ALTERNATION · NO DROPS · 2.77 TURNS',
+    note: '<b>STOP</b> is the cleanest possible 4-letter word. S(CCW) → T(CW) → O(CCW) → P(CW) — direction flips every single letter. No radial drops are needed. The path weaves in and out like a braid. S and T share Node 10 (largest arc, 10/13 × 2π); O and P share Node 8. The glyph makes two near-complete inner and outer rings before reaching centre.',
+  },
+  {
+    word: 'SPIRAL',
+    tag: 'PERFECT ALTERNATION · 6 LETTERS · EXACTLY 3 TURNS',
+    note: '<b>SPIRAL</b> perfectly alternates for all 6 letters: S(CCW)·P(CW)·I(CCW)·R(CW)·A(CCW)·L(CW). Total arc = 39/13 = exactly 3.00 full turns. Zero radial drops. The glyph traces three complete revolutions inward — a true mathematical spiral. The word enacts its own meaning as a glyph.',
+  },
+  {
+    word: 'EYES',
+    tag: 'ALL CCW · 4 DROPS · PURELY INWARD',
+    note: '<b>EYES</b> — E, Y, E, S — every letter is CCW (odd alphabet positions). Every letter spirals inward. Three consecutive same-direction pairs means 3 radial drop markers. The glyph is dense, tightly wound, all centripetal. Compare with STOP: same letter count, opposite structural character — one alternates cleanly, one packs inward.',
+  },
+  {
+    word: 'MOON',
+    tag: 'MO PAIR + OO DOUBLE · 2 DROPS',
+    note: '<b>MOON</b> contains a repeated letter: O O. Both O arcs are CCW, Node 8, identical arc length. They stack back-to-back with a radial drop between them. M is also CCW, so M→O also drops. Only N at the end is CW. The double-O creates a visual doubling effect — two nested arcs of identical sweep, concentric rings at the same bearing.',
+  },
+  {
+    word: 'WORD',
+    tag: 'W DOMINATES · CCW HEAVY · 2 DROPS',
+    note: '<b>WORD</b> opens with W (Node 12, CCW) — the second-largest possible arc at 12/13 × 2π = 332°. Nearly a full revolution in the first letter alone. O follows (also CCW, Node 8) causing a drop. Then R switches to CW (Node 9), D stays CW — another drop. The glyph is dominated by the enormous W opening sweep.',
+  },
+  {
+    word: 'STAR',
+    tag: 'PERFECT ALTERNATION · NO DROPS · S+T SHARE NODE',
+    note: '<b>STAR</b>: S(CCW)·T(CW)·A(CCW)·R(CW) — perfect alternation, zero drops. Like STOP. But: S and T share Node 10 (same bearing 249.2°), while A and R are far apart (Node 1 vs Node 9). The glyph starts at the SW quadrant with the large S/T arcs, then jumps to North for A, then back to SW for R — a bold angular contrast.',
+  },
+];
+
+function buildStudies(){
+  const sz=parseInt(document.getElementById('sz').value);
+  const grid=document.getElementById('studies-grid');
+  grid.innerHTML='';
+
+  STUDIES.forEach(study=>{
+    const letters=study.word.split('').filter(c=>LM[c]);
+    const dirs=letters.map(c=>LM[c].ccw?'ccw':'cw');
+    const drops=dirs.filter((d,i)=>i>0&&d===dirs[i-1]).length;
+    const totalArc=letters.reduce((s,c)=>s+LM[c].n,0);
+
+    const card=document.createElement('div');
+    card.className='study-card';
+
+    // top
+    const top=document.createElement('div');
+    top.className='card-top';
+
+    const cvs=document.createElement('canvas');
+    drawWord(cvs,study.word,Math.min(sz,130));
+    top.appendChild(cvs);
+
+    const titlewrap=document.createElement('div');
+    const wlbl=document.createElement('div');
+    wlbl.className='card-word';
+    wlbl.textContent=study.word;
+    const wtag=document.createElement('div');
+    wtag.className='card-tag';
+    wtag.textContent=study.tag;
+    titlewrap.appendChild(wlbl);
+    titlewrap.appendChild(wtag);
+    top.appendChild(titlewrap);
+    card.appendChild(top);
+
+    // letter breakdown
+    const breakdown=document.createElement('div');
+    breakdown.className='card-letters';
+
+    letters.forEach((ch,i)=>{
+      // drop marker before same-dir letter
+      if(i>0 && dirs[i]===dirs[i-1]){
+        const dm=document.createElement('div');
+        dm.className='drop-marker';
+        dm.innerHTML='↓';
+        breakdown.appendChild(dm);
+      }
+
+      const info=LM[ch];
+      const blk=document.createElement('div');
+      blk.className='ltr-block '+(info.ccw?'ccw':'cw');
+
+      blk.innerHTML=`
+        <div class="ltr-ch ${info.ccw?'ccw':'cw'}">${ch}</div>
+        <div class="ltr-n">N${info.node+1}</div>
+        <div class="ltr-arc">${info.n}/13</div>
+        <div class="ltr-dir ${info.ccw?'ccw':'cw'}">${info.ccw?'CCW':'CW'}</div>
+      `;
+      breakdown.appendChild(blk);
+    });
+    card.appendChild(breakdown);
+
+    // stats
+    const stats=document.createElement('div');
+    stats.className='card-stats';
+    stats.innerHTML=`
+      <div class="stat">LETTERS <b>${letters.length}</b></div>
+      <div class="stat">TOTAL ARC <b>${totalArc}/13</b></div>
+      <div class="stat">TURNS <b>${(totalArc/13).toFixed(2)}</b></div>
+      <div class="stat">DROPS <b>${drops}</b></div>
+      <div class="stat ccw">CCW <b>${dirs.filter(d=>d==='ccw').length}</b></div>
+      <div class="stat cw">CW <b>${dirs.filter(d=>d==='cw').length}</b></div>
+    `;
+    card.appendChild(stats);
+
+    // note
+    const note=document.createElement('div');
+    note.className='card-note';
+    note.innerHTML=study.note;
+    card.appendChild(note);
+
+    grid.appendChild(card);
+  });
+}
+
+// ── PATTERN GALLERY ────────────────────────────────────────────────────────
+const PATTERNS = [
+  {
+    label: 'PERFECT ALTERNATION',
+    sublabel: 'CCW↔CW every letter\nzero radial drops\ncleanest possible path',
+    words: ['STOP','STAR','SPIRAL','FIRE','LOVE','NODE','APEX'],
+  },
+  {
+    label: 'ALL CCW',
+    sublabel: 'every letter spirals in\nmultiple radial drops\ndense wound glyph',
+    words: ['EYES','ACE','OOO'],
+  },
+  {
+    label: 'ALL CW',
+    sublabel: 'every letter holds ring\nmultiple radial drops\ncircular stacking',
+    words: ['BDF','TRP'],
+  },
+  {
+    label: 'SHARED NODE PAIR',
+    sublabel: 'consecutive letters\non same node\nsame bearing, different dir',
+    words: ['AB','ST','OP','WX'],
+  },
+  {
+    label: 'HEAVY OPENER',
+    sublabel: 'first letter has\nlarge n/13 arc\ndominates the glyph',
+    words: ['WORD','YOGA','SUN','ORBIT'],
+  },
+];
+
+function buildPatterns(){
+  const sz=Math.min(parseInt(document.getElementById('sz').value),80);
+  const row=document.getElementById('pattern-row');
+  row.innerHTML='';
+
+  PATTERNS.forEach(pat=>{
+    const card=document.createElement('div');
+    card.className='pattern-card';
+
+    const lbl=document.createElement('div');
+    lbl.className='pat-label';
+    lbl.textContent=pat.label;
+    card.appendChild(lbl);
+
+    const sublbl=document.createElement('div');
+    sublbl.className='pat-sublabel';
+    sublbl.textContent=pat.sublabel;
+    card.appendChild(sublbl);
+
+    // render examples
+    const wrow=document.createElement('div');
+    wrow.style.cssText='display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:.5rem;';
+
+    pat.words.slice(0,4).forEach(w=>{
+      const validLetters=w.split('').filter(c=>LM[c]);
+      if(!validLetters.length)return;
+      const wrap=document.createElement('div');
+      wrap.style.cssText='display:flex;flex-direction:column;align-items:center;gap:2px;';
+      const cvs=document.createElement('canvas');
+      drawWord(cvs,w,sz);
+      const wlbl=document.createElement('div');
+      wlbl.style.cssText='font-size:.42rem;letter-spacing:.08em;color:rgba(232,224,204,0.35);font-family:"JetBrains Mono",monospace;';
+      wlbl.textContent=w;
+      wrap.appendChild(cvs);
+      wrap.appendChild(wlbl);
+      wrow.appendChild(wrap);
+    });
+
+    card.appendChild(wrow);
+    row.appendChild(card);
+  });
+}
+
+// ── EXPORT ─────────────────────────────────────────────────────────────────
+function exportPNG(){
+  const canvases=[...document.querySelectorAll('#studies-grid canvas')];
+  if(!canvases.length)return;
+  const sz=canvases[0].width;
+  const cols=3,rows=Math.ceil(canvases.length/cols);
+  const pad=20,gap=2;
+  const W=cols*(sz+pad*2)+(cols-1)*gap;
+  const H=rows*(sz+pad*2)+(rows-1)*gap+50;
+  const oc=document.createElement('canvas');
+  oc.width=W;oc.height=H;
+  const ctx=oc.getContext('2d');
+  ctx.fillStyle='#07080a';ctx.fillRect(0,0,W,H);
+  ctx.font='12px "JetBrains Mono",monospace';
+  ctx.fillStyle='rgba(200,168,75,0.6)';
+  ctx.fillText('GEOFONT 13 · WORD STUDIES · v6',pad,32);
+  canvases.forEach((c,i)=>{
+    const col=i%cols,row=Math.floor(i/cols);
+    ctx.drawImage(c,col*(sz+pad*2+gap)+pad,48+row*(sz+pad*2+gap)+pad);
+  });
+  const a=document.createElement('a');
+  a.download='geofont13-word-studies.png';
+  a.href=oc.toDataURL('image/png');a.click();
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+function buildAll(){
+  buildAB();
+  buildComponent();
+  buildStudies();
+  buildPatterns();
+}
+
+document.getElementById('sz').addEventListener('input',buildAll);
+document.getElementById('lw').addEventListener('input',buildAll);
+buildAll();
+</script>
+</body>
+</html>

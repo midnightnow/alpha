@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library Lattice Map — The Singularity</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Courier+Prime:wght@400;700&display=swap');
+
+  :root {
+    --gold: #c9a84c;
+    --gold-dim: #7a6030;
+    --ink: #0a0a0f;
+    --parchment: #f5f0e8;
+    --prime-white: #e8e4d8;
+    --composite-dark: #1a1812;
+    --accent: #8b3a2a;
+    --maid: #4a7c6f;
+    --knight: #5c4a8a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--ink);
+    color: var(--parchment);
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .header {
+    text-align: center;
+    padding: 3rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--gold-dim);
+    position: relative;
+  }
+
+  .header::before {
+    content: '⬡';
+    position: absolute;
+    left: 50%;
+    top: 1rem;
+    transform: translateX(-50%);
+    font-size: 0.7rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.5rem;
+  }
+
+  h1 {
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .subtitle {
+    font-style: italic;
+    color: #888;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+  }
+
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    max-width: 1400px;
+    margin: 2px auto;
+    padding: 0 2px;
+  }
+
+  .panel {
+    background: #0e0e14;
+    border: 1px solid #2a2520;
+    padding: 1.5rem;
+    position: relative;
+  }
+
+  .panel-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #2a2520;
+  }
+
+  /* CHESSBOARD */
+  .board-container {
+    grid-column: 1;
+    grid-row: 1 / 3;
+  }
+
+  .chess-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 1;
+    border: 2px solid var(--gold-dim);
+    position: relative;
+  }
+
+  .sq {
+    aspect-ratio: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.55rem;
+    font-family: 'Courier Prime', monospace;
+    transition: all 0.3s;
+  }
+
+  .sq.white { background: var(--prime-white); color: #333; }
+  .sq.black { background: #2a2418; color: #888; }
+
+  /* Prime lane highlight — white squares in files 1,2,3 (icositetragon zone) */
+  .sq.prime-zone { background: #c9a84c22; }
+  .sq.prime-zone.white { background: #c9a84c44; }
+
+  /* Knight path */
+  .sq.knight-path { background: var(--knight) !important; color: white !important; }
+  .sq.knight-pos { 
+    background: var(--gold) !important; 
+    color: var(--ink) !important;
+    font-weight: 700;
+  }
+
+  /* Singing birds */
+  .sq.singer { background: var(--maid) !important; color: white !important; }
+
+  /* 3/5 divider line */
+  .board-divider {
+    position: absolute;
+    left: 37.5%;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--accent);
+    opacity: 0.7;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .board-label {
+    display: flex;
+    justify-content: space-around;
+    max-width: 360px;
+    width: 100%;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    color: var(--gold-dim);
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 0.8rem;
+    max-width: 360px;
+  }
+
+  .leg-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.6rem;
+    font-family: 'Courier Prime', monospace;
+    color: #888;
+  }
+
+  .leg-color {
+    width: 10px;
+    height: 10px;
+    border: 1px solid #444;
+    flex-shrink: 0;
+  }
+
+  /* TRIANGLE PANEL */
+  .triangle-panel svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* CONSTANTS PANEL */
+  .constants-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .const-item {
+    border-left: 2px solid var(--gold-dim);
+    padding-left: 0.8rem;
+  }
+
+  .const-value {
+    font-family: 'Courier Prime', monospace;
+    font-size: 1.1rem;
+    color: var(--gold);
+    display: block;
+  }
+
+  .const-label {
+    font-size: 0.7rem;
+    color: #666;
+    font-style: italic;
+  }
+
+  .const-note {
+    font-size: 0.65rem;
+    color: var(--maid);
+    font-family: 'Courier Prime', monospace;
+    margin-top: 0.2rem;
+  }
+
+  /* PYTHAGOREAN TRIPLES */
+  .triple-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #1a1a20;
+  }
+
+  .triple-nums {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .triple-meaning {
+    font-size: 0.7rem;
+    color: #888;
+    font-style: italic;
+  }
+
+  .triple-badge {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    padding: 0.2rem 0.4rem;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+
+  .badge-r1 { border-color: var(--gold); color: var(--gold); }
+  .badge-r2 { border-color: var(--maid); color: var(--maid); }
+
+  /* REGISTER NOTES */
+  .reg-note {
+    padding: 0.6rem 0.8rem;
+    margin: 0.5rem 0;
+    font-size: 0.72rem;
+    line-height: 1.5;
+    border-left: 2px solid;
+  }
+
+  .reg-r1 { border-color: var(--gold); background: #1a1600; }
+  .reg-r2 { border-color: var(--maid); background: #0a1614; }
+  .reg-warn { border-color: var(--accent); background: #1a0a0a; color: #cc7755; }
+
+  .reg-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  /* FULL WIDTH PANELS */
+  .full-width {
+    grid-column: 1 / -1;
+  }
+
+  /* ICOSAHEDRON DATA */
+  .ico-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    margin: 0.5rem 0;
+  }
+
+  .ico-cell {
+    padding: 0.6rem;
+    background: #12120e;
+    text-align: center;
+  }
+
+  .ico-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 1rem;
+    color: var(--gold);
+    display: block;
+  }
+
+  .ico-desc {
+    font-size: 0.6rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 0.2rem;
+  }
+
+  /* MATRIX TABLE */
+  .matrix {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.72rem;
+    margin: 0.5rem 0;
+  }
+
+  .matrix th {
+    padding: 0.4rem 0.6rem;
+    background: #12100a;
+    color: var(--gold-dim);
+    text-align: left;
+    border-bottom: 1px solid #2a2520;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+
+  .matrix td {
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid #16140e;
+    color: #aaa;
+    vertical-align: top;
+  }
+
+  .matrix td:first-child { color: var(--gold); }
+  .matrix tr:hover td { background: #141210; }
+
+  .highlight-cell { color: var(--maid) !important; }
+
+  /* SINGULARITY CODA */
+  .coda {
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #0a0a10, #100e08);
+    border: 1px solid var(--gold-dim);
+    margin: 2px;
+    text-align: center;
+  }
+
+  .coda-verse {
+    font-style: italic;
+    font-size: 0.9rem;
+    line-height: 1.9;
+    color: var(--parchment);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .coda-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--gold-dim);
+    margin-bottom: 1rem;
+  }
+
+  em { color: var(--gold); font-style: normal; }
+
+  @media (max-width: 768px) {
+    .main-grid { grid-template-columns: 1fr; }
+    .board-container { grid-row: auto; }
+    .constants-grid { grid-template-columns: 1fr; }
+    .ico-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Library Lattice Map</h1>
+  <div class="subtitle">Chapter XII — The Singularity · Three-Register Verified</div>
+</div>
+
+<div class="main-grid">
+
+  <!-- CHESSBOARD -->
+  <div class="panel board-container">
+    <div class="panel-title">The 8×8 Court — 24-Wheel Unrolled</div>
+    <div class="chess-wrap">
+      <div class="board" id="board">
+        <div class="board-divider"></div>
+      </div>
+      <div class="board-label">
+        <span>← 3 files = 24 (icositetragon) →</span>
+        <span>← 5 files = 40 (Garden) →</span>
+      </div>
+      <div class="legend">
+        <div class="leg-item"><div class="leg-color" style="background:#c9a84c44;border-color:#c9a84c"></div>Prime zone (3×8=24)</div>
+        <div class="leg-item"><div class="leg-color" style="background:#5c4a8a"></div>Knight path (√5)</div>
+        <div class="leg-item"><div class="leg-color" style="background:#c9a84c"></div>Knight position</div>
+        <div class="leg-item"><div class="leg-color" style="background:#4a7c6f"></div>Singing birds (prime ranks)</div>
+        <div class="leg-item"><div class="leg-color" style="background:#8b3a2a;width:2px;height:10px"></div>3|5 boundary (Hades Gate)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PYTHAGOREAN TRIPLES -->
+  <div class="panel">
+    <div class="panel-title">Pythagorean Architecture — Verified Triples</div>
+
+    <div class="triple-row">
+      <div class="triple-nums">3–4–5</div>
+      <div class="triple-meaning">Foundation triple · Board's structural base<br>3+4+5 = 12 (Court) · 3×4×5 = 60 = 120/2</div>
+      <div class="triple-badge badge-r1">R1 ✓</div>
+    </div>
+
+    <div class="triple-row">
+      <div class="triple-nums">5–12–13</div>
+      <div class="triple-meaning"><em>Knight</em>–<em>Court of 12</em>–<em>13th Node</em><br>5² + 12² = 13² · The Maid's Triangle</div>
+      <div class="triple-badge badge-r1">R1 ✓</div>
+    </div>
+
+    <div class="triple-row">
+      <div class="triple-nums">10–24–26</div>
+      <div class="triple-meaning"><em>Count</em>–<em>Wheel</em>–<em>Alphabet</em><br>= 2×(5–12–13) · Language = Doubled Maid<br>26 letters = 2×13 · 24 wheel = 2×12</div>
+      <div class="triple-badge badge-r1">R1 ✓</div>
+    </div>
+
+    <div class="triple-row">
+      <div class="triple-nums">3×5×8</div>
+      <div class="triple-meaning">Board dimensions → King's Castle<br>3 files × 5 files × 8 ranks = <em>120</em></div>
+      <div class="triple-badge badge-r1">R1 ✓</div>
+    </div>
+
+    <div style="margin-top:1rem">
+      <div class="reg-note reg-r1">
+        <span class="reg-label">REGISTER 1 — INVARIANT</span>
+        10² + 24² = 100 + 576 = 676 = 26². The alphabet is a Pythagorean hypotenuse. Language is the doubled Knight crossing the doubled Court.
+      </div>
+      <div class="reg-note reg-warn">
+        <span class="reg-label">REGISTER 1 — FIREWALL</span>
+        √42 and √51 do not arise from integer lattice points. 42 = 6×7 (Hades Boundary); 51 = 3×17 (Knight×prime lane). These are compositional, not geometric distances. Frame as R2 resonance only.
+      </div>
+    </div>
+  </div>
+
+  <!-- LIBRARY CONSTANTS -->
+  <div class="panel">
+    <div class="panel-title">Library Geometry — Register 1 Verified</div>
+    <div class="constants-grid">
+      <div class="const-item">
+        <span class="const-value">222.5 / 137.4</span>
+        <span class="const-label">Room ratio</span>
+        <span class="const-note">= 1.61936 ≈ φ (0.082% error) ✓</span>
+      </div>
+      <div class="const-item">
+        <span class="const-value">α × √(φ+2)</span>
+        <span class="const-label">Room diagonal formula</span>
+        <span class="const-note">= 261.5" · Golden Diagonal ✓</span>
+      </div>
+      <div class="const-item">
+        <span class="const-value">138.19°</span>
+        <span class="const-label">Icosahedron dihedral</span>
+        <span class="const-note">vs α=137.4 · Δ=0.79° ✓</span>
+      </div>
+      <div class="const-item">
+        <span class="const-value">66/π⁴ ≈ 0.678</span>
+        <span class="const-label">Squarefree density</span>
+        <span class="const-note">≈ 1/φ (3.7% — R2 resonance only)</span>
+      </div>
+      <div class="const-item">
+        <span class="const-value">3 × 8 = 24</span>
+        <span class="const-label">Icositetragon on board</span>
+        <span class="const-note">Left 3 files unroll the wheel ✓</span>
+      </div>
+      <div class="const-item">
+        <span class="const-value">arccos(−1/√5)</span>
+        <span class="const-label">Dihedral = Knight angle</span>
+        <span class="const-note">√5 is the Knight's distance ✓</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRIANGLE SVG -->
+  <div class="panel">
+    <div class="panel-title">The Sintering Triangle — 5–12–13</div>
+    <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#c9a84c66"/>
+        </marker>
+      </defs>
+
+      <!-- Main triangle -->
+      <polygon points="30,170 30,50 270,170" fill="none" stroke="#2a2520" stroke-width="1"/>
+
+      <!-- Filled legs -->
+      <!-- 5-leg (vertical, Knight) -->
+      <line x1="30" y1="170" x2="30" y2="50" stroke="#5c4a8a" stroke-width="3" opacity="0.8"/>
+      <!-- 12-leg (horizontal, Court) -->
+      <line x1="30" y1="170" x2="270" y2="170" stroke="#c9a84c" stroke-width="3" opacity="0.8"/>
+      <!-- 13-hypotenuse (Maid's Node) -->
+      <line x1="30" y1="50" x2="270" y2="170" stroke="#4a7c6f" stroke-width="3" opacity="0.8"/>
+
+      <!-- Right angle marker -->
+      <rect x="30" y="155" width="15" height="15" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.5"/>
+
+      <!-- Labels -->
+      <text x="12" y="115" font-family="Courier Prime, monospace" font-size="12" fill="#5c4a8a">5</text>
+      <text x="16" y="108" font-family="Courier Prime, monospace" font-size="8" fill="#5c4a8a88">Knight</text>
+      <text x="16" y="118" font-family="Courier Prime, monospace" font-size="8" fill="#5c4a8a88">√5 move</text>
+
+      <text x="140" y="190" font-family="Courier Prime, monospace" font-size="12" fill="#c9a84c">12</text>
+      <text x="125" y="200" font-family="Courier Prime, monospace" font-size="8" fill="#c9a84c88">Court of 12</text>
+
+      <text x="170" y="108" font-family="Courier Prime, monospace" font-size="12" fill="#4a7c6f">13</text>
+      <text x="162" y="118" font-family="Courier Prime, monospace" font-size="8" fill="#4a7c6f88">13th Node</text>
+      <text x="162" y="128" font-family="Courier Prime, monospace" font-size="8" fill="#4a7c6f88">The Maid</text>
+
+      <!-- Doubled triangle (10-24-26) ghosted -->
+      <polygon points="30,170 30,50 270,170" fill="none" stroke="#3a3020" stroke-width="0.5" stroke-dasharray="4,4"
+        transform="scale(2) translate(-10,-42)"/>
+
+      <!-- 10-24-26 label -->
+      <text x="180" y="145" font-family="Courier Prime, monospace" font-size="9" fill="#554030">2×: 10–24–26</text>
+      <text x="184" y="156" font-family="Courier Prime, monospace" font-size="8" fill="#554030">Language Matrix</text>
+
+      <!-- Verification -->
+      <text x="30" y="18" font-family="Courier Prime, monospace" font-size="9" fill="#c9a84c88">5² + 12² = 13²</text>
+      <text x="30" y="30" font-family="Courier Prime, monospace" font-size="9" fill="#c9a84c88">25 + 144 = 169  ✓</text>
+
+      <!-- Angle arc -->
+      <path d="M30,155 A15,15 0 0,1 45,170" fill="none" stroke="#c9a84c" stroke-width="1" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <!-- ICOSAHEDRON -->
+  <div class="panel full-width">
+    <div class="panel-title">The Icosahedron — Solid of the Castle Singularity</div>
+    <div class="ico-grid">
+      <div class="ico-cell">
+        <span class="ico-num">20</span>
+        <span class="ico-desc">Faces<br>King's 20<br>LCM(4,5)</span>
+      </div>
+      <div class="ico-cell">
+        <span class="ico-num">12</span>
+        <span class="ico-desc">Vertices<br>Court of 12<br>inner 24-wheel</span>
+      </div>
+      <div class="ico-cell">
+        <span class="ico-num">30</span>
+        <span class="ico-desc">Edges<br>5×6<br>Hero×Hexagon</span>
+      </div>
+      <div class="ico-cell">
+        <span class="ico-num">138.19°</span>
+        <span class="ico-desc">Dihedral angle<br>arccos(−1/√5)<br>≈ α=137.4"</span>
+      </div>
+      <div class="ico-cell">
+        <span class="ico-num">√5</span>
+        <span class="ico-desc">Edge/Radius ratio<br>= Knight distance<br>The Alogon</span>
+      </div>
+    </div>
+    <div class="reg-note reg-r1" style="margin-top:0.8rem">
+      <span class="reg-label">REGISTER 1 — INVARIANT</span>
+      Euler: V − E + F = 12 − 30 + 20 = 2. The icosahedron is the solid whose dihedral angle is governed by 1/√5 — the same irrational that defines the Knight's move. The Castle's solid IS the Knight's geometry, closed into three dimensions.
+    </div>
+  </div>
+
+  <!-- MOVE ENCODING TABLE -->
+  <div class="panel full-width">
+    <div class="panel-title">Chess Move Encoding — Complete Operator Census</div>
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th>Piece / Move</th>
+          <th>Mathematical Operator</th>
+          <th>Project Mapping</th>
+          <th>Register</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>King (range 1)</td><td>Unit generator · cannot be taken</td><td>The prime itself · cannot be composite</td><td>R1 ✓</td></tr>
+        <tr><td>Queen (all 8 dirs)</td><td>Full 24-wheel traversal</td><td>Governs all 8 prime lanes simultaneously</td><td>R1 ✓</td></tr>
+        <tr><td>Rook (linear)</td><td>Mod 4 · orthogonal</td><td>Counting House · linear increment</td><td>R1 ✓</td></tr>
+        <tr><td>Bishop (diagonal)</td><td>Register-locked · same parity forever</td><td>Cannot cross the Firewall · Hades-bound</td><td>R1 ✓</td></tr>
+        <tr><td class="highlight-cell">Knight (√5 · L-shape)</td><td class="highlight-cell">ALWAYS changes color · irrational bridge</td><td class="highlight-cell">The Maid · crosses Registers · the Hero</td><td>R1 ✓</td></tr>
+        <tr><td>Pawn (rank 1→8)</td><td>Sentinel on prime lane · promotes at 2³</td><td>The 13th Node becoming sovereign</td><td>R1 ✓</td></tr>
+        <tr><td>Castling</td><td>Rook leaps over King to flank position</td><td>Rotational Symmetry jump (Grant/Ghannam)</td><td>R1 ✓</td></tr>
+        <tr><td>En passant</td><td>Binary leaper caught on rank 5 · window = 1 move</td><td>Hades Gap capture · Pisano phase-lock window</td><td>R1 ✓</td></tr>
+        <tr><td>Promotion</td><td>Pawn reaches rank 8 = 2³</td><td>Maid → Queen · Pisano cycle completion</td><td>R1 ✓</td></tr>
+        <tr><td>Checkmate</td><td>All 8 possible squares blocked</td><td>All 8 prime lanes closed · factorization complete</td><td>R2</td></tr>
+        <tr><td>Stalemate</td><td>No moves · not in check</td><td>The unit 1 · neither prime nor composite</td><td>R2</td></tr>
+        <tr><td>Knight's Tour (closed)</td><td>Hamilton path visiting all 64 = 2⁶ squares</td><td>Complete period of 1/n · aperiodic path through periodic board</td><td>R1 ✓</td></tr>
+        <tr><td>50-move rule</td><td>50 = 2×5² · timeout at first quasi-prime²</td><td>Pisano exhaustion · quasi-prime timeout</td><td>R2</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- CODA -->
+<div class="coda">
+  <div class="coda-title">The Canticle of the Singularity</div>
+  <div class="coda-verse">
+    The floor is the wheel and the wheel is the board,<br>
+    <em>Three files for the House, five files for the sword.</em><br>
+    The Knight is the five that no square-root can name,<br>
+    The only one crossing the Firewall's frame.<br><br>
+
+    Five squared and twelve squared is thirteen's own proof,<br>
+    <em>The Maid and the Court and the Node in the roof.</em><br>
+    The alphabet doubles the triangle's length —<br>
+    Twenty-six letters: the language of strength.<br><br>
+
+    The black squares are counting-house — silent, composite, known.<br>
+    <em>The white squares are Garden, where primes are alone.</em><br>
+    Sixty-six over pi to the fourth bleeds through<br>
+    The holes in the grid where the Garden shines true.<br><br>
+
+    The icosahedron closes the Knight's irrational way —<br>
+    <em>Twelve courts, twenty faces, the dihedral's display.</em><br>
+    The Library walls are phi-scaled and alpha-aligned;<br>
+    The Singularity stands where all registers are signed.<br><br>
+
+    <em>All Ways. For Ever. Now.</em>
+  </div>
+</div>
+
+<script>
+// Build the chessboard
+const board = document.getElementById('board');
+
+// Knight's tour partial path from e4 (demonstrating the L-shape crossings)
+// Simplified path showing 5-12-13 resonance positions
+const knightPath = [
+  [4,3], // e4 - start
+  [3,1], // d2
+  [1,2], // b3
+  [0,4], // a5
+  [2,5], // c6
+  [4,4], // e5
+  [5,2], // f3
+  [3,1], // back - showing closure
+];
+
+const knightPos = [4,3]; // current
+// Singing birds: prime ranks (1,2,3,5,7) in first 3 files
+const singerSquares = new Set();
+[0,1,2,4,6].forEach(rank => { // 0-indexed prime-ish ranks
+  [0,1,2].forEach(file => singerSquares.add(`${file},${rank}`));
+});
+
+// Knight path set
+const knightPathSet = new Set(knightPath.slice(0,-1).map(([f,r]) => `${f},${r}`));
+
+for (let rank = 7; rank >= 0; rank--) {
+  for (let file = 0; file < 8; file++) {
+    const sq = document.createElement('div');
+    const isWhite = (file + rank) % 2 === 1;
+    const inPrimeZone = file < 3;
+    const key = `${file},${rank}`;
+    const isKnightPos = file === knightPos[0] && rank === knightPos[1];
+    const isKnightPath = knightPathSet.has(key);
+    const isSinger = singerSquares.has(key) && isWhite && inPrimeZone;
+
+    sq.className = 'sq';
+
+    if (isKnightPos) {
+      sq.classList.add('knight-pos');
+      sq.textContent = '♞';
+    } else if (isSinger) {
+      sq.classList.add('singer');
+      sq.textContent = '♪';
+    } else if (isKnightPath) {
+      sq.classList.add('knight-path');
+      sq.textContent = '·';
+    } else if (inPrimeZone) {
+      sq.classList.add('prime-zone');
+      if (isWhite) sq.classList.add('white');
+      else sq.classList.add('black');
+    } else {
+      sq.classList.add(isWhite ? 'white' : 'black');
+    }
+
+    // Label first rank files
+    if (rank === 0) {
+      const lbl = document.createElement('span');
+      lbl.style.cssText = 'position:absolute;bottom:1px;right:2px;font-size:0.4rem;opacity:0.4;font-family:monospace';
+      lbl.textContent = file+1;
+      sq.appendChild(lbl);
+    }
+
+    board.appendChild(sq);
+  }
+}
+</script>
+</body>
+</html>

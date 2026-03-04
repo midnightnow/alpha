@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geofont 13 — Alphabet Reference</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+:root {
+  --bg:      #07080a;
+  --surface: #0d0f14;
+  --gold:    #c8a84b;
+  --gold-d:  rgba(200,168,75,0.18);
+  --gold-l:  rgba(200,168,75,0.55);
+  --ccw:     #4ab8c8;
+  --cw:      #c84a4a;
+  --text:    #e8e0cc;
+  --dim:     rgba(232,224,204,0.35);
+  --dimmer:  rgba(232,224,204,0.18);
+}
+
+* { box-sizing:border-box; margin:0; padding:0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  min-height: 100vh;
+  padding: 0 0 4rem;
+}
+
+/* ── HEADER ── */
+header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 1.4rem 2.4rem 1rem;
+  border-bottom: 1px solid rgba(200,168,75,0.15);
+  flex-wrap: wrap;
+  gap: .6rem;
+}
+.h-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(.9rem,2.5vw,1.5rem);
+  letter-spacing: .3em;
+  color: var(--gold);
+}
+.h-sub {
+  font-size: .56rem;
+  letter-spacing: .2em;
+  color: var(--dim);
+}
+.h-controls {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.btn {
+  background: transparent;
+  border: 1px solid var(--gold-l);
+  color: var(--gold);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .6rem;
+  letter-spacing: .1em;
+  padding: .38rem .8rem;
+  cursor: pointer;
+  transition: all .18s;
+}
+.btn:hover { background: var(--gold-d); }
+.btn.on { background: var(--gold-d); border-color: var(--gold); }
+.ol { font-size:.55rem; letter-spacing:.12em; color:var(--dim); }
+input[type=range] {
+  -webkit-appearance:none; width:70px; height:2px;
+  background:rgba(200,168,75,.28); outline:none; cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance:none; width:9px; height:9px;
+  border-radius:50%; background:var(--gold); cursor:pointer;
+}
+
+/* ── SPEC STRIP ── */
+.spec-strip {
+  display: flex;
+  gap: 2rem;
+  padding: .7rem 2.4rem;
+  background: var(--surface);
+  border-bottom: 1px solid rgba(200,168,75,.08);
+  flex-wrap: wrap;
+  align-items: center;
+}
+.spec-item {
+  font-size: .54rem;
+  letter-spacing: .12em;
+  color: var(--dim);
+}
+.spec-item b { color: var(--gold); font-weight: 400; }
+.legend {
+  display: flex; gap: 1.2rem; margin-left: auto; flex-wrap: wrap;
+}
+.li { display:flex; align-items:center; gap:.35rem; font-size:.54rem; letter-spacing:.09em; color:var(--dim); }
+.ls { width:16px; height:1.5px; }
+
+/* ── GRID ── */
+.grid-wrap {
+  padding: 2rem 2rem 1rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.alphabet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--cell-min, 130px), 1fr));
+  gap: 1px;
+  background: rgba(200,168,75,0.07);
+  border: 1px solid rgba(200,168,75,0.07);
+}
+
+.letter-cell {
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: .9rem .5rem .7rem;
+  position: relative;
+  transition: background .15s;
+  cursor: default;
+}
+.letter-cell:hover { background: var(--surface); }
+
+.cell-letter {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  letter-spacing: .12em;
+  margin-bottom: .45rem;
+  line-height: 1;
+}
+.cell-letter.ccw { color: var(--ccw); }
+.cell-letter.cw  { color: var(--cw); }
+
+.cell-canvas { display:block; }
+
+.cell-meta {
+  margin-top: .4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .15rem;
+}
+.meta-node {
+  font-size: .5rem;
+  letter-spacing: .12em;
+  color: var(--dim);
+}
+.meta-node b { color: var(--gold); font-weight:400; }
+.meta-arc {
+  font-size: .5rem;
+  letter-spacing: .1em;
+  color: var(--dimmer);
+}
+.meta-dir {
+  font-size: .48rem;
+  letter-spacing: .15em;
+  font-weight: 500;
+}
+.meta-dir.ccw { color: var(--ccw); }
+.meta-dir.cw  { color: var(--cw); }
+.meta-bear {
+  font-size: .47rem;
+  letter-spacing: .08em;
+  color: var(--dimmer);
+}
+
+/* Pair divider: faint line between A/B pairs */
+.letter-cell.pair-start {
+  border-left: 1px solid rgba(200,168,75,0.12);
+}
+
+/* ── BOTTOM REFERENCE ── */
+.ref-section {
+  padding: 1.6rem 2.4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.ref-title {
+  font-size: .55rem;
+  letter-spacing: .25em;
+  color: var(--gold-l);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+.node-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .55rem;
+  letter-spacing: .07em;
+}
+.node-table th {
+  color: var(--gold);
+  font-weight: 400;
+  letter-spacing: .14em;
+  padding: .3rem .6rem;
+  border-bottom: 1px solid rgba(200,168,75,.15);
+  text-align: left;
+}
+.node-table td {
+  padding: .28rem .6rem;
+  color: var(--dim);
+  border-bottom: 1px solid rgba(200,168,75,.05);
+}
+.node-table td.ccw { color: var(--ccw); }
+.node-table td.cw  { color: var(--cw); }
+.node-table td.gold { color: var(--gold); }
+.node-table tr:hover td { background: var(--surface); }
+
+/* ── FULL SENTENCE DEMO ── */
+.demo-section {
+  padding: 1rem 2.4rem 1.4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(200,168,75,.08);
+}
+.demo-label {
+  font-size: .54rem;
+  letter-spacing: .2em;
+  color: var(--dim);
+  margin-bottom: .8rem;
+}
+#demo-output {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  align-items: center;
+}
+.demo-controls {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  margin-bottom: .7rem;
+  flex-wrap: wrap;
+}
+#demo-inp {
+  background: var(--surface);
+  border: 1px solid rgba(200,168,75,.25);
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .8rem;
+  padding: .38rem .75rem;
+  outline: none;
+  min-width: 220px;
+  flex: 1;
+  max-width: 420px;
+}
+#demo-inp:focus { border-color: var(--gold); }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="h-title">GEOFONT 13</div>
+    <div class="h-sub" style="margin-top:.25rem">ALPHABET REFERENCE SHEET · 13-NODE BIPOLAR SPIRAL CIPHER · v6</div>
+  </div>
+  <div class="h-controls">
+    <span class="ol">SIZE</span>
+    <input type="range" id="sz" min="48" max="180" value="90" oninput="buildGrid()">
+    <span class="ol" style="margin-left:.5rem">LINE</span>
+    <input type="range" id="lw" min="1" max="16" value="3" oninput="buildGrid()">
+    <button class="btn on" id="bColor" onclick="togColor()">COLOUR</button>
+    <button class="btn on" id="bAnnot" onclick="togAnnot()">ANNOTATIONS</button>
+    <button class="btn" onclick="exportSheet()">↓ PNG</button>
+  </div>
+</header>
+
+<div class="spec-strip">
+  <div class="spec-item">NODES <b>13</b></div>
+  <div class="spec-item">STEP <b>360/13 = 27.692°</b></div>
+  <div class="spec-item">APEX <b>A+B @ North 0°</b></div>
+  <div class="spec-item">ARC LAW <b>letter n/13 × 2π</b></div>
+  <div class="spec-item">CCW <b>spirals inward</b></div>
+  <div class="spec-item">CW <b>holds ring radius</b></div>
+  <div class="spec-item">ORIGIN <b>North rim → centre</b></div>
+  <div class="legend">
+    <div class="li"><div class="ls" style="background:#4ab8c8"></div>CCW odd (A C E G I K M O Q S U W Y)</div>
+    <div class="li"><div class="ls" style="background:#c84a4a"></div>CW even (B D F H J L N P R T V X Z)</div>
+  </div>
+</div>
+
+<div class="grid-wrap">
+  <div class="alphabet-grid" id="alpha-grid"></div>
+</div>
+
+<div class="demo-section">
+  <div class="demo-label">LIVE SENTENCE — each word rendered as single composite glyph</div>
+  <div class="demo-controls">
+    <input type="text" id="demo-inp" value="the quick brown fox" placeholder="type a sentence…">
+    <button class="btn" onclick="renderDemo()">RENDER</button>
+    <span class="ol" style="margin-left:.4rem">WORD SIZE</span>
+    <input type="range" id="dsz" min="40" max="200" value="80" oninput="renderDemo()">
+  </div>
+  <div id="demo-output"></div>
+</div>
+
+<div class="ref-section">
+  <div class="ref-title">Node Reference Table</div>
+  <table class="node-table" id="node-table"></table>
+</div>
+
+<script>
+// ── LETTER MAP (v6 locked spec) ────────────────────────────────────────────
+const ND = [
+  {id:0,  b:0,     l:['A','B'], r:[72,58]},
+  {id:1,  b:27.7,  l:['C','D'], r:[94,91]},
+  {id:2,  b:55.4,  l:['E','F'], r:[34,31]},
+  {id:3,  b:83.1,  l:['G','H'], r:[67,45]},
+  {id:4,  b:110.8, l:['I','J'], r:[78,88]},
+  {id:5,  b:138.5, l:['K','L'], r:[63,52]},
+  {id:6,  b:166.2, l:['M','N'], r:[71,69]},
+  {id:7,  b:193.8, l:['O','P'], r:[98,93]},
+  {id:8,  b:221.5, l:['Q','R'], r:[89,84]},
+  {id:9,  b:249.2, l:['S','T'], r:[96,47]},
+  {id:10, b:276.9, l:['U','V'], r:[92,87]},
+  {id:11, b:304.6, l:['W','X'], r:[74,91]},
+  {id:12, b:332.3, l:['Y','Z'], r:[68,43]},
+];
+
+const LM = {};
+ND.forEach(n => n.l.forEach((ch, i) => {
+  LM[ch] = {
+    node:    n.id,
+    bearing: n.b,
+    ccw:     i === 0,
+    n:       n.id + 1,   // 1–13
+    res:     n.r[i],
+    pair:    n.l[1 - i], // the sibling letter
+  };
+}));
+
+let showColor = true;
+let showAnnot = true;
+
+function togColor() {
+  showColor = !showColor;
+  document.getElementById('bColor').classList.toggle('on', showColor);
+  buildGrid(); renderDemo();
+}
+function togAnnot() {
+  showAnnot = !showAnnot;
+  document.getElementById('bAnnot').classList.toggle('on', showAnnot);
+  buildGrid();
+}
+
+// ── CORE DRAW: single-letter glyph ────────────────────────────────────────
+// Used for alphabet sheet (single letter = one arc)
+function drawLetter(canvas, ch, size, lw_override) {
+  const info = LM[ch.toUpperCase()];
+  if (!info) return;
+
+  const lw_raw = lw_override !== undefined ? lw_override
+               : parseInt(document.getElementById('lw').value);
+  const lw = lw_raw * (size / 120);
+
+  canvas.width = canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, size, size);
+
+  const cx = size / 2, cy = size / 2;
+  const R_outer = size * 0.42;
+  const R_guard = size * 0.10;
+
+  // ── outer circle ──
+  ctx.beginPath();
+  ctx.arc(cx, cy, R_outer, 0, Math.PI * 2);
+  ctx.strokeStyle = 'rgba(200,168,75,0.22)';
+  ctx.lineWidth = Math.max(0.5, lw * 0.28);
+  ctx.stroke();
+
+  // ── north tick (apex marker) ──
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - R_outer + lw * 0.2);
+  ctx.lineTo(cx, cy - R_outer - lw * 1.8);
+  ctx.strokeStyle = 'rgba(200,168,75,0.4)';
+  ctx.lineWidth = Math.max(0.4, lw * 0.22);
+  ctx.stroke();
+
+  // ── node bearing tick on rim ──
+  // small mark showing where THIS letter's bearing is
+  const bRad = info.bearing * Math.PI / 180;
+  const tickX = cx + R_outer * Math.sin(bRad);
+  const tickY = cy - R_outer * Math.cos(bRad);
+  // tick points radially inward
+  const tLen = lw * 2.2;
+  ctx.beginPath();
+  ctx.moveTo(tickX, tickY);
+  ctx.lineTo(
+    tickX - Math.sin(bRad) * tLen,
+    tickY + Math.cos(bRad) * tLen
+  );
+  const col = showColor
+    ? (info.ccw ? '#4ab8c8' : '#c84a4a')
+    : 'rgba(232,224,204,0.7)';
+  ctx.strokeStyle = col;
+  ctx.lineWidth = Math.max(0.6, lw * 0.45);
+  ctx.stroke();
+
+  // ── spiral segment ──
+  const totalAngle = (info.n / 13) * 2 * Math.PI;
+  const sign       = info.ccw ? -1 : +1;
+  const R_end      = info.ccw
+    ? Math.max(R_outer - (R_outer - R_guard) * 0.85, R_guard)
+    : R_outer;   // CW stays on rim
+
+  const steps = Math.max(80, Math.round(totalAngle / (2 * Math.PI) * 180));
+
+  ctx.beginPath();
+  for (let s = 0; s <= steps; s++) {
+    const t       = s / steps;
+    const r       = R_outer + (R_end - R_outer) * t;
+    const bearing = bRad + sign * totalAngle * t;
+    const x = cx + r * Math.sin(bearing);
+    const y = cy - r * Math.cos(bearing);
+    s === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.strokeStyle = col;
+  ctx.lineWidth   = Math.max(0.8, lw * 0.9);
+  ctx.lineCap     = 'round';
+  ctx.stroke();
+
+  // ── entry dot at bearing point on rim ──
+  ctx.beginPath();
+  ctx.arc(tickX, tickY, Math.max(1.2, lw * 0.9), 0, Math.PI * 2);
+  ctx.fillStyle = 'rgba(200,168,75,0.75)';
+  ctx.fill();
+
+  // ── inner end dot ──
+  const endBearing = bRad + sign * totalAngle;
+  const ex = cx + R_end * Math.sin(endBearing);
+  const ey = cy - R_end * Math.cos(endBearing);
+  ctx.beginPath();
+  ctx.arc(ex, ey, Math.max(0.8, lw * 0.6), 0, Math.PI * 2);
+  ctx.fillStyle = col;
+  ctx.fill();
+}
+
+// ── CORE DRAW: word glyph (v6 logic, verbatim) ────────────────────────────
+function drawWordGlyph(canvas, word, size) {
+  const lw_raw = parseInt(document.getElementById('lw').value);
+  const lw = lw_raw * (size / 120);
+
+  canvas.width = canvas.height = size;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#07080a';
+  ctx.fillRect(0, 0, size, size);
+
+  const letters = word.toUpperCase().split('').filter(c => LM[c]);
+  if (!letters.length) return;
+
+  const cx = size / 2, cy = size / 2;
+  const R_outer = size * 0.44;
+  const R_guard = size * 0.10;
+  const ringStep = Math.min(
+    12 * (size / 120),
+    (R_outer - R_guard) / Math.max(letters.length, 1)
+  );
+
+  if (OPT_circle) {
+    ctx.beginPath();
+    ctx.arc(cx, cy, R_outer, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(200,168,75,0.2)';
+    ctx.lineWidth = Math.max(0.4, lw * 0.3);
+    ctx.stroke();
+  }
+
+  // North tick
+  ctx.beginPath();
+  ctx.moveTo(cx, cy - R_outer - lw * 1.5);
+  ctx.lineTo(cx, cy - R_outer + lw * 0.3);
+  ctx.strokeStyle = 'rgba(200,168,75,0.35)';
+  ctx.lineWidth = Math.max(0.3, lw * 0.25);
+  ctx.stroke();
+
+  let curR = R_outer, curBearing = 0, prevDir = null, firstPoint = true;
+
+  function pt(r, bearing) {
+    const x = cx + r * Math.sin(bearing);
+    const y = cy - r * Math.cos(bearing);
+    if (firstPoint) { ctx.moveTo(x, y); firstPoint = false; }
+    else ctx.lineTo(x, y);
+  }
+
+  ctx.beginPath();
+  ctx.strokeStyle = showColor ? '#e8e0cc' : 'rgba(232,224,204,0.85)';
+  ctx.lineWidth   = Math.max(0.5, lw * 0.4);
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+
+  for (let i = 0; i < letters.length; i++) {
+    const ch = letters[i], info = LM[ch];
+    if (curR <= R_guard) break;
+    const totalAngle = (info.n / 13) * 2 * Math.PI;
+    const isCCW = info.ccw;
+    const sign  = isCCW ? -1 : +1;
+    const thisDir = isCCW ? 'ccw' : 'cw';
+
+    if (prevDir === thisDir) {
+      const dropR = Math.max(curR - ringStep * 0.35, R_guard);
+      for (let s = 1; s <= 6; s++) pt(curR + (dropR - curR) * (s / 6), curBearing);
+      curR = dropR;
+    }
+
+    const steps = Math.max(60, Math.round(totalAngle / (2 * Math.PI) * 120));
+    const R_end = isCCW ? Math.max(curR - ringStep, R_guard) : curR;
+
+    for (let s = 0; s <= steps; s++) {
+      const t = s / steps;
+      pt(curR + (R_end - curR) * t, curBearing + sign * totalAngle * t);
+    }
+
+    curBearing += sign * totalAngle;
+    curR = R_end;
+    prevDir = thisDir;
+  }
+  ctx.stroke();
+}
+
+let OPT_circle = true;
+
+// ── BUILD ALPHABET GRID ───────────────────────────────────────────────────
+function buildGrid() {
+  const size = parseInt(document.getElementById('sz').value);
+  const grid = document.getElementById('alpha-grid');
+  grid.innerHTML = '';
+  // CSS custom property for responsive columns
+  grid.style.setProperty('--cell-min', Math.max(100, size + 30) + 'px');
+
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach((ch, idx) => {
+    const info = LM[ch];
+    const isCCW = info.ccw;
+    const isNewPair = (idx % 2 === 0);
+
+    const cell = document.createElement('div');
+    cell.className = 'letter-cell' + (isNewPair && idx > 0 ? ' pair-start' : '');
+
+    // Letter name
+    const lbl = document.createElement('div');
+    lbl.className = 'cell-letter ' + (isCCW ? 'ccw' : 'cw');
+    lbl.textContent = ch;
+    cell.appendChild(lbl);
+
+    // Canvas
+    const cvs = document.createElement('canvas');
+    cvs.className = 'cell-canvas';
+    drawLetter(cvs, ch, size);
+    cell.appendChild(cvs);
+
+    // Annotations
+    if (showAnnot) {
+      const meta = document.createElement('div');
+      meta.className = 'cell-meta';
+
+      const mNode = document.createElement('div');
+      mNode.className = 'meta-node';
+      mNode.innerHTML = `NODE <b>${info.node + 1}</b> / 13`;
+      meta.appendChild(mNode);
+
+      const mArc = document.createElement('div');
+      mArc.className = 'meta-arc';
+      mArc.textContent = `arc ${info.n}/13 × 2π`;
+      meta.appendChild(mArc);
+
+      const mBear = document.createElement('div');
+      mBear.className = 'meta-bear';
+      mBear.textContent = `${info.bearing.toFixed(1)}° from N`;
+      meta.appendChild(mBear);
+
+      const mDir = document.createElement('div');
+      mDir.className = 'meta-dir ' + (isCCW ? 'ccw' : 'cw');
+      mDir.textContent = isCCW ? 'CCW · spirals in' : 'CW · holds ring';
+      meta.appendChild(mDir);
+
+      const mPair = document.createElement('div');
+      mPair.className = 'meta-bear';
+      mPair.textContent = `pair: ${ch} + ${info.pair}`;
+      meta.appendChild(mPair);
+
+      cell.appendChild(meta);
+    }
+
+    grid.appendChild(cell);
+  });
+}
+
+// ── DEMO SENTENCE ─────────────────────────────────────────────────────────
+function renderDemo() {
+  const text = document.getElementById('demo-inp').value;
+  const size = parseInt(document.getElementById('dsz').value);
+  const out  = document.getElementById('demo-output');
+  out.innerHTML = '';
+  const spaceW = Math.round(size * 0.32);
+
+  for (const token of text.split(/(\s+)/)) {
+    if (/^\s+$/.test(token)) {
+      const sp = document.createElement('div');
+      sp.style.cssText = `display:inline-block;width:${spaceW}px;flex-shrink:0;`;
+      out.appendChild(sp);
+      continue;
+    }
+    if (!token.toUpperCase().split('').some(c => LM[c])) continue;
+    const cvs = document.createElement('canvas');
+    drawWordGlyph(cvs, token, size);
+    cvs.style.flexShrink = '0';
+    out.appendChild(cvs);
+  }
+}
+
+// ── NODE REFERENCE TABLE ──────────────────────────────────────────────────
+function buildTable() {
+  const tbl = document.getElementById('node-table');
+  tbl.innerHTML = `
+    <thead><tr>
+      <th>NODE</th><th>BEARING</th><th>CCW LETTER</th><th>CCW ARC</th>
+      <th>CW LETTER</th><th>CW ARC</th><th>COMPASS</th>
+    </tr></thead>
+    <tbody>${ND.map(n => {
+      const compass = bearingToCompass(n.b);
+      return `<tr>
+        <td class="gold">${n.id + 1}</td>
+        <td>${n.b.toFixed(1)}°</td>
+        <td class="ccw">${n.l[0]}</td>
+        <td>${n.id + 1}/13 · ${((n.id + 1) / 13 * 360).toFixed(1)}°</td>
+        <td class="cw">${n.l[1]}</td>
+        <td>${n.id + 1}/13 · ${((n.id + 1) / 13 * 360).toFixed(1)}°</td>
+        <td>${compass}</td>
+      </tr>`;
+    }).join('')}</tbody>`;
+}
+
+function bearingToCompass(b) {
+  const dirs = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
+  return dirs[Math.round(b / 22.5) % 16];
+}
+
+// ── PNG EXPORT of full grid ────────────────────────────────────────────────
+function exportSheet() {
+  const canvases = [...document.querySelectorAll('#alpha-grid canvas')];
+  if (!canvases.length) return;
+  const s  = canvases[0].width;
+  const cols = Math.ceil(Math.sqrt(26));
+  const rows = Math.ceil(26 / cols);
+  const pad  = 16, gap = 2;
+  const cellW = s + pad * 2;
+  const cellH = s + pad * 2;
+  const W = cols * cellW + gap * (cols - 1);
+  const H = rows * cellH + gap * (rows - 1) + 60;
+
+  const oc  = document.createElement('canvas');
+  oc.width  = W; oc.height = H;
+  const ctx = oc.getContext('2d');
+  ctx.fillStyle = '#07080a';
+  ctx.fillRect(0, 0, W, H);
+
+  // Header text
+  ctx.font = '500 13px "JetBrains Mono", monospace';
+  ctx.fillStyle = 'rgba(200,168,75,0.7)';
+  ctx.letterSpacing = '3px';
+  ctx.fillText('GEOFONT 13 · ALPHABET REFERENCE · v6', pad, 36);
+
+  canvases.forEach((c, i) => {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+    const x = col * (cellW + gap) + pad;
+    const y = 52 + row * (cellH + gap) + pad;
+    ctx.drawImage(c, x, y);
+
+    // letter label
+    const ch = String.fromCharCode(65 + i);
+    const info = LM[ch];
+    ctx.font = '600 11px "JetBrains Mono", monospace';
+    ctx.fillStyle = info.ccw ? '#4ab8c8' : '#c84a4a';
+    ctx.fillText(ch, x + s / 2 - 4, y - 4);
+  });
+
+  const a = document.createElement('a');
+  a.download = 'geofont13-alphabet.png';
+  a.href = oc.toDataURL('image/png');
+  a.click();
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+document.getElementById('demo-inp').addEventListener('keydown', e => {
+  if (e.key === 'Enter') renderDemo();
+});
+
+buildGrid();
+buildTable();
+renderDemo();
+</script>
+</body>
+</html>

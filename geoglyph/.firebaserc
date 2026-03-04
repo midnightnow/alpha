@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "starmath-59fef"
+  },
+  "targets": {
+    "starmath-59fef": {
+      "hosting": {
+        "glyph": [
+          "glyph"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

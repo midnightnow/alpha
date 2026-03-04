@@ -1,0 +1,38 @@
+{
+  "name": "plimpton322-viz",
+  "version": "1.0.0",
+  "description": "Interactive 3D visualization of Plimpton 322 - the world's oldest trigonometric table and catalog of practical slopes",
+  "type": "module",
+  "author": {
+    "name": "Influential Digital",
+    "url": "https://influential.digital"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/influential-digital/plimpton322-viz"
+  },
+  "keywords": [
+    "plimpton-322",
+    "babylonian-mathematics",
+    "trigonometry",
+    "pythagorean-triples",
+    "ancient-mathematics",
+    "three.js",
+    "interactive-visualization",
+    "education",
+    "history-of-mathematics"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "^0.169.0",
+    "gsap": "^3.12.5"
+  },
+  "devDependencies": {
+    "vite": "^5.4.11"
+  }
+}

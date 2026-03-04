@@ -1,0 +1,19 @@
+# The 7 Vitrified Constants (De-Mythologized Physics)
+total_node_count: 93
+base_wavelength: 42
+max_pipe_diameter: 0.063
+target_convergence_time: 8975
+max_defect_radius: 0.00039
+output_coupling_ratio: 0.1237
+core_pressure_base: 1000
+
+# Fluid properties
+fluid_density: 1.0
+bubble_density: 0.0012
+kinematic_viscosity: 1.0e-6
+gravity_bias: 9.81
+discharge_coefficient: 0.62
+
+# Pivot Overrides (File 003 Updates)
+pivot_constant: 6.48074069841
+boundary_constant: 7.14142842854

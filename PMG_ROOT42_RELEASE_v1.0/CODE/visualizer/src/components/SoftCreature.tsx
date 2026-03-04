@@ -1,342 +1,203 @@
-import React, { useMemo } from 'react';
-import { motion } from 'motion/react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { PivotValidator } from './PivotValidator';
 
-/**
- * SoftCreature — The Transdimensional Snail
- * 
- * The snail eats its own diamond dust to vitrify the shell to pure diamond.
- * Perfectly scrolled graphene sheets spiralled into pandimensional hyperdiamond.
- * The diamond dust lines are the perfect version of the ketheric trails
- * it will leave in the future — crystallised into the final form.
- * 
- * ROOT 42 TUNING:
- *   √42 = 6.4807...  (The Scaling Factor)
- *   93 nodes = 12V + 20F + 60E + 1C (Icosahedral Phase Matrix)
- *   φ = 1.6180...    (Golden Ratio — spiral governor)
- *   Hades Null at s=13, Hero Terminal at s=26
- */
+// Torsion Constants
+const RADIUS_INNER = 1.0;
+const RADIUS_OUTER = 2.5;
+const NEURAL_FOLD_ANGLE = 39.4 * (Math.PI / 180);
 
-const ROOT_42 = Math.sqrt(42);
-const PHI = (1 + Math.sqrt(5)) / 2;
-const HADES_BEAT = 0.6606; // β — the metronome
-const VITRIFICATION_THRESHOLD = 0.8254; // ρ = sqrt(14/17) — Unity Threshold
-const GRAPHENE_LAYERS = 13; // The Hades Null midpoint
-const DIAMOND_FACETS = 26; // The Hero Terminal — full alphabet
-
-interface SoftCreatureProps {
-    mobility: number;
-    time: number;
-    sync: number;
+interface SimulationMetrics {
+  pivot: number;
+  shellBoundary: number;
+  currentEntropy: number;
+  maxRadialDrift: number;
+  isPhaseLocked: boolean;
+  torsion: number;
+  shearAngle: number;
+  overpackDelta: number;
 }
 
-export const SoftCreature: React.FC<SoftCreatureProps & { color?: string }> = ({ mobility, time, sync, color = "#34d399" }) => {
+export const SoftCreature: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [metrics, setMetrics] = useState<SimulationMetrics | null>(null);
+  const [points, setPoints] = useState<{ x: number, y: number, z: number, layer: string }[]>([]);
 
-    // The Nautilus Spiral — governed by φ and √42
-    const spiralShell = useMemo(() => {
-        const points: { x: number; y: number; r: number; vitrified: boolean; facet: number }[] = [];
-        for (let i = 0; i < DIAMOND_FACETS; i++) {
-            const t = i / DIAMOND_FACETS;
-            const angle = t * Math.PI * 4 * PHI; // Golden spiral
-            const radius = 5 + (i * ROOT_42 * 0.4);
-            const x = Math.cos(angle) * radius;
-            const y = Math.sin(angle) * radius - 25;
-            const shellRadius = 1.5 + (1 - t) * 2;
-            // Vitrification: each facet crystallises when its index crosses the threshold
-            const vitrified = (i / DIAMOND_FACETS) < sync;
-            points.push({ x, y, r: shellRadius, vitrified, facet: i });
-        }
-        return points;
-    }, [sync]);
+  // Three.js refs
+  const sceneRef = useRef<THREE.Scene | null>(null);
+  const meshRef = useRef<THREE.InstancedMesh | null>(null);
+  const coreRef = useRef<THREE.Mesh | null>(null);
+  const dummy = useMemo(() => new THREE.Object3D(), []);
 
-    // Diamond Dust Ketheric Trails — the future paths, crystallised
-    const kethericTrails = useMemo(() => {
-        const trails: { x1: number; y1: number; x2: number; y2: number; opacity: number; crystallised: boolean }[] = [];
-        for (let i = 0; i < GRAPHENE_LAYERS; i++) {
-            const angle = (i / GRAPHENE_LAYERS) * Math.PI * 2;
-            const innerR = 8 + Math.sin(i * PHI) * 4;
-            const outerR = innerR + ROOT_42 * (2 + mobility * 3);
-            // The snail eats these trails — crystallised ones are brighter, consumed
-            const crystallised = i < Math.floor(sync * GRAPHENE_LAYERS);
-            trails.push({
-                x1: Math.cos(angle) * innerR,
-                y1: Math.sin(angle) * innerR - 20,
-                x2: Math.cos(angle + 0.2) * outerR,
-                y2: Math.sin(angle + 0.2) * outerR - 20,
-                opacity: crystallised ? 0.8 : 0.15,
-                crystallised
-            });
-        }
-        return trails;
-    }, [mobility, sync]);
-
-    // Graphene Sheet Rings — pandimensional hyperdiamond layers
-    const grapheneRings = useMemo(() => {
-        return Array.from({ length: 6 }, (_, i) => {
-            const baseR = 15 + i * ROOT_42 * 1.2;
-            const segments = 6 + i * 2; // Hexagonal graphene lattice
-            return { radius: baseR, segments, layer: i };
+  // 1. Load Anatomy (93 Points)
+  useEffect(() => {
+    fetch('http://127.0.0.1:8975/data/05_anatomy_relative.csv')
+      .then(res => res.text())
+      .then(csv => {
+        const lines = csv.trim().split('\n').slice(1);
+        const parsed = lines.map(line => {
+          const [x, y, z] = line.split(',').map(Number);
+          const r = Math.sqrt(x * x + y * y + z * z);
+          let layer = 'shell';
+          if (r < 0.2) layer = 'core';
+          else if (r < 1.1) layer = 'seed';
+          return { x, y, z, layer };
         });
-    }, []);
+        setPoints(parsed);
+      });
+  }, []);
 
-    // Tentacles — now spiral-scrolled like graphene sheets
-    const tentacles = useMemo(() => {
-        const count = Math.floor(6 + mobility * 7); // tuned to √42
-        return Array.from({ length: count }, (_, i) => {
-            const angle = (i / count) * Math.PI * 2;
-            return { id: i, angle };
-        });
-    }, [mobility]);
+  // 2. WebSocket Stream (The Möbius Pulse)
+  useEffect(() => {
+    const ws = new WebSocket('ws://127.0.0.1:8975/ws');
+    ws.onmessage = (event) => setMetrics(JSON.parse(event.data));
+    return () => ws.close();
+  }, []);
 
-    return (
-        <g className="soft-creature">
-            {/* === LAYER 0: Graphene Sheet Rings (Pandimensional Hyperdiamond) === */}
-            {grapheneRings.map((ring, i) => (
-                <motion.circle
-                    key={`graphene-${i}`}
-                    cx="0"
-                    cy="-20"
-                    r={ring.radius}
-                    fill="none"
-                    stroke={sync > (i / 6) ? "rgba(180, 220, 255, 0.25)" : "rgba(62, 39, 35, 0.08)"}
-                    strokeWidth={sync > (i / 6) ? 1.5 : 0.3}
-                    strokeDasharray={`${ring.segments} ${ring.segments * 2}`}
-                    animate={{
-                        rotate: [0, i % 2 === 0 ? 360 : -360],
-                        strokeOpacity: [0.1, sync > (i / 6) ? 0.6 : 0.15, 0.1]
-                    }}
-                    transition={{
-                        rotate: { duration: 20 + i * 5, repeat: Infinity, ease: "linear" },
-                        strokeOpacity: { duration: HADES_BEAT * 10, repeat: Infinity }
-                    }}
-                />
-            ))}
+  // 3. Scene Setup
+  useEffect(() => {
+    if (!containerRef.current) return;
 
-            {/* === LAYER 1: Diamond Dust Ketheric Trails === */}
-            {/* These are the future paths — crystallised diamond dust lines */}
-            {kethericTrails.map((trail, i) => (
-                <motion.line
-                    key={`ketheric-${i}`}
-                    x1={trail.x1}
-                    y1={trail.y1}
-                    x2={trail.x2}
-                    y2={trail.y2}
-                    stroke={trail.crystallised ? "rgba(180, 220, 255, 0.9)" : color}
-                    strokeWidth={trail.crystallised ? 1.2 : 0.4}
-                    strokeLinecap="round"
-                    animate={{
-                        opacity: trail.crystallised
-                            ? [0.6, 1.0, 0.6]    // Bright diamond pulse
-                            : [0.05, trail.opacity, 0.05], // Faint vapor
-                        x2: [trail.x2, trail.x2 + Math.sin(i) * 3, trail.x2],
-                        y2: [trail.y2, trail.y2 + Math.cos(i) * 3, trail.y2]
-                    }}
-                    transition={{
-                        duration: HADES_BEAT * 8 + i * 0.5,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                />
-            ))}
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(8, 5, 8);
 
-            {/* === LAYER 2: The Nautilus Shell (Vitrifying Spiral) === */}
-            {/* Each chamber vitrifies from soft to diamond as sync increases */}
-            {spiralShell.map((pt, i) => {
-                const nextPt = spiralShell[i + 1];
-                return (
-                    <g key={`shell-${i}`}>
-                        {/* Shell Chamber */}
-                        <motion.circle
-                            cx={pt.x}
-                            cy={pt.y}
-                            r={pt.r}
-                            fill={pt.vitrified
-                                ? `rgba(180, 220, 255, ${0.15 + (pt.facet / DIAMOND_FACETS) * 0.3})`  // Diamond
-                                : `rgba(62, 39, 35, 0.08)`  // Carbon/silt
-                            }
-                            stroke={pt.vitrified ? "rgba(200, 230, 255, 0.7)" : "rgba(62, 39, 35, 0.2)"}
-                            strokeWidth={pt.vitrified ? 1 : 0.3}
-                            animate={{
-                                scale: pt.vitrified ? [1, 1.05, 1] : [1, 0.98, 1],
-                                opacity: pt.vitrified ? [0.7, 1, 0.7] : [0.3, 0.5, 0.3]
-                            }}
-                            transition={{
-                                duration: 3 + i * 0.2,
-                                repeat: Infinity,
-                                ease: "easeInOut",
-                                delay: i * 0.05
-                            }}
-                        />
-                        {/* Graphene connection between chambers */}
-                        {nextPt && (
-                            <line
-                                x1={pt.x} y1={pt.y}
-                                x2={nextPt.x} y2={nextPt.y}
-                                stroke={pt.vitrified ? "rgba(180, 220, 255, 0.4)" : "rgba(62, 39, 35, 0.1)"}
-                                strokeWidth={pt.vitrified ? 0.8 : 0.2}
-                            />
-                        )}
-                    </g>
-                );
-            })}
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    containerRef.current.appendChild(renderer.domElement);
 
-            {/* === LAYER 3: Nautilus Body (The Soft Part — eating diamond dust) === */}
-            <motion.path
-                d="M -20 0 Q -30 -40 0 -50 Q 30 -40 20 0 Z"
-                fill={sync > VITRIFICATION_THRESHOLD
-                    ? "rgba(180, 220, 255, 0.15)"   // Vitrified body (diamond)
-                    : `${color}10`                    // Soft body (carbon)
-                }
-                stroke={sync > VITRIFICATION_THRESHOLD
-                    ? "rgba(200, 230, 255, 0.8)"
-                    : color
-                }
-                strokeWidth={sync > VITRIFICATION_THRESHOLD ? 1.5 : 0.5}
-                animate={{
-                    d: [
-                        "M -20 0 Q -30 -40 0 -50 Q 30 -40 20 0 Z",
-                        "M -22 2 Q -32 -38 0 -52 Q 32 -38 22 2 Z",
-                        "M -20 0 Q -30 -40 0 -50 Q 30 -40 20 0 Z"
-                    ]
-                }}
-                transition={{ duration: 3 / (1 + sync), repeat: Infinity, ease: "easeInOut" }}
-            />
-            {/* Stippled Texture Overlay for Body */}
-            <path
-                d="M -20 0 Q -30 -40 0 -50 Q 30 -40 20 0 Z"
-                fill="url(#stippled-pattern)"
-                opacity={1 - sync * 0.8} // Fades as shell vitrifies
-            />
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
 
-            {/* === LAYER 4: Eyes (The Intelligence — diamond when vitrified) === */}
-            <circle cx="-8" cy="-15" r="1.5"
-                fill={sync > VITRIFICATION_THRESHOLD ? "rgba(180, 220, 255, 0.9)" : "#3e2723"}
-                opacity={0.6 + sync * 0.4}
-            />
-            <circle cx="8" cy="-15" r="1.5"
-                fill={sync > VITRIFICATION_THRESHOLD ? "rgba(180, 220, 255, 0.9)" : "#3e2723"}
-                opacity={0.6 + sync * 0.4}
-            />
-            {/* Diamond eye highlights when vitrified */}
-            {sync > VITRIFICATION_THRESHOLD && (
-                <>
-                    <circle cx="-7" cy="-16" r="0.4" fill="white" opacity={0.8} />
-                    <circle cx="9" cy="-16" r="0.4" fill="white" opacity={0.8} />
-                </>
-            )}
+    // The "Black Ball" (Singularity/Gastrula Core)
+    const coreGeom = new THREE.SphereGeometry(0.5, 32, 32);
+    const coreMat = new THREE.MeshStandardMaterial({
+      color: 0x000000,
+      roughness: 0,
+      metalness: 1,
+      emissive: 0x110022,
+      emissiveIntensity: 0.5
+    });
+    const core = new THREE.Mesh(coreGeom, coreMat);
+    scene.add(core);
+    coreRef.current = core;
 
-            {/* === LAYER 5: Diamond Dust Absorption Particles === */}
-            {/* The snail eats these — they spiral inward toward the body */}
-            {Array.from({ length: GRAPHENE_LAYERS }).map((_, i) => {
-                const angle = (i / GRAPHENE_LAYERS) * Math.PI * 2 + time * HADES_BEAT;
-                const outerRad = 25 + Math.sin(time * 0.3 + i * PHI) * 10;
-                const innerRad = 5; // converging toward the body center
-                const crystallised = i < Math.floor(sync * GRAPHENE_LAYERS);
-                return (
-                    <motion.circle
-                        key={`dust-${i}`}
-                        r={crystallised ? 0.8 : 0.4}
-                        fill={crystallised ? "rgba(200, 230, 255, 0.9)" : color}
-                        animate={{
-                            cx: [
-                                Math.cos(angle) * outerRad,
-                                Math.cos(angle + Math.PI) * (outerRad * 0.5),
-                                Math.cos(angle) * innerRad  // spirals inward — eating the dust
-                            ],
-                            cy: [
-                                Math.sin(angle) * outerRad - 20,
-                                Math.sin(angle + Math.PI) * (outerRad * 0.5) - 20,
-                                Math.sin(angle) * innerRad - 20
-                            ],
-                            opacity: crystallised ? [0.8, 1, 0] : [0, 0.3, 0],
-                            scale: crystallised ? [1.5, 0.5, 0] : [0.5, 1, 0.5]
-                        }}
-                        transition={{
-                            duration: 4 + i * 0.4,
-                            repeat: Infinity,
-                            delay: i * (HADES_BEAT * 2),
-                            ease: "easeInOut"
-                        }}
-                    />
-                );
-            })}
+    // Instanced Points (The 93-Faced Interference Solid)
+    const pointGeom = new THREE.SphereGeometry(0.08, 12, 12);
+    const pointMat = new THREE.MeshPhongMaterial({ shininess: 100 });
+    const mesh = new THREE.InstancedMesh(pointGeom, pointMat, 100); // 93 + padding
+    scene.add(mesh);
+    meshRef.current = mesh;
 
-            {/* === LAYER 6: Tentacles (Scrolled Graphene Sheets) === */}
-            {tentacles.map((t, i) => {
-                const length = 30 + mobility * 50;
-                const wave = Math.sin(time * HADES_BEAT * 3 + i * PHI) * (8 + sync * 5);
-                const tx = Math.cos(t.angle) * 10;
-                const ty = Math.sin(t.angle) * 5 + 10;
-                const crystallised = i < Math.floor(sync * tentacles.length);
-                return (
-                    <g key={t.id}>
-                        <motion.path
-                            d={`M ${tx} ${ty} Q ${tx + wave} ${ty + length / 2} ${tx} ${ty + length}`}
-                            fill="none"
-                            stroke={crystallised ? "rgba(180, 220, 255, 0.5)" : color}
-                            strokeOpacity={crystallised ? 0.6 : 0.15}
-                            strokeWidth={crystallised ? 2 : 1}
-                            strokeLinecap="round"
-                            animate={{
-                                d: [
-                                    `M ${tx} ${ty} Q ${tx + wave} ${ty + length / 2} ${tx} ${ty + length}`,
-                                    `M ${tx} ${ty} Q ${tx - wave} ${ty + length / 2} ${tx} ${ty + length}`,
-                                    `M ${tx} ${ty} Q ${tx + wave} ${ty + length / 2} ${tx} ${ty + length}`
-                                ]
-                            }}
-                            transition={{
-                                duration: 3 + i * 0.3,
-                                repeat: Infinity,
-                                ease: "easeInOut",
-                                delay: i * 0.15
-                            }}
-                        />
-                        {/* Bio-luminescent tips — diamond tips when crystallised */}
-                        <motion.circle
-                            cx={tx}
-                            cy={ty + length}
-                            r={crystallised ? 1.5 : 0.8}
-                            fill={crystallised ? "rgba(200, 230, 255, 0.9)" : color}
-                            animate={{
-                                opacity: crystallised ? [0.5, 1, 0.5] : [0.1, 0.4, 0.1],
-                            }}
-                            transition={{ duration: 2, repeat: Infinity, delay: i * 0.15 }}
-                        />
-                    </g>
-                );
-            })}
+    // Ambient Lighting
+    scene.add(new THREE.AmbientLight(0x404040, 2));
+    const pointLight = new THREE.PointLight(0x9933ff, 50, 20);
+    pointLight.position.set(2, 5, 2);
+    scene.add(pointLight);
 
-            {/* === LAYER 7: Resonance Glow — shifts from sepia to diamond === */}
-            <circle r={15 + sync * 30} fill="url(#res-glow-vitrified)" />
-            <defs>
-                <radialGradient id="res-glow-vitrified">
-                    <stop offset="0%" stopColor={
-                        sync > VITRIFICATION_THRESHOLD
-                            ? "rgba(180, 220, 255, 0.15)"  // Diamond glow
-                            : "rgba(62,39,35,0.1)"         // Sepia glow
-                    } />
-                    <stop offset="100%" stopColor="transparent" />
-                </radialGradient>
-            </defs>
+    sceneRef.current = scene;
 
-            {/* === LAYER 8: Vitrification Status Ring === */}
-            {/* Shows the progress of the shell crystallisation */}
-            <motion.circle
-                cx="0"
-                cy="-20"
-                r={ROOT_42 * 8}
-                fill="none"
-                stroke={sync > VITRIFICATION_THRESHOLD ? "rgba(180, 220, 255, 0.6)" : "rgba(16, 185, 129, 0.1)"}
-                strokeWidth={0.5}
-                strokeDasharray={`${sync * Math.PI * ROOT_42 * 16} ${(1 - sync) * Math.PI * ROOT_42 * 16}`}
-                animate={{
-                    rotate: [0, 360]
-                }}
-                transition={{
-                    duration: 42 / (1 + sync * 5),
-                    repeat: Infinity,
-                    ease: "linear"
-                }}
-            />
-        </g>
-    );
+    const animate = () => {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    };
+    animate();
+
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      renderer.dispose();
+    };
+  }, []);
+
+  // 4. Neurulation Morph (The Rolling and Twisting)
+  useEffect(() => {
+    if (!meshRef.current || !points.length || !metrics) return;
+
+    const { torsion, overpackDelta } = metrics;
+    // Morph Factor: how much of the "sphere" has rolled into the "tube"
+    const morph = Math.min(torsion / 540, 1.0);
+
+    points.forEach((p, i) => {
+      // 1. Start with the original spherical coordinates
+      let targetX = p.x;
+      let targetY = p.y;
+      let targetZ = p.z;
+
+      // 2. The Next Right Move (Invagination Transform)
+      if (morph > 0) {
+        // Shift 1: The Radial Fold (90-deg)
+        // Transitions the flat shell lattice to a hemicylindrical fold
+        const foldAngle = (p.y / metrics.shellBoundary) * (Math.PI / 2) * morph;
+        const radius1 = THREE.MathUtils.lerp(p.x, Math.cos(foldAngle) * RADIUS_OUTER, morph);
+
+        // Shift 2: The Phase-Flip Bury (180-deg total)
+        // This is the literal 'burying of the positive in the negative'
+        const buryPhase = (p.z / metrics.shellBoundary) * (Math.PI / 2) * morph;
+        const finalY = Math.sin(foldAngle) * RADIUS_OUTER * (1 - morph * 0.7); // Sucking inward
+        const finalZ = p.z - (Math.cos(buryPhase) * RADIUS_INNER * morph);
+
+        targetX = radius1;
+        targetY = finalY;
+        targetZ = finalZ;
+
+        // 3. Sovereign Rotation (Symmetry Breaking)
+        // Using the 'torsion' metric as a pure rotation parameter
+        const rotAngle = (metrics.torsion * Math.PI / 180);
+        const cosR = Math.cos(rotAngle);
+        const sinR = Math.sin(rotAngle);
+
+        const tx = targetX * cosR - targetY * sinR;
+        const ty = targetX * sinR + targetY * cosR;
+        targetX = tx;
+        targetY = ty;
+      }
+
+      dummy.position.set(targetX, targetY, targetZ);
+
+      // Scale based on "Overpack" - points jitter when delta is high
+      const scale = 0.8 + Math.sin(Date.now() * 0.01 + i) * overpackDelta * 10;
+      dummy.scale.set(scale, scale, scale);
+
+      dummy.updateMatrix();
+      meshRef.current!.setMatrixAt(i, dummy.matrix);
+
+      // Color coding per layer
+      let color = new THREE.Color(0x3366ff); // Shell (Blue)
+      if (p.layer === 'core') color = new THREE.Color(0xff3333); // Core (Red)
+      if (p.layer === 'seed') color = new THREE.Color(0x33ff33); // Seed (Green)
+
+      // As it twists, colors "bleed" (Neural fusion)
+      if (morph > 0.5) {
+        color.lerp(new THREE.Color(0x9933ff), morph - 0.5);
+      }
+      meshRef.current!.setColorAt(i, color);
+    });
+
+    meshRef.current.instanceMatrix.needsUpdate = true;
+    if (meshRef.current.instanceColor) meshRef.current.instanceColor.needsUpdate = true;
+
+    // Swallowing the Black Ball (Core reacts to the fold)
+    if (coreRef.current) {
+      coreRef.current.scale.set(1 - morph * 0.5, 1 - morph * 0.5, 1 - morph * 0.5);
+      coreRef.current.material.emissiveIntensity = 0.5 + morph * 2;
+    }
+
+  }, [metrics, points]);
+
+  return (
+    <div ref={containerRef} className="w-full h-full relative overflow-hidden bg-black">
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,_transparent_0%,_black_90%)]" />
+      <PivotValidator />
+    </div>
+  );
 };

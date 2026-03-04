@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geofont v6</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=JetBrains+Mono:wght@300;400&display=swap');
+:root{--bg:#07080a;--surface:#0d0f14;--gold:#c8a84b;--ccw:#4ab8c8;--cw:#c84a4a;--text:#e8e0cc;--dim:rgba(232,224,204,0.38);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'JetBrains Mono',monospace;
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2rem 1.5rem 4rem;}
+header{text-align:center;margin-bottom:1.4rem;}
+h1{font-family:'Cinzel',serif;font-size:clamp(1rem,3vw,1.6rem);letter-spacing:.35em;color:var(--gold);}
+.sub{font-size:.57rem;letter-spacing:.22em;color:var(--dim);margin-top:.3rem;}
+.controls{display:flex;gap:.5rem;margin-bottom:1rem;width:100%;max-width:680px;flex-wrap:wrap;}
+input[type=text]{flex:1;min-width:160px;background:var(--surface);border:1px solid rgba(200,168,75,.3);
+  color:var(--text);font-family:'JetBrains Mono',monospace;font-size:.9rem;padding:.5rem .85rem;outline:none;}
+input[type=text]:focus{border-color:var(--gold);}
+.btn{background:transparent;border:1px solid var(--gold);color:var(--gold);
+  font-family:'JetBrains Mono',monospace;font-size:.63rem;letter-spacing:.1em;
+  padding:.5rem .95rem;cursor:pointer;transition:all .2s;}
+.btn:hover{background:rgba(200,168,75,.1);}
+.btn-s{border-color:rgba(200,168,75,.22);color:var(--dim);}
+.btn-s.on{border-color:var(--gold);color:var(--gold);}
+.options{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.8rem;align-items:center;width:100%;max-width:680px;}
+.ol{font-size:.57rem;letter-spacing:.13em;color:var(--dim);}
+input[type=range]{-webkit-appearance:none;width:75px;height:2px;background:rgba(200,168,75,.28);outline:none;cursor:pointer;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;border-radius:50%;background:var(--gold);cursor:pointer;}
+#infobar{height:1.2rem;font-size:.58rem;letter-spacing:.11em;color:var(--dim);text-align:center;margin-bottom:.6rem;}
+
+/* Tight text-like layout */
+#output{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:0;
+  width:100%;
+  max-width:960px;
+  line-height:1;
+}
+.word-glyph{display:inline-flex;flex-shrink:0;}
+.word-space{display:inline-block;flex-shrink:0;}
+
+.legend{display:flex;gap:1.6rem;margin-top:2rem;font-size:.56rem;letter-spacing:.1em;color:var(--dim);flex-wrap:wrap;justify-content:center;}
+.li{display:flex;align-items:center;gap:.4rem;}
+.ls{width:20px;height:1.5px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>GEOFONT</h1>
+  <div class="sub">13-NODE BIPOLAR · WORD SPIRAL GLYPH · v6.0</div>
+</header>
+<div class="controls">
+  <input type="text" id="inp" value="a dog" placeholder="type words…">
+  <button class="btn" onclick="render()">RENDER</button>
+  <button class="btn btn-s" onclick="exportPNG()">↓ PNG</button>
+</div>
+<div class="options">
+  <span class="ol">SIZE</span>
+  <input type="range" id="sz" min="40" max="280" value="120" oninput="render()">
+  <span class="ol" style="margin-left:.7rem">LINE</span>
+  <input type="range" id="lw" min="1" max="20" value="2" oninput="render()">
+  <span class="ol" style="margin-left:.7rem">RING STEP</span>
+  <input type="range" id="rs" min="3" max="30" value="10" oninput="render()">
+  <span class="ol" style="margin-left:.7rem">COLOR</span>
+  <button class="btn btn-s on" id="bColor"  onclick="tog('color')">ON</button>
+  <button class="btn btn-s"    id="bColor2" onclick="tog('color')">OFF</button>
+  <span class="ol" style="margin-left:.7rem">CIRCLE</span>
+  <button class="btn btn-s on" id="bCircle"  onclick="tog('circle')">ON</button>
+  <button class="btn btn-s"    id="bCircle2" onclick="tog('circle')">OFF</button>
+</div>
+<div id="infobar">each word = one glyph · each letter = spiral segment inward</div>
+<div id="output"></div>
+<div class="legend">
+  <div class="li"><div class="ls" style="background:#4ab8c8"></div>CCW (odd: A C E G…)</div>
+  <div class="li"><div class="ls" style="background:#c84a4a"></div>CW (even: B D F H…)</div>
+  <div class="li"><div class="ls" style="background:rgba(200,168,75,.7)"></div>entry dot</div>
+</div>
+
+<script>
+// ── Letter map ─────────────────────────────────────────────────────────────
+const ND=[
+  {id:0, b:0,    l:['A','B'],r:[72,58]},
+  {id:1, b:27.7, l:['C','D'],r:[94,91]},
+  {id:2, b:55.4, l:['E','F'],r:[34,31]},
+  {id:3, b:83.1, l:['G','H'],r:[67,45]},
+  {id:4, b:110.8,l:['I','J'],r:[78,88]},
+  {id:5, b:138.5,l:['K','L'],r:[63,52]},
+  {id:6, b:166.2,l:['M','N'],r:[71,69]},
+  {id:7, b:193.8,l:['O','P'],r:[98,93]},
+  {id:8, b:221.5,l:['Q','R'],r:[89,84]},
+  {id:9, b:249.2,l:['S','T'],r:[96,47]},
+  {id:10,b:276.9,l:['U','V'],r:[92,87]},
+  {id:11,b:304.6,l:['W','X'],r:[74,91]},
+  {id:12,b:332.3,l:['Y','Z'],r:[68,43]},
+];
+const LM={};
+ND.forEach(n=>n.l.forEach((ch,i)=>{
+  LM[ch]={
+    node:n.id,
+    bearing:n.b,   // degrees CW from North — where this letter's spiral segment STARTS
+    ccw: i===0,    // CCW = odd alpha position
+    n:   n.id+1,   // numerator: A/B=1, C/D=2, … Y/Z=13  → arc = n/13 of full circle
+    res: n.r[i]
+  };
+}));
+
+const OPT={color:true, circle:true};
+function tog(k){
+  OPT[k]=!OPT[k];
+  const K=k.charAt(0).toUpperCase()+k.slice(1);
+  document.getElementById('b'+K).classList.toggle('on', OPT[k]);
+  document.getElementById('b'+K+'2').classList.toggle('on',!OPT[k]);
+  render();
+}
+
+// ── Core: draw one word as a single inward spiral glyph ───────────────────
+//
+// Each letter i contributes one SPIRAL SEGMENT:
+//   - Starts at radius R_i (outer for i=0, stepping inward)
+//   - Sweeps its n/13 * 2PI angle
+//   - WHILE sweeping, radius decreases linearly from R_i to R_{i+1}
+//     so it is a TRUE SPIRAL SEGMENT, not a circular arc
+//   - The sweep STARTS at the letter's node bearing
+//   - Direction: CCW or CW per letter
+//   - R_guard = 20% of canvas half — spiral never reaches inside this
+//
+function drawWordGlyph(canvas, word, size){
+  const ctx=canvas.getContext('2d');
+  canvas.width=canvas.height=size;
+  ctx.fillStyle='#07080a';
+  ctx.fillRect(0,0,size,size);
+
+  const letters=word.toUpperCase().split('').filter(c=>LM[c]);
+  if(!letters.length) return;
+
+  const cx=size/2, cy=size/2;
+  const R_outer = size*0.44;
+  const R_guard = size*0.10;
+  const ringStep= Math.min(
+    parseInt(document.getElementById('rs').value)*(size/120),
+    (R_outer-R_guard)/Math.max(letters.length,1)
+  );
+  const lw = parseInt(document.getElementById('lw').value)*(size/120);
+
+  // Outer circle
+  if(OPT.circle){
+    ctx.beginPath();
+    ctx.arc(cx,cy,R_outer,0,Math.PI*2);
+    ctx.strokeStyle='rgba(200,168,75,0.2)';
+    ctx.lineWidth=Math.max(0.4,lw*0.3);
+    ctx.stroke();
+  }
+
+  // North tick
+  ctx.beginPath();
+  ctx.moveTo(cx, cy-R_outer-lw*1.5);
+  ctx.lineTo(cx, cy-R_outer+lw*0.3);
+  ctx.strokeStyle='rgba(200,168,75,0.35)';
+  ctx.lineWidth=Math.max(0.3,lw*0.25);
+  ctx.stroke();
+
+  // ONE continuous path for the whole word
+  // Rules:
+  //   CW  letter → circular arc (fixed radius R_current, stays on ring)
+  //   CCW letter → spiral inward (radius steps down to next shell)
+  //   Same direction as previous letter → insert small radial drop marker first
+  //
+  // State: current radius + current bearing angle both track continuously.
+  // Each letter STARTS from wherever the previous one ended.
+
+  const baseColor = OPT.color ? 'rgba(232,224,204,0.85)' : 'rgba(232,224,204,0.85)';
+  const cwColor   = OPT.color ? '#c84a4a' : 'rgba(232,224,204,0.85)';
+  const ccwColor  = OPT.color ? '#4ab8c8' : 'rgba(232,224,204,0.85)';
+
+  // Start at outer rim, North (bearing=0)
+  let curR       = R_outer;
+  let curBearing = 0; // radians, compass (0=North)
+  let prevDir    = null; // 'cw' or 'ccw'
+  let firstPoint = true;
+
+  // Helper: add point to current path
+  function pt(r, bearing){
+    const x = cx + r*Math.sin(bearing);
+    const y = cy - r*Math.cos(bearing);
+    if(firstPoint){ ctx.moveTo(x,y); firstPoint=false; }
+    else ctx.lineTo(x,y);
+  }
+
+  ctx.beginPath();
+  ctx.strokeStyle = OPT.color ? '#e8e0cc' : 'rgba(232,224,204,0.85)';
+  ctx.lineWidth   = Math.max(0.4, lw*0.35);
+  ctx.lineCap     = 'round';
+  ctx.lineJoin    = 'round';
+
+  for(let i=0; i<letters.length; i++){
+    const ch   = letters[i];
+    const info = LM[ch];
+    if(curR <= R_guard) break;
+
+    const totalAngle = (info.n/13)*2*Math.PI; // arc length for this letter
+    const isCCW      = info.ccw;
+    const sign       = isCCW ? -1 : +1;
+    const thisDir    = isCCW ? 'ccw' : 'cw';
+
+    // Same direction as last letter → small radial drop first (marker)
+    if(prevDir === thisDir){
+      const dropR = Math.max(curR - ringStep*0.35, R_guard);
+      const steps = 6;
+      for(let s=1;s<=steps;s++){
+        pt(curR + (dropR-curR)*(s/steps), curBearing);
+      }
+      curR = dropR;
+    }
+
+    const steps = Math.max(60, Math.round(totalAngle/(2*Math.PI)*120));
+    const R_end = isCCW ? Math.max(curR - ringStep, R_guard) : curR; // CCW spirals in, CW stays
+
+    for(let s=0; s<=steps; s++){
+      const t       = s/steps;
+      const r       = curR + (R_end - curR)*t;          // CCW: decreases; CW: constant
+      const bearing = curBearing + sign*totalAngle*t;
+      pt(r, bearing);
+    }
+
+    // Update state to end of this segment
+    curBearing = curBearing + sign*totalAngle;
+    curR       = R_end;
+    prevDir    = thisDir;
+  }
+
+  ctx.stroke();
+}
+
+// ── Render all words tight together like text ─────────────────────────────
+function render(){
+  const text=document.getElementById('inp').value;
+  const size=parseInt(document.getElementById('sz').value);
+  const out =document.getElementById('output');
+  out.innerHTML='';
+
+  // Space width = half a glyph
+  const spaceW=Math.round(size*0.3);
+
+  for(const token of text.split(/(\s+)/)){
+    if(/^\s+$/.test(token)){
+      const sp=document.createElement('div');
+      sp.className='word-space';
+      sp.style.width=spaceW+'px';
+      out.appendChild(sp);
+      continue;
+    }
+    const word=token;
+    const letters=word.toUpperCase().split('').filter(c=>LM[c]);
+    if(!letters.length) continue;
+
+    const wrap=document.createElement('div');
+    wrap.className='word-glyph';
+
+    const canvas=document.createElement('canvas');
+    drawWordGlyph(canvas,word,size);
+    wrap.appendChild(canvas);
+
+    wrap.addEventListener('mouseenter',()=>{
+      document.getElementById('infobar').textContent=
+        letters.map(c=>{const f=LM[c];return `${c}:${f.ccw?'CCW':'CW'} ${f.n}/13 @${f.bearing}°`;}).join('  ');
+    });
+    wrap.addEventListener('mouseleave',()=>{
+      document.getElementById('infobar').textContent='each word = one glyph · each letter = spiral segment inward';
+    });
+
+    out.appendChild(wrap);
+  }
+}
+
+// ── Export ────────────────────────────────────────────────────────────────
+function exportPNG(){
+  const canvases=[...document.querySelectorAll('#output canvas')];
+  if(!canvases.length) return;
+  const sz=canvases[0].width,pad=10;
+  const spW=Math.round(sz*0.3);
+  const text=document.getElementById('inp').value;
+  let W=pad;
+  for(const tok of text.split(/(\s+)/)){
+    if(/^\s+$/.test(tok)){W+=spW;continue;}
+    if(tok.toUpperCase().split('').some(c=>LM[c])) W+=sz;
+  }
+  const oc=document.createElement('canvas');
+  oc.width=W+pad; oc.height=sz+pad;
+  const ctx=oc.getContext('2d');
+  ctx.fillStyle='#07080a'; ctx.fillRect(0,0,oc.width,oc.height);
+  let x=pad/2,ci=0;
+  for(const tok of text.split(/(\s+)/)){
+    if(/^\s+$/.test(tok)){x+=spW;continue;}
+    if(tok.toUpperCase().split('').some(c=>LM[c])){
+      if(canvases[ci]) ctx.drawImage(canvases[ci],x,pad/2);
+      x+=sz; ci++;
+    }
+  }
+  const a=document.createElement('a');
+  a.download='geofont.png';a.href=oc.toDataURL('image/png');a.click();
+}
+
+document.getElementById('inp').addEventListener('keydown',e=>{if(e.key==='Enter')render();});
+render();
+</script>
+</body>
+</html>

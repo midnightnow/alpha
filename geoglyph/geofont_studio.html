@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geofont 13 Studio — Metric-Ready</title>
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --panel: #111111;
+            --border: #333333;
+            --text: #e0e0e0;
+            --muted: #888888;
+            --teal: #4ECDC4;
+            --rust: #E76F51;
+            --gold: #D4AF37;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Crimson Pro', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 30px;
+        }
+
+        .canvas-panel {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .glyph-container {
+            position: relative;
+            margin: 20px 0;
+        }
+
+        canvas {
+            background: var(--bg);
+            border-radius: 4px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        label {
+            font-size: 12px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input[type="text"] {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 8px 12px;
+            font-family: inherit;
+            font-size: 14px;
+            border-radius: 4px;
+            width: 200px;
+        }
+
+        input[type="range"] {
+            width: 100px;
+        }
+
+        button {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 8px 16px;
+            font-family: inherit;
+            font-size: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background: var(--border);
+            border-color: var(--muted);
+        }
+
+        button.active {
+            background: var(--gold);
+            color: var(--bg);
+            border-color: var(--gold);
+        }
+
+        .metrics-panel {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 20px;
+        }
+
+        .metrics-section {
+            margin-bottom: 25px;
+        }
+
+        .metrics-section h3 {
+            font-size: 14px;
+            color: var(--gold);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            color: var(--muted);
+        }
+
+        .metric-value {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .stability-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .stability-stable {
+            background: var(--success);
+        }
+
+        .stability-moderate {
+            background: var(--warning);
+        }
+
+        .stability-unstable {
+            background: var(--danger);
+        }
+
+        .entropy-bar {
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .entropy-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--teal), var(--rust));
+            transition: width 0.3s;
+        }
+
+        .mode-display {
+            text-align: center;
+            padding: 10px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 12px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .segment-labels {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 10px;
+        }
+
+        .export-section {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .quickstart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .quickstart-content {
+            width: min(820px, 92%);
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 40px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        .quickstart-content h2 {
+            font-size: 18px;
+            color: var(--gold);
+            margin: 24px 0 12px 0;
+            padding-bottom: 6px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .quickstart-content ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+
+        .quickstart-content li {
+            margin: 6px 0;
+            font-size: 14px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            background: none;
+            border: none;
+            color: var(--muted);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: var(--text);
+        }
+
+        @media (max-width: 900px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>GEOFONT 13 STUDIO</h1>
+            <p class="subtitle">Geometric Information Embedding · 26-Segment Metric Engine · v6.1</p>
+        </header>
+
+        <div class="main-grid">
+            <div class="canvas-panel">
+                <div class="controls">
+                    <div class="control-group">
+                        <label>Brand A</label>
+                        <input type="text" id="wordInput" value="STOP" placeholder="Primary word...">
+                    </div>
+                    <div class="control-group" id="compareGroup" style="display: none;">
+                        <label>Brand B</label>
+                        <input type="text" id="compareInput" value="GO" placeholder="Compare word...">
+                    </div>
+                    <div class="control-group">
+                        <label>Audit</label>
+                        <button id="toggleCompare">COMPARE</button>
+                    </div>
+                    <div class="control-group">
+                        <label>Mode</label>
+                        <button id="modeSpiral" class="active">SPIRAL</button>
+                        <button id="modeRadial">RADIAL</button>
+                    </div>
+                    <div class="control-group">
+                        <label>Size</label>
+                        <input type="range" id="sizeSlider" min="100" max="400" value="250">
+                    </div>
+                    <div class="control-group">
+                        <label>Labels</label>
+                        <button id="toggleLabels">ON</button>
+                    </div>
+                </div>
+
+                <div class="mode-display" id="modeDisplay">MODE: SPIRAL</div>
+
+                <div class="glyph-container">
+                    <canvas id="glyphCanvas" width="500" height="500"></canvas>
+                </div>
+
+                <div class="segment-labels" id="segmentLabels"></div>
+            </div>
+
+            <div class="metrics-panel">
+                <div class="metrics-section">
+                    <h3>📊 GEOMETRIC FEATURES</h3>
+                    <div class="metric-row">
+                        <span class="metric-label">Total Weight</span>
+                        <span class="metric-value" id="totalWeight">70</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Final Bearing</span>
+                        <span class="metric-value" id="finalBearing">41.2°</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Angular Residual</span>
+                        <span class="metric-value" id="angularResidual">1.8°</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Radial Depth</span>
+                        <span class="metric-value" id="radialDepth">0.34</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Rotation Count</span>
+                        <span class="metric-value" id="rotationCount">2.15 turns</span>
+                    </div>
+                </div>
+
+                <div class="metrics-section">
+                    <h3>🔢 INFORMATION METRICS</h3>
+                    <div class="metric-row">
+                        <span class="metric-label">Parity Entropy</span>
+                        <span class="metric-value" id="parityEntropy">1.00 bits</span>
+                    </div>
+                    <div class="entropy-bar">
+                        <div class="entropy-fill" id="parityBar" style="width: 100%"></div>
+                    </div>
+                    <div class="metric-row" style="margin-top: 10px;">
+                        <span class="metric-label">Magnitude Entropy</span>
+                        <span class="metric-value" id="magnitudeEntropy">1.98 bits</span>
+                    </div>
+                    <div class="entropy-bar">
+                        <div class="entropy-fill" id="magnitudeBar" style="width: 75%"></div>
+                    </div>
+                    <div class="metric-row" style="margin-top: 10px;">
+                        <span class="metric-label">Angular Variance</span>
+                        <span class="metric-value" id="angularVariance">842.3 deg²</span>
+                    </div>
+                </div>
+
+                <div class="metrics-section">
+                    <h3>🎯 IDENTITY RESONANCE</h3>
+                    <div class="metric-row">
+                        <span class="metric-label">
+                            <span class="stability-indicator stability-stable" id="stabilityDot"></span>
+                            Geometric Resonance
+                        </span>
+                        <span class="metric-value" id="stabilityScore">94%</span>
+                    </div>
+                    <div id="collisionSection" style="display: none;">
+                        <div class="metric-row">
+                            <span class="metric-label">Collision Score</span>
+                            <span class="metric-value" id="collisionScore" style="color: var(--gold);">0%</span>
+                        </div>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Identity Hash</span>
+                        <span class="metric-value" id="classification">STABLE RESONANCE</span>
+                    </div>
+                </div>
+
+                <div class="export-section">
+                    <h3>📤 EXPORT</h3>
+                    <div class="export-buttons">
+                        <button id="exportPNG">↓ PNG</button>
+                        <button id="exportJSON">↓ JSON</button>
+                        <button id="showGuide">? Guide</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quickstart Overlay -->
+    <div id="quickstartOverlay" class="quickstart-overlay">
+        <div class="quickstart-content">
+            <button class="close-btn" id="closeGuide">✕</button>
+            <h1 style="color: var(--gold); font-size: 24px; margin-bottom: 8px;">How to Read a Geofont Glyph</h1>
+            <p style="color: var(--muted); margin-bottom: 24px;">A 90-Second Guide to Geometric Literacy</p>
+
+            <h2>1. The 26-Segment Metric</h2>
+            <ul>
+                <li><strong>A=1, B=2, ... Z=26</strong> — Each letter's alphabetical position determines its arc length
+                </li>
+                <li><strong>Teal (Odd)</strong> — CCW spiral inward (Intent/Descent)</li>
+                <li><strong>Rust (Even)</strong> — CW holds ring radius (Structure/Persistence)</li>
+            </ul>
+
+            <h2>2. The Three Optical Modes</h2>
+            <ul>
+                <li><strong>SPIRAL</strong> — Continuous path, aesthetic identity</li>
+                <li><strong>RADIAL</strong> — Discrete spokes, size comparison</li>
+                <li><strong>LINEAR</strong> — Unrolled waveform, pattern recognition</li>
+            </ul>
+
+            <h2>3. Stability & Entropy</h2>
+            <ul>
+                <li><strong>Angular Residual</strong> — Distance from 39.4° Shear Line (lower = more stable)</li>
+                <li><strong>Parity Entropy</strong> — Alternation unpredictability (1.0 = perfect CW/CCW alternation)
+                </li>
+                <li><strong>Magnitude Entropy</strong> — Weight distribution evenness</li>
+            </ul>
+
+            <h2>4. Test Words</h2>
+            <ul>
+                <li><strong>STOP</strong> — 70 units, 94% stable, perfect alternation</li>
+                <li><strong>SPIRAL</strong> — 75 units, exactly 3.00 turns</li>
+                <li><strong>EYES</strong> — All CCW, 4 radial drops, high inward pull</li>
+            </ul>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <button id="beginExploring"
+                    style="padding: 12px 32px; font-size: 14px; background: var(--gold); color: var(--bg); border: none;">Begin
+                    Exploring</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // === GEOFONT 13 METRIC ENGINE ===
+
+        const STATE = {
+            word: 'STOP',
+            compareWord: 'GO',
+            mode: 'SPIRAL',
+            isComparing: false,
+            size: 250,
+            showLabels: true,
+            firstVisit: !localStorage.getItem('gf_seen_intro')
+        };
+
+        const METRICS = {
+            totalWeight: 0,
+            finalBearing: 0,
+            angularResidual: 0,
+            radialDepth: 0,
+            rotationCount: 0,
+            parityEntropy: 0,
+            magnitudeEntropy: 0,
+            angularVariance: 0,
+            stabilityScore: 0,
+            bipolarBalance: 0,
+            segments: []
+        };
+
+        const SHEAR_LINE = 211.49; // Empirical Baseline (Protocol 1.0 Pilot Run)
+
+        // === CORE ENCODING FUNCTION ===
+
+        function getLetterIndex(char) {
+            const code = char.toUpperCase().charCodeAt(0);
+            if (code < 65 || code > 90) return null;
+            return code - 64; // A=1, B=2, ... Z=26
+        }
+
+        function getParity(index) {
+            return index % 2 === 0 ? 'CW' : 'CCW';
+        }
+
+        function getNode(index) {
+            return Math.ceil(index / 2); // 1-13
+        }
+
+        function getBearing(node) {
+            return ((node - 1) * (360 / 13)) % 360;
+        }
+
+        // === METRIC COMPUTATIONS ===
+
+        function computeParityEntropy(paritySequence) {
+            const counts = { CW: 0, CCW: 0 };
+            paritySequence.forEach(p => counts[p]++);
+            const n = paritySequence.length;
+            if (n === 0) return 0;
+
+            const p0 = counts.CCW / n;
+            const p1 = counts.CW / n;
+
+            let entropy = 0;
+            if (p0 > 0) entropy -= p0 * Math.log2(p0);
+            if (p1 > 0) entropy -= p1 * Math.log2(p1);
+
+            return entropy; // Max 1.0 for binary
+        }
+
+        function computeMagnitudeEntropy(weights) {
+            const total = weights.reduce((a, b) => a + b, 0);
+            if (total === 0) return 0;
+
+            const probs = weights.map(w => w / total);
+            let entropy = 0;
+            probs.forEach(p => {
+                if (p > 0) entropy -= p * Math.log2(p);
+            });
+
+            return entropy; // Max log2(n)
+        }
+
+        function computeAngularVariance(angles) {
+            if (angles.length < 2) return 0;
+            const mean = angles.reduce((a, b) => a + b, 0) / angles.length;
+            const variance = angles.reduce((sum, a) => sum + Math.pow(a - mean, 2), 0) / angles.length;
+            return variance;
+        }
+
+        // === WORD ANALYSIS ===
+
+        function analyzeWord(word) {
+            const letters = word.toUpperCase().split('').filter(c => /[A-Z]/.test(c));
+            const segments = [];
+            const weights = [];
+            const paritySequence = [];
+            const angles = [];
+
+            let totalWeight = 0;
+            let currentBearing = 0;
+            let currentRadius = 1;
+            let radialDrops = 0;
+            let lastParity = null;
+
+            letters.forEach((char, i) => {
+                const index = getLetterIndex(char);
+                if (!index) return;
+
+                const parity = getParity(index);
+                const node = getNode(index);
+                const bearing = getBearing(node);
+                const arcFraction = index / 26;
+                const arcAngle = arcFraction * 2 * Math.PI;
+
+                weights.push(index);
+                paritySequence.push(parity);
+                angles.push(bearing);
+                totalWeight += index;
+
+                // Radial drop detection
+                if (lastParity && lastParity === parity) {
+                    radialDrops++;
+                }
+
+                segments.push({
+                    letter: char,
+                    index,
+                    node,
+                    parity,
+                    bearing,
+                    arcFraction,
+                    arcAngle,
+                    startRadius: currentRadius,
+                    endRadius: parity === 'CCW' ? currentRadius * 0.85 : currentRadius
+                });
+
+                if (parity === 'CCW') {
+                    currentRadius *= 0.85;
+                }
+                lastParity = parity;
+            });
+
+            const angularResidual = Math.abs(finalBearing - SHEAR_LINE);
+            const stabilityScore = Math.max(0, 1 - (angularResidual / 180));
+            const parityEntropy = computeParityEntropy(paritySequence);
+            const magnitudeEntropy = computeMagnitudeEntropy(weights);
+            const angularVariance = computeAngularVariance(angles);
+
+            const cwCount = paritySequence.filter(p => p === 'CW').length;
+            const ccwCount = paritySequence.filter(p => p === 'CCW').length;
+            const bipolarBalance = 1 - Math.abs(cwCount - ccwCount) / (cwCount + ccwCount || 1);
+
+            // Export 4D Feature Vector for Comparison
+            const featureVector = [
+                parityEntropy,
+                magnitudeEntropy / 3, // Normalized
+                angularVariance / 5000, // Normalized
+                finalBearing / 360
+            ];
+
+            return {
+                totalWeight,
+                finalBearing,
+                angularResidual,
+                stabilityScore,
+                parityEntropy,
+                magnitudeEntropy,
+                angularVariance,
+                bipolarBalance,
+                radialDrops,
+                segments,
+                featureVector,
+                rotationCount: totalWeight / 26
+            };
+        }
+
+        function calculateGeometricDistance(v1, v2) {
+            return Math.sqrt(v1.reduce((sum, val, i) => sum + Math.pow(val - v2[i], 2), 0));
+        }
+
+        // === RENDERING ===
+
+        function drawSpiralMode(ctx, segments, centerX, centerY, radius) {
+            let currentRadius = radius;
+            let currentAngle = -Math.PI / 2; // Start at North
+
+            segments.forEach((seg, i) => {
+                ctx.beginPath();
+                ctx.strokeStyle = seg.parity === 'CCW' ? '#4ECDC4' : '#E76F51';
+                ctx.lineWidth = 1.5;
+
+                const startAngle = currentAngle;
+                const endAngle = seg.parity === 'CCW'
+                    ? currentAngle - seg.arcAngle
+                    : currentAngle + seg.arcAngle;
+
+                ctx.arc(centerX, centerY, currentRadius, startAngle, endAngle, seg.parity === 'CCW');
+                ctx.stroke();
+
+                // Entry dot
+                if (i === 0) {
+                    ctx.beginPath();
+                    ctx.fillStyle = '#D4AF37';
+                    ctx.arc(centerX, centerY - currentRadius, 3, 0, 2 * Math.PI);
+                    ctx.fill();
+                }
+
+                // Segment label
+                if (STATE.showLabels) {
+                    const midAngle = (startAngle + endAngle) / 2;
+                    const labelX = centerX + Math.cos(midAngle) * currentRadius;
+                    const labelY = centerY + Math.sin(midAngle) * currentRadius;
+                    ctx.fillStyle = '#888';
+                    ctx.font = '10px JetBrains Mono';
+                    ctx.fillText(`${seg.letter}:${seg.index}`, labelX - 15, labelY);
+                }
+
+                currentAngle = endAngle;
+                if (seg.parity === 'CCW') {
+                    currentRadius *= 0.85;
+                }
+            });
+        }
+
+        function drawRadialMode(ctx, segments, centerX, centerY, radius) {
+            segments.forEach((seg, i) => {
+                const angle = (seg.bearing - 90) * Math.PI / 180;
+                const segRadius = (seg.index / 26) * radius;
+
+                ctx.beginPath();
+                ctx.strokeStyle = seg.parity === 'CCW' ? '#4ECDC4' : '#E76F51';
+                ctx.lineWidth = 2;
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(
+                    centerX + Math.cos(angle) * segRadius,
+                    centerY + Math.sin(angle) * segRadius
+                );
+                ctx.stroke();
+
+                if (STATE.showLabels) {
+                    ctx.fillStyle = '#888';
+                    ctx.font = '10px JetBrains Mono';
+                    ctx.fillText(`${seg.letter}:${seg.index}`,
+                        centerX + Math.cos(angle) * (segRadius + 15),
+                        centerY + Math.sin(angle) * (segRadius + 15));
+                }
+            });
+        }
+
+        function drawLinearMode(ctx, segments, startX, startY, width, height) {
+            const barWidth = width / segments.length - 5;
+            let currentX = startX;
+
+            segments.forEach((seg, i) => {
+                const barHeight = (seg.index / 26) * height;
+                const color = seg.parity === 'CCW' ? '#4ECDC4' : '#E76F51';
+
+                ctx.fillStyle = color;
+                ctx.fillRect(currentX, startY + height - barHeight, barWidth, barHeight);
+
+                if (STATE.showLabels) {
+                    ctx.fillStyle = '#888';
+                    ctx.font = '10px JetBrains Mono';
+                    ctx.fillText(`${seg.letter}:${seg.index}`, currentX, startY + height + 15);
+                }
+
+                currentX += barWidth + 5;
+            });
+        }
+
+        function render() {
+            const canvas = document.getElementById('glyphCanvas');
+            const ctx = canvas.getContext('2d');
+            const analysis = analyzeWord(STATE.word);
+
+            // Background analysis for comparison
+            let compareAnalysis = null;
+            if (STATE.isComparing) {
+                compareAnalysis = analyzeWord(STATE.compareWord);
+            }
+
+            // Sync metrics (Primary)
+            updateMetricsPanel(analysis, compareAnalysis);
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = STATE.size;
+
+            if (STATE.isComparing && compareAnalysis) {
+                ctx.globalAlpha = 0.3;
+                if (STATE.mode === 'SPIRAL') drawSpiralMode(ctx, compareAnalysis.segments, centerX, centerY, radius);
+                if (STATE.mode === 'RADIAL') drawRadialMode(ctx, compareAnalysis.segments, centerX, centerY, radius);
+                ctx.globalAlpha = 1.0;
+            }
+
+            if (STATE.mode === 'SPIRAL') {
+                drawSpiralMode(ctx, analysis.segments, centerX, centerY, radius);
+            } else if (STATE.mode === 'RADIAL') {
+                drawRadialMode(ctx, analysis.segments, centerX, centerY, radius);
+            } else if (STATE.mode === 'LINEAR') {
+                drawLinearMode(ctx, analysis.segments, 50, 100, canvas.width - 100, 200);
+            }
+        }
+
+        function updateMetricsPanel(analysis, compareAnalysis) {
+            document.getElementById('totalWeight').textContent = analysis.totalWeight;
+            document.getElementById('finalBearing').textContent = analysis.finalBearing.toFixed(1) + '°';
+
+            const angularResidual = Math.abs(analysis.finalBearing - SHEAR_LINE);
+            document.getElementById('angularResidual').textContent = angularResidual.toFixed(1) + '°';
+            document.getElementById('rotationCount').textContent = (analysis.totalWeight / 26).toFixed(2) + ' turns';
+
+            document.getElementById('parityEntropy').textContent = analysis.parityEntropy.toFixed(2) + ' bits';
+            document.getElementById('parityBar').style.width = (analysis.parityEntropy * 100) + '%';
+            document.getElementById('magnitudeEntropy').textContent = analysis.magnitudeEntropy.toFixed(2) + ' bits';
+            document.getElementById('magnitudeBar').style.width = (analysis.magnitudeEntropy / 3 * 100) + '%';
+            document.getElementById('angularVariance').textContent = analysis.angularVariance.toFixed(1) + ' deg²';
+
+            const stabilityPct = (analysis.stabilityScore * 100).toFixed(0);
+            document.getElementById('stabilityScore').textContent = stabilityPct + '%';
+
+            if (STATE.isComparing && compareAnalysis) {
+                document.getElementById('collisionSection').style.display = 'block';
+
+                // Euclidean Distance in 4D space
+                const dist = calculateGeometricDistance(analysis.featureVector, compareAnalysis.featureVector);
+                const similarity = Math.max(0, 1 - dist) * 100;
+
+                const scoreLabel = document.getElementById('collisionScore');
+                scoreLabel.textContent = similarity.toFixed(0) + '%';
+
+                if (similarity > 80) {
+                    scoreLabel.style.color = 'var(--danger)';
+                } else if (similarity > 50) {
+                    scoreLabel.style.color = 'var(--warning)';
+                } else {
+                    scoreLabel.style.color = 'var(--success)';
+                }
+            } else {
+                document.getElementById('collisionSection').style.display = 'none';
+            }
+
+            const dot = document.getElementById('stabilityDot');
+            const classification = document.getElementById('classification');
+            if (stabilityPct >= 85) {
+                dot.className = 'stability-indicator stability-stable';
+                classification.textContent = 'STABLE RESONANCE';
+            } else if (stabilityPct >= 50) {
+                dot.className = 'stability-indicator stability-moderate';
+                classification.textContent = 'MODERATE';
+            } else {
+                dot.className = 'stability-indicator stability-unstable';
+                classification.textContent = 'UNSTABLE';
+            }
+        }
+
+        // === EVENT LISTENERS ===
+
+        document.getElementById('wordInput').addEventListener('input', (e) => {
+            STATE.word = e.target.value || ' ';
+            render();
+        });
+
+        document.getElementById('compareInput').addEventListener('input', (e) => {
+            STATE.compareWord = e.target.value || ' ';
+            render();
+        });
+
+        document.getElementById('toggleCompare').addEventListener('click', (e) => {
+            STATE.isComparing = !STATE.isComparing;
+            e.target.classList.toggle('active');
+            document.getElementById('compareGroup').style.display = STATE.isComparing ? 'block' : 'none';
+            render();
+        });
+
+        document.getElementById('modeSpiral').addEventListener('click', () => {
+            STATE.mode = 'SPIRAL';
+            document.querySelectorAll('.controls button').forEach(b => b.classList.remove('active'));
+            document.getElementById('modeSpiral').classList.add('active');
+            document.getElementById('modeDisplay').textContent = 'MODE: SPIRAL';
+            render();
+        });
+
+        document.getElementById('modeRadial').addEventListener('click', () => {
+            STATE.mode = 'RADIAL';
+            document.querySelectorAll('.controls button').forEach(b => b.classList.remove('active'));
+            document.getElementById('modeRadial').classList.add('active');
+            document.getElementById('modeDisplay').textContent = 'MODE: RADIAL';
+            render();
+        });
+
+        document.getElementById('modeLinear').addEventListener('click', () => {
+            STATE.mode = 'LINEAR';
+            document.querySelectorAll('.controls button').forEach(b => b.classList.remove('active'));
+            document.getElementById('modeLinear').classList.add('active');
+            document.getElementById('modeDisplay').textContent = 'MODE: LINEAR';
+            render();
+        });
+
+        document.getElementById('sizeSlider').addEventListener('input', (e) => {
+            STATE.size = parseInt(e.target.value);
+            render();
+        });
+
+        document.getElementById('toggleLabels').addEventListener('click', (e) => {
+            STATE.showLabels = !STATE.showLabels;
+            e.target.textContent = STATE.showLabels ? 'ON' : 'OFF';
+            render();
+        });
+
+        document.getElementById('exportPNG').addEventListener('click', () => {
+            const canvas = document.getElementById('glyphCanvas');
+            const link = document.createElement('a');
+            link.download = `geofont_${STATE.word}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+
+        document.getElementById('exportJSON').addEventListener('click', () => {
+            const data = {
+                word: STATE.word,
+                timestamp: new Date().toISOString(),
+                metrics: METRICS
+            };
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const link = document.createElement('a');
+            link.download = `geofont_${STATE.word}.json`;
+            link.href = URL.createObjectURL(blob);
+            link.click();
+        });
+
+        // === QUICKSTART OVERLAY ===
+
+        function hideOverlay() {
+            document.getElementById('quickstartOverlay').style.display = 'none';
+            localStorage.setItem('gf_seen_intro', 'true');
+        }
+
+        document.getElementById('closeGuide').addEventListener('click', hideOverlay);
+        document.getElementById('beginExploring').addEventListener('click', hideOverlay);
+        document.getElementById('showGuide').addEventListener('click', () => {
+            document.getElementById('quickstartOverlay').style.display = 'flex';
+        });
+
+        // === INITIALIZATION ===
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (!STATE.firstVisit) {
+                document.getElementById('quickstartOverlay').style.display = 'none';
+            }
+            render();
+        });
+    </script>
+</body>
+
+</html>

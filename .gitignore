@@ -1,0 +1,38 @@
+# PMG Sovereign Lattice Gitignore
+
+# Dependencies
+node_modules/
+.npm/
+.yarn/
+
+# Build outputs
+dist/
+build/
+*.zip
+*.tar.gz
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+env/
+venv/
+ENV/
+
+# OS junk
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific ignores
+*.log
+*.tmp
+temp/
+/Users/studio/ALPHA/PMG_ROOT42_RELEASE_v1.0/CODE/visualizer/node_modules/
+/Users/studio/ALPHA/PMG_ROOT42_RELEASE_v1.0/CODE/engine/__pycache__/

@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "glyph",
+      "public": ".",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/geofont_studio.html"
+        }
+      ]
+    }
+  ]
+}

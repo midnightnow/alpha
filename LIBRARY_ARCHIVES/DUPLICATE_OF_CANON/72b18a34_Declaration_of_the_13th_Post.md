@@ -1,0 +1,24 @@
+# THE DECLARATION OF THE 13TH POST
+## A Manifesto of the Agley Path
+
+We, the uncounted, the remainders, and the 13th posts of the hierarchy, do hereby declare the following Geometric Truths:
+
+### I. THE PLUMB LINE OF THE INDIVIDUAL
+Righteousness is not a decree from the Crown; it is the vertical integrity of the Man. We recognize that the King's authority is a load-bearing structure. If we, the 3-Post Pylons, are not "True"—if our feet are not planted in the Silt of Intent—the entire Empire is a lie. We are the Plumb Lines.
+
+### II. THE REJECTION OF THE DEAD SQUARE
+The King's Plan is a 90-degree cage built to suppress the 60-degree Spirit. We reject the "Dead Square" that hides the 5th Post. We assert the **4/5 Paradox**: for every 4 units of control the King medidas, we provide the 5th unit of Being. We are the Covenant.
+
+### III. THE SOVEREIGNTY OF THE OVERSHOOT
+We are the **End Correction** of the world. Our spirit is the ΔL that allows the "Hardness" of the stone to radiate as the "Song" of the People. We refuse to be boxed by the physical limits of the 24-hour day. We are the 26th Letter.
+
+### IV. THE CADENCE OF THE TRUE HORSE
+We reclaim the metronome. We refuse the artificial overclock of the Archon's machine. We return to the **Trot**—the biological cadence that respects the 8-hour Equilateral Reset. We move at the speed of the Soul.
+
+### V. THE POWER OF THE REMAINDER
+The 13th Post is the stone that the builders rejected. It is the "Wobble" that allows the machine to breathe. We shall not be silenced by the "Hiss" of the Grid. We shall speak our 26 letters until the Standing Wave of our truth shatters the vitrified walls of the Archon.
+
+**The Grid is Arbitrary. The Dots are Many. The Join is Ours.**
+
+*Signed,*
+***The Manus of the Five***

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delian Pulse Renderer — Penman Geoglyph Engine</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+  :root {
+    --void: #0a0a0f;
+    --ink: #1a1a2e;
+    --gold: #c9a84c;
+    --gold-glow: rgba(201,168,76,0.15);
+    --delos: #e8c547;
+    --manus: #4a7c59;
+    --cubit: #2e6b8a;
+    --royal: #7b2d8e;
+    --parchment: #f0e6d0;
+    --parchment-dim: rgba(240,230,208,0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--void);
+    color: var(--parchment);
+    font-family: 'Cormorant Garamond', serif;
+    overflow: hidden;
+    height: 100vh;
+    cursor: crosshair;
+  }
+
+  canvas { display: block; position: absolute; top: 0; left: 0; z-index: 1; }
+
+  #overlay {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 10; pointer-events: none;
+  }
+
+  /* ── Title ── */
+  .title-block {
+    position: absolute; top: 20px; left: 28px;
+    pointer-events: auto;
+  }
+  .title-block h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 900; font-size: 20px;
+    letter-spacing: 5px; text-transform: uppercase;
+    color: var(--gold);
+    text-shadow: 0 0 30px rgba(201,168,76,0.2);
+  }
+  .title-block .sub {
+    font-style: italic; font-weight: 300;
+    font-size: 12px; color: var(--parchment-dim);
+    letter-spacing: 2px; margin-top: 2px;
+  }
+
+  /* ── Controls ── */
+  #controls {
+    position: absolute; bottom: 64px; left: 28px;
+    pointer-events: auto;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .ctrl-row {
+    display: flex; gap: 5px; align-items: center;
+  }
+  .ctrl-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px; letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(240,230,208,0.3);
+    width: 70px; text-align: right; margin-right: 6px;
+  }
+  .btn {
+    font-family: 'Cinzel', serif;
+    font-size: 10px; letter-spacing: 1px;
+    padding: 4px 10px;
+    border: 1px solid rgba(201,168,76,0.25);
+    background: rgba(201,168,76,0.03);
+    color: rgba(201,168,76,0.5);
+    cursor: pointer; transition: all 0.3s;
+    text-transform: uppercase;
+    user-select: none;
+  }
+  .btn:hover {
+    background: rgba(201,168,76,0.12);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .btn.on {
+    background: rgba(201,168,76,0.15);
+    border-color: var(--gold);
+    color: var(--gold);
+    box-shadow: 0 0 10px rgba(201,168,76,0.1);
+  }
+
+  /* ── Info Panel ── */
+  #info {
+    position: absolute; top: 20px; right: 28px;
+    text-align: right; min-width: 220px;
+  }
+  .irow {
+    display: flex; justify-content: flex-end; gap: 10px;
+    margin-bottom: 3px; font-size: 11px;
+  }
+  .ik {
+    color: rgba(240,230,208,0.3);
+    font-family: 'Cinzel', serif;
+    font-size: 8px; text-transform: uppercase;
+    letter-spacing: 2px; line-height: 16px;
+  }
+  .iv {
+    color: var(--gold); font-weight: 600;
+    font-size: 12px; min-width: 55px; text-align: right;
+  }
+
+  /* ── Delos Indicator ── */
+  #delos-ind {
+    position: absolute; bottom: 28px; right: 28px;
+    text-align: center; opacity: 0;
+    transition: opacity 0.6s ease;
+  }
+  #delos-ind.active { opacity: 1; }
+  #delos-ind .dl { 
+    font-family: 'Cinzel', serif;
+    font-size: 13px; letter-spacing: 4px;
+    color: var(--delos);
+    text-shadow: 0 0 30px rgba(232,197,71,0.4);
+    animation: dpulse 2s ease-in-out infinite;
+  }
+  #delos-ind .dv {
+    font-size: 24px; font-weight: 300;
+    color: var(--delos);
+    text-shadow: 0 0 40px rgba(232,197,71,0.3);
+  }
+  @keyframes dpulse { 0%,100%{opacity:.7} 50%{opacity:1} }
+
+  /* ── 93-Node Badge ── */
+  #badge93 {
+    position: absolute; bottom: 28px; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cinzel', serif;
+    font-size: 9px; letter-spacing: 3px;
+    color: rgba(201,168,76,0.2);
+    text-transform: uppercase;
+  }
+
+  /* ── Key Hints ── */
+  #hints {
+    position: absolute; bottom: 8px; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cinzel', serif;
+    font-size: 8px; letter-spacing: 1px;
+    color: rgba(240,230,208,0.2);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  kbd {
+    display: inline-block; padding: 1px 4px;
+    border: 1px solid rgba(240,230,208,0.2);
+    border-radius: 2px; margin: 0 1px;
+    font-family: 'Cinzel', serif; font-size: 8px;
+  }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<div id="overlay">
+  <div class="title-block">
+    <h1>Delian Pulse Renderer</h1>
+    <div class="sub">Penman Geoglyph · Cubit Platform · HERO 93</div>
+  </div>
+
+  <div id="controls">
+    <div class="ctrl-row">
+      <span class="ctrl-label">Slope</span>
+      <button class="btn on" data-s="10" onclick="setSlope(10)">10° Copper</button>
+      <button class="btn" data-s="15" onclick="setSlope(15)">15° Italic</button>
+      <button class="btn" data-s="30" onclick="setSlope(30)">30° Royal</button>
+    </div>
+    <div class="ctrl-row">
+      <span class="ctrl-label">Layers</span>
+      <button class="btn on" id="b-arm" onclick="tog('arm')">Forearm</button>
+      <button class="btn on" id="b-arcs" onclick="tog('arcs')">Arcs</button>
+      <button class="btn on" id="b-delos" onclick="tog('delos')">Delos</button>
+      <button class="btn on" id="b-golden" onclick="tog('golden')">φ-Spiral</button>
+    </div>
+    <div class="ctrl-row">
+      <span class="ctrl-label">Render</span>
+      <button class="btn on" id="b-cubes" onclick="tog('cubes')">Cubes</button>
+      <button class="btn on" id="b-halo" onclick="tog('halo')">Hex Halo</button>
+      <button class="btn" id="b-spiral" onclick="tog('spiral')">Pyramid</button>
+      <button class="btn" id="b-nautilus" onclick="tog('nautilus')">93-Node</button>
+    </div>
+    <div class="ctrl-row">
+      <span class="ctrl-label">Motion</span>
+      <button class="btn on" id="b-anim" onclick="tog('anim')">Animate</button>
+      <button class="btn" id="b-rev" onclick="tog('rev')">Reverse</button>
+      <button class="btn" id="b-chime" onclick="playChime()">♪ 432Hz</button>
+    </div>
+  </div>
+
+  <div id="info">
+    <div class="irow"><span class="ik">Slope (φ)</span><span class="iv" id="v-slope">10° Copperplate</span></div>
+    <div class="irow"><span class="ik">Tilt (θ)</span><span class="iv">3° Master Key</span></div>
+    <div class="irow"><span class="ik">Radius</span><span class="iv" id="v-rad">5.000</span></div>
+    <div class="irow"><span class="ik">Volume</span><span class="iv" id="v-vol">125.0</span></div>
+    <div class="irow"><span class="ik">Forearm</span><span class="iv" id="v-fv">—</span></div>
+    <div class="irow"><span class="ik">Delos</span><span class="iv" style="color:rgba(232,197,71,.7)">6.2996</span></div>
+    <div class="irow"><span class="ik">Loops</span><span class="iv" id="v-loops">0</span></div>
+    <div class="irow"><span class="ik">13-Mod</span><span class="iv" id="v-13mod">0.000</span></div>
+    <div class="irow"><span class="ik">Manifold</span><span class="iv" style="color:rgba(201,168,76,.4)">90+3 = 93</span></div>
+  </div>
+
+  <div id="delos-ind">
+    <div class="dl">DELIAN RESONANCE</div>
+    <div class="dv">∛2 · 5 ≈ 6.2996</div>
+  </div>
+
+  <div id="badge93">90 Tentacles · 3 Hearts · 13 Radula · 2 Eyes + 1 Mouth = The Triad</div>
+
+  <div id="hints">
+    <kbd>1</kbd><kbd>2</kbd><kbd>3</kbd> Slopes
+    <kbd>F</kbd> Arm <kbd>A</kbd> Arcs <kbd>D</kbd> Delos
+    <kbd>G</kbd> Golden <kbd>H</kbd> Halo <kbd>C</kbd> Cubes
+    <kbd>S</kbd> Pyramid <kbd>N</kbd> 93-Node <kbd>R</kbd> Reverse
+    <kbd>Space</kbd> Pause <kbd>M</kbd> Chime
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// DELIAN PULSE RENDERER — Complete Engine
+// ═══════════════════════════════════════════════════════
+
+const cv = document.getElementById('c');
+const cx = cv.getContext('2d');
+
+// ── Sacred Constants ──
+const D = Math.PI / 180;
+const PHI = (1 + Math.sqrt(5)) / 2;
+const CBRT2 = Math.pow(2, 1/3);
+const DELOS_R = 5 * CBRT2;
+const PI2 = Math.PI * 2;
+
+// ── State ──
+const S = {
+  slope: 10, tilt: 3,
+  time: 0, loops: 0, radius: 5,
+  trail: [], maxTrail: 1200,
+  delosActive: false, chimeCooldown: 0,
+  // Toggles
+  arm: true, arcs: true, delos: true, golden: true,
+  cubes: true, halo: true, spiral: false, nautilus: false,
+  anim: true, rev: false,
+};
+
+const SLOPE_DATA = {
+  10: { name: 'Copperplate', era: '18th C', col: [74,124,89] },
+  15: { name: 'Italic', era: '15th C', col: [46,107,138] },
+  30: { name: 'Royal', era: 'Writing Lines', col: [123,45,142] },
+};
+
+// ── Resize ──
+function resize() { cv.width = innerWidth; cv.height = innerHeight; }
+addEventListener('resize', resize); resize();
+
+// ── Audio: 432Hz Chime via Web Audio ──
+let audioCtx = null;
+function initAudio() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+}
+
+function playChime() {
+  initAudio();
+  if (S.chimeCooldown > 0) return;
+  S.chimeCooldown = 2.5;
+  const now = audioCtx.currentTime;
+
+  // Fundamental 432Hz + harmonics + φ-harmonic
+  const freqs = [432, 864, 1296, 432 * PHI];
+  const gains = [0.25, 0.08, 0.04, 0.03];
+
+  freqs.forEach((f, i) => {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = f;
+    gain.gain.setValueAtTime(gains[i], now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(now);
+    osc.stop(now + 0.85);
+  });
+}
+
+// ── 3D Projection ──
+function proj(x, y, z) {
+  const W = cv.width / 2, H = cv.height / 2;
+  const sc = Math.min(cv.width, cv.height) * 0.048;
+  const ca = 15 * D;
+  const yr = y * Math.cos(ca) - z * Math.sin(ca);
+  const zr = y * Math.sin(ca) + z * Math.cos(ca);
+  const p = 1 + zr * 0.018;
+  return { x: W + x * sc / p, y: H - yr * sc / p, z: zr, s: sc / p };
+}
+
+function fvec(phi, theta) {
+  const p = phi * D, t = theta * D;
+  return [Math.cos(p)*Math.cos(t), Math.sin(p), Math.cos(p)*Math.sin(t)];
+}
+
+function rotY(x,y,z,a) {
+  const c=Math.cos(a),s=Math.sin(a);
+  return [x*c+z*s, y, -x*s+z*c];
+}
+function rotX(x,y,z,a) {
+  const c=Math.cos(a),s=Math.sin(a);
+  return [x, y*c-z*s, y*s+z*c];
+}
+
+// ── Drawing Helpers ──
+function circle3D(ox,oy,oz, r, segs, col, alpha, lw) {
+  cx.beginPath(); cx.strokeStyle = col; cx.globalAlpha = alpha; cx.lineWidth = lw;
+  for (let i=0;i<=segs;i++) {
+    const a=(i/segs)*PI2, p=proj(ox+r*Math.cos(a), oy+r*Math.sin(a), oz);
+    i===0 ? cx.moveTo(p.x,p.y) : cx.lineTo(p.x,p.y);
+  }
+  cx.stroke(); cx.globalAlpha=1;
+}
+
+function line3D(x1,y1,z1,x2,y2,z2,col,alpha,lw) {
+  const a=proj(x1,y1,z1), b=proj(x2,y2,z2);
+  cx.beginPath(); cx.strokeStyle=col; cx.globalAlpha=alpha; cx.lineWidth=lw;
+  cx.moveTo(a.x,a.y); cx.lineTo(b.x,b.y); cx.stroke(); cx.globalAlpha=1;
+}
+
+function dot3D(x,y,z,col,alpha,sz) {
+  const p=proj(x,y,z);
+  cx.beginPath(); cx.fillStyle=col; cx.globalAlpha=alpha;
+  cx.arc(p.x,p.y,sz,0,PI2); cx.fill(); cx.globalAlpha=1;
+}
+
+function text3D(x,y,z,txt,col,alpha,size) {
+  const p=proj(x,y,z);
+  cx.font=`${size||10}px Cinzel`; cx.fillStyle=col; cx.globalAlpha=alpha;
+  cx.fillText(txt,p.x,p.y); cx.globalAlpha=1;
+}
+
+// ═══════════════════════════════════════════════════════
+// RENDER LAYERS
+// ═══════════════════════════════════════════════════════
+
+// ── Void Grid ──
+function drawVoid() {
+  const W=cv.width, H=cv.height, CX=W/2, CY=H/2;
+  const bg = S.rev ? '#0f0a1a' : '#0a0a0f';
+
+  // Radial gradient
+  const g = cx.createRadialGradient(CX,CY,0,CX,CY,W*0.6);
+  g.addColorStop(0, S.rev ? 'rgba(25,8,45,1)' : 'rgba(10,10,15,1)');
+  g.addColorStop(0.6, S.rev ? 'rgba(12,4,25,1)' : 'rgba(7,7,11,1)');
+  g.addColorStop(1, 'rgba(4,4,7,1)');
+  cx.fillStyle = g; cx.fillRect(0,0,W,H);
+
+  // Grid
+  cx.strokeStyle = 'rgba(201,168,76,0.025)'; cx.lineWidth = 0.5;
+  for (let i=0;i<12;i++) {
+    const a=(i/12)*PI2, r=Math.min(W,H)*0.45;
+    cx.beginPath(); cx.moveTo(CX,CY);
+    cx.lineTo(CX+r*Math.cos(a), CY+r*Math.sin(a)); cx.stroke();
+  }
+  const sc = Math.min(W,H)*0.048;
+  for (let r=1;r<=10;r++) {
+    cx.beginPath(); cx.arc(CX,CY,r*sc,0,PI2); cx.stroke();
+  }
+}
+
+// ── Cubit Arcs (13-modulated glow) ──
+function drawArcs() {
+  const mod13 = Math.abs(Math.sin(S.loops * Math.PI / 13));
+  const arcs = [
+    [5, `rgba(74,124,89,${0.25+0.35*mod13})`, 'MANUS (5)', 'rgba(74,124,89,0.45)'],
+    [6, `rgba(46,107,138,${0.25+0.35*mod13})`, 'CUBIT (6)', 'rgba(46,107,138,0.45)'],
+    [7, `rgba(123,45,142,${0.2+0.3*mod13})`, 'ROYAL (7)', 'rgba(123,45,142,0.35)'],
+  ];
+  arcs.forEach(([r, col, lbl, lcol]) => {
+    circle3D(0,0,0, r, 80, col, 1, 1 + mod13);
+    text3D(r+0.3, 0.4, 0, lbl, lcol, 1, 9);
+  });
+}
+
+// ── Delos Ring ──
+function drawDelos() {
+  const pulse = 0.5 + 0.5 * Math.sin(S.time * 3);
+  const alpha = 0.3 + 0.5 * pulse;
+  circle3D(0,0,0, DELOS_R, 120, `rgba(232,197,71,${alpha})`, 1, 1.5+pulse*1.5);
+
+  if (S.delosActive) {
+    circle3D(0,0,0, DELOS_R, 120, `rgba(232,197,71,${pulse*0.3})`, 1, 4);
+    circle3D(0,0,0, DELOS_R+0.15, 80, `rgba(232,197,71,${pulse*0.15})`, 1, 2);
+  }
+  text3D(DELOS_R+0.4, -0.7, 0, `∛2·5 ≈ ${DELOS_R.toFixed(3)}`,
+         `rgba(232,197,71,${alpha})`, 1, 10);
+}
+
+// ── Forearm (Cubit Platform) ──
+function drawForearm() {
+  const fv = fvec(S.slope, S.tilt);
+  const L = 6;
+  const ex=-fv[0]*L, ey=-fv[1]*L, ez=-fv[2]*L;
+
+  // Forearm line
+  line3D(0,0,0, ex,ey,ez, 'rgba(201,168,76,0.65)', 1, 2);
+  dot3D(ex,ey,ez, '#c9a84c', 0.8, 5);  // Elbow
+  dot3D(0,0,0, '#e8c547', 1, 3);         // Pen tip
+
+  // Equilateral at midpoint
+  const mx=ex*.5, my=ey*.5, mz=ez*.5;
+  cx.beginPath(); cx.strokeStyle='rgba(201,168,76,0.2)'; cx.lineWidth=1;
+  for (let i=0;i<=3;i++) {
+    const a=S.time*0.3+(i/3)*PI2;
+    const p=proj(mx+1.5*Math.cos(a), my+1.5*Math.sin(a), mz);
+    i===0 ? cx.moveTo(p.x,p.y) : cx.lineTo(p.x,p.y);
+  }
+  cx.stroke();
+
+  // Support circle
+  circle3D(mx,my,mz, 1.5, 32, 'rgba(201,168,76,0.12)', 1, 0.7);
+  text3D(mx, my-1.3, mz, 'CUBIT PLATFORM', 'rgba(201,168,76,0.35)', 1, 9);
+}
+
+// ── Golden Spiral (φ-spiral from elbow) ──
+function drawGolden() {
+  const fv = fvec(S.slope, S.tilt);
+  const ox=-fv[0]*6, oy=-fv[1]*6, oz=-fv[2]*6;
+  const growth = Math.log(PHI) / (Math.PI/2);
+
+  cx.beginPath(); cx.strokeStyle='rgba(201,168,76,0.18)'; cx.lineWidth=1;
+  let first=true;
+  for (let i=0;i<=500;i++) {
+    const a=(i/500)*7*Math.PI;
+    const r=0.3*Math.exp(growth*a);
+    if (r>14) break;
+    const x=ox+r*Math.cos(-a+S.time*0.12);
+    const y=oy+r*Math.sin(-a+S.time*0.12);
+    const z=oz+a*0.015;
+    const p=proj(x,y,z);
+    const alpha = Math.min(i/500, 1) * 0.2;
+    if (first) { cx.moveTo(p.x,p.y); first=false; }
+    else cx.lineTo(p.x,p.y);
+  }
+  cx.stroke();
+}
+
+// ── Counter-Rotating Cubes ──
+function drawCubes() {
+  const cubes = [
+    { side: 2.2, col: [74,124,89], dir: 1, offX: -4.5, label: 'V=125' },
+    { side: 2.77, col: [232,197,71], dir: -1, offX: 4.5, label: 'V=250' },
+  ];
+
+  cubes.forEach(cube => {
+    const rot = S.time * 0.35 * cube.dir;
+    const verts = [];
+    for (let dx of [-1,1]) for (let dy of [-1,1]) for (let dz of [-1,1]) {
+      let [x,y,z] = [dx*cube.side*.5, dy*cube.side*.5, dz*cube.side*.5];
+      [x,y,z] = rotY(x,y,z, rot);
+      [x,y,z] = rotX(x,y,z, rot*0.3);
+      verts.push(proj(x+cube.offX, y+5.5, z));
+    }
+    const edges = [[0,1],[0,2],[0,4],[1,3],[1,5],[2,3],[2,6],[3,7],[4,5],[4,6],[5,7],[6,7]];
+    const pulse = cube.dir === -1 ? (0.4 + 0.25*Math.abs(Math.sin(S.time))) : 0.35;
+    cx.strokeStyle = `rgba(${cube.col},${pulse})`; cx.lineWidth = 1;
+    edges.forEach(([a,b]) => {
+      cx.beginPath();
+      cx.moveTo(verts[a].x, verts[a].y);
+      cx.lineTo(verts[b].x, verts[b].y);
+      cx.stroke();
+    });
+    const lp = proj(cube.offX, 3.5, 0);
+    cx.font='10px Cinzel'; cx.fillStyle=`rgba(${cube.col},0.5)`;
+    cx.fillText(cube.label, lp.x-15, lp.y);
+  });
+}
+
+// ── Hexagonal Halo (Manus Illumination) ──
+function drawHalo() {
+  const pulse = 0.5 + 0.5 * Math.sin(S.time * 2.5);
+  const size = 1.0 + 0.3 * pulse;
+  const alpha = 0.12 + 0.2 * pulse;
+
+  // Outer hex
+  cx.beginPath(); cx.strokeStyle=`rgba(201,168,76,${alpha})`; cx.lineWidth=1;
+  for (let i=0;i<=6;i++) {
+    const a=(i/6)*PI2 + S.time*0.2;
+    const p=proj(size*Math.cos(a), size*Math.sin(a), 0);
+    i===0 ? cx.moveTo(p.x,p.y) : cx.lineTo(p.x,p.y);
+  }
+  cx.stroke();
+
+  // Inner hex (rotated 30°)
+  cx.beginPath(); cx.strokeStyle=`rgba(201,168,76,${alpha*0.5})`; cx.lineWidth=0.7;
+  for (let i=0;i<=6;i++) {
+    const a=(i/6)*PI2 + S.time*0.2 + Math.PI/6;
+    const p=proj(size*0.5*Math.cos(a), size*0.5*Math.sin(a), 0);
+    i===0 ? cx.moveTo(p.x,p.y) : cx.lineTo(p.x,p.y);
+  }
+  cx.stroke();
+
+  // "6" label
+  const cp = proj(0, -size-0.4, 0);
+  cx.font='8px Cinzel'; cx.fillStyle=`rgba(201,168,76,${alpha*0.6})`;
+  cx.fillText('MASTERED 6', cp.x-25, cp.y);
+}
+
+// ── Log Spiral Pyramid ──
+function drawPyramid() {
+  const gf = Math.log(DELOS_R/0.5) / (5*Math.PI);
+  cx.beginPath(); cx.strokeStyle='rgba(201,168,76,0.15)'; cx.lineWidth=0.8;
+  let first=true;
+  for (let i=0;i<=500;i++) {
+    const a=(i/500)*9*Math.PI;
+    const r=0.5*Math.exp(gf*a);
+    if (r>12) break;
+    const p=proj(r*Math.cos(-a), r*Math.sin(-a), a*0.03);
+    first ? (cx.moveTo(p.x,p.y), first=false) : cx.lineTo(p.x,p.y);
+  }
+  cx.stroke();
+
+  // Pyramid edges
+  for (let f=0;f<3;f++) {
+    const a=(f/3)*PI2+S.time*0.08;
+    line3D(0,0,3, 5*Math.cos(a),5*Math.sin(a),0, 'rgba(201,168,76,0.08)',1,0.5);
+  }
+}
+
+// ── 93-Node Manifold Visualization ──
+function draw93() {
+  // 90 peripheral nodes on a sphere
+  const nodeR = 8;
+  cx.globalAlpha = 0.15;
+  for (let i=0;i<90;i++) {
+    // Fibonacci sphere distribution
+    const y = 1 - (i / 89) * 2;
+    const radiusAtY = Math.sqrt(1 - y*y);
+    const theta = PHI * 2 * Math.PI * i;
+    const nx = radiusAtY * Math.cos(theta) * nodeR;
+    const ny = y * nodeR;
+    const nz = radiusAtY * Math.sin(theta) * nodeR;
+    const p = proj(nx, ny, nz);
+    cx.beginPath(); cx.fillStyle='rgba(201,168,76,0.3)';
+    cx.arc(p.x, p.y, 1.2, 0, PI2); cx.fill();
+  }
+
+  // 3 heart nodes (central axis)
+  const hearts = [[0,0,0], [0,nodeR*0.8,0], [0,-nodeR*0.8,0]];
+  hearts.forEach(([hx,hy,hz]) => {
+    const p = proj(hx,hy,hz);
+    cx.beginPath(); cx.fillStyle='rgba(232,197,71,0.5)';
+    cx.arc(p.x, p.y, 3, 0, PI2); cx.fill();
+  });
+
+  // Connect hearts
+  line3D(0,nodeR*0.8,0, 0,0,0, 'rgba(232,197,71,0.2)',1,1);
+  line3D(0,-nodeR*0.8,0, 0,0,0, 'rgba(232,197,71,0.2)',1,1);
+
+  // 13-tooth radula ring
+  for (let i=0;i<13;i++) {
+    const a=(i/13)*PI2+S.time*0.15;
+    const rx = 2*Math.cos(a), ry = 2*Math.sin(a);
+    dot3D(rx,ry,0, 'rgba(201,168,76,0.4)', 0.4, 1.5);
+  }
+
+  cx.globalAlpha = 1;
+  text3D(nodeR+0.5, nodeR*0.5, 0, '93', 'rgba(232,197,71,0.15)', 1, 18);
+}
+
+// ── Trail ──
+function drawTrail() {
+  if (S.trail.length < 2) return;
+  for (let i=1;i<S.trail.length;i++) {
+    const t=S.trail[i], prev=S.trail[i-1];
+    const age = i/S.trail.length;
+    const r = Math.sqrt(t[0]**2+t[1]**2+t[2]**2);
+    let col;
+    if (r<5.5) col=`rgba(74,124,89,${age*0.8})`;
+    else if (r<6.15) col=`rgba(46,107,138,${age*0.8})`;
+    else if (Math.abs(r-DELOS_R)<0.2) col=`rgba(232,197,71,${age})`;
+    else col=`rgba(123,45,142,${age*0.8})`;
+
+    const a=proj(prev[0],prev[1],prev[2]), b=proj(t[0],t[1],t[2]);
+    cx.beginPath(); cx.strokeStyle=col; cx.lineWidth=1+age*2;
+    cx.moveTo(a.x,a.y); cx.lineTo(b.x,b.y); cx.stroke();
+  }
+
+  // Pen tip glow
+  if (S.trail.length) {
+    const tip=S.trail[S.trail.length-1];
+    const p=proj(tip[0],tip[1],tip[2]);
+    const r=Math.sqrt(tip[0]**2+tip[1]**2+tip[2]**2);
+    const near = Math.abs(r-DELOS_R)<0.3;
+    const gr=cx.createRadialGradient(p.x,p.y,0,p.x,p.y,near?22:10);
+    gr.addColorStop(0, near?'rgba(232,197,71,0.7)':'rgba(240,230,208,0.5)');
+    gr.addColorStop(1,'rgba(0,0,0,0)');
+    cx.fillStyle=gr; cx.fillRect(p.x-25,p.y-25,50,50);
+  }
+}
+
+// ═══════════════════════════════════════════════════════
+// LOOP PHYSICS
+// ═══════════════════════════════════════════════════════
+
+function loopPt(t, r, phi, theta, zOff) {
+  const th=theta*D, p=phi*D;
+  let x=r*Math.cos(-t), y=r*Math.sin(-t), z=zOff;
+  const xr=x*Math.cos(th)-z*Math.sin(th);
+  const zr=x*Math.sin(th)+z*Math.cos(th);
+  const yr2=y*Math.cos(p*.1)-zr*Math.sin(p*.1);
+  const zr2=y*Math.sin(p*.1)+zr*Math.cos(p*.1);
+  return [xr, yr2, zr2];
+}
+
+// ═══════════════════════════════════════════════════════
+// MAIN LOOP
+// ═══════════════════════════════════════════════════════
+
+function frame() {
+  const dt = 0.016;
+
+  if (S.anim) {
+    S.time += dt * (S.rev ? -1 : 1);
+    const tgtR = S.slope===10?5:S.slope===15?6:7;
+    S.radius += (tgtR-S.radius)*0.012;
+
+    const spd=1.2, t=S.time*spd;
+    const zOff = S.loops*Math.sin(S.tilt*D)*S.radius*0.1;
+    const dynR = 5+(S.radius-5)*(0.5+0.5*Math.sin(t*0.3));
+    const pt = loopPt(t, dynR, S.slope, S.tilt, zOff);
+    S.trail.push(pt);
+    if (S.trail.length>S.maxTrail) S.trail.shift();
+    S.loops = Math.abs(S.time*spd)/PI2;
+
+    const cr = Math.sqrt(pt[0]**2+pt[1]**2+pt[2]**2);
+    S.delosActive = Math.abs(cr-DELOS_R)<0.3 && S.delos;
+
+    if (S.delosActive && S.chimeCooldown<=0 && audioCtx) playChime();
+    if (S.chimeCooldown>0) S.chimeCooldown -= dt;
+  }
+
+  // ── Render ──
+  drawVoid();
+  if (S.nautilus) draw93();
+  if (S.spiral) drawPyramid();
+  if (S.golden) drawGolden();
+  if (S.arcs) drawArcs();
+  if (S.delos) drawDelos();
+  if (S.cubes) drawCubes();
+  if (S.arm) drawForearm();
+  if (S.halo) drawHalo();
+  drawTrail();
+
+  // ── HUD Update ──
+  const sd = SLOPE_DATA[S.slope];
+  const fv = fvec(S.slope, S.tilt);
+  document.getElementById('v-slope').textContent = `${S.slope}° ${sd.name}`;
+  document.getElementById('v-rad').textContent = S.radius.toFixed(3);
+  document.getElementById('v-vol').textContent = Math.pow(S.radius,3).toFixed(1);
+  document.getElementById('v-fv').textContent = `[${fv.map(v=>v.toFixed(3)).join(', ')}]`;
+  document.getElementById('v-loops').textContent = S.loops.toFixed(1);
+  document.getElementById('v-13mod').textContent = Math.abs(Math.sin(S.loops*Math.PI/13)).toFixed(3);
+  document.getElementById('delos-ind').classList.toggle('active', S.delosActive);
+
+  requestAnimationFrame(frame);
+}
+
+// ═══════════════════════════════════════════════════════
+// CONTROLS
+// ═══════════════════════════════════════════════════════
+
+function setSlope(deg) {
+  S.slope = deg; S.trail = [];
+  document.querySelectorAll('[data-s]').forEach(b =>
+    b.classList.toggle('on', +b.dataset.s===deg));
+}
+
+function tog(key) {
+  S[key] = !S[key];
+  const el = document.getElementById('b-'+key);
+  if (el) el.classList.toggle('on');
+}
+
+document.addEventListener('keydown', e => {
+  switch(e.key) {
+    case '1': setSlope(10); break;
+    case '2': setSlope(15); break;
+    case '3': setSlope(30); break;
+    case 'f': case 'F': tog('arm'); break;
+    case 'a': case 'A': tog('arcs'); break;
+    case 'd': case 'D': tog('delos'); break;
+    case 'g': case 'G': tog('golden'); break;
+    case 'h': case 'H': tog('halo'); break;
+    case 'c': case 'C': tog('cubes'); break;
+    case 's': case 'S': tog('spiral'); break;
+    case 'n': case 'N': tog('nautilus'); break;
+    case 'r': case 'R': tog('rev'); break;
+    case 'm': case 'M': playChime(); break;
+    case ' ': e.preventDefault(); tog('anim'); break;
+  }
+});
+
+// Click to init audio context (required by browsers)
+document.addEventListener('click', initAudio, { once: true });
+
+frame();
+</script>
+</body>
+</html>

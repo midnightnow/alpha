@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VORTEX-13 | Alphabet Resonance Map v1.1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --card: #161e2e;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --teal: #1abc9c;
+            --rust: #eb4d4b;
+            --gold: #f59e0b;
+            --primary: #6366f1;
+            --high: #2ecc71;
+            --mod: #f1c40f;
+            --conflict: #e74c3c;
+            --glass: rgba(22, 30, 46, 0.9);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid #334155;
+            background: radial-gradient(circle at center, #1e293b 0%, #0b0f19 100%);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -0.05em;
+            background: linear-gradient(to bottom, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* --- VISUALIZER --- */
+        #viz-card {
+            background: var(--card);
+            border-radius: 24px;
+            padding: 20px;
+            border: 1px solid #334155;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #svg-mount {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 1/1;
+        }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .toggle-btn {
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: var(--muted);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* --- ANALYZER --- */
+        #inspector-card {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px solid #334155;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--primary);
+            display: block;
+        }
+
+        #mode-btn {
+            font-size: 0.6rem;
+            padding: 4px 8px;
+            background: #0f172a;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #word-input {
+            width: 100%;
+            background: #0f172a;
+            border: 1px solid #334155;
+            color: white;
+            font-size: 1.5rem;
+            padding: 12px;
+            border-radius: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            text-align: center;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .stat-box {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-val {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--teal);
+            display: block;
+        }
+
+        .stat-lbl {
+            font-size: 0.6rem;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        /* --- TABLE --- */
+        .node-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.75rem;
+        }
+
+        .node-table th {
+            text-align: left;
+            color: var(--muted);
+            padding: 8px;
+            border-bottom: 1px solid #334155;
+        }
+
+        .node-table td {
+            padding: 8px;
+            border-bottom: 1px solid #1e293b;
+            cursor: pointer;
+        }
+
+        .node-table tr:hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .collision-arc {
+            fill: none;
+            stroke: var(--rust);
+            stroke-width: 2;
+            stroke-dasharray: 4 4;
+            opacity: 0.6;
+        }
+
+        .tri-tier-circle {
+            fill: none;
+            stroke: #334155;
+            stroke-dasharray: 5 5;
+        }
+
+        .footer {
+            margin-top: auto;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--muted);
+            border-top: 1px solid #334155;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.6rem;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        .badge-sw {
+            background: var(--gold);
+            color: black;
+        }
+
+        .badge-cardinal {
+            background: var(--primary);
+            color: white;
+        }
+
+        #export-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: var(--muted);
+            padding: 8px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>VORTEX-13</h1>
+        <p
+            style="color: var(--primary); text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.8rem; margin-top: 5px;">
+            Euclidean Resonance Map</p>
+    </header>
+
+    <div class="main-container">
+        <div id="viz-card">
+            <button id="export-btn" title="Export PNG">📷</button>
+            <div class="controls">
+                <button class="toggle-btn active" onclick="toggleLayer('vectors')">Vectors</button>
+                <button class="toggle-btn active" onclick="toggleLayer('clusters')">Clusters</button>
+                <button class="toggle-btn active" onclick="toggleLayer('resonance')">Resonance</button>
+                <button class="toggle-btn active" onclick="toggleLayer('collisions')">Collisions</button>
+                <button class="toggle-btn active" onclick="toggleLayer('uclc')">UC/LC</button>
+                <button class="toggle-btn" onclick="toggleLayer('tritier')">Tri-Tier</button>
+            </div>
+            <div id="svg-mount"></div>
+        </div>
+
+        <div id="inspector-card">
+            <div class="card">
+                <div class="section-header">
+                    <span class="section-title">Word Analyzer</span>
+                    <button id="mode-btn" onclick="toggleMode()">MODE: TEXT</button>
+                </div>
+                <input type="text" id="word-input" value="STOP" maxlength="25">
+                <div class="stat-grid">
+                    <div class="stat-box"><span class="stat-val" id="res-angle">0°</span><span class="stat-lbl">Vector
+                            Angle</span></div>
+                    <div class="stat-box"><span class="stat-val" id="res-stability">RESONANT</span><span
+                            class="stat-lbl">Stability</span></div>
+                    <div class="stat-box"><span class="stat-val" id="res-delta">0.05</span><span class="stat-lbl">Δ
+                            Deviation</span></div>
+                    <div class="stat-box"><span class="stat-val" id="res-score">94%</span><span
+                            class="stat-lbl">Resonance</span></div>
+                </div>
+            </div>
+
+            <div class="card" style="flex-grow: 1; overflow-y: auto; max-height: 500px;">
+                <span class="section-title">Node Reference</span>
+                <table class="node-table" id="ref-table">
+                    <thead>
+                        <tr>
+                            <th>Node</th>
+                            <th>Bearing</th>
+                            <th>Pair</th>
+                            <th>Fit</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ref-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        ALPHABET RESONANCE MAP · v1.1 · 2026 · VORTEX-13 KINETIC ENGINE · CC-BY-4.0
+    </div>
+
+    <script>
+        const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const ND = [
+            { id: 0, a: 0, p: ['A', 'B'], s: [72, 58], ps: [75, 60], c: "Spine", f: "Futura", desc: "The Apex Foundation. Stationary loop." },
+            { id: 1, a: 27.69, p: ['C', 'D'], s: [94, 91], ps: [90, 85], c: "Spine", f: "Futura", desc: "Tangential entry. Perfect bowl resonance." },
+            { id: 2, a: 55.38, p: ['E', 'F'], s: [34, 31], ps: [40, 35], c: "Friction", f: "Helvetica", desc: "Dead Zone. Rectilinear conflict." },
+            { id: 3, a: 83.08, p: ['G', 'H'], s: [67, 45], ps: [70, 50], c: "Bridge", f: "Modern", desc: "Horizontal brake. Torque vs Dam." },
+            { id: 4, a: 110.77, p: ['I', 'J'], s: [78, 88], ps: [80, 90], c: "Bridge", f: "Modern", desc: "The Ray. Linear piercing vector." },
+            { id: 5, a: 138.46, p: ['K', 'L'], s: [63, 52], ps: [65, 50], c: "Bridge", f: "Modern", desc: "Cornering. Diagonal tension." },
+            { id: 6, a: 166.15, p: ['M', 'N'], s: [71, 69], ps: [75, 70], c: "Loop", f: "Cursive", desc: "Structural symmetry. S-gradient entry." },
+            { id: 7, a: 193.85, p: ['O', 'P'], s: [100, 93], ps: [100, 95], c: "Loop", f: "Cursive", desc: "The Anchor. South Cardinal gravity." },
+            { id: 8, a: 221.54, p: ['Q', 'R'], s: [89, 84], ps: [90, 85], c: "Loop", f: "Cursive", desc: "Terminal Exit. Centrifugal release." },
+            { id: 9, a: 249.23, p: ['S', 'T'], s: [96, 47], ps: [98, 50], c: "Loop", f: "Cursive", desc: "The Engine. SW Power Zone. Max torque." },
+            { id: 10, a: 276.92, p: ['U', 'V'], s: [92, 87], ps: [90, 85], c: "Angle", f: "Roman", desc: "The Vessel. West Cardinal opening." },
+            { id: 11, a: 304.62, p: ['W', 'X'], s: [74, 91], ps: [75, 90], c: "Angle", f: "Roman", desc: "Expansion/Intersection dynamics." },
+            { id: 12, a: 332.31, p: ['Y', 'Z'], s: [68, 43], ps: [70, 45], c: "Angle", f: "Roman", desc: "The Reset. Zenith snap-back." }
+        ];
+
+        const IPA_MAP = {
+            "a": 6, "e": 6, "i": 6, "o": 6, "u": 6,
+            "p": 7, "b": 7, "t": 9, "d": 0, "k": 3, "g": 3,
+            "s": 9, "z": 9, "h": 4, "m": 7, "n": 0, "l": 0, "r": 0,
+            "f": 10, "v": 10
+        };
+
+        let mode = "ortho"; // or "ipa"
+        const layers = { vectors: true, clusters: true, resonance: true, collisions: true, uclc: true, tritier: false };
+
+        function createSVG() {
+            const mount = document.getElementById('svg-mount');
+            mount.innerHTML = '';
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("viewBox", "-600 -600 1200 1200");
+            svg.style.width = "100%";
+            svg.id = "main-svg";
+
+            // Circles
+            const r1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            r1.setAttribute("r", "500"); r1.setAttribute("fill", "none"); r1.setAttribute("stroke", "#334155"); r1.setAttribute("stroke-width", "2");
+            svg.appendChild(r1);
+
+            if (layers.tritier) {
+                [350, 650].forEach(r => {
+                    const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                    c.setAttribute("r", r); c.setAttribute("class", "tri-tier-circle");
+                    svg.appendChild(c);
+                });
+            }
+
+            // Collision Arcs
+            if (layers.collisions) {
+                const arcs = [
+                    { start: 249, end: 83, label: "st" },
+                    { start: 166, end: 304, label: "er" }
+                ];
+                arcs.forEach(a => {
+                    const arc = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                    const radS = (a.start - 90) * Math.PI / 180;
+                    const radE = (a.end - 90) * Math.PI / 180;
+                    const x1 = Math.cos(radS) * 550, y1 = Math.sin(radS) * 550;
+                    const x2 = Math.cos(radE) * 550, y2 = Math.sin(radE) * 550;
+                    arc.setAttribute("d", `M ${x1} ${y1} A 550 550 0 0 1 ${x2} ${y2}`);
+                    arc.setAttribute("class", "collision-arc");
+                    svg.appendChild(arc);
+                });
+            }
+
+            // Nodes
+            ND.forEach(n => {
+                const rad = (n.a - 90) * (Math.PI / 180);
+                const x = Math.cos(rad) * 500;
+                const y = Math.sin(rad) * 500;
+
+                const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                g.style.cursor = "pointer";
+                g.onclick = () => sel(n.id);
+
+                if (layers.clusters) {
+                    const glow = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                    glow.setAttribute("cx", x); glow.setAttribute("cy", y); glow.setAttribute("r", "40");
+                    glow.setAttribute("fill", n.c === 'Loop' ? 'rgba(235, 77, 75, 0.1)' : 'rgba(99, 102, 241, 0.1)');
+                    g.appendChild(glow);
+                }
+
+                if (layers.resonance) {
+                    const bar = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                    const h = n.s[0] * 0.8;
+                    bar.setAttribute("x", x - 5); bar.setAttribute("y", y - h - 20);
+                    bar.setAttribute("width", "10"); bar.setAttribute("height", h);
+                    bar.setAttribute("fill", n.s[0] > 80 ? 'var(--high)' : 'var(--mod)');
+                    g.appendChild(bar);
+                }
+
+                const t = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                t.setAttribute("x", x * 1.12); t.setAttribute("y", y * 1.12);
+                t.setAttribute("fill", "white"); t.setAttribute("font-size", "34"); t.setAttribute("text-anchor", "middle"); t.setAttribute("dominant-baseline", "central");
+                t.setAttribute("font-weight", "bold");
+                t.textContent = n.p[0] + (layers.uclc ? " / " + n.p[1] : "");
+                g.appendChild(t);
+
+                if (layers.vectors) {
+                    const a1 = createArrow(x, y, n.a - 45, 'var(--teal)');
+                    const a2 = createArrow(x, y, n.a + 45, 'var(--rust)');
+                    g.appendChild(a1); g.appendChild(a2);
+                }
+
+                if (n.id === 9) {
+                    const star = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                    star.setAttribute("x", x); star.setAttribute("y", y + 40); star.setAttribute("fill", "var(--gold)"); star.setAttribute("font-size", "20");
+                    star.setAttribute("text-anchor", "middle"); star.textContent = "★";
+                    g.appendChild(star);
+                }
+                svg.appendChild(g);
+            });
+            mount.appendChild(svg);
+        }
+
+        function createArrow(cx, cy, ang, col) {
+            const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+            const r = (ang - 90) * Math.PI / 180;
+            const x2 = cx + Math.cos(r) * 40;
+            const y2 = cy + Math.sin(r) * 40;
+            const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            line.setAttribute("x1", cx); line.setAttribute("y1", cy); line.setAttribute("x2", x2); line.setAttribute("y2", y2);
+            line.setAttribute("stroke", col); line.setAttribute("stroke-width", "3");
+            g.appendChild(line);
+            return g;
+        }
+
+        function toggleLayer(l) {
+            layers[l] = !layers[l];
+            document.querySelectorAll('.toggle-btn').forEach(b => {
+                if (b.innerText.toLowerCase().includes(l.toLowerCase())) b.classList.toggle('active');
+            });
+            createSVG();
+        }
+
+        function toggleMode() {
+            mode = mode === "ortho" ? "ipa" : "ortho";
+            document.getElementById('mode-btn').innerText = mode === "ortho" ? "MODE: TEXT" : "MODE: IPA";
+            document.getElementById('word-input').placeholder = mode === "ortho" ? "Enter text..." : "Enter IPA...";
+            doWord();
+        }
+
+        function sel(id) {
+            const n = ND[id];
+            console.log(`Inspecting Node ${id}: ${n.desc}`);
+        }
+
+        function doWord() {
+            const input = document.getElementById('word-input').value.toLowerCase();
+            const units = mode === "ortho" ? input.split('').filter(l => ALPHABET.includes(l.toUpperCase())) : input.split('').filter(l => IPA_MAP[l] !== undefined);
+
+            if (!units.length) {
+                document.getElementById('res-angle').innerText = `0°`;
+                document.getElementById('res-score').innerText = `0%`;
+                return;
+            }
+
+            let tx = 0, ty = 0, totalRes = 0, totalPs = 0;
+            units.forEach(char => {
+                let n, score, psScore;
+                if (mode === "ortho") {
+                    const idx = ALPHABET.indexOf(char.toUpperCase());
+                    n = ND[Math.floor(idx / 2)];
+                    score = (idx % 2 === 0 ? n.s[0] : n.s[1]);
+                    psScore = (idx % 2 === 0 ? n.ps[0] : n.ps[1]);
+                } else {
+                    n = ND[IPA_MAP[char]];
+                    score = 90;
+                    psScore = 90;
+                }
+                const rad = (n.a - 90) * Math.PI / 180;
+                tx += 13 * Math.cos(rad);
+                ty += 13 * Math.sin(rad);
+                totalRes += score;
+                totalPs += psScore;
+            });
+
+            let ang = Math.atan2(ty, tx) * (180 / Math.PI) + 90;
+            if (ang < 0) ang += 360;
+            const mag = Math.sqrt(tx ** 2 + ty ** 2);
+            const balance = mag / (13 * units.length);
+            const delta = Math.abs(totalRes - totalPs) / (100 * units.length);
+
+            document.getElementById('res-angle').innerText = `${Math.round(ang)}°`;
+            document.getElementById('res-stability').innerText = balance > 0.8 ? "RESONANT" : (balance < 0.4 ? "BALANCED" : "MIXED");
+            document.getElementById('res-score').innerText = `${Math.round(balance * 100)}%`;
+            document.getElementById('res-delta').innerText = delta.toFixed(3);
+        }
+
+        function setupTable() {
+            const body = document.getElementById('ref-body');
+            body.innerHTML = '';
+            ND.forEach(n => {
+                const tr = document.createElement('tr');
+                const isCard = [0, 7, 10].includes(n.id);
+                tr.innerHTML = `
+                <td>${n.id} ${isCard ? '<span class="badge badge-cardinal">CARD</span>' : (n.id === 9 ? '<span class="badge badge-sw">POWER</span>' : '')}</td>
+                <td>${n.a.toFixed(1)}°</td>
+                <td>${n.p[0]}/${n.p[1]}</td>
+                <td><span style="color:${n.s[0] > 80 ? 'var(--high)' : 'var(--mod)'}">${n.s[0]}%</span></td>
+            `;
+                tr.onclick = () => sel(n.id);
+                body.appendChild(tr);
+            });
+        }
+
+        document.getElementById('word-input').oninput = doWord;
+        document.getElementById('export-btn').onclick = () => {
+            html2canvas(document.getElementById('viz-card'), { backgroundColor: "#0b0f19" }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'vortex-13-resonance.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        };
+
+        createSVG();
+        setupTable();
+        doWord();
+    </script>
+</body>
+
+</html>

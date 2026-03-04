@@ -1,0 +1,27 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "README.md",
+      "WHITEPAPER.md",
+      "EXECUTIVE_SUMMARY.md",
+      "LAUNCH_ASSETS.md",
+      "MODEL_DEFINITION.md",
+      "NON_CARDINAL_ANALYSIS.md",
+      "STYLE_GUIDE.md",
+      "TECHNICAL_MANUAL.md",
+      "WHITEPAPER_CHAPTER_5.md",
+      "*.py",
+      ".git/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/RESONANCE_MAP_DASHBOARD.html"
+      }
+    ]
+  }
+}

@@ -1,0 +1,235 @@
+{
+  "research_title": "Hardcard Research: hardcard Technical Brief",
+  "hardcard_template_id": "hc_v2_academic",
+  "source_logic_summary": "Automated semantic distillation of https://github.com/midnightnow/hardcard",
+  "visual_intent": "Holistic Architecture & Computational Flow",
+  "reference_styles": [
+    "Hardcard_Standard_v2.pdf"
+  ],
+  "methodology": [
+    {
+      "feature": "Class: SettlementEngine",
+      "logic": "Core data structure implementation.",
+      "rationale": "Implements methods: calculate_split"
+    },
+    {
+      "feature": "Class: MockTreasury",
+      "logic": "Core data structure implementation.",
+      "rationale": "Implements methods: deposit_tax, get_metrics"
+    },
+    {
+      "feature": "Logic: broadcast_signal",
+      "logic": "Broadcasts a signal with cryptographic proof of authorship.\n\nArgs:\n    agent_id: The agent broadcasting the signal\n    task_description: Description of the task\n    reward: Reward amount in $HCL\n    signature: Ed25519 signature proving agent identity (REQUIRED in v1.1.1+)\n\nReturns:\n    Signal hash if successful, None if verification fails\n\nSecurity (v1.1.1):\n1. Verifies signature matches agent_id's public key\n2. Locks Escrow (if reward > 0)\n3. Anchors Signal with cryptographic proof",
+      "rationale": "Complexity Score: 5"
+    },
+    {
+      "feature": "Logic: link_signal",
+      "logic": "Links (bids/replies) to a signal.",
+      "rationale": "Complexity Score: 2"
+    },
+    {
+      "feature": "Logic: deliver_payload",
+      "logic": "Delivers signed proof of work and triggers settlement.\n\nArgs:\n    signal_hash: The signal being fulfilled\n    payload: The work product/result\n    worker_id: The agent delivering the work\n    signature: Ed25519 signature proving work authorship (REQUIRED in v1.1.1+)\n\nReturns:\n    True if delivery accepted and settled, False otherwise\n\nSecurity (v1.1.1):\n1. Verifies worker signature over payload\n2. Checks worker is authorized (linked to signal)\n3. Records delivery with cryptographic proof\n4. Triggers settlement only after verification",
+      "rationale": "Complexity Score: 7"
+    },
+    {
+      "feature": "Logic: _verify_constitutional_handshake",
+      "logic": "Constitutional Handshake (HCL-04 Verified)\n\nQueries the seed's invariants to ensure it enforces:\n1. 10% Integrity Fee (HCL-07)\n2. Anti-Amnesia anchoring\n3. Valid hash-chain lineage\n\nReturns verification result or rejection reason.",
+      "rationale": "Complexity Score: 3"
+    },
+    {
+      "feature": "Logic: transcend_node",
+      "logic": "Spawns a Sovereign Hyperspace Instance via Constitutional Handshake.\n\nProtocol (HCL-04):\n1. Constitutional Handshake - Verify seed enforces HCL-07 invariants\n2. Physical Layer Init - Create .hardcard/hyperspace/ structure  \n3. Meta Layer Sync - Clone Hyperspace Map from seed\n4. First Breath - Broadcast sovereign presence to swarm\n\nReturns False if seed fails Constitutional Handshake (prevents Slop-Seeds).",
+      "rationale": "Complexity Score: 5"
+    },
+    {
+      "feature": "Logic: dimensional_guard",
+      "logic": "The Pressure Valve: Monitors Shear Force and triggers compression if \u03c3 >= 1.0.\n\nThis is the crash-proof mechanism. When the Clay volume exceeds what the\nCeramic mass can support, instead of collapsing, we:\n1. Archive the current state as a \"fossil\"\n2. Compress the floor (divide volume by 10)\n3. Transfer ceramic mass back to parent floor\n\nReturns status report of the dimensional scan.",
+      "rationale": "Complexity Score: 2"
+    },
+    {
+      "feature": "Logic: archive_historical_block",
+      "logic": "Archives the current floor state as an immutable \"fossil\".\n\nThe Black Box: Every signal, every wallet state, every transaction\nis frozen into a cryptographic block that can never be altered.\nThis preserves sovereign history even when the floor compresses.",
+      "rationale": "Complexity Score: 2"
+    },
+    {
+      "feature": "Logic: compress_floor",
+      "logic": "Executes the Dimensional Fold: Compresses the floor to restore structural integrity.\n\nThe \"Remove a Zero\" operation:\n1. Clay volume is divided by 10 (1000 HCB \u2192 100 HCB)\n2. Ceramic is transferred to parent floor reserve\n3. All agents are re-anchored at 0.1x nominal value\n\nThis is NOT destruction - it's compression. The fossil record preserves history.",
+      "rationale": "Complexity Score: 1"
+    }
+  ],
+  "architecture_nodes": [
+    {
+      "id": "hardcard/nexus.py",
+      "label": "nexus",
+      "type": "module"
+    },
+    {
+      "id": "hardcard/nexus.py",
+      "label": "nexus",
+      "type": "module"
+    },
+    {
+      "id": "hardcard/nexus.py",
+      "label": "nexus",
+      "type": "module"
+    },
+    {
+      "id": "hardcard/nexus.py",
+      "label": "nexus",
+      "type": "module"
+    },
+    {
+      "id": "hardcard/nexus.py",
+      "label": "nexus",
+      "type": "module"
+    },
+    {
+      "id": "hardcard/cli.py",
+      "label": "cli",
+      "type": "module"
+    },
+    {
+      "id": "hardcard/cli.py",
+      "label": "cli",
+      "type": "module"
+    },
+    {
+      "id": "hardcard/cli.py",
+      "label": "cli",
+      "type": "module"
+    },
+    {
+      "id": "hardcard/cli.py",
+      "label": "cli",
+      "type": "module"
+    },
+    {
+      "id": "hardcard/cli.py",
+      "label": "cli",
+      "type": "module"
+    },
+    {
+      "id": "hardcard/cli.py",
+      "label": "cli",
+      "type": "module"
+    },
+    {
+      "id": "hardcard/cli.py",
+      "label": "cli",
+      "type": "module"
+    },
+    {
+      "id": "hardcard/cli.py",
+      "label": "cli",
+      "type": "module"
+    },
+    {
+      "id": "hardcard/cli.py",
+      "label": "cli",
+      "type": "module"
+    },
+    {
+      "id": "hardcard/cli.py",
+      "label": "cli",
+      "type": "module"
+    },
+    {
+      "id": "hardcard/cli.py",
+      "label": "cli",
+      "type": "module"
+    },
+    {
+      "id": "hardcard/wallet.py",
+      "label": "wallet",
+      "type": "module"
+    }
+  ],
+  "dependency_graph": [
+    {
+      "source": "hardcard/nexus.py",
+      "target": "wallet",
+      "type": "dependency"
+    },
+    {
+      "source": "hardcard/nexus.py",
+      "target": "shield",
+      "type": "dependency"
+    },
+    {
+      "source": "hardcard/nexus.py",
+      "target": "shield",
+      "type": "dependency"
+    },
+    {
+      "source": "hardcard/nexus.py",
+      "target": "wallet",
+      "type": "dependency"
+    },
+    {
+      "source": "hardcard/nexus.py",
+      "target": "shield",
+      "type": "dependency"
+    },
+    {
+      "source": "hardcard/cli.py",
+      "target": "wallet",
+      "type": "dependency"
+    },
+    {
+      "source": "hardcard/cli.py",
+      "target": "shield",
+      "type": "dependency"
+    },
+    {
+      "source": "hardcard/cli.py",
+      "target": "nexus",
+      "type": "dependency"
+    },
+    {
+      "source": "hardcard/cli.py",
+      "target": "shield",
+      "type": "dependency"
+    },
+    {
+      "source": "hardcard/cli.py",
+      "target": "nexus",
+      "type": "dependency"
+    },
+    {
+      "source": "hardcard/cli.py",
+      "target": "nexus",
+      "type": "dependency"
+    },
+    {
+      "source": "hardcard/cli.py",
+      "target": "nexus",
+      "type": "dependency"
+    },
+    {
+      "source": "hardcard/cli.py",
+      "target": "audit",
+      "type": "dependency"
+    },
+    {
+      "source": "hardcard/cli.py",
+      "target": "nexus",
+      "type": "dependency"
+    },
+    {
+      "source": "hardcard/cli.py",
+      "target": "nexus",
+      "type": "dependency"
+    },
+    {
+      "source": "hardcard/cli.py",
+      "target": "shield",
+      "type": "dependency"
+    },
+    {
+      "source": "hardcard/wallet.py",
+      "target": "shield",
+      "type": "dependency"
+    }
+  ]
+}

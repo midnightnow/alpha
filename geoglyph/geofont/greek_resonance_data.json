@@ -1,0 +1,146 @@
+{
+    "Alpha": {
+        "phoneme": "/a/",
+        "node": 0,
+        "resonance": 0.7308,
+        "harmonic": 13
+    },
+    "Beta": {
+        "phoneme": "/v/",
+        "node": 0,
+        "resonance": 0.1313,
+        "harmonic": 48
+    },
+    "Gamma": {
+        "phoneme": "/\u0263/",
+        "node": 1,
+        "resonance": 0.6787,
+        "harmonic": 38
+    },
+    "Delta": {
+        "phoneme": "/\u00f0/",
+        "node": 1,
+        "resonance": 0.4489,
+        "harmonic": 3
+    },
+    "Epsilon": {
+        "phoneme": "/e/",
+        "node": 2,
+        "resonance": 0.1357,
+        "harmonic": 8
+    },
+    "Zeta": {
+        "phoneme": "/z/",
+        "node": 2,
+        "resonance": 0.1402,
+        "harmonic": 64
+    },
+    "Eta": {
+        "phoneme": "/i/",
+        "node": 3,
+        "resonance": 0.0814,
+        "harmonic": 5
+    },
+    "Theta": {
+        "phoneme": "/\u03b8/",
+        "node": 3,
+        "resonance": 0.9502,
+        "harmonic": 53
+    },
+    "Iota": {
+        "phoneme": "/i/",
+        "node": 4,
+        "resonance": 0.0814,
+        "harmonic": 5
+    },
+    "Kappa": {
+        "phoneme": "/k/",
+        "node": 4,
+        "resonance": 0.0814,
+        "harmonic": 5
+    },
+    "Lambda": {
+        "phoneme": "/l/",
+        "node": 5,
+        "resonance": 0.405,
+        "harmonic": 5
+    },
+    "Mu": {
+        "phoneme": "/m/",
+        "node": 5,
+        "resonance": 0.4593,
+        "harmonic": 2
+    },
+    "Nu": {
+        "phoneme": "/n/",
+        "node": 6,
+        "resonance": 0.9457,
+        "harmonic": 3
+    },
+    "Xi": {
+        "phoneme": "/ks/",
+        "node": 6,
+        "resonance": 0.7784,
+        "harmonic": 68
+    },
+    "Omicron": {
+        "phoneme": "/o/",
+        "node": 7,
+        "resonance": 0.6222,
+        "harmonic": 7
+    },
+    "Pi": {
+        "phoneme": "/p/",
+        "node": 7,
+        "resonance": 0.0271,
+        "harmonic": 2
+    },
+    "Rho": {
+        "phoneme": "/r/",
+        "node": 8,
+        "resonance": 0.6222,
+        "harmonic": 7
+    },
+    "Sigma": {
+        "phoneme": "/s/",
+        "node": 8,
+        "resonance": 0.0859,
+        "harmonic": 61
+    },
+    "Tau": {
+        "phoneme": "/t/",
+        "node": 9,
+        "resonance": 0.9457,
+        "harmonic": 3
+    },
+    "Upsilon": {
+        "phoneme": "/i/",
+        "node": 9,
+        "resonance": 0.0814,
+        "harmonic": 5
+    },
+    "Phi": {
+        "phoneme": "/f/",
+        "node": 10,
+        "resonance": 0.1856,
+        "harmonic": 45
+    },
+    "Chi": {
+        "phoneme": "/x/",
+        "node": 10,
+        "resonance": 0.2399,
+        "harmonic": 42
+    },
+    "Psi": {
+        "phoneme": "/ps/",
+        "node": 11,
+        "resonance": 0.3031,
+        "harmonic": 73
+    },
+    "Omega": {
+        "phoneme": "/o/",
+        "node": 11,
+        "resonance": 0.6222,
+        "harmonic": 7
+    }
+}

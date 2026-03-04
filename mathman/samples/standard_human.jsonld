@@ -1,0 +1,100 @@
+{
+    "@context": "https://schema.org",
+    "@type": "Dataset",
+    "name": "Mathman Standard Human Resonance Profile",
+    "description": "Baseline wave interference pattern for a standard human biofield (lambda=1.0mm, scanHeight=4.2mm).",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "creator": {
+        "@type": "Organization",
+        "name": "Mathman Resonant Sphere Lab"
+    },
+    "variableMeasured": [
+        {
+            "@type": "PropertyValue",
+            "name": "Intensity",
+            "unitText": "normalized_amplitude"
+        },
+        {
+            "@type": "PropertyValue",
+            "name": "SpatialPosition",
+            "unitText": "mm"
+        },
+        {
+            "@type": "PropertyValue",
+            "name": "ScanHeight",
+            "value": 4.2,
+            "unitText": "mm",
+            "description": "Substantiation threshold (√42 resonance)"
+        }
+    ],
+    "mainEntity": {
+        "@type": "MedicalEntity",
+        "name": "Standard Human Biofield Profile",
+        "code": {
+            "@type": "MedicalCode",
+            "code": "HEF-BASE-001",
+            "codingSystem": "BiofieldResonance"
+        },
+        "relevantSpecialty": {
+            "@type": "MedicalSpecialty",
+            "name": "Integrative Human Medicine"
+        },
+        "studySubject": {
+            "@type": "AnatomicalStructure",
+            "name": "Whole Body Field"
+        }
+    },
+    "parameters": {
+        "originSeparation": 12.0,
+        "originCOffset": 12.0,
+        "scanHeight": 4.2,
+        "wavelength": 1.0,
+        "phasePhi": 0,
+        "phasePsi": 0,
+        "intensityThreshold": 0.15,
+        "geometryScale": 6.4807406984
+    },
+    "nodalData": [
+        {
+            "id": "node-root-001",
+            "x": 0.0,
+            "y": 0.0,
+            "intensity": 0.982,
+            "classification": "constructive",
+            "anatomicalRegion": "Root (Coccyx)"
+        },
+        {
+            "id": "node-heart-001",
+            "x": 0.0,
+            "y": 4.8,
+            "intensity": 0.854,
+            "classification": "constructive",
+            "anatomicalRegion": "Heart (T5)"
+        },
+        {
+            "id": "node-crown-001",
+            "x": 0.0,
+            "y": 7.0,
+            "intensity": 0.912,
+            "classification": "constructive",
+            "anatomicalRegion": "Crown (Top Head)"
+        },
+        {
+            "id": "node-tan-tien-001",
+            "x": 0.0,
+            "y": 3.54,
+            "intensity": 0.765,
+            "classification": "constructive",
+            "anatomicalRegion": "Tan Tien (Solar Plexus)"
+        }
+    ],
+    "metadata": {
+        "engineVersion": "v2.1.0-research",
+        "timestamp": "2026-02-18T16:55:00Z",
+        "citationSet": [
+            "Hecht, E. (2002). Optics.",
+            "Brennan, B. (1993). Light Emerging.",
+            "Grant, R. E. (2018). Unlocking the 10-24-26 Cipher."
+        ]
+    }
+}

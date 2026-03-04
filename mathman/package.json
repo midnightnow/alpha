@@ -1,0 +1,25 @@
+{
+  "name": "mathman",
+  "version": "1.0.0",
+  "description": "> *\"Biological form is not accidental, but a planar cross-section of a higher-dimensional resonant sphere.\"*",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/midnightnow/mathman.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/midnightnow/mathman/issues"
+  },
+  "homepage": "https://github.com/midnightnow/mathman#readme",
+  "devDependencies": {
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0"
+  }
+}

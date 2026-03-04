@@ -1,0 +1,21 @@
+{
+    "run_id": "GGE_20260228_224108",
+    "baseline": {
+        "V_676": 1.0,
+        "bias_note": "No strong mechanical bias"
+    },
+    "control": {
+        "V_control": 0.9904461720663991
+    },
+    "permutation_test": {
+        "p_value": 0.761,
+        "effect_size": -0.005201411905292878,
+        "percentile": 23.9,
+        "R_canonical": 0.0074480804513005205,
+        "theta_star": 211.4876149219118,
+        "decision": "PIVOT: Null result (p > 0.10)",
+        "R_perm_mean": 0.012649492356593399,
+        "R_perm_std": 0.006602089223543015
+    },
+    "runtime_sec": 68.70130395889282
+}

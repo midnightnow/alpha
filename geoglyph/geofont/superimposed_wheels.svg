@@ -1,0 +1,138 @@
+<svg width="600" height="600" viewBox="-300 -300 600 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .hebrew { stroke: #D2B48C; fill: #D2B48C; }
+      .greek { stroke: #4682B4; fill: #4682B4; }
+      .latin { stroke: #2E8B57; fill: #2E8B57; }
+      .axis { stroke: #e0e0e0; stroke-width: 0.5; stroke-dasharray: 4,4; }
+      .lock { fill: rgba(255, 215, 0, 0.3); stroke: #DAA520; stroke-width: 1.5; }
+      text { font-family: sans-serif; font-size: 10px; text-anchor: middle; dominant-baseline: middle; }
+    </style>
+  </defs>
+  <!-- Concentric Tracks -->
+  <circle cx="0" cy="0" r="150.0" fill="none" class="latin" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <circle cx="0" cy="0" r="162.5" fill="none" class="greek" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <circle cx="0" cy="0" r="177.27272727272728" fill="none" class="hebrew" stroke-width="0.5" stroke-dasharray="2,2"/>
+  <!-- Nodal Triple Locks Highlight -->
+  <path d="M 0 0 L 91.09040824727488 -174.98304618152193 A 197.27272727272728 197.27272727272728 0 0 1 105.99455910114617 -166.37813067399654 Z" class="lock"/>
+  <path d="M 0 0 L -105.99455910114624 -166.3781306739965 A 197.27272727272728 197.27272727272728 0 0 1 -91.09040824727498 -174.98304618152187 Z" class="lock"/>
+  <line x1="0" y1="0" x2="1.0854823901533358e-14" y2="-177.27272727272728" class="axis" />
+  <circle cx="1.0854823901533358e-14" cy="-177.27272727272728" r="3" class="hebrew" />
+  <text x="1.158961198102177e-14" y="-189.27272727272728" class="hebrew">א</text>
+  <line x1="0" y1="0" x2="95.8408721853105" y2="-149.13130809280028" class="axis" />
+  <circle cx="95.8408721853105" cy="-149.13130809280028" r="3" class="hebrew" />
+  <text x="102.32856199477767" y="-159.22635048677446" class="hebrew">ג</text>
+  <line x1="0" y1="0" x2="161.25294463102824" y2="-73.64175230487987" class="axis" />
+  <circle cx="161.25294463102824" cy="-73.64175230487987" r="3" class="hebrew" />
+  <text x="172.16852857528247" y="-78.6267324609025" class="hebrew">ה</text>
+  <line x1="0" y1="0" x2="175.46834651525626" y2="25.22853951208238" class="axis" />
+  <circle cx="175.46834651525626" cy="25.22853951208238" r="3" class="hebrew" />
+  <text x="187.34620381782744" y="26.936317571361805" class="hebrew">ז</text>
+  <line x1="0" y1="0" x2="133.97378818098218" y2="116.08894829030052" class="axis" />
+  <circle cx="133.97378818098218" cy="116.08894829030052" r="3" class="hebrew" />
+  <text x="143.04278307323327" y="123.94727709764395" class="hebrew">ט</text>
+  <line x1="0" y1="0" x2="49.94349871279892" y2="170.0919362316609" class="axis" />
+  <circle cx="49.94349871279892" cy="170.0919362316609" r="3" class="hebrew" />
+  <text x="53.32428939489608" y="181.60585191503486" class="hebrew">כ</text>
+  <line x1="0" y1="0" x2="-49.943498712798934" y2="170.0919362316609" class="axis" />
+  <circle cx="-49.943498712798934" cy="170.0919362316609" r="3" class="hebrew" />
+  <text x="-53.3242893948961" y="181.60585191503486" class="hebrew">מ</text>
+  <line x1="0" y1="0" x2="-133.97378818098213" y2="116.08894829030056" class="axis" />
+  <circle cx="-133.97378818098213" cy="116.08894829030056" r="3" class="hebrew" />
+  <text x="-143.04278307323324" y="123.94727709764399" class="hebrew">ס</text>
+  <line x1="0" y1="0" x2="-175.46834651525626" y2="25.22853951208237" class="axis" />
+  <circle cx="-175.46834651525626" cy="25.22853951208237" r="3" class="hebrew" />
+  <text x="-187.34620381782744" y="26.936317571361794" class="hebrew">פ</text>
+  <line x1="0" y1="0" x2="-161.25294463102824" y2="-73.64175230487989" class="axis" />
+  <circle cx="-161.25294463102824" cy="-73.64175230487989" r="3" class="hebrew" />
+  <text x="-172.16852857528247" y="-78.62673246090252" class="hebrew">ק</text>
+  <line x1="0" y1="0" x2="-95.8408721853106" y2="-149.13130809280023" class="axis" />
+  <circle cx="-95.8408721853106" cy="-149.13130809280023" r="3" class="hebrew" />
+  <text x="-102.32856199477777" y="-159.2263504867744" class="hebrew">ש</text>
+  <line x1="0" y1="0" x2="9.950255243072245e-15" y2="-162.5" class="axis" />
+  <circle cx="9.950255243072245e-15" cy="-162.5" r="3" class="greek" />
+  <text x="1.0685043322560657e-14" y="-174.5" class="greek">Α</text>
+  <line x1="0" y1="0" x2="81.25000000000001" y2="-140.72912811497127" class="axis" />
+  <circle cx="81.25000000000001" cy="-140.72912811497127" r="3" class="greek" />
+  <text x="87.25000000000001" y="-151.12143296038454" class="greek">Γ</text>
+  <line x1="0" y1="0" x2="140.7291281149713" y2="-81.24999999999999" class="axis" />
+  <circle cx="140.7291281149713" cy="-81.24999999999999" r="3" class="greek" />
+  <text x="151.12143296038457" y="-87.24999999999999" class="greek">Ε</text>
+  <line x1="0" y1="0" x2="162.5" y2="0.0" class="axis" />
+  <circle cx="162.5" cy="0.0" r="3" class="greek" />
+  <text x="174.5" y="0.0" class="greek">Η</text>
+  <line x1="0" y1="0" x2="140.7291281149713" y2="81.24999999999999" class="axis" />
+  <circle cx="140.7291281149713" cy="81.24999999999999" r="3" class="greek" />
+  <text x="151.12143296038457" y="87.24999999999999" class="greek">Ι</text>
+  <line x1="0" y1="0" x2="81.25000000000001" y2="140.72912811497127" class="axis" />
+  <circle cx="81.25000000000001" cy="140.72912811497127" r="3" class="greek" />
+  <text x="87.25000000000001" y="151.12143296038454" class="greek">Λ</text>
+  <line x1="0" y1="0" x2="9.950255243072245e-15" y2="162.5" class="axis" />
+  <circle cx="9.950255243072245e-15" cy="162.5" r="3" class="greek" />
+  <text x="1.0685043322560657e-14" y="174.5" class="greek">Ν</text>
+  <line x1="0" y1="0" x2="-81.24999999999997" y2="140.7291281149713" class="axis" />
+  <circle cx="-81.24999999999997" cy="140.7291281149713" r="3" class="greek" />
+  <text x="-87.24999999999997" y="151.12143296038457" class="greek">Ο</text>
+  <line x1="0" y1="0" x2="-140.7291281149713" y2="81.24999999999999" class="axis" />
+  <circle cx="-140.7291281149713" cy="81.24999999999999" r="3" class="greek" />
+  <text x="-151.12143296038457" y="87.24999999999999" class="greek">Ρ</text>
+  <line x1="0" y1="0" x2="-162.5" y2="1.990051048614449e-14" class="axis" />
+  <circle cx="-162.5" cy="1.990051048614449e-14" r="3" class="greek" />
+  <text x="-174.5" y="2.1370086645121315e-14" class="greek">Τ</text>
+  <line x1="0" y1="0" x2="-140.72912811497127" y2="-81.25000000000001" class="axis" />
+  <circle cx="-140.72912811497127" cy="-81.25000000000001" r="3" class="greek" />
+  <text x="-151.12143296038454" y="-87.25000000000001" class="greek">Φ</text>
+  <line x1="0" y1="0" x2="-81.25000000000007" y2="-140.72912811497125" class="axis" />
+  <circle cx="-81.25000000000007" cy="-140.72912811497125" r="3" class="greek" />
+  <text x="-87.25000000000007" y="-151.1214329603845" class="greek">Ψ</text>
+  <line x1="0" y1="0" x2="9.184850993605149e-15" y2="-150.0" class="axis" />
+  <circle cx="9.184850993605149e-15" cy="-150.0" r="3" class="latin" />
+  <text x="9.919639073093561e-15" y="-162.0" class="latin">A</text>
+  <line x1="0" y1="0" x2="69.70847580656529" y2="-132.81840384798147" class="axis" />
+  <circle cx="69.70847580656529" cy="-132.81840384798147" r="3" class="latin" />
+  <text x="75.28515387109051" y="-143.44387615582" class="latin">C</text>
+  <line x1="0" y1="0" x2="123.44757988404847" y2="-85.20971200967335" class="axis" />
+  <circle cx="123.44757988404847" cy="-85.20971200967335" r="3" class="latin" />
+  <text x="133.32338627477236" y="-92.02648897044722" class="latin">E</text>
+  <line x1="0" y1="0" x2="148.9063311147081" y2="-18.080502038298448" class="axis" />
+  <circle cx="148.9063311147081" cy="-18.080502038298448" r="3" class="latin" />
+  <text x="160.81883760388473" y="-19.526942201362324" class="latin">G</text>
+  <line x1="0" y1="0" x2="140.25243640281224" y2="53.19073305638035" class="axis" />
+  <circle cx="140.25243640281224" cy="53.19073305638035" r="3" class="latin" />
+  <text x="151.4726313150372" y="57.44599170089078" class="latin">I</text>
+  <line x1="0" y1="0" x2="99.4683987361193" y2="112.27661222566515" class="axis" />
+  <circle cx="99.4683987361193" cy="112.27661222566515" r="3" class="latin" />
+  <text x="107.42587063500883" y="121.25874120371836" class="latin">K</text>
+  <line x1="0" y1="0" x2="35.897349643133644" y2="145.6412726139078" class="axis" />
+  <circle cx="35.897349643133644" cy="145.6412726139078" r="3" class="latin" />
+  <text x="38.76913761458434" y="157.29257442302043" class="latin">M</text>
+  <line x1="0" y1="0" x2="-35.89734964313372" y2="145.64127261390777" class="axis" />
+  <circle cx="-35.89734964313372" cy="145.64127261390777" r="3" class="latin" />
+  <text x="-38.76913761458442" y="157.2925744230204" class="latin">O</text>
+  <line x1="0" y1="0" x2="-99.46839873611931" y2="112.27661222566515" class="axis" />
+  <circle cx="-99.46839873611931" cy="112.27661222566515" r="3" class="latin" />
+  <text x="-107.42587063500886" y="121.25874120371836" class="latin">Q</text>
+  <line x1="0" y1="0" x2="-140.2524364028122" y2="53.190733056380374" class="axis" />
+  <circle cx="-140.2524364028122" cy="53.190733056380374" r="3" class="latin" />
+  <text x="-151.47263131503718" y="57.44599170089081" class="latin">S</text>
+  <line x1="0" y1="0" x2="-148.9063311147081" y2="-18.080502038298423" class="axis" />
+  <circle cx="-148.9063311147081" cy="-18.080502038298423" r="3" class="latin" />
+  <text x="-160.81883760388473" y="-19.5269422013623" class="latin">U</text>
+  <line x1="0" y1="0" x2="-123.44757988404844" y2="-85.20971200967341" class="axis" />
+  <circle cx="-123.44757988404844" cy="-85.20971200967341" r="3" class="latin" />
+  <text x="-133.3233862747723" y="-92.02648897044728" class="latin">W</text>
+  <line x1="0" y1="0" x2="-69.70847580656525" y2="-132.8184038479815" class="axis" />
+  <circle cx="-69.70847580656525" cy="-132.8184038479815" r="3" class="latin" />
+  <text x="-75.28515387109047" y="-143.44387615582002" class="latin">Y</text>
+  <line x1="0" y1="0" x2="0" y2="-207.27272727272728" stroke="#000" stroke-width="1.5" />
+  <text x="0" y="-217.27272727272728" fill="#000" font-weight="bold">THE APEX / NODE 0 (Perfect Synchronization)</text>
+  <text x="106.13636363636367" y="-183.83357434878766" fill="#DAA520" font-weight="bold" font-size="12px">TRIPLE LOCK (30.1°)</text>
+  <text x="-106.13636363636374" y="-183.8335743487876" fill="#DAA520" font-weight="bold" font-size="12px">TRIPLE LOCK (329.9°)</text>
+  <g transform="translate(-280, 230)">
+    <text x="0" y="0" style="text-anchor:start;font-size:14px;font-weight:bold;">REFRACTIVE SCALING MAP</text>
+    <circle cx="5" cy="20" r="4" class="latin" /> <text x="15" y="20" class="latin" style="text-anchor:start;">Latin (13-Node, Scale 1.0)</text>
+    <circle cx="5" cy="35" r="4" class="greek" /> <text x="15" y="35" class="greek" style="text-anchor:start;">Greek (12-Node, Scale 1.083)</text>
+    <circle cx="5" cy="50" r="4" class="hebrew" /> <text x="15" y="50" class="hebrew" style="text-anchor:start;">Hebrew (11-Node, Scale 1.182)</text>
+    <rect x="-1" y="61" width="12" height="12" class="lock" /> <text x="15" y="67" fill="#B8860B" style="text-anchor:start;">Universal Convergence Zones</text>
+  </g>
+</svg>

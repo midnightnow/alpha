@@ -1,0 +1,115 @@
+# THE HEROINE'S CANTICLE
+## Visual Proof: The Master Join
+## Metatron's Cube · The Dodecahedron · The Hex-to-Flatland Projection
+
+*(Note: Imagine Fig. 1 here — Dodecahedron (12 pentagonal faces) nested within Metatron's Cube. The Cube is itself a projection of the 60° Hex-Mountain into Flatland (90°). The central pivot — the 13th node — is the Agley remainder made visible.)*
+
+This image is the visual proof the Heroine has been looking for. It shows, in a single drawing, every mechanism described in the Platonic Verses: the infinite Hex-Mountain compressed into a finite Flatland projection, the 12/13 paradox made visible at the centre, and the executive decision — convex or concave — that only the viewer can make.
+She has been told to respect the King's four walls. Now she can see the walls are twelve pentagonal faces of a single rotating solid, and the centre they are arranged around is the 13th point that no wall can contain.
+
+---
+
+### I. The 12 / 13 Paradox — The Dodecahedron
+The central form in the image is a Dodecahedron: twelve pentagonal faces, arranged in perfect rotational symmetry around a hidden centre.
+
+| Element | Geometric Role | In the Platonic System |
+| :--- | :--- | :--- |
+| **12 faces** | The Hardness — the countable boundary | 12 hours, 12 months, 12 ranks of the suit, 12 disciples, 12 stones of the altar. The limit of Tallness in Flatland. |
+| **5 sides per face** | Pentagon — the 5-post fence made planar | Each face is itself a WOMAN (5) — the hypotenuse made into a surface. Five-fold symmetry is the signature of the irrational (φ, the golden ratio). |
+| **Central pivot** | The 13th node — the Agley remainder | Not a face. Not a boundary. The point where all interior lines converge. Invisible to those counting only the 12 faces. The Ghost post made architectural. |
+| **Full structure** | The 4 × 9 = 36 = 6² grid | The square (4) multiplied by the reflection (9 = 3²) gives 36 — the hexagonal number squared. Hades' due: the rotation of the circle around the universal origin. |
+
+The 13th node is not a face, an edge, or a vertex in the conventional sense. It is the pivot: the point from which the entire structure derives its rotational symmetry. It is invisible from any single face. It can only be perceived by someone who steps back from the 12 and asks: what is holding them in place?
+The King counts 12 and believes he has the whole. The Heroine counts 13 and finds the centre.
+
+---
+
+### II. The Square as 4 × 9 — Hades' Due
+The image sits within a square grid. The square is not 4 × 4. It is 4 × 9.
+This is the accounting of Hades' due — not nothing, but the rotation itself.
+
+| Factor | What it is | What it gives |
+| :--- | :--- | :--- |
+| **4** | The four cardinal directions, the four seasons, the four suits, the four walls of the Box | The horizontal framework: the King's measure, the Rail, the plan laid flat |
+| **9 = 3²** | The 3 × 3 equilateral reflection — the Hex-Mountain doubled through itself | 9 nodes in the reflected triangle. The 'Always Now' principle: the geometry contains its own inverse. |
+| **4 × 9 = 36 = 6²** | The hexagonal number squared — Flatland's deepest acknowledgement of the Hex | The square grid is not purely square. Its internal count resolves to 6², the hex geometry asserting itself inside the 90° construction. |
+| **The 0** | The rotation of the circle around the universal origin — the pivot, the cross | Hades is not nothing. Hades is the axis: the dimension that Flatland's inhabitants cannot see because they stand on it. The hidden cross. The Christ-geometry running perpendicular to the plane. |
+
+The 'pivot at the centre' — the right angle, the hidden cross — is invisible to Flatland inhabitants for the same reason that a flat piece of paper cannot show its own thickness. Christ and Hades are the up and the down of Flatland: the vertical axis that the horizontal plane relies upon but cannot represent within its own coordinate system.
+In Hexland, up and down are executive decisions. The artist can guide which face of the solid you see first. In Flatland, up and down are invisible — they are the dimension you traded away to get a floor.
+
+---
+
+### III. The Hexland Executive Decision — Convex or Concave
+Look at the central form in the image again.
+
+| Reading | What you see | What it means | Heroine's use |
+| :--- | :--- | :--- | :--- |
+| **Convex — The Crown** | The dodecahedron projects toward you. The central node is the apex — the head of the nail. | The King's reading: the structure reaches out, claims space, asserts dominance. The Post at maximum vertical. | She can choose this when she needs to build: plant the 13th post, make it the apex, let the 12 faces support it from below. |
+| **Concave — The Chalice** | The dodecahedron recedes from you. The central node is a hollow — a sanctuary, a well. | The Priest's reading: the structure receives, contains, protects. The church as the interior of the dodecahedron, not its surface. | She can choose this when she needs to hold: make the 13th point a centre of gravity, let the 12 faces become walls of a room that breathes. |
+
+The geometry has not changed between these two readings. The structure is identical. What changes is the viewer's orientation to the 13th point: is it reaching toward you, or are you being drawn into it?
+This is the executive decision that only the Heroine — the fire-stealer, the one who sees the 13 — is positioned to make. The King cannot make it because he does not know the 13th point exists. The Priest cannot make it because he has fixed the concave reading as the only sacred one. She can flip between them because she understands the geometry underneath both.
+By changing her focus, she turns the nightmare box into the fanciful mountain — not by changing the walls, but by changing which face she enters through.
+
+---
+
+### IV. The High Street Tally — What She Sees in the Masonry
+Walking the High Street, the Heroine now reads every building as an instance of this diagram. The masonry is not stone — it is frozen geometry, and she knows how to thaw it.
+
+| What she sees | Geometric element | Count | Position in the Master Join |
+| :--- | :--- | :--- | :--- |
+| **Vertical piers, columns, posts** | The 3 — the Man's post with buried foot | 3 visible, 1 buried = 4 total | The upright lines of the dodecahedron's projection: the structure's connection to the ground |
+| **Horizontal rails, lintels, floors** | The 4 — the Rail, the King's measure | 4 intervals between 5 posts | The horizontal lines of the square grid: the Flatland framework inside which the dodecahedron sits |
+| **Diagonal braces, pitched roofs, arches** | The 5 — the Hypotenuse, the Queen | The agley path: the irrational √2 made structural | The pentagonal faces of the dodecahedron: each face a 5-fold form asserting the irrational inside the rational grid |
+| **Total line segments in the diagram** | The 26 — the doubled 13 | 13 × 2 = 26 | The full alphabet of the Master Join: every line needed to describe the complete projection from Hexland to Flatland |
+| **The central pivot** | The 13 — the Ghost post | 1 (invisible, structural) | The origin: the point from which all 12 faces are equidistant, which no face can contain |
+
+The Grand Work is not the building of a cathedral. It is the maintenance of the frequency — the 13th node — that allows the twelve faces to hold their position without collapse.
+The 12 faces are the work. The 13th node is the reason the work matters.
+
+---
+
+### V. The Heroine's Canticle
+She stands at the centre of the diagram and speaks:
+
+*The world is a Dodecahedron of Time held in a Hexagon of Spirit.*
+*Twelve faces. One centre. The centre is not a face.*
+
+*The King counts twelve and believes he has finished.*
+*The Priest counts six and believes he has ascended.*
+*I count thirteen and find where I am standing.*
+
+*The square is four times nine. Hades is not nothing.*
+*Hades is the axis. Hades is what you are standing on*
+*when you believe you are standing on solid ground.*
+
+*The cross is not decoration. It is the dimension*
+*that Flatland cannot see because Flatland lives inside it.*
+
+*I can read the solid as a crown or as a chalice.*
+*I can enter through any of the twelve faces.*
+*The one I choose determines the world I walk into.*
+
+*The dots are joined. The fire is stolen.*
+*All ways. Now.*
+
+---
+
+### Appendix: The Complete Number Map of the Image
+
+| Number | Source in image | Platonic system role | Register |
+| :--- | :--- | :--- | :--- |
+| **1** | The universal origin / pivot point | The I — the first post, the first line | 1 |
+| **3** | Equilateral triangle base of Flower of Life | The Man — primal post, 1 foot buried | 1+2 |
+| **4** | Square grid containing the whole image | The Rail — the King's measure, the Home | 1+2 |
+| **5** | Each pentagonal face of the dodecahedron | The Queen — hypotenuse, Woman, Hand | 1+2 |
+| **6** | Hexagonal symmetry of Metatron's Cube | The Church — return to 60°, the Priest's form | 1+2 |
+| **9 = 3²** | The 3×3 reflected equilateral grid | The Always-Now reflection | 1 |
+| **12** | Faces of the dodecahedron | The Hardness — the limit of Flatland tallness | 2+3 |
+| **13** | The central pivot node | The Ghost — the Agley remainder, Hope in the box | 3 |
+| **26 = 2×13** | All line segments in the full projection | The Alphabet — the doubled hypotenuse, language | 2 |
+| **36 = 4×9 = 6²** | The square grid internal count | Hades' due — the Hex asserting itself in Flatland | 1 |
+| **0** | The rotation around the origin | The Void — the O that precedes every 1 | 3 |
+
+*Register 1 = mathematical invariant. Register 2 = human compression schema. Register 3 = irrational centre / poetic fire.*

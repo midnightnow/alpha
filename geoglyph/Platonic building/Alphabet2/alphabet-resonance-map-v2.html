@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alphabet Resonance Map v2 — 13-Node Bipolar Wheel</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap');
+:root{
+  --bg:#07080a;--surface:#0d0f14;--panel:#12151c;--border:rgba(180,160,100,0.15);
+  --gold:#c8a84b;--gold-dim:rgba(200,168,75,0.35);--gold-bright:#e8c87a;
+  --ccw:#4ab8c8;--cw:#c84a4a;--high:#4ac87a;--mod:#c8b84a;--conf:#c84a4a;
+  --card:#e8c87a;--pow:#ff8c42;--text:#e8e0cc;--td:rgba(232,224,204,0.5);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,serif;min-height:100vh;overflow-x:hidden;}
+.hdr{text-align:center;padding:36px 40px 24px;border-bottom:1px solid var(--border);position:relative;}
+.hdr::after{content:'';position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
+.ey{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:0.6em;}
+.hdr h1{font-family:'Cinzel',serif;font-size:clamp(1.4rem,3.5vw,2.6rem);font-weight:900;color:var(--gold-bright);letter-spacing:0.08em;}
+.hdr-sub{font-family:'Cinzel',serif;font-size:0.82rem;color:var(--td);letter-spacing:0.16em;margin-top:0.4em;}
+.app{display:grid;grid-template-columns:1fr 340px;min-height:calc(100vh - 120px);}
+.cp{padding:28px;display:flex;flex-direction:column;align-items:center;border-right:1px solid var(--border);}
+.ctrls{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;margin-bottom:18px;}
+.cb{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.07em;padding:4px 11px;background:var(--panel);border:1px solid var(--border);color:var(--td);cursor:pointer;transition:all .2s;text-transform:uppercase;}
+.cb:hover,.cb.active{border-color:var(--gold);color:var(--gold);background:rgba(200,168,75,0.08);}
+.cb.export-btn{border-color:rgba(74,200,122,0.3);color:var(--high);}
+.cb.export-btn:hover{border-color:var(--high);background:rgba(74,200,122,0.08);}
+#csvg{width:100%;max-width:650px;height:auto;cursor:default;}
+.ip{background:var(--surface);display:flex;flex-direction:column;overflow-y:auto;max-height:calc(100vh - 120px);position:sticky;top:120px;}
+.ps{padding:18px;border-bottom:1px solid var(--border);}
+.pt{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.26em;color:var(--gold);text-transform:uppercase;margin-bottom:12px;}
+#ld{min-height:160px;}
+.de{color:var(--td);font-style:italic;font-size:0.88rem;text-align:center;padding:32px 14px;}
+.dl{font-family:'Cinzel',serif;font-size:3.2rem;font-weight:900;line-height:1;margin-bottom:5px;}
+.dl.ccw{color:var(--ccw);}.dl.cw{color:var(--cw);}
+.dm{font-family:'JetBrains Mono',monospace;font-size:0.66rem;color:var(--td);letter-spacing:0.07em;margin-bottom:10px;line-height:1.85;}
+.dm span{color:var(--text);}
+.rb{height:3px;background:var(--panel);border-radius:2px;margin:5px 0 3px;overflow:hidden;}
+.rf{height:100%;border-radius:2px;transition:width .5s ease;}
+.rl{font-family:'JetBrains Mono',monospace;font-size:0.63rem;color:var(--td);display:flex;justify-content:space-between;}
+.dd{font-size:0.86rem;color:var(--td);margin-top:9px;line-height:1.6;font-style:italic;}
+.ww{display:flex;gap:5px;margin-bottom:12px;}
+#wi{flex:1;background:var(--panel);border:1px solid var(--border);color:var(--text);font-family:'Cinzel',serif;font-size:0.95rem;letter-spacing:0.1em;padding:6px 9px;text-transform:uppercase;outline:none;transition:border-color .2s;}
+#wi:focus{border-color:var(--gold);}
+#wi::placeholder{color:var(--td);font-size:0.78rem;}
+.ab{background:rgba(200,168,75,0.1);border:1px solid var(--gold-dim);color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:0.63rem;letter-spacing:0.07em;padding:6px 11px;cursor:pointer;transition:all .2s;}
+.ab:hover{background:rgba(200,168,75,0.2);}
+.wr{font-size:0.85rem;}
+.wrow{display:grid;grid-template-columns:20px 50px 56px 1fr 44px;gap:4px;align-items:center;padding:3.5px 0;border-bottom:1px solid rgba(180,160,100,0.05);}
+.wrow.wh{font-family:'JetBrains Mono',monospace;font-size:0.56rem;letter-spacing:0.04em;color:var(--td);border-bottom:1px solid var(--border);padding-bottom:4px;}
+.wl{font-family:'Cinzel',serif;font-weight:900;font-size:1rem;}
+.wl.ccw{color:var(--ccw);}.wl.cw{color:var(--cw);}
+.wm{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--td);}
+.ws{font-family:'JetBrains Mono',monospace;font-size:0.62rem;text-align:right;}
+.wbar{height:3px;border-radius:2px;}
+.wsum{margin-top:9px;padding:9px;background:var(--panel);font-size:0.82rem;line-height:1.7;}
+.wsum strong{color:var(--gold-bright);}
+.cbc{font-family:'JetBrains Mono',monospace;font-size:0.58rem;letter-spacing:0.04em;padding:2px 6px;border-radius:2px;display:inline-block;margin:2px 2px 0 0;}
+.cbs{background:rgba(74,120,200,0.15);color:#7ab0f0;border:1px solid rgba(74,120,200,0.22);}
+.cbl{background:rgba(74,200,120,0.15);color:#7af0b0;border:1px solid rgba(74,200,120,0.22);}
+.cba{background:rgba(200,140,74,0.15);color:#f0b07a;border:1px solid rgba(200,140,74,0.22);}
+.cbb{background:rgba(150,150,150,0.1);color:#aaa;border:1px solid rgba(150,150,150,0.18);}
+.nt{width:100%;font-size:0.76rem;}
+.nt tr{border-bottom:1px solid rgba(180,160,100,0.05);}
+.nt tr:hover{background:rgba(200,168,75,0.04);cursor:pointer;}
+.nt td{padding:4px 3px;vertical-align:middle;}
+.nn{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--td);}
+.nb{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--td);}
+.np{font-family:'Cinzel',serif;font-weight:600;font-size:0.9rem;}
+.nc{color:var(--ccw);}.nw{color:var(--cw);}
+.nb2{font-family:'JetBrains Mono',monospace;font-size:0.5rem;padding:1px 3px;border-radius:2px;}
+.bc{background:rgba(232,200,122,0.12);color:var(--card);}
+.bp{background:rgba(255,140,66,0.12);color:var(--pow);}
+.leg{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.li{display:flex;align-items:center;gap:6px;font-size:0.76rem;color:var(--td);}
+.ld2{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.ll{width:16px;height:2px;flex-shrink:0;}
+.ftr{text-align:center;padding:18px;border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;color:var(--td);}
+/* Export notification */
+.export-toast{position:fixed;bottom:24px;right:24px;background:rgba(74,200,122,0.15);border:1px solid var(--high);color:var(--high);font-family:'JetBrains Mono',monospace;font-size:0.7rem;padding:10px 16px;border-radius:2px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999;}
+.export-toast.show{opacity:1;}
+@media(max-width:900px){.app{grid-template-columns:1fr;}.ip{max-height:none;position:static;}.cp{border-right:none;padding:14px;}}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="ey">13-Node Bipolar Wheel · 1/26 Circular Ordinance · Complete Vector Documentation</div>
+  <h1>ALPHABET RESONANCE MAP</h1>
+  <div class="hdr-sub">Harmonic Analysis · Interactive · v2.0</div>
+</div>
+<div class="app">
+  <div class="cp">
+    <div class="ctrls">
+      <button class="cb active" id="buc" onclick="sl('uc')">Uppercase</button>
+      <button class="cb" id="blc" onclick="sl('lc')">+ Lowercase</button>
+      <button class="cb" id="bcl" onclick="tg('clusters','bcl')">Clusters</button>
+      <button class="cb active" id="bvv" onclick="tg('vectors','bvv')">Vectors</button>
+      <button class="cb" id="brs" onclick="tg('resonance','brs')">Resonance</button>
+      <button class="cb" id="bco" onclick="tg('collision','bco')">Collisions</button>
+      <button class="cb export-btn" onclick="exportSVG()">↓ Export SVG</button>
+      <button class="cb export-btn" onclick="exportPNG()">↓ Export PNG</button>
+    </div>
+
+    <svg id="csvg" viewBox="-630 -630 1260 1260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bg" cx="50%" cy="50%">
+          <stop offset="0%" stop-color="#131820"/>
+          <stop offset="85%" stop-color="#07080a"/>
+        </radialGradient>
+        <filter id="g1"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="g2"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <marker id="ac" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#4ab8c8" opacity="0.85"/></marker>
+        <marker id="aw" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#c84a4a" opacity="0.85"/></marker>
+      </defs>
+      <circle cx="0" cy="0" r="625" fill="url(#bg)"/>
+
+      <!-- Cluster zones -->
+      <g id="clusters" opacity="0">
+        <path d="M0,0 L0,-560 A560,560,0,0,1,462,-310 Z" fill="rgba(74,120,200,0.09)"/>
+        <path d="M0,0 L536,-66 A560,560,0,0,1,307,460 Z" fill="rgba(150,150,150,0.05)"/>
+        <path d="M0,0 L74,557 A560,560,0,0,1,-463,307 Z" fill="rgba(74,200,120,0.09)"/>
+        <path d="M0,0 L-307,460 A560,560,0,0,1,-259,-476 Z" fill="rgba(200,140,74,0.08)"/>
+        <text x="270" y="-370" font-family="Cinzel,serif" font-size="18" fill="rgba(74,120,200,0.45)" text-anchor="middle">SPINE</text>
+        <text x="-155" y="530" font-family="Cinzel,serif" font-size="18" fill="rgba(74,200,120,0.45)" text-anchor="middle">LOOP</text>
+        <text x="-410" y="-195" font-family="Cinzel,serif" font-size="18" fill="rgba(200,140,74,0.45)" text-anchor="middle">ANGLE</text>
+        <text x="475" y="190" font-family="Cinzel,serif" font-size="15" fill="rgba(150,150,150,0.35)" text-anchor="middle">BRIDGE</text>
+      </g>
+
+      <!-- Rings -->
+      <circle cx="0" cy="0" r="560" fill="none" stroke="rgba(200,168,75,0.12)" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="450" fill="none" stroke="rgba(200,168,75,0.05)" stroke-width="0.8"/>
+      <circle cx="0" cy="0" r="320" fill="none" stroke="rgba(200,168,75,0.05)" stroke-width="0.8"/>
+      <circle cx="0" cy="0" r="160" fill="none" stroke="rgba(200,168,75,0.07)" stroke-width="0.8"/>
+      <circle cx="0" cy="0" r="75" fill="none" stroke="rgba(200,168,75,0.1)" stroke-width="0.8"/>
+      <line x1="0" y1="-625" x2="0" y2="625" stroke="rgba(232,200,122,0.07)" stroke-width="1"/>
+      <line x1="-625" y1="0" x2="625" y2="0" stroke="rgba(232,200,122,0.07)" stroke-width="1"/>
+
+      <!-- Radial spokes -->
+      <g stroke="rgba(200,168,75,0.1)" stroke-width="0.7">
+        <line x1="0" y1="0" x2="0" y2="-560"/>
+        <line x1="0" y1="0" x2="259" y2="-477"/>
+        <line x1="0" y1="0" x2="462" y2="-310"/>
+        <line x1="0" y1="0" x2="556" y2="-66"/>
+        <line x1="0" y1="0" x2="521" y2="205"/>
+        <line x1="0" y1="0" x2="371" y2="420"/>
+        <line x1="0" y1="0" x2="135" y2="545"/>
+        <line x1="0" y1="0" x2="-135" y2="545"/>
+        <line x1="0" y1="0" x2="-371" y2="420"/>
+        <line x1="0" y1="0" x2="-521" y2="205"/>
+        <line x1="0" y1="0" x2="-556" y2="-66"/>
+        <line x1="0" y1="0" x2="-462" y2="-310"/>
+        <line x1="0" y1="0" x2="-259" y2="-477"/>
+      </g>
+
+      <!-- Collision arcs -->
+      <g id="collision" opacity="0">
+        <path d="M -521,205 A 560,560,0,0,1 556,-66" fill="none" stroke="rgba(255,140,66,0.22)" stroke-width="2.5" stroke-dasharray="8,5"/>
+        <text x="175" y="215" font-family="JetBrains Mono,monospace" font-size="13" fill="rgba(255,140,66,0.65)" text-anchor="middle">"th" 166° tension</text>
+        <circle cx="-521" cy="205" r="36" fill="none" stroke="rgba(255,140,66,0.38)" stroke-width="2"/>
+        <text x="-521" y="258" font-family="JetBrains Mono,monospace" font-size="12" fill="rgba(255,140,66,0.7)" text-anchor="middle">"st" same node</text>
+        <path d="M -135,545 A 560,560,0,0,1 -556,-66" fill="none" stroke="rgba(74,184,200,0.22)" stroke-width="2" stroke-dasharray="8,5"/>
+        <text x="-425" y="345" font-family="JetBrains Mono,monospace" font-size="12" fill="rgba(74,184,200,0.55)" text-anchor="middle">"ou" 83°</text>
+        <path d="M 462,-310 A 560,560,0,0,1 -371,420" fill="none" stroke="rgba(200,180,74,0.18)" stroke-width="1.5" stroke-dasharray="6,5"/>
+        <text x="118" y="-48" font-family="JetBrains Mono,monospace" font-size="12" fill="rgba(200,180,74,0.5)" text-anchor="middle">"er" 166°</text>
+      </g>
+
+      <!-- Vectors -->
+      <g id="vectors" opacity="1">
+        <line x1="0" y1="-560" x2="-105" y2="-560" stroke="#4ab8c8" stroke-width="2" marker-end="url(#ac)" opacity="0.72"/>
+        <line x1="0" y1="-560" x2="105" y2="-560" stroke="#c84a4a" stroke-width="2" marker-end="url(#aw)" opacity="0.72"/>
+        <line x1="259" y1="-477" x2="212" y2="-407" stroke="#4ab8c8" stroke-width="2" marker-end="url(#ac)" opacity="0.72"/>
+        <line x1="259" y1="-477" x2="306" y2="-547" stroke="#c84a4a" stroke-width="2" marker-end="url(#aw)" opacity="0.72"/>
+        <line x1="462" y1="-310" x2="395" y2="-253" stroke="#c84a4a" stroke-width="2" marker-end="url(#aw)" opacity="0.72"/>
+        <line x1="462" y1="-310" x2="529" y2="-367" stroke="#c84a4a" stroke-width="2" marker-end="url(#aw)" opacity="0.72"/>
+        <line x1="556" y1="-66" x2="490" y2="0" stroke="#4ab8c8" stroke-width="2" marker-end="url(#ac)" opacity="0.72"/>
+        <line x1="556" y1="-66" x2="622" y2="-132" stroke="#c84a4a" stroke-width="2" marker-end="url(#aw)" opacity="0.72"/>
+        <line x1="521" y1="205" x2="455" y2="258" stroke="#4ab8c8" stroke-width="2" marker-end="url(#ac)" opacity="0.72"/>
+        <line x1="521" y1="205" x2="587" y2="152" stroke="#c84a4a" stroke-width="2" marker-end="url(#aw)" opacity="0.72"/>
+        <line x1="371" y1="420" x2="305" y2="464" stroke="#4ab8c8" stroke-width="2" marker-end="url(#ac)" opacity="0.72"/>
+        <line x1="371" y1="420" x2="437" y2="376" stroke="#c84a4a" stroke-width="2" marker-end="url(#aw)" opacity="0.72"/>
+        <line x1="135" y1="545" x2="69" y2="584" stroke="#4ab8c8" stroke-width="2" marker-end="url(#ac)" opacity="0.72"/>
+        <line x1="135" y1="545" x2="201" y2="506" stroke="#c84a4a" stroke-width="2" marker-end="url(#aw)" opacity="0.72"/>
+        <line x1="-135" y1="545" x2="-201" y2="584" stroke="#4ab8c8" stroke-width="2.5" marker-end="url(#ac)" opacity="0.9" filter="url(#g1)"/>
+        <line x1="-135" y1="545" x2="-69" y2="506" stroke="#c84a4a" stroke-width="2.5" marker-end="url(#aw)" opacity="0.9" filter="url(#g1)"/>
+        <line x1="-371" y1="420" x2="-437" y2="459" stroke="#4ab8c8" stroke-width="2" marker-end="url(#ac)" opacity="0.72"/>
+        <line x1="-371" y1="420" x2="-305" y2="381" stroke="#c84a4a" stroke-width="2" marker-end="url(#aw)" opacity="0.72"/>
+        <line x1="-521" y1="205" x2="-587" y2="244" stroke="#4ab8c8" stroke-width="3" marker-end="url(#ac)" opacity="1" filter="url(#g1)"/>
+        <line x1="-521" y1="205" x2="-455" y2="166" stroke="#c84a4a" stroke-width="3" marker-end="url(#aw)" opacity="1" filter="url(#g1)"/>
+        <line x1="-556" y1="-66" x2="-622" y2="-14" stroke="#4ab8c8" stroke-width="2.5" marker-end="url(#ac)" opacity="0.9" filter="url(#g1)"/>
+        <line x1="-556" y1="-66" x2="-490" y2="-118" stroke="#c84a4a" stroke-width="2.5" marker-end="url(#aw)" opacity="0.9" filter="url(#g1)"/>
+        <line x1="-462" y1="-310" x2="-529" y2="-263" stroke="#4ab8c8" stroke-width="2" marker-end="url(#ac)" opacity="0.72"/>
+        <line x1="-462" y1="-310" x2="-395" y2="-357" stroke="#c84a4a" stroke-width="2" marker-end="url(#aw)" opacity="0.72"/>
+        <line x1="-259" y1="-477" x2="-306" y2="-420" stroke="#4ab8c8" stroke-width="2" marker-end="url(#ac)" opacity="0.72"/>
+        <line x1="-259" y1="-477" x2="-212" y2="-534" stroke="#c84a4a" stroke-width="2" marker-end="url(#aw)" opacity="0.72"/>
+      </g>
+
+      <!-- Resonance halos -->
+      <g id="resonance" opacity="0">
+        <circle cx="-135" cy="545" r="42" fill="rgba(74,200,122,0.1)" stroke="rgba(74,200,122,0.35)" stroke-width="1.5"/>
+        <circle cx="-521" cy="205" r="42" fill="rgba(74,200,122,0.1)" stroke="rgba(74,200,122,0.35)" stroke-width="1.5"/>
+        <circle cx="259" cy="-477" r="35" fill="rgba(74,200,122,0.08)" stroke="rgba(74,200,122,0.28)" stroke-width="1"/>
+        <circle cx="-371" cy="420" r="33" fill="rgba(74,200,122,0.08)" stroke="rgba(74,200,122,0.28)" stroke-width="1"/>
+        <circle cx="-556" cy="-66" r="35" fill="rgba(74,200,122,0.08)" stroke="rgba(74,200,122,0.28)" stroke-width="1"/>
+        <circle cx="462" cy="-310" r="33" fill="rgba(200,74,74,0.08)" stroke="rgba(200,74,74,0.28)" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="-135" y="508" font-family="JetBrains Mono,monospace" font-size="13" fill="rgba(74,200,122,0.85)" text-anchor="middle">O 98%</text>
+        <text x="-521" y="166" font-family="JetBrains Mono,monospace" font-size="13" fill="rgba(74,200,122,0.85)" text-anchor="middle">S 96%</text>
+        <text x="259" y="-440" font-family="JetBrains Mono,monospace" font-size="12" fill="rgba(74,200,122,0.8)" text-anchor="middle">C 94%</text>
+        <text x="-371" y="383" font-family="JetBrains Mono,monospace" font-size="12" fill="rgba(74,200,122,0.8)" text-anchor="middle">Q 89%</text>
+        <text x="462" y="-273" font-family="JetBrains Mono,monospace" font-size="12" fill="rgba(200,74,74,0.8)" text-anchor="middle">E 34%</text>
+        <text x="-556" y="-103" font-family="JetBrains Mono,monospace" font-size="12" fill="rgba(74,200,122,0.8)" text-anchor="middle">U 92%</text>
+      </g>
+
+      <!-- Lowercase overlay -->
+      <g id="lowercase" opacity="0">
+        <circle cx="0" cy="0" r="618" fill="none" stroke="rgba(74,184,200,0.18)" stroke-width="1.5" stroke-dasharray="6,5"/>
+        <text x="0" y="-622" font-family="JetBrains Mono,monospace" font-size="13" fill="rgba(74,184,200,0.5)" text-anchor="middle">SKY TIER — b d f h k l t</text>
+        <circle cx="0" cy="0" r="490" fill="none" stroke="rgba(200,74,74,0.18)" stroke-width="1.5" stroke-dasharray="4,6"/>
+        <text x="0" y="-494" font-family="JetBrains Mono,monospace" font-size="13" fill="rgba(200,74,74,0.45)" text-anchor="middle">UNDERWORLD — g j p q y</text>
+        <line x1="0" y1="-560" x2="0" y2="-618" stroke="rgba(74,184,200,0.45)" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="20" y="-592" font-family="Cinzel,serif" font-size="17" fill="rgba(74,184,200,0.7)">b</text>
+        <line x1="259" y1="-477" x2="285" y2="-524" stroke="rgba(74,184,200,0.45)" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="300" y="-528" font-family="Cinzel,serif" font-size="17" fill="rgba(74,184,200,0.7)">d</text>
+        <line x1="556" y1="-66" x2="612" y2="-73" stroke="rgba(74,184,200,0.45)" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="618" y="-76" font-family="Cinzel,serif" font-size="17" fill="rgba(74,184,200,0.7)">h</text>
+        <line x1="-521" y1="205" x2="-573" y2="225" stroke="rgba(200,74,74,0.45)" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="-590" y="245" font-family="Cinzel,serif" font-size="17" fill="rgba(200,74,74,0.7)">p</text>
+        <line x1="-135" y1="545" x2="-149" y2="598" stroke="rgba(200,74,74,0.45)" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="-163" y="614" font-family="Cinzel,serif" font-size="17" fill="rgba(200,74,74,0.7)">q</text>
+        <line x1="556" y1="-66" x2="613" y2="-58" stroke="rgba(200,74,74,0.45)" stroke-width="1.5" stroke-dasharray="3,3"/>
+        <text x="623" y="-53" font-family="Cinzel,serif" font-size="17" fill="rgba(200,74,74,0.7)">g</text>
+      </g>
+
+      <!-- NODES 0–12 -->
+      <!-- N0 A/B North -->
+      <g data-node="0" onclick="sel(0)" style="cursor:pointer">
+        <circle cx="0" cy="-560" r="18" fill="#c8a84b" filter="url(#g2)" opacity="0.85"/>
+        <circle cx="0" cy="-560" r="11" fill="#0d0f14"/><circle cx="0" cy="-560" r="5" fill="#c8a84b"/>
+        <text x="-58" y="-570" font-family="Cinzel,serif" font-size="50" font-weight="900" fill="#4ab8c8" text-anchor="middle" dominant-baseline="central">A</text>
+        <text x="58" y="-570" font-family="Cinzel,serif" font-size="50" font-weight="900" fill="#c84a4a" text-anchor="middle" dominant-baseline="central">B</text>
+        <text x="0" y="-526" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(232,200,122,0.85)" text-anchor="middle">N · 0.0°</text>
+        <circle cx="0" cy="-560" r="24" fill="none" stroke="rgba(232,200,122,0.22)" stroke-width="1" stroke-dasharray="4,4"/>
+      </g>
+      <!-- N1 C/D -->
+      <g data-node="1" onclick="sel(1)" style="cursor:pointer">
+        <circle cx="259" cy="-477" r="14" fill="#4ac87a" opacity="0.85"/>
+        <circle cx="259" cy="-477" r="8" fill="#0d0f14"/><circle cx="259" cy="-477" r="3.5" fill="#4ac87a"/>
+        <text x="200" y="-487" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#4ab8c8" text-anchor="middle" dominant-baseline="central">C</text>
+        <text x="318" y="-487" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#c84a4a" text-anchor="middle" dominant-baseline="central">D</text>
+        <text x="259" y="-438" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(200,168,75,0.65)" text-anchor="middle">27.7°</text>
+      </g>
+      <!-- N2 E/F conflict -->
+      <g data-node="2" onclick="sel(2)" style="cursor:pointer">
+        <circle cx="462" cy="-310" r="14" fill="#c84a4a" opacity="0.85"/>
+        <circle cx="462" cy="-310" r="8" fill="#0d0f14"/><circle cx="462" cy="-310" r="3.5" fill="#c84a4a"/>
+        <text x="403" y="-320" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#c84a4a" text-anchor="middle" dominant-baseline="central">E</text>
+        <text x="521" y="-320" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#c84a4a" text-anchor="middle" dominant-baseline="central">F</text>
+        <text x="462" y="-271" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(200,168,75,0.65)" text-anchor="middle">55.4°</text>
+      </g>
+      <!-- N3 G/H -->
+      <g data-node="3" onclick="sel(3)" style="cursor:pointer">
+        <circle cx="556" cy="-66" r="14" fill="#c8b84a" opacity="0.85"/>
+        <circle cx="556" cy="-66" r="8" fill="#0d0f14"/><circle cx="556" cy="-66" r="3.5" fill="#c8b84a"/>
+        <text x="497" y="-76" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#4ab8c8" text-anchor="middle" dominant-baseline="central">G</text>
+        <text x="615" y="-76" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#c84a4a" text-anchor="middle" dominant-baseline="central">H</text>
+        <text x="556" y="-27" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(200,168,75,0.65)" text-anchor="middle">83.1°</text>
+      </g>
+      <!-- N4 I/J -->
+      <g data-node="4" onclick="sel(4)" style="cursor:pointer">
+        <circle cx="521" cy="205" r="14" fill="#c8b84a" opacity="0.85"/>
+        <circle cx="521" cy="205" r="8" fill="#0d0f14"/><circle cx="521" cy="205" r="3.5" fill="#c8b84a"/>
+        <text x="462" y="195" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#4ab8c8" text-anchor="middle" dominant-baseline="central">I</text>
+        <text x="580" y="195" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#4ac87a" text-anchor="middle" dominant-baseline="central">J</text>
+        <text x="521" y="244" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(200,168,75,0.65)" text-anchor="middle">110.8°</text>
+      </g>
+      <!-- N5 K/L -->
+      <g data-node="5" onclick="sel(5)" style="cursor:pointer">
+        <circle cx="371" cy="420" r="14" fill="#c8b84a" opacity="0.85"/>
+        <circle cx="371" cy="420" r="8" fill="#0d0f14"/><circle cx="371" cy="420" r="3.5" fill="#c8b84a"/>
+        <text x="312" y="410" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#4ab8c8" text-anchor="middle" dominant-baseline="central">K</text>
+        <text x="430" y="410" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#c84a4a" text-anchor="middle" dominant-baseline="central">L</text>
+        <text x="371" y="459" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(200,168,75,0.65)" text-anchor="middle">138.5°</text>
+      </g>
+      <!-- N6 M/N -->
+      <g data-node="6" onclick="sel(6)" style="cursor:pointer">
+        <circle cx="135" cy="545" r="14" fill="#c8b84a" opacity="0.85"/>
+        <circle cx="135" cy="545" r="8" fill="#0d0f14"/><circle cx="135" cy="545" r="3.5" fill="#c8b84a"/>
+        <text x="76" y="535" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#4ab8c8" text-anchor="middle" dominant-baseline="central">M</text>
+        <text x="194" y="535" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#c84a4a" text-anchor="middle" dominant-baseline="central">N</text>
+        <text x="135" y="584" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(200,168,75,0.65)" text-anchor="middle">166.2°</text>
+      </g>
+      <!-- N7 O/P South Cardinal -->
+      <g data-node="7" onclick="sel(7)" style="cursor:pointer">
+        <circle cx="-135" cy="545" r="20" fill="#c8a84b" filter="url(#g2)" opacity="0.9"/>
+        <circle cx="-135" cy="545" r="12" fill="#0d0f14"/><circle cx="-135" cy="545" r="5.5" fill="#c8a84b"/>
+        <text x="-194" y="535" font-family="Cinzel,serif" font-size="54" font-weight="900" fill="#4ab8c8" text-anchor="middle" dominant-baseline="central">O</text>
+        <text x="-76" y="535" font-family="Cinzel,serif" font-size="54" font-weight="900" fill="#c84a4a" text-anchor="middle" dominant-baseline="central">P</text>
+        <text x="-135" y="587" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(232,200,122,0.9)" text-anchor="middle">S · 193.8°</text>
+        <circle cx="-135" cy="545" r="28" fill="none" stroke="rgba(232,200,122,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
+      </g>
+      <!-- N8 Q/R -->
+      <g data-node="8" onclick="sel(8)" style="cursor:pointer">
+        <circle cx="-371" cy="420" r="14" fill="#4ac87a" opacity="0.85"/>
+        <circle cx="-371" cy="420" r="8" fill="#0d0f14"/><circle cx="-371" cy="420" r="3.5" fill="#4ac87a"/>
+        <text x="-430" y="410" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#4ac87a" text-anchor="middle" dominant-baseline="central">Q</text>
+        <text x="-312" y="410" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#4ac87a" text-anchor="middle" dominant-baseline="central">R</text>
+        <text x="-371" y="459" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(200,168,75,0.65)" text-anchor="middle">221.5°</text>
+      </g>
+      <!-- N9 S/T SW Power Zone -->
+      <g data-node="9" onclick="sel(9)" style="cursor:pointer">
+        <circle cx="-521" cy="205" r="20" fill="#ff8c42" filter="url(#g2)" opacity="0.9"/>
+        <circle cx="-521" cy="205" r="12" fill="#0d0f14"/><circle cx="-521" cy="205" r="5.5" fill="#ff8c42"/>
+        <text x="-580" y="195" font-family="Cinzel,serif" font-size="54" font-weight="900" fill="#4ab8c8" text-anchor="middle" dominant-baseline="central">S</text>
+        <text x="-462" y="195" font-family="Cinzel,serif" font-size="54" font-weight="900" fill="#c84a4a" text-anchor="middle" dominant-baseline="central">T</text>
+        <text x="-521" y="248" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(255,140,66,0.95)" text-anchor="middle">SW · 249.2° ★</text>
+        <circle cx="-521" cy="205" r="30" fill="none" stroke="rgba(255,140,66,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
+      </g>
+      <!-- N10 U/V West Cardinal -->
+      <g data-node="10" onclick="sel(10)" style="cursor:pointer">
+        <circle cx="-556" cy="-66" r="18" fill="#c8a84b" filter="url(#g2)" opacity="0.85"/>
+        <circle cx="-556" cy="-66" r="11" fill="#0d0f14"/><circle cx="-556" cy="-66" r="5" fill="#c8a84b"/>
+        <text x="-615" y="-76" font-family="Cinzel,serif" font-size="50" font-weight="900" fill="#4ab8c8" text-anchor="middle" dominant-baseline="central">U</text>
+        <text x="-497" y="-76" font-family="Cinzel,serif" font-size="50" font-weight="900" fill="#c84a4a" text-anchor="middle" dominant-baseline="central">V</text>
+        <text x="-556" y="-27" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(232,200,122,0.85)" text-anchor="middle">W · 276.9°</text>
+        <circle cx="-556" cy="-66" r="24" fill="none" stroke="rgba(232,200,122,0.22)" stroke-width="1" stroke-dasharray="4,4"/>
+      </g>
+      <!-- N11 W/X -->
+      <g data-node="11" onclick="sel(11)" style="cursor:pointer">
+        <circle cx="-462" cy="-310" r="14" fill="#4ac87a" opacity="0.85"/>
+        <circle cx="-462" cy="-310" r="8" fill="#0d0f14"/><circle cx="-462" cy="-310" r="3.5" fill="#4ac87a"/>
+        <text x="-521" y="-320" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#4ab8c8" text-anchor="middle" dominant-baseline="central">W</text>
+        <text x="-403" y="-320" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#4ac87a" text-anchor="middle" dominant-baseline="central">X</text>
+        <text x="-462" y="-271" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(200,168,75,0.65)" text-anchor="middle">304.6°</text>
+      </g>
+      <!-- N12 Y/Z -->
+      <g data-node="12" onclick="sel(12)" style="cursor:pointer">
+        <circle cx="-259" cy="-477" r="14" fill="#c8b84a" opacity="0.85"/>
+        <circle cx="-259" cy="-477" r="8" fill="#0d0f14"/><circle cx="-259" cy="-477" r="3.5" fill="#c8b84a"/>
+        <text x="-318" y="-487" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#4ab8c8" text-anchor="middle" dominant-baseline="central">Y</text>
+        <text x="-200" y="-487" font-family="Cinzel,serif" font-size="47" font-weight="900" fill="#c84a4a" text-anchor="middle" dominant-baseline="central">Z</text>
+        <text x="-259" y="-438" font-family="JetBrains Mono,monospace" font-size="11" fill="rgba(200,168,75,0.65)" text-anchor="middle">332.3°</text>
+      </g>
+
+      <!-- Centre -->
+      <circle cx="0" cy="0" r="44" fill="#07080a" stroke="rgba(200,168,75,0.15)" stroke-width="1"/>
+      <circle cx="0" cy="0" r="22" fill="#07080a" stroke="rgba(200,168,75,0.3)" stroke-width="1"/>
+      <circle cx="0" cy="0" r="7" fill="#c8a84b"/>
+      <text x="0" y="-612" font-family="Cinzel,serif" font-size="16" font-weight="600" fill="rgba(200,168,75,0.4)" text-anchor="middle" letter-spacing="3">ALPHABET RESONANCE MAP</text>
+    </svg>
+
+    <div style="display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:0.63rem;color:var(--td)">
+      <span><span style="color:var(--ccw)">━━</span> CCW Odd</span>
+      <span><span style="color:var(--cw)">━━</span> CW Even</span>
+      <span><span style="color:var(--gold)">●</span> Cardinal</span>
+      <span><span style="color:var(--pow)">●</span> Power Zone</span>
+      <span><span style="color:var(--high)">●</span> High ≥85%</span>
+      <span><span style="color:var(--conf)">●</span> Conflict &lt;65%</span>
+    </div>
+  </div>
+
+  <!-- INFO PANEL -->
+  <div class="ip">
+    <div class="ps" id="ld">
+      <div class="pt">Letter / Node Detail</div>
+      <div class="de">Click any node on the compass to inspect its letters, vectors, and resonance data.</div>
+    </div>
+
+    <div class="ps">
+      <div class="pt">Word Analyzer</div>
+      <div class="ww">
+        <input type="text" id="wi" placeholder="STOP · AXIS · LOVE · CORE" maxlength="14" oninput="this.value=this.value.toUpperCase().replace(/[^A-Z]/g,'')"/>
+        <button class="ab" onclick="dw()">GO</button>
+      </div>
+      <div id="wr2"><div style="color:var(--td);font-style:italic;font-size:0.83rem">Type a word and press Go or Enter</div></div>
+    </div>
+
+    <div class="ps">
+      <div class="pt">Node Reference</div>
+      <table class="nt"><tbody id="ntbl"></tbody></table>
+    </div>
+
+    <div class="ps">
+      <div class="pt">Signal Clusters</div>
+      <div style="font-size:0.8rem;color:var(--td);line-height:1.85">
+        <div><span style="font-family:'JetBrains Mono',monospace;color:#7af0b0">LOOP &nbsp;</span> N6–8 · M–R · avg <strong style="color:var(--text)">83%</strong> · P&lt;0.001</div>
+        <div><span style="font-family:'JetBrains Mono',monospace;color:#f0b07a">ANGLE</span> N9–12 · S–Z · avg <strong style="color:var(--text)">74%</strong></div>
+        <div><span style="font-family:'JetBrains Mono',monospace;color:#7ab0f0">SPINE</span> N0–2 · A–F · avg <strong style="color:var(--text)">64%</strong></div>
+        <div><span style="font-family:'JetBrains Mono',monospace;color:#aaa">BRDGE</span> N3–5 · G–L · avg <strong style="color:var(--text)">62%</strong> · noise floor</div>
+      </div>
+    </div>
+
+    <div class="ps">
+      <div class="pt">Legend</div>
+      <div class="leg">
+        <div class="li"><div class="ld2" style="background:var(--high)"></div>High ≥85%</div>
+        <div class="li"><div class="ld2" style="background:var(--mod)"></div>Moderate 65–84%</div>
+        <div class="li"><div class="ld2" style="background:var(--conf)"></div>Conflict &lt;65%</div>
+        <div class="li"><div class="ld2" style="background:var(--gold)"></div>Cardinal Node</div>
+        <div class="li"><div class="ld2" style="background:var(--pow)"></div>Power Zone SW</div>
+        <div class="li"><div class="ll" style="background:var(--ccw)"></div>CCW anticlockwise</div>
+        <div class="li"><div class="ll" style="background:var(--cw)"></div>CW clockwise</div>
+        <div class="li"><div class="ll" style="background:var(--ccw);opacity:0.4;border-top:1px dashed var(--ccw)"></div>Sky tier (lowercase)</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ftr">ALPHABET RESONANCE MAP · 13-NODE BIPOLAR WHEEL · v2.0 · 2026</div>
+<div class="export-toast" id="toast"></div>
+
+<script>
+const ND=[
+  {id:0,b:0,l:['A','B'],c:'N · Cardinal',cl:'spine',r:[72,58],d:['Tangent peak at true North. CCW apex with splayed legs — the archetype of emergence.','Dual CW loops on a vertical spine at North. Dual closure vs A\'s open peak.'],t:'cardinal'},
+  {id:1,b:27.7,l:['C','D'],c:'NNE',cl:'spine',r:[94,91],d:['Near-perfect CCW arc. Open curve with zero tangent conflict — the model pair.','Closed CW arc + vertical spine. Same curve as C completed.'],t:'high'},
+  {id:2,b:55.4,l:['E','F'],c:'NE',cl:'spine',r:[34,31],d:['Horizontal bars perpendicular to tangent. Fundamental conflict. 78% if rotated 90°.','Same conflict as E. 74% if rotated. Missing bottom bar does not resolve issue.'],t:'conflict'},
+  {id:3,b:83.1,l:['G','H'],c:'E near Cardinal',cl:'bridge',r:[67,45],d:['CCW arc at East equatorial node — fighting gravity. The inward spur arrests a complete circle.','Dual vertical stems + crossbar. Neutral gear: refuses curve, enforces bilateral architecture.'],t:'standard'},
+  {id:4,b:110.8,l:['I','J'],c:'ESE',cl:'bridge',r:[78,88],d:['Vertical axis at ESE — minimal stroke, pure radial alignment. Dot adds sky tier.','Hooked CW stem with descender. Hook follows tangent cleanly. High fit.'],t:'standard'},
+  {id:5,b:138.5,l:['K','L'],c:'SE',cl:'bridge',r:[63,52],d:['Diagonal branching from stem. Partial tangent alignment — complex geometry.','Right-angle corner. Architectural refusal of the curve at SE.'],t:'standard'},
+  {id:6,b:166.2,l:['M','N'],c:'SSE',cl:'loop',r:[71,69],d:['CCW bilateral double-peak. Symmetric arches mirror each other.','Single diagonal CW stroke. Simplified version of M\'s energy.'],t:'standard'},
+  {id:7,b:193.8,l:['O','P'],c:'S · Cardinal',cl:'loop',r:[98,93],d:['Perfect closed CCW circle at compass nadir. Theoretical maximum: 98%.','Half-circle CW loop + descending stem. O\'s partner at South.'],t:'cardinal'},
+  {id:8,b:221.5,l:['Q','R'],c:'SSW',cl:'loop',r:[89,84],d:['O-variant with exit tail. Circle + departure vector = motion encoded.','CW stem + composite leg. High resonance with complex geometry.'],t:'high'},
+  {id:9,b:249.2,l:['S','T'],c:'SW · Power Zone',cl:'angle',r:[96,47],d:['Double-reverse curve at maximum torque. 249° matches Western cursive ductus axis exactly.','Crossbar perpendicular to tangent at rest (47%). Rotated 90° = 89%. Grounds S\'s energy.'],t:'power'},
+  {id:10,b:276.9,l:['U','V'],c:'W · Cardinal',cl:'angle',r:[92,87],d:['Open CCW bowl at West node — catches leftward energy with open top.','Same node CW — sharpens bowl to a vertex. Directional arrow made letter.'],t:'cardinal'},
+  {id:11,b:304.6,l:['W','X'],c:'WNW',cl:'angle',r:[74,91],d:['Double-V compound form. Extended version of V\'s angular energy.','Crossed diagonals at WNW — counter-rotation of two strokes.'],t:'high'},
+  {id:12,b:332.3,l:['Y','Z'],c:'NNW',cl:'angle',r:[68,43],d:['Branching CCW convergence before cycle reset. V with descending stem.','Zigzag horizontal (43%). 81% when rotated 45°. Terminal exit.'],t:'standard'},
+];
+const LM={};
+ND.forEach(n=>n.l.forEach((l,i)=>LM[l]={node:n.id,b:n.b,dir:i===0?'CCW':'CW',r:n.r[i],cl:n.cl,d:n.d[i]}));
+
+function tg(id,btn){
+  const el=document.getElementById(id);
+  const isOn=el.style.opacity==='1';
+  el.style.opacity=isOn?'0':'1';
+  document.getElementById(btn).classList.toggle('active',!isOn);
+}
+function sl(l){
+  const lc=l==='lc';
+  document.getElementById('lowercase').style.opacity=lc?'1':'0';
+  document.getElementById('buc').classList.toggle('active',!lc);
+  document.getElementById('blc').classList.toggle('active',lc);
+}
+function rc(r){return r>=85?'var(--high)':r>=65?'var(--mod)':'var(--conf)';}
+function ccl(c){return{spine:'cbs',bridge:'cbb',loop:'cbl',angle:'cba'}[c]||'';}
+
+function sel(nid){
+  const n=ND[nid];
+  const cc={spine:'#7ab0f0',bridge:'#aaa',loop:'#7af0b0',angle:'#f0b07a'}[n.cl];
+  let h=`<div class="pt">Letter / Node Detail</div><div style="display:flex;gap:14px">`;
+  n.l.forEach((l,i)=>{
+    const d=i===0?'ccw':'cw',r=n.r[i],rc2=rc(r);
+    h+=`<div style="flex:1"><div class="dl ${d}">${l}</div>
+    <div class="dm">Pos: <span>${n.id*2+i+1}</span> · Node: <span>${n.id}</span><br>Bearing: <span>${n.b}°</span><br>Dir: <span style="color:${d==='ccw'?'var(--ccw)':'var(--cw)'}">${i===0?'CCW':'CW'}</span></div>
+    <div class="rl"><span>Resonance</span><span style="color:${rc2}">${r}%</span></div>
+    <div class="rb"><div class="rf" style="width:${r}%;background:${rc2}"></div></div>
+    <div class="dd">${n.d[i]}</div></div>`;
+  });
+  h+=`</div><div style="margin-top:10px;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--td);padding:8px;background:var(--panel);border-left:2px solid ${cc}">${n.c} &nbsp;·&nbsp; <span style="color:${cc}">${n.cl.toUpperCase()}</span> cluster</div>`;
+  document.getElementById('ld').innerHTML=h;
+}
+
+function dw(){
+  const w=document.getElementById('wi').value.replace(/[^A-Z]/g,'');
+  if(!w)return;
+  let tot=0,bs=[],cls={},rows='';
+  rows+=`<div class="wrow wh"><div>L</div><div>NODE</div><div>BRG</div><div>RES</div><div>%</div></div>`;
+  w.split('').forEach(l=>{
+    const d=LM[l];if(!d)return;
+    tot+=d.r;bs.push(d.b);cls[d.cl]=(cls[d.cl]||0)+1;
+    const c=rc(d.r);
+    rows+=`<div class="wrow"><div class="wl ${d.dir.toLowerCase()}">${l}</div><div class="wm">${d.node}</div><div class="wm">${d.b}°</div><div><div class="wbar" style="width:${d.r}%;background:${c}"></div></div><div class="ws" style="color:${c}">${d.r}</div></div>`;
+  });
+  const avg=Math.round(tot/w.length),span=bs.length>1?Math.round(Math.max(...bs)-Math.min(...bs)):0;
+  let stab='BALANCED',sc='var(--mod)';
+  if(avg>=85&&span<100){stab='MAXIMUM';sc='var(--high)';}
+  else if(avg>=85){stab='HIGH';sc='var(--high)';}
+  else if(avg<60){stab='UNSTABLE';sc='var(--conf)';}
+  const badges=Object.entries(cls).map(([c,n])=>`<span class="cbc ${ccl(c)}">${c.toUpperCase()}×${n}</span>`).join('');
+  document.getElementById('wr2').innerHTML=rows+`<div class="wsum"><strong>${w}</strong> · avg <strong style="color:var(--high)">${avg}%</strong> · span ${span}° · <strong style="color:${sc}">${stab}</strong><div style="margin-top:5px">${badges}</div></div>`;
+}
+document.getElementById('wi').addEventListener('keydown',e=>{if(e.key==='Enter')dw();});
+
+function buildTable(){
+  const tb=document.getElementById('ntbl');
+  ND.forEach(n=>{
+    const avg=Math.round((n.r[0]+n.r[1])/2),c=rc(avg);
+    const badge=n.t==='cardinal'?`<span class="nb2 bc">C</span>`:n.t==='power'?`<span class="nb2 bp">★</span>`:'';
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td class="nn">${n.id}</td><td class="nb">${n.b}°</td><td class="np"><span class="nc">${n.l[0]}</span><span style="color:var(--td)"> / </span><span class="nw">${n.l[1]}</span>${badge}</td><td style="font-family:'JetBrains Mono',monospace;font-size:0.61rem;color:${c};text-align:right">${avg}%</td>`;
+    tr.addEventListener('click',()=>sel(n.id));
+    tb.appendChild(tr);
+  });
+}
+buildTable();
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+function exportSVG(){
+  const svg=document.getElementById('csvg');
+  const ser=new XMLSerializer();
+  let s=ser.serializeToString(svg);
+  // Inject fonts
+  s=s.replace('<svg',`<svg xmlns="http://www.w3.org/2000/svg" style="background:#07080a"`);
+  const blob=new Blob([s],{type:'image/svg+xml'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;a.download='alphabet-resonance-map.svg';a.click();
+  URL.revokeObjectURL(url);
+  showToast('SVG exported successfully');
+}
+
+function exportPNG(){
+  showToast('Rendering PNG...');
+  const svg=document.getElementById('csvg');
+  html2canvas(svg,{backgroundColor:'#07080a',scale:2,useCORS:true}).then(canvas=>{
+    const a=document.createElement('a');
+    a.href=canvas.toDataURL('image/png');
+    a.download='alphabet-resonance-map.png';
+    a.click();
+    showToast('PNG exported successfully');
+  }).catch(()=>{
+    // Fallback: SVG-to-canvas manually
+    const w=1200,h=1200;
+    const c2=document.createElement('canvas');c2.width=w;c2.height=h;
+    const ctx=c2.getContext('2d');
+    ctx.fillStyle='#07080a';ctx.fillRect(0,0,w,h);
+    const img=new Image();
+    const ser=new XMLSerializer();
+    const svgStr=ser.serializeToString(svg);
+    const blob=new Blob([svgStr],{type:'image/svg+xml'});
+    const url=URL.createObjectURL(blob);
+    img.onload=()=>{ctx.drawImage(img,0,0,w,h);const a=document.createElement('a');a.href=c2.toDataURL('image/png');a.download='alphabet-resonance-map.png';a.click();URL.revokeObjectURL(url);showToast('PNG exported');};
+    img.src=url;
+  });
+}
+</script>
+</body>
+</html>

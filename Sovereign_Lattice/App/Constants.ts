@@ -46,6 +46,9 @@ export const OVERPACK_DELTA = 0.000585;
 /** Ψ ≈ 0.1237 (12.37%) — The mandatory mercy in every structure */
 export const HADES_GAP = 0.1237;
 
+/** The Grace (Time) buffer — The metric of Mercy allowing the 13th twist */
+export const LUNAR_MERCY = 0.37;
+
 /** θ = arctan(14/17) ≈ 39.47° — The tilt between Space and Meaning */
 export const SHEAR_ANGLE_DEG = 39.47;
 export const SHEAR_ANGLE_RAD = Math.atan(14 / 17);
@@ -165,6 +168,26 @@ export const COSMIC_GEARBOX = [
 ] as const;
 
 // ============================================================================
+// 10. OGC-13 / CAMERA OBSCURA (Bifold Symmetry)
+// ============================================================================
+
+/** The 12/13 Vitrification Threshold / Hardcard Plane */
+export const HARDCARD_RATIO = 12 / 13; // ≈ 0.9231
+
+/** Torsion Mapping of the Aperture (CAMERA O BSCURA) */
+export const OGC_13_INVERSION = {
+    CAMERA: 41,    // The 13th Prime (Seen / Light)
+    APERTURE: 15,  // The 'O' Zero-Point Void
+    BSCURA: 64,    // 4³ Cube / Hardcard projection (Hidden / Dark)
+    TOTAL: 120,    // Defines the 24-fold day (120/5) and 12-fold year (120/10)
+} as const;
+
+/** 42/21 Bifold Symmetry */
+export const BIFOLD_ARC = ROOT_42;
+export const BIFOLD_CHORD = 21 / 3.5; // Resolves to 6.0
+export const TENSION_COEFFICIENT = BIFOLD_ARC - BIFOLD_CHORD; // The 0.4807 "Claw" tension
+
+// ============================================================================
 // CONSOLIDATED EXPORT — The Sovereign Constants Object
 // ============================================================================
 
@@ -179,6 +202,7 @@ export const SOVEREIGN_CONSTANTS = {
     PACKING_CONSTANT_RHO,
     OVERPACK_DELTA,
     HADES_GAP,
+    LUNAR_MERCY,
     SHEAR_ANGLE_DEG,
     SHEAR_ANGLE_RAD,
     BEAT_FREQUENCY,
@@ -213,4 +237,11 @@ export const SOVEREIGN_CONSTANTS = {
     TIGER_STRIPE,
     LADDER_STEPS,
     COSMIC_GEARBOX,
+
+    // OGC-13
+    HARDCARD_RATIO,
+    OGC_13_INVERSION,
+    BIFOLD_ARC,
+    BIFOLD_CHORD,
+    TENSION_COEFFICIENT,
 } as const;

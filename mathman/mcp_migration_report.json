@@ -1,0 +1,405 @@
+{
+  "summary": {
+    "migration_summary": {
+      "total_files_analyzed": 48,
+      "successful_migrations": 48,
+      "total_ai_calls_migrated": 0,
+      "migration_success_rate": "100.0%"
+    },
+    "ai_call_breakdown": {},
+    "top_migrated_files": [],
+    "failed_migrations": [],
+    "next_steps": [
+      "Review migrated files for correctness",
+      "Test functionality after migration",
+      "Update import statements if needed",
+      "Run comprehensive test suite"
+    ]
+  },
+  "detailed_results": [
+    {
+      "file": "mcp_crypto_attacks.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "mcp_security_framework.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "main_production.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "phone_agent_production_final.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "mcp_mathematical_rigor.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "enhanced_stress_tester.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "mcp_openrouter_kimi_specialized.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "mcp_startup_initializer.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "mcp_zen_holistic_security.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "mcp_superclaude_optimizer.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/mathematical_stress_test.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/mathematical_validation.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/financial_attack_simulation.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/scaling_optimizer.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/spider_guardian_service.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/spider_integration.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/financial_security_validation.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/gemcrawler.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/simplified_certification_test.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/setup_gemcrawler.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/attack_simulation.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/security_analysis_report.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/comprehensive_test_harness.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/production_monitoring.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/__init__.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/main.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/tests/__init__.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/tests/test_main.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/middleware/websocket_auth.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/middleware/input_validation.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/middleware/auth_middleware.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/core/security_monitoring.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/core/mathematical_foundations.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/core/performance_metrics.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/core/hardcard_integration.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/core/cors_config.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/core/audit_logging.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/core/session_encryption.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/tests/test_phone_agent_mathematical.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/api/__init__.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/services/firebase_service.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/services/__init__.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/services/openai_service.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/services/twilio_service.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/api/routers/__init__.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "backend/app/api/routers/retention.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "app/services/openai_service_production.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    },
+    {
+      "file": "app/services/firebase_service_production.py",
+      "migrations": 0,
+      "success": true,
+      "ai_calls": [],
+      "imports": [],
+      "error": ""
+    }
+  ]
+}

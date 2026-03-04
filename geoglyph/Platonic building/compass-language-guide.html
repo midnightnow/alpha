@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 13-Node Compass of Language</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=JetBrains+Mono:wght@300;400&display=swap');
+
+  :root {
+    --ink: #1a1208;
+    --parchment: #f5eed8;
+    --gold: #c9943a;
+    --gold-light: #e8c87a;
+    --rust: #8b3a1a;
+    --teal: #1a5c6b;
+    --ccw: #1a5c6b;
+    --cw: #8b3a1a;
+    --node: #c9943a;
+    --cardinal: #6b1a2a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0e0c07;
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .cover {
+    min-height: 100vh;
+    background: radial-gradient(ellipse at center, #2a1f08 0%, #0e0c07 70%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(201,148,58,0.06) 60px),
+      repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(201,148,58,0.06) 60px);
+  }
+
+  .cover-inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 800px;
+  }
+
+  .cover h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 40px rgba(201,148,58,0.4);
+    margin-bottom: 0.3em;
+  }
+
+  .cover .subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    color: var(--gold-light);
+    letter-spacing: 0.2em;
+    font-weight: 400;
+    margin-bottom: 2em;
+    opacity: 0.8;
+  }
+
+  .cover .tagline {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: rgba(245,238,216,0.7);
+    max-width: 500px;
+    margin: 0 auto 3em;
+  }
+
+  .cover-compass {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 3em;
+    opacity: 0.9;
+    animation: slowspin 60s linear infinite;
+  }
+
+  @keyframes slowspin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .version-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(201,148,58,0.5);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  /* PAGE SECTIONS */
+  .page {
+    background: var(--parchment);
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 80px;
+    position: relative;
+  }
+
+  .page + .page {
+    border-top: 3px double #c9943a44;
+  }
+
+  .page::before {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border: 1px solid rgba(201,148,58,0.2);
+    pointer-events: none;
+  }
+
+  .chapter-header {
+    text-align: center;
+    margin-bottom: 3em;
+    padding-bottom: 2em;
+    border-bottom: 2px solid var(--gold);
+  }
+
+  .chapter-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5em;
+  }
+
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--rust);
+    line-height: 1.2;
+    margin-bottom: 0.3em;
+  }
+
+  h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--teal);
+    margin: 2em 0 0.8em;
+  }
+
+  h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--rust);
+    margin: 1.5em 0 0.5em;
+  }
+
+  p { margin-bottom: 1.2em; }
+
+  .lead {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #3a2a10;
+    margin-bottom: 2em;
+    padding-left: 1.5em;
+    border-left: 3px solid var(--gold);
+  }
+
+  /* COMPASS ILLUSTRATION */
+  .compass-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 3em 0;
+  }
+
+  svg text {
+    font-family: 'Cinzel', serif;
+  }
+
+  /* NODE TABLE */
+  .node-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2em 0;
+    font-size: 0.9rem;
+  }
+
+  .node-table th {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--gold);
+    padding: 10px 14px;
+    text-align: left;
+  }
+
+  .node-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid rgba(201,148,58,0.2);
+    vertical-align: middle;
+  }
+
+  .node-table tr:nth-child(even) td {
+    background: rgba(201,148,58,0.06);
+  }
+
+  .node-table tr.cardinal td {
+    background: rgba(107,26,42,0.08);
+    font-weight: 600;
+  }
+
+  .node-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--gold);
+    font-weight: 400;
+  }
+
+  .bearing {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+  }
+
+  .ccw-letter {
+    color: var(--ccw);
+    font-weight: 700;
+    font-size: 1.1rem;
+    font-family: 'Cinzel', serif;
+  }
+
+  .cw-letter {
+    color: var(--cw);
+    font-weight: 700;
+    font-size: 1.1rem;
+    font-family: 'Cinzel', serif;
+  }
+
+  .cardinal-badge {
+    display: inline-block;
+    background: var(--cardinal);
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 2px;
+    letter-spacing: 0.1em;
+    margin-left: 6px;
+  }
+
+  /* TWO COLUMN */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3em;
+    margin: 2em 0;
+  }
+
+  .callout {
+    background: var(--ink);
+    color: var(--parchment);
+    padding: 1.5em 2em;
+    margin: 2em 0;
+    position: relative;
+  }
+
+  .callout::before {
+    content: '';
+    position: absolute;
+    top: 4px; left: 4px; right: -4px; bottom: -4px;
+    border: 1px solid var(--gold);
+    z-index: -1;
+  }
+
+  .callout h4 {
+    color: var(--gold);
+    margin-top: 0;
+  }
+
+  .callout p { margin-bottom: 0.6em; font-size: 0.95rem; }
+
+  /* LETTER PROFILE CARDS */
+  .letter-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+    margin: 2em 0;
+  }
+
+  .letter-card {
+    border: 1px solid rgba(201,148,58,0.3);
+    padding: 1em;
+    text-align: center;
+    background: white;
+  }
+
+  .letter-card .big-letter {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0.2em;
+  }
+
+  .letter-card.ccw .big-letter { color: var(--ccw); }
+  .letter-card.cw .big-letter { color: var(--cw); }
+
+  .letter-card .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: #666;
+    letter-spacing: 0.1em;
+  }
+
+  .letter-card .desc {
+    font-size: 0.8rem;
+    margin-top: 0.5em;
+    font-style: italic;
+    color: #444;
+  }
+
+  /* QUICKSTART BOX */
+  .quickstart {
+    background: #1a1208;
+    color: var(--parchment);
+    padding: 3em;
+    margin: 0;
+  }
+
+  .quickstart h2 { color: var(--gold-light); }
+  .quickstart h3 { color: var(--gold); border-bottom: 1px solid rgba(201,148,58,0.3); padding-bottom: 0.3em; }
+
+  .step {
+    display: flex;
+    gap: 1.5em;
+    margin: 1.5em 0;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 2rem;
+    margin-top: -0.1em;
+  }
+
+  .step-content h4 {
+    color: var(--gold-light);
+    margin-top: 0;
+    font-size: 1.1rem;
+  }
+
+  .step-content p {
+    color: rgba(245,238,216,0.8);
+    font-size: 0.95rem;
+    margin-bottom: 0;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    background: rgba(201,148,58,0.15);
+    padding: 0.1em 0.4em;
+    color: var(--gold-light);
+  }
+
+  .formula-box {
+    background: rgba(201,148,58,0.1);
+    border: 1px solid rgba(201,148,58,0.3);
+    padding: 1.5em 2em;
+    margin: 1.5em 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--gold-light);
+    text-align: center;
+  }
+
+  .legend-row {
+    display: flex;
+    gap: 2em;
+    align-items: center;
+    margin: 1em 0;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 0.9rem;
+  }
+
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .divider {
+    text-align: center;
+    margin: 3em 0;
+    color: var(--gold);
+    letter-spacing: 0.5em;
+    font-size: 0.8rem;
+  }
+
+  /* FONT GUIDE */
+  .font-row {
+    display: grid;
+    grid-template-columns: 150px 1fr 1fr;
+    gap: 1em;
+    padding: 1em 0;
+    border-bottom: 1px solid rgba(201,148,58,0.2);
+    align-items: center;
+  }
+
+  .font-row:first-child {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 0.5em;
+  }
+
+  .font-sample {
+    font-size: 1.3rem;
+    color: var(--rust);
+  }
+
+  .font-italic { font-style: italic; }
+  .font-black { font-weight: 900; letter-spacing: -0.02em; }
+  .font-geo { letter-spacing: 0.15em; }
+
+  @media (max-width: 700px) {
+    .page { padding: 40px 30px; }
+    .two-col { grid-template-columns: 1fr; }
+    .letter-grid { grid-template-columns: repeat(2, 1fr); }
+    .font-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-inner">
+
+    <svg class="cover-compass" viewBox="0 0 200 200">
+      <!-- Outer ring -->
+      <circle cx="100" cy="100" r="90" fill="none" stroke="#c9943a" stroke-width="1.5" opacity="0.4"/>
+      <circle cx="100" cy="100" r="75" fill="none" stroke="#c9943a" stroke-width="0.5" opacity="0.3"/>
+      
+      <!-- 13 node lines -->
+      <g opacity="0.6">
+        <line x1="100" y1="100" x2="100" y2="10" stroke="#c9943a" stroke-width="0.5"/>
+        <line x1="100" y1="100" x2="134" y2="12" stroke="#c9943a" stroke-width="0.5"/>
+        <line x1="100" y1="100" x2="163" y2="28" stroke="#c9943a" stroke-width="0.5"/>
+        <line x1="100" y1="100" x2="185" y2="55" stroke="#c9943a" stroke-width="0.5"/>
+        <line x1="100" y1="100" x2="195" y2="85" stroke="#c9943a" stroke-width="0.5"/>
+        <line x1="100" y1="100" x2="190" y2="118" stroke="#c9943a" stroke-width="0.5"/>
+        <line x1="100" y1="100" x2="170" y2="148" stroke="#c9943a" stroke-width="0.5"/>
+        <line x1="100" y1="100" x2="139" y2="170" stroke="#c9943a" stroke-width="0.5"/>
+        <line x1="100" y1="100" x2="100" y2="180" stroke="#8b3a1a" stroke-width="1"/>
+        <line x1="100" y1="100" x2="62" y2="170" stroke="#c9943a" stroke-width="0.5"/>
+        <line x1="100" y1="100" x2="30" y2="148" stroke="#c9943a" stroke-width="0.5"/>
+        <line x1="100" y1="100" x2="12" y2="113" stroke="#c9943a" stroke-width="0.5"/>
+        <line x1="100" y1="100" x2="10" y2="80" stroke="#c9943a" stroke-width="0.5"/>
+      </g>
+
+      <!-- Cardinal points -->
+      <circle cx="100" cy="10" r="5" fill="#6b1a2a"/>
+      <circle cx="100" cy="180" r="5" fill="#6b1a2a"/>
+      <circle cx="185" cy="55" r="4" fill="#1a5c6b" opacity="0.8"/>
+      <circle cx="10" cy="80" r="4" fill="#1a5c6b" opacity="0.8"/>
+
+      <!-- Node dots -->
+      <g fill="#c9943a" opacity="0.7">
+        <circle cx="134" cy="12" r="3"/>
+        <circle cx="163" cy="28" r="3"/>
+        <circle cx="195" cy="85" r="3"/>
+        <circle cx="190" cy="118" r="3"/>
+        <circle cx="170" cy="148" r="3"/>
+        <circle cx="139" cy="170" r="3"/>
+        <circle cx="62" cy="170" r="3"/>
+        <circle cx="30" cy="148" r="3"/>
+        <circle cx="12" cy="113" r="3"/>
+      </g>
+
+      <!-- Center -->
+      <circle cx="100" cy="100" r="6" fill="#c9943a" opacity="0.9"/>
+      <circle cx="100" cy="100" r="2" fill="#1a1208"/>
+
+      <!-- Labels -->
+      <text x="100" y="6" text-anchor="middle" fill="#e8c87a" font-size="9" font-family="Cinzel, serif">A/B</text>
+      <text x="100" y="192" text-anchor="middle" fill="#e8c87a" font-size="9" font-family="Cinzel, serif">O/P</text>
+      <text x="195" y="52" text-anchor="start" fill="#e8c87a" font-size="9" font-family="Cinzel, serif">G/H</text>
+      <text x="2" y="77" text-anchor="start" fill="#e8c87a" font-size="9" font-family="Cinzel, serif">U/V</text>
+    </svg>
+
+    <h1>THE 13-NODE COMPASS<br>OF LANGUAGE</h1>
+    <div class="subtitle">A Geometric Theory of the Alphabet</div>
+    <p class="tagline">Where each letter departs a circle as a tangent vector, and the English alphabet resolves into thirteen bipolar stations on a nautical compass.</p>
+    <div class="version-tag">Version 1.0 · Model 2 · 26-Vector System</div>
+  </div>
+</div>
+
+<!-- PAGE 1: FOUNDATION -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter I</div>
+    <h2>The Foundational Theory</h2>
+  </div>
+
+  <p class="lead">Language is not a line. It is a vortex. Each letter is not a symbol sitting on a page — it is a vector departing a circle at a precise angle, carrying a direction encoded in its geometry.</p>
+
+  <p>The 13-Node Compass of Language maps the 26-letter English alphabet onto a 360° compass rose, assigning each letter a departure bearing and a rotational direction. The result is a bipolar navigational chart of linguistic energy.</p>
+
+  <h3>The Core Axiom</h3>
+  <p>Every letter can be understood as a <em>tangent vector</em> — a line that touches a circle at exactly one point and departs in a specific direction. The circle represents the closed system of language; the tangent represents how each letter <em>exits</em> that system into meaning.</p>
+
+  <p>The two fundamental properties of any letter-vector are:</p>
+
+  <div class="two-col">
+    <div class="callout">
+      <h4>Direction: CCW (Anticlockwise)</h4>
+      <p>Assigned to <strong style="color:var(--gold)">odd-numbered letters</strong> (A=1, C=3, E=5...)</p>
+      <p>Character: Receptive, opening, lunar, ascending. The CCW vector reaches outward and upward from its node.</p>
+      <p>Visual signature: Open curves, bowls facing left, upward strokes.</p>
+    </div>
+    <div class="callout">
+      <h4>Direction: CW (Clockwise)</h4>
+      <p>Assigned to <strong style="color:var(--gold)">even-numbered letters</strong> (B=2, D=4, F=6...)</p>
+      <p>Character: Active, closing, solar, descending. The CW vector drives inward and downward from its node.</p>
+      <p>Visual signature: Closed loops, stems, rightward weight, downward strokes.</p>
+    </div>
+  </div>
+
+  <h3>Why 13 Nodes?</h3>
+  <p>Rather than 26 individual positions, the model pairs consecutive letters at shared departure points. Each node launches two vectors — one CCW, one CW — from the same bearing. This collapses 26 letters into 13 binary stations.</p>
+
+  <div class="formula-box">
+    Node Bearing = (Node Index × 360°) ÷ 13<br><br>
+    Node 0 → 0.00° &nbsp;|&nbsp; Node 1 → 27.69° &nbsp;|&nbsp; Node 6 → 166.15° &nbsp;|&nbsp; Node 12 → 332.31°
+  </div>
+
+  <p>This produces a 27.69° angular separation between nodes — an interval that creates no simple resonance with 90° or 180°, meaning the two counter-rotating streams <em>never perfectly overlap</em>. They braid continuously, which is why language remains generative rather than static.</p>
+
+  <h3>Uppercase vs Lowercase</h3>
+  <p>The model distinguishes two registers of the same letter-vector:</p>
+
+  <div class="two-col">
+    <div>
+      <h4>Uppercase — The Platonic Form</h4>
+      <p>Uppercase letters map the circle directly. They are contained within a single height band, expressing the pure vector geometry without deviation. They are the <em>blueprint</em>.</p>
+    </div>
+    <div>
+      <h4>Lowercase — The Kinetic Form</h4>
+      <p>Lowercase letters inhabit three vertical zones: the x-height (middle), ascenders (upper), and descenders (lower). They are the <em>flow through the blueprint</em> — the same vectors operating at different amplitudes.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2: THE COMPASS MAP -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter II</div>
+    <h2>The 13-Node Compass Map</h2>
+  </div>
+
+  <p class="lead">The complete mapping of all 26 letters to their compass bearings. Cardinal points (N, E, S, W) are the primary anchors of the system.</p>
+
+  <!-- MAIN COMPASS SVG -->
+  <div class="compass-wrap">
+    <svg width="520" height="520" viewBox="0 0 520 520">
+      <defs>
+        <radialGradient id="bg" cx="50%" cy="50%">
+          <stop offset="0%" stop-color="#f5eed8"/>
+          <stop offset="100%" stop-color="#e8ddb8"/>
+        </radialGradient>
+        <marker id="arrowCCW" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#1a5c6b" opacity="0.7"/>
+        </marker>
+        <marker id="arrowCW" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#8b3a1a" opacity="0.7"/>
+        </marker>
+      </defs>
+
+      <!-- Background -->
+      <circle cx="260" cy="260" r="255" fill="url(#bg)" stroke="#c9943a" stroke-width="1.5"/>
+
+      <!-- Degree rings -->
+      <circle cx="260" cy="260" r="220" fill="none" stroke="#c9943a" stroke-width="0.5" opacity="0.3"/>
+      <circle cx="260" cy="260" r="180" fill="none" stroke="#c9943a" stroke-width="0.5" opacity="0.2"/>
+      <circle cx="260" cy="260" r="130" fill="none" stroke="#c9943a" stroke-width="0.5" opacity="0.2"/>
+      <circle cx="260" cy="260" r="70" fill="none" stroke="#c9943a" stroke-width="0.5" opacity="0.3"/>
+
+      <!-- Cardinal cross -->
+      <line x1="260" y1="10" x2="260" y2="510" stroke="#c9943a" stroke-width="0.8" opacity="0.3" stroke-dasharray="4,4"/>
+      <line x1="10" y1="260" x2="510" y2="260" stroke="#c9943a" stroke-width="0.8" opacity="0.3" stroke-dasharray="4,4"/>
+
+      <!-- Node vectors (departure lines) -->
+      <!-- Node 0: 0° A/B -->
+      <line x1="260" y1="260" x2="260" y2="50" stroke="#6b1a2a" stroke-width="2" opacity="0.8"/>
+      <!-- CCW tangent for A -->
+      <line x1="260" y1="50" x2="210" y2="30" stroke="#1a5c6b" stroke-width="1.5" marker-end="url(#arrowCCW)" opacity="0.8"/>
+      <!-- CW tangent for B -->
+      <line x1="260" y1="50" x2="310" y2="30" stroke="#8b3a1a" stroke-width="1.5" marker-end="url(#arrowCW)" opacity="0.8"/>
+
+      <!-- Node 1: 27.69° C/D -->
+      <line x1="260" y1="260" x2="377" y2="73" stroke="#c9943a" stroke-width="1.5" opacity="0.6"/>
+      <line x1="377" y1="73" x2="340" y2="45" stroke="#1a5c6b" stroke-width="1.5" marker-end="url(#arrowCCW)" opacity="0.7"/>
+      <line x1="377" y1="73" x2="407" y2="108" stroke="#8b3a1a" stroke-width="1.5" marker-end="url(#arrowCW)" opacity="0.7"/>
+
+      <!-- Node 2: 55.38° E/F -->
+      <line x1="260" y1="260" x2="450" y2="133" stroke="#c9943a" stroke-width="1.5" opacity="0.6"/>
+      <line x1="450" y1="133" x2="425" y2="95" stroke="#1a5c6b" stroke-width="1.5" marker-end="url(#arrowCCW)" opacity="0.7"/>
+      <line x1="450" y1="133" x2="490" y2="155" stroke="#8b3a1a" stroke-width="1.5" marker-end="url(#arrowCW)" opacity="0.7"/>
+
+      <!-- Node 3: 83.08° G/H (East) -->
+      <line x1="260" y1="260" x2="468" y2="231" stroke="#6b1a2a" stroke-width="2" opacity="0.8"/>
+      <line x1="468" y1="231" x2="458" y2="188" stroke="#1a5c6b" stroke-width="1.5" marker-end="url(#arrowCCW)" opacity="0.8"/>
+      <line x1="468" y1="231" x2="508" y2="252" stroke="#8b3a1a" stroke-width="1.5" marker-end="url(#arrowCW)" opacity="0.8"/>
+
+      <!-- Node 4: 110.77° I/J -->
+      <line x1="260" y1="260" x2="425" y2="387" stroke="#c9943a" stroke-width="1.5" opacity="0.6"/>
+      <line x1="425" y1="387" x2="450" y2="425" stroke="#1a5c6b" stroke-width="1.5" marker-end="url(#arrowCCW)" opacity="0.7"/>
+      <line x1="425" y1="387" x2="388" y2="410" stroke="#8b3a1a" stroke-width="1.5" marker-end="url(#arrowCW)" opacity="0.7"/>
+
+      <!-- Node 5: 138.46° K/L -->
+      <line x1="260" y1="260" x2="340" y2="447" stroke="#c9943a" stroke-width="1.5" opacity="0.6"/>
+      <line x1="340" y1="447" x2="370" y2="475" stroke="#1a5c6b" stroke-width="1.5" marker-end="url(#arrowCCW)" opacity="0.7"/>
+      <line x1="340" y1="447" x2="305" y2="470" stroke="#8b3a1a" stroke-width="1.5" marker-end="url(#arrowCW)" opacity="0.7"/>
+
+      <!-- Node 6: 166.15° M/N -->
+      <line x1="260" y1="260" x2="210" y2="468" stroke="#c9943a" stroke-width="1.5" opacity="0.6"/>
+      <line x1="210" y1="468" x2="245" y2="495" stroke="#1a5c6b" stroke-width="1.5" marker-end="url(#arrowCCW)" opacity="0.7"/>
+      <line x1="210" y1="468" x2="178" y2="490" stroke="#8b3a1a" stroke-width="1.5" marker-end="url(#arrowCW)" opacity="0.7"/>
+
+      <!-- Node 7: 193.85° O/P (South) -->
+      <line x1="260" y1="260" x2="260" y2="470" stroke="#6b1a2a" stroke-width="2" opacity="0.8"/>
+      <line x1="260" y1="470" x2="210" y2="490" stroke="#1a5c6b" stroke-width="1.5" marker-end="url(#arrowCCW)" opacity="0.8"/>
+      <line x1="260" y1="470" x2="310" y2="490" stroke="#8b3a1a" stroke-width="1.5" marker-end="url(#arrowCW)" opacity="0.8"/>
+
+      <!-- Node 8: 221.54° Q/R -->
+      <line x1="260" y1="260" x2="143" y2="447" stroke="#c9943a" stroke-width="1.5" opacity="0.6"/>
+      <line x1="143" y1="447" x2="108" y2="470" stroke="#1a5c6b" stroke-width="1.5" marker-end="url(#arrowCCW)" opacity="0.7"/>
+      <line x1="143" y1="447" x2="155" y2="410" stroke="#8b3a1a" stroke-width="1.5" marker-end="url(#arrowCW)" opacity="0.7"/>
+
+      <!-- Node 9: 249.23° S/T (SW Power Zone) -->
+      <line x1="260" y1="260" x2="95" y2="387" stroke="#c9943a" stroke-width="2" opacity="0.7"/>
+      <line x1="95" y1="387" x2="60" y2="415" stroke="#1a5c6b" stroke-width="1.5" marker-end="url(#arrowCCW)" opacity="0.8"/>
+      <line x1="95" y1="387" x2="70" y2="355" stroke="#8b3a1a" stroke-width="1.5" marker-end="url(#arrowCW)" opacity="0.8"/>
+
+      <!-- Node 10: 276.92° U/V (West) -->
+      <line x1="260" y1="260" x2="52" y2="231" stroke="#6b1a2a" stroke-width="2" opacity="0.8"/>
+      <line x1="52" y1="231" x2="20" y2="205" stroke="#1a5c6b" stroke-width="1.5" marker-end="url(#arrowCCW)" opacity="0.8"/>
+      <line x1="52" y1="231" x2="38" y2="268" stroke="#8b3a1a" stroke-width="1.5" marker-end="url(#arrowCW)" opacity="0.8"/>
+
+      <!-- Node 11: 304.62° W/X -->
+      <line x1="260" y1="260" x2="70" y2="133" stroke="#c9943a" stroke-width="1.5" opacity="0.6"/>
+      <line x1="70" y1="133" x2="40" y2="108" stroke="#1a5c6b" stroke-width="1.5" marker-end="url(#arrowCCW)" opacity="0.7"/>
+      <line x1="70" y1="133" x2="95" y2="95" stroke="#8b3a1a" stroke-width="1.5" marker-end="url(#arrowCW)" opacity="0.7"/>
+
+      <!-- Node 12: 332.31° Y/Z -->
+      <line x1="260" y1="260" x2="143" y2="73" stroke="#c9943a" stroke-width="1.5" opacity="0.6"/>
+      <line x1="143" y1="73" x2="108" y2="50" stroke="#1a5c6b" stroke-width="1.5" marker-end="url(#arrowCCW)" opacity="0.7"/>
+      <line x1="143" y1="73" x2="178" y2="50" stroke="#8b3a1a" stroke-width="1.5" marker-end="url(#arrowCW)" opacity="0.7"/>
+
+      <!-- Node dots on perimeter -->
+      <!-- Cardinals: larger, dark red -->
+      <circle cx="260" cy="50" r="8" fill="#6b1a2a"/>
+      <circle cx="468" cy="231" r="8" fill="#6b1a2a"/>
+      <circle cx="260" cy="470" r="8" fill="#6b1a2a"/>
+      <circle cx="52" cy="231" r="8" fill="#6b1a2a"/>
+
+      <!-- Non-cardinals: gold -->
+      <circle cx="377" cy="73" r="6" fill="#c9943a"/>
+      <circle cx="450" cy="133" r="6" fill="#c9943a"/>
+      <circle cx="425" cy="387" r="6" fill="#c9943a"/>
+      <circle cx="340" cy="447" r="6" fill="#c9943a"/>
+      <circle cx="210" cy="468" r="6" fill="#c9943a"/>
+      <circle cx="143" cy="447" r="6" fill="#c9943a"/>
+      <circle cx="95" cy="387" r="6" fill="#e8a040"/>
+      <circle cx="70" cy="133" r="6" fill="#c9943a"/>
+      <circle cx="143" cy="73" r="6" fill="#c9943a"/>
+
+      <!-- Center hub -->
+      <circle cx="260" cy="260" r="12" fill="#1a1208"/>
+      <circle cx="260" cy="260" r="6" fill="#c9943a"/>
+
+      <!-- Letter labels -->
+      <!-- Node 0 -->
+      <text x="242" y="38" font-size="11" fill="#1a5c6b" font-family="Cinzel,serif" font-weight="600">A</text>
+      <text x="265" y="38" font-size="11" fill="#8b3a1a" font-family="Cinzel,serif" font-weight="600">B</text>
+      <text x="253" y="28" font-size="8" fill="#6b1a2a" font-family="Cinzel,serif">N 0°</text>
+
+      <!-- Node 1 -->
+      <text x="363" y="62" font-size="11" fill="#1a5c6b" font-family="Cinzel,serif" font-weight="600">C</text>
+      <text x="378" y="62" font-size="11" fill="#8b3a1a" font-family="Cinzel,serif" font-weight="600">D</text>
+
+      <!-- Node 2 -->
+      <text x="452" y="122" font-size="11" fill="#1a5c6b" font-family="Cinzel,serif" font-weight="600">E</text>
+      <text x="465" y="122" font-size="11" fill="#8b3a1a" font-family="Cinzel,serif" font-weight="600">F</text>
+
+      <!-- Node 3 East -->
+      <text x="477" y="224" font-size="11" fill="#1a5c6b" font-family="Cinzel,serif" font-weight="600">G</text>
+      <text x="489" y="224" font-size="11" fill="#8b3a1a" font-family="Cinzel,serif" font-weight="600">H</text>
+      <text x="476" y="240" font-size="8" fill="#6b1a2a" font-family="Cinzel,serif">E ~90°</text>
+
+      <!-- Node 4 -->
+      <text x="430" y="382" font-size="11" fill="#1a5c6b" font-family="Cinzel,serif" font-weight="600">I</text>
+      <text x="441" y="382" font-size="11" fill="#8b3a1a" font-family="Cinzel,serif" font-weight="600">J</text>
+
+      <!-- Node 5 -->
+      <text x="348" y="458" font-size="11" fill="#1a5c6b" font-family="Cinzel,serif" font-weight="600">K</text>
+      <text x="360" y="458" font-size="11" fill="#8b3a1a" font-family="Cinzel,serif" font-weight="600">L</text>
+
+      <!-- Node 6 -->
+      <text x="198" y="480" font-size="11" fill="#1a5c6b" font-family="Cinzel,serif" font-weight="600">M</text>
+      <text x="211" y="480" font-size="11" fill="#8b3a1a" font-family="Cinzel,serif" font-weight="600">N</text>
+
+      <!-- Node 7 South -->
+      <text x="243" y="495" font-size="11" fill="#1a5c6b" font-family="Cinzel,serif" font-weight="600">O</text>
+      <text x="256" y="495" font-size="11" fill="#8b3a1a" font-family="Cinzel,serif" font-weight="600">P</text>
+      <text x="243" y="508" font-size="8" fill="#6b1a2a" font-family="Cinzel,serif">S 180°</text>
+
+      <!-- Node 8 -->
+      <text x="124" y="458" font-size="11" fill="#1a5c6b" font-family="Cinzel,serif" font-weight="600">Q</text>
+      <text x="136" y="458" font-size="11" fill="#8b3a1a" font-family="Cinzel,serif" font-weight="600">R</text>
+
+      <!-- Node 9 SW Power Zone -->
+      <text x="72" y="386" font-size="11" fill="#1a5c6b" font-family="Cinzel,serif" font-weight="600">S</text>
+      <text x="84" y="386" font-size="11" fill="#8b3a1a" font-family="Cinzel,serif" font-weight="600">T</text>
+      <text x="30" y="400" font-size="8" fill="#c9943a" font-family="Cinzel,serif">SW 249°★</text>
+
+      <!-- Node 10 West -->
+      <text x="22" y="228" font-size="11" fill="#1a5c6b" font-family="Cinzel,serif" font-weight="600">U</text>
+      <text x="34" y="228" font-size="11" fill="#8b3a1a" font-family="Cinzel,serif" font-weight="600">V</text>
+      <text x="16" y="244" font-size="8" fill="#6b1a2a" font-family="Cinzel,serif">W ~270°</text>
+
+      <!-- Node 11 -->
+      <text x="50" y="125" font-size="11" fill="#1a5c6b" font-family="Cinzel,serif" font-weight="600">W</text>
+      <text x="63" y="125" font-size="11" fill="#8b3a1a" font-family="Cinzel,serif" font-weight="600">X</text>
+
+      <!-- Node 12 -->
+      <text x="122" y="62" font-size="11" fill="#1a5c6b" font-family="Cinzel,serif" font-weight="600">Y</text>
+      <text x="134" y="62" font-size="11" fill="#8b3a1a" font-family="Cinzel,serif" font-weight="600">Z</text>
+
+      <!-- Cardinal labels -->
+      <text x="255" y="520" font-size="0" fill="none"/>
+
+      <!-- Legend -->
+      <rect x="155" y="235" width="210" height="50" rx="4" fill="white" fill-opacity="0.85" stroke="#c9943a" stroke-width="0.5"/>
+      <line x1="165" y1="252" x2="185" y2="252" stroke="#1a5c6b" stroke-width="2"/>
+      <text x="190" y="256" font-size="9" fill="#1a5c6b" font-family="Crimson Pro,serif">CCW · Odd · Anticlockwise</text>
+      <line x1="165" y1="268" x2="185" y2="268" stroke="#8b3a1a" stroke-width="2"/>
+      <text x="190" y="272" font-size="9" fill="#8b3a1a" font-family="Crimson Pro,serif">CW · Even · Clockwise</text>
+    </svg>
+  </div>
+
+  <div class="legend-row">
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#6b1a2a"></div>
+      <span>Cardinal Node (N/E/S/W)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#c9943a"></div>
+      <span>Standard Node</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#e8a040; width:14px; height:14px;"></div>
+      <span>★ SW Power Zone (Node 9)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#1a5c6b; border-radius:0"></div>
+      <span>CCW vector (odd letter)</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-dot" style="background:#8b3a1a; border-radius:0"></div>
+      <span>CW vector (even letter)</span>
+    </div>
+  </div>
+
+  <!-- FULL NODE TABLE -->
+  <h3>Complete Node Reference Table</h3>
+
+  <table class="node-table">
+    <tr>
+      <th>Node</th>
+      <th>Bearing</th>
+      <th>CCW Letter (Odd)</th>
+      <th>CW Letter (Even)</th>
+      <th>Compass Position</th>
+      <th>Character</th>
+    </tr>
+    <tr class="cardinal">
+      <td class="node-num">00</td>
+      <td class="bearing">0.00°</td>
+      <td><span class="ccw-letter">A</span></td>
+      <td><span class="cw-letter">B</span></td>
+      <td>North <span class="cardinal-badge">CARDINAL</span></td>
+      <td>Emergence · Origin · Peak</td>
+    </tr>
+    <tr>
+      <td class="node-num">01</td>
+      <td class="bearing">27.69°</td>
+      <td><span class="ccw-letter">C</span></td>
+      <td><span class="cw-letter">D</span></td>
+      <td>NNE</td>
+      <td>Curve vs. Stem · Open vs. Closed</td>
+    </tr>
+    <tr>
+      <td class="node-num">02</td>
+      <td class="bearing">55.38°</td>
+      <td><span class="ccw-letter">E</span></td>
+      <td><span class="cw-letter">F</span></td>
+      <td>NE</td>
+      <td>Horizontal registers · Arm energy</td>
+    </tr>
+    <tr class="cardinal">
+      <td class="node-num">03</td>
+      <td class="bearing">83.08°</td>
+      <td><span class="ccw-letter">G</span></td>
+      <td><span class="cw-letter">H</span></td>
+      <td>East <span class="cardinal-badge">CARDINAL</span></td>
+      <td>Torque Conflict · Arc vs. Architecture</td>
+    </tr>
+    <tr>
+      <td class="node-num">04</td>
+      <td class="bearing">110.77°</td>
+      <td><span class="ccw-letter">I</span></td>
+      <td><span class="cw-letter">J</span></td>
+      <td>ESE</td>
+      <td>Vertical axis · Minimal vs. hooked</td>
+    </tr>
+    <tr>
+      <td class="node-num">05</td>
+      <td class="bearing">138.46°</td>
+      <td><span class="ccw-letter">K</span></td>
+      <td><span class="cw-letter">L</span></td>
+      <td>SE</td>
+      <td>Diagonal tension · Diagonal vs. Right angle</td>
+    </tr>
+    <tr class="cardinal" style="background:rgba(107,26,42,0.1)">
+      <td class="node-num">06</td>
+      <td class="bearing">166.15°</td>
+      <td><span class="ccw-letter">M</span></td>
+      <td><span class="cw-letter">N</span></td>
+      <td>SSE</td>
+      <td>Bilateral symmetry · Double peak vs. Single diagonal</td>
+    </tr>
+    <tr class="cardinal">
+      <td class="node-num">07</td>
+      <td class="bearing">193.85°</td>
+      <td><span class="ccw-letter">O</span></td>
+      <td><span class="cw-letter">P</span></td>
+      <td>South <span class="cardinal-badge">CARDINAL</span></td>
+      <td>Weight · Closure · Bowl energy</td>
+    </tr>
+    <tr>
+      <td class="node-num">08</td>
+      <td class="bearing">221.54°</td>
+      <td><span class="ccw-letter">Q</span></td>
+      <td><span class="cw-letter">R</span></td>
+      <td>SSW</td>
+      <td>O-variant vs. Composite leg</td>
+    </tr>
+    <tr style="background:rgba(201,148,58,0.12)">
+      <td class="node-num">09</td>
+      <td class="bearing">249.23° ★</td>
+      <td><span class="ccw-letter">S</span></td>
+      <td><span class="cw-letter">T</span></td>
+      <td>SW Power Zone</td>
+      <td>Maximum Torque · Cursive slant axis</td>
+    </tr>
+    <tr class="cardinal">
+      <td class="node-num">10</td>
+      <td class="bearing">276.92°</td>
+      <td><span class="ccw-letter">U</span></td>
+      <td><span class="cw-letter">V</span></td>
+      <td>West <span class="cardinal-badge">CARDINAL</span></td>
+      <td>Open bowl vs. Sharp vector · Curve vs. Angle</td>
+    </tr>
+    <tr>
+      <td class="node-num">11</td>
+      <td class="bearing">304.62°</td>
+      <td><span class="ccw-letter">W</span></td>
+      <td><span class="cw-letter">X</span></td>
+      <td>WNW</td>
+      <td>Double-V vs. Crossed diagonals</td>
+    </tr>
+    <tr>
+      <td class="node-num">12</td>
+      <td class="bearing">332.31°</td>
+      <td><span class="ccw-letter">Y</span></td>
+      <td><span class="cw-letter">Z</span></td>
+      <td>NNW</td>
+      <td>Exit cycle · Convergence before reset</td>
+    </tr>
+  </table>
+</div>
+
+<!-- PAGE 3: CARDINAL ANALYSIS -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter III</div>
+    <h2>The Cardinal Cross Analysis</h2>
+  </div>
+
+  <p class="lead">The four cardinal points — North, East, South, West — are the primary structural anchors of the compass. The letter pairs at these nodes exhibit the strongest geometric correspondence between their vector assignment and their visual form.</p>
+
+  <div class="two-col">
+
+    <div>
+      <h3>North · 0° · A / B</h3>
+      <p><strong style="color:var(--ccw)">A (CCW):</strong> Departs the North pole anticlockwise — a peak with two legs spreading outward and downward. The crossbar stabilises the outward energy. It is the archetypal "emergence" — the apex of the circle made solid.</p>
+      <p><strong style="color:var(--cw)">B (CW):</strong> Departs clockwise — two closed bowls stacked on a vertical stem. The energy that A releases upward, B captures in closed loops. Beginning and containment at the same node.</p>
+      <p><em>Fit rating: 9/10. The A-peak at true North is the strongest single correspondence in the model.</em></p>
+    </div>
+
+    <div>
+      <!-- Mini compass N -->
+      <svg width="200" height="200" viewBox="0 0 200 200" style="display:block;margin:0 auto">
+        <circle cx="100" cy="100" r="90" fill="#f5eed8" stroke="#c9943a" stroke-width="1"/>
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#c9943a" stroke-width="0.5" opacity="0.4"/>
+        <line x1="100" y1="100" x2="100" y2="15" stroke="#6b1a2a" stroke-width="2"/>
+        <line x1="100" y1="15" x2="68" y2="35" stroke="#1a5c6b" stroke-width="2" marker-end="url(#arrowCCW)"/>
+        <line x1="100" y1="15" x2="132" y2="35" stroke="#8b3a1a" stroke-width="2" marker-end="url(#arrowCW)"/>
+        <circle cx="100" cy="15" r="6" fill="#6b1a2a"/>
+        <circle cx="100" cy="100" r="5" fill="#c9943a"/>
+        <text x="65" y="42" font-size="22" font-family="Cinzel,serif" fill="#1a5c6b" font-weight="900">A</text>
+        <text x="120" y="42" font-size="22" font-family="Cinzel,serif" fill="#8b3a1a" font-weight="900">B</text>
+        <text x="90" y="10" font-size="10" font-family="Cinzel,serif" fill="#6b1a2a">N 0°</text>
+      </svg>
+    </div>
+
+  </div>
+
+  <div class="divider">· · · ·</div>
+
+  <div class="two-col">
+
+    <div>
+      <!-- Mini compass E -->
+      <svg width="200" height="200" viewBox="0 0 200 200" style="display:block;margin:0 auto">
+        <circle cx="100" cy="100" r="90" fill="#f5eed8" stroke="#c9943a" stroke-width="1"/>
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#c9943a" stroke-width="0.5" opacity="0.4"/>
+        <line x1="100" y1="100" x2="183" y2="91" stroke="#6b1a2a" stroke-width="2"/>
+        <line x1="183" y1="91" x2="178" y2="62" stroke="#1a5c6b" stroke-width="2" marker-end="url(#arrowCCW)"/>
+        <line x1="183" y1="91" x2="200" y2="110" stroke="#8b3a1a" stroke-width="2" marker-end="url(#arrowCW)"/>
+        <circle cx="183" cy="91" r="6" fill="#6b1a2a"/>
+        <circle cx="100" cy="100" r="5" fill="#c9943a"/>
+        <text x="168" y="60" font-size="20" font-family="Cinzel,serif" fill="#1a5c6b" font-weight="900">G</text>
+        <text x="190" y="125" font-size="20" font-family="Cinzel,serif" fill="#8b3a1a" font-weight="900">H</text>
+        <text x="178" y="88" font-size="9" font-family="Cinzel,serif" fill="#6b1a2a">E ~90°</text>
+      </svg>
+    </div>
+
+    <div>
+      <h3>East · 83° · G / H</h3>
+      <p><strong style="color:var(--ccw)">G (CCW):</strong> An anticlockwise arc at the equatorial node — fighting against the East's horizontal pull. G pushes backward against the "flow," which explains its visual heaviness: the inward spur arrests what would otherwise be a complete circle (C).</p>
+      <p><strong style="color:var(--cw)">H (CW):</strong> Two vertical stems connected by a crossbar. H at the East node acts as a <em>neutral gear</em> — stopping the circular momentum and enforcing rigid bilateral architecture. It is the letter that refuses to curve.</p>
+      <p><em>Fit rating: 8/10. The G/H tension between arc and architecture is the model's most analytically useful prediction.</em></p>
+    </div>
+
+  </div>
+
+  <div class="divider">· · · ·</div>
+
+  <div class="two-col">
+
+    <div>
+      <h3>South · 194° · O / P</h3>
+      <p><strong style="color:var(--ccw)">O (CCW):</strong> A perfect closed anticlockwise circle at the compass nadir. The South node represents maximum gravitational weight, and O simply <em>is</em> the circle — nothing added, nothing removed. The purest letter in the model.</p>
+      <p><strong style="color:var(--cw)">P (CW):</strong> A closed bowl on a descending stem. The clockwise energy at South drives the bowl into the weight zone and anchors it with a downward line. The bowl faces right (clockwise); the stem falls.</p>
+      <p><em>Fit rating: 10/10. O at the South nadir is the single most geometrically perfect correspondence in the entire 26-vector system.</em></p>
+    </div>
+
+    <div>
+      <!-- Mini compass S -->
+      <svg width="200" height="200" viewBox="0 0 200 200" style="display:block;margin:0 auto">
+        <circle cx="100" cy="100" r="90" fill="#f5eed8" stroke="#c9943a" stroke-width="1"/>
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#c9943a" stroke-width="0.5" opacity="0.4"/>
+        <line x1="100" y1="100" x2="102" y2="185" stroke="#6b1a2a" stroke-width="2"/>
+        <line x1="102" y1="185" x2="70" y2="195" stroke="#1a5c6b" stroke-width="2" marker-end="url(#arrowCCW)"/>
+        <line x1="102" y1="185" x2="132" y2="195" stroke="#8b3a1a" stroke-width="2" marker-end="url(#arrowCW)"/>
+        <circle cx="102" cy="185" r="6" fill="#6b1a2a"/>
+        <circle cx="100" cy="100" r="5" fill="#c9943a"/>
+        <text x="55" y="197" font-size="20" font-family="Cinzel,serif" fill="#1a5c6b" font-weight="900">O</text>
+        <text x="118" y="197" font-size="20" font-family="Cinzel,serif" fill="#8b3a1a" font-weight="900">P</text>
+        <text x="88" y="200" font-size="9" font-family="Cinzel,serif" fill="#6b1a2a">S 180°</text>
+      </svg>
+    </div>
+
+  </div>
+
+  <div class="divider">· · · ·</div>
+
+  <div class="two-col">
+
+    <div>
+      <!-- Mini compass W -->
+      <svg width="200" height="200" viewBox="0 0 200 200" style="display:block;margin:0 auto">
+        <circle cx="100" cy="100" r="90" fill="#f5eed8" stroke="#c9943a" stroke-width="1"/>
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#c9943a" stroke-width="0.5" opacity="0.4"/>
+        <line x1="100" y1="100" x2="17" y2="91" stroke="#6b1a2a" stroke-width="2"/>
+        <line x1="17" y1="91" x2="8" y2="65" stroke="#1a5c6b" stroke-width="2" marker-end="url(#arrowCCW)"/>
+        <line x1="17" y1="91" x2="5" y2="115" stroke="#8b3a1a" stroke-width="2" marker-end="url(#arrowCW)"/>
+        <circle cx="17" cy="91" r="6" fill="#6b1a2a"/>
+        <circle cx="100" cy="100" r="5" fill="#c9943a"/>
+        <text x="5" y="65" font-size="18" font-family="Cinzel,serif" fill="#1a5c6b" font-weight="900">U</text>
+        <text x="2" y="128" font-size="20" font-family="Cinzel,serif" fill="#8b3a1a" font-weight="900">V</text>
+        <text x="4" y="90" font-size="9" font-family="Cinzel,serif" fill="#6b1a2a">W ~270°</text>
+      </svg>
+    </div>
+
+    <div>
+      <h3>West · 277° · U / V</h3>
+      <p><strong style="color:var(--ccw)">U (CCW):</strong> An open anticlockwise bowl at the West node. The West bearing pulls the stroke leftward and down; U is the vessel that holds that energy with an open top — it catches rather than releases.</p>
+      <p><strong style="color:var(--cw)">V (CW):</strong> The same node, clockwise — but instead of a curve, V sharpens to a point. Where U rounds its tension, V concentrates it to a vertex. The directional arrow made letter.</p>
+      <p><em>Fit rating: 9/10. U/V are geometrically the same shape resolved by direction — curve vs. angle, closed vs. pointed. The model predicts their relationship cleanly.</em></p>
+    </div>
+
+  </div>
+</div>
+
+<!-- PAGE 4: SW POWER ZONE & FONT GUIDE -->
+<div class="page">
+  <div class="chapter-header">
+    <div class="chapter-num">Chapter IV</div>
+    <h2>The SW Power Zone & Font Applications</h2>
+  </div>
+
+  <div class="callout">
+    <h4>★ Node 9 · 249.23° · S / T · The Southwest Power Zone</h4>
+    <p>This node is the most calligraphically significant in the model. The 249° bearing aligns precisely with the natural <em>ductus</em> — the pen-drag direction — of Western cursive script written by a right-handed writer pulling the pen toward the body.</p>
+    <p>S at this node is the highest-torque letter in English. Its double-reverse curve traces both CCW and CW arcs in sequence, making it the only letter that contains the entire bipolar system within its own stroke. T at the same node uses that maximum torque as a grounding wire — the horizontal cross-stroke arrests the SW energy and pins it to the vertical axis.</p>
+  </div>
+
+  <h3>The Lowercase Tri-Tier System</h3>
+  <p>Lowercase letters do not simply sit on the circle — they operate across three amplitude zones, which correspond to three concentric rings of the compass system:</p>
+
+  <div class="letter-grid">
+    <div class="letter-card ccw">
+      <div class="big-letter">a</div>
+      <div class="meta">A · NODE 0 · X-HEIGHT</div>
+      <div class="desc">Middle ring only. Stable orbit.</div>
+    </div>
+    <div class="letter-card cw">
+      <div class="big-letter">b</div>
+      <div class="meta">B · NODE 0 · ASCENDER</div>
+      <div class="desc">Stem rises to upper ring.</div>
+    </div>
+    <div class="letter-card ccw">
+      <div class="big-letter">g</div>
+      <div class="meta">G · NODE 3 · DESCENDER</div>
+      <div class="desc">Loop drops to lower ring.</div>
+    </div>
+    <div class="letter-card cw">
+      <div class="big-letter">p</div>
+      <div class="meta">P · NODE 7 · DESCENDER</div>
+      <div class="desc">CW bowl descends below baseline.</div>
+    </div>
+    <div class="letter-card ccw">
+      <div class="big-letter">d</div>
+      <div class="meta">D · NODE 1 · ASCENDER</div>
+      <div class="desc">CCW bowl + ascending stem.</div>
+    </div>
+    <div class="letter-card cw">
+      <div class="big-letter">q</div>
+      <div class="meta">Q · NODE 8 · DESCENDER</div>
+      <div class="desc">Mirror of p; CW tail drops.</div>
+    </div>
+    <div class="letter-card ccw">
+      <div class="big-letter">o</div>
+      <div class="meta">O · NODE 7 · X-HEIGHT</div>
+      <div class="desc">Pure circle. Middle ring only.</div>
+    </div>
+    <div class="letter-card cw">
+      <div class="big-letter">h</div>
+      <div class="meta">H · NODE 3 · ASCENDER</div>
+      <div class="desc">Stem ascends; arch stays in middle.</div>
+    </div>
+  </div>
+
+  <h3>Font Style Guide by Node Behaviour</h3>
+
+  <div class="font-row">
+    <div>Font Category</div>
+    <div>Node Priority</div>
+    <div>Character / Vibe</div>
+  </div>
+  <div class="font-row">
+    <div><span class="font-sample font-italic">Italic / Script</span></div>
+    <div>SW Power Zone (Node 9) dominant. Letters lean into the 249° cursive axis.</div>
+    <div><em>Kinetic.</em> The font feels in motion — maximum torque prioritised over stability.</div>
+  </div>
+  <div class="font-row">
+    <div><span class="font-sample font-black">Blackletter</span></div>
+    <div>All nodes treated as 90° breaks. Curves rejected; only angular exit vectors remain.</div>
+    <div><em>Crystalline.</em> The circle is hidden. Only the tangent lines survive as visible strokes.</div>
+  </div>
+  <div class="font-row">
+    <div><span class="font-sample font-geo">GEOMETRIC</span></div>
+    <div>13 nodes balanced equally. No Power Zone emphasis.</div>
+    <div><em>Platonic.</em> The circle is as important as the tangent. Perfect system visibility.</div>
+  </div>
+  <div class="font-row">
+    <div><span class="font-sample">Humanist Serif</span></div>
+    <div>Cardinals anchored; intermediate nodes modulated. Slight SW lean.</div>
+    <div><em>Organic.</em> The system breathes — formal structure with calligraphic memory.</div>
+  </div>
+  <div class="font-row">
+    <div><span class="font-sample" style="font-variant:small-caps">Old Style</span></div>
+    <div>Stress axis follows SW/NE diagonal. High contrast at N and S cardinals.</div>
+    <div><em>Historical.</em> The pen angle encoded in the letterform matches the 249° bearing directly.</div>
+  </div>
+</div>
+
+<!-- QUICKSTART GUIDE -->
+<div class="quickstart">
+  <div style="max-width:900px;margin:0 auto;padding:80px 80px;">
+    <div class="chapter-header" style="border-bottom-color:rgba(201,148,58,0.4)">
+      <div class="chapter-num" style="color:var(--gold)">Quickstart Guide</div>
+      <h2>Using the 13-Node Compass</h2>
+      <p style="color:rgba(245,238,216,0.7);font-style:italic;max-width:500px;margin:1em auto 0">Five steps to analyse any letter, word, or typeface through the compass framework.</p>
+    </div>
+
+    <h3>Step-by-Step: Analysing a Single Letter</h3>
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h4>Find the Node Number</h4>
+        <p>Count the letter's position in the alphabet (A=1, B=2... Z=26). Divide by 2 and round down: <code>Node = floor((position - 1) / 2)</code>. This gives you the node index 0–12.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h4>Calculate the Bearing</h4>
+        <p>Multiply the node index by 27.69°. <code>Bearing = Node × (360 ÷ 13)</code>. This is the letter's departure angle from the compass centre. Or simply look it up in the Node Reference Table.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h4>Determine the Direction</h4>
+        <p>Odd-numbered letters (A,C,E,G...) depart <strong style="color:var(--ccw)">anticlockwise (CCW)</strong>. Even-numbered letters (B,D,F,H...) depart <strong style="color:var(--cw)">clockwise (CW)</strong>. Check position parity.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h4>Identify the Tier (Lowercase)</h4>
+        <p>Does the letter stay in the x-height (middle ring)? Does it send a stroke into the ascender zone (upper ring)? Does it loop into the descender zone (lower ring)? A letter can occupy multiple tiers simultaneously.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h4>Read the Cardinal Context</h4>
+        <p>Is your letter at or near a cardinal node (0°, ~83°, ~194°, ~277°)? Cardinal letters carry stronger structural energy. Letters between cardinals carry transitional energy. The SW Power Zone at 249° is a special case — highest rotational torque.</p>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid rgba(201,148,58,0.3);margin-top:3em;padding-top:3em;">
+      <h3>Quick Example: Analysing the Word "STOP"</h3>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5em;margin:2em 0;">
+        <div style="text-align:center;border:1px solid rgba(201,148,58,0.3);padding:1.5em;">
+          <div style="font-family:Cinzel,serif;font-size:3rem;color:#8b3a1a;font-weight:900;line-height:1">S</div>
+          <div style="font-family:JetBrains Mono,monospace;font-size:0.7rem;color:#c9943a;margin-top:0.5em">NODE 9</div>
+          <div style="font-family:JetBrains Mono,monospace;font-size:0.7rem;color:#c9943a">249.23° CCW</div>
+          <div style="font-size:0.8rem;color:rgba(245,238,216,0.7);margin-top:0.5em;font-style:italic">SW Power Zone. Maximum torque. The letter driving the word.</div>
+        </div>
+        <div style="text-align:center;border:1px solid rgba(201,148,58,0.3);padding:1.5em;">
+          <div style="font-family:Cinzel,serif;font-size:3rem;color:#8b3a1a;font-weight:900;line-height:1">T</div>
+          <div style="font-family:JetBrains Mono,monospace;font-size:0.7rem;color:#c9943a;margin-top:0.5em">NODE 9</div>
+          <div style="font-family:JetBrains Mono,monospace;font-size:0.7rem;color:#c9943a">249.23° CW</div>
+          <div style="font-size:0.8rem;color:rgba(245,238,216,0.7);margin-top:0.5em;font-style:italic">Same node, opposite spin. T grounds the S torque with a vertical strike.</div>
+        </div>
+        <div style="text-align:center;border:1px solid rgba(201,148,58,0.3);padding:1.5em;">
+          <div style="font-family:Cinzel,serif;font-size:3rem;color:#1a5c6b;font-weight:900;line-height:1">O</div>
+          <div style="font-family:JetBrains Mono,monospace;font-size:0.7rem;color:#c9943a;margin-top:0.5em">NODE 7</div>
+          <div style="font-family:JetBrains Mono,monospace;font-size:0.7rem;color:#c9943a">193.85° CCW</div>
+          <div style="font-size:0.8rem;color:rgba(245,238,216,0.7);margin-top:0.5em;font-style:italic">South Cardinal. Pure closed circle. Weight and completion.</div>
+        </div>
+        <div style="text-align:center;border:1px solid rgba(201,148,58,0.3);padding:1.5em;">
+          <div style="font-family:Cinzel,serif;font-size:3rem;color:#8b3a1a;font-weight:900;line-height:1">P</div>
+          <div style="font-family:JetBrains Mono,monospace;font-size:0.7rem;color:#c9943a;margin-top:0.5em">NODE 7</div>
+          <div style="font-family:JetBrains Mono,monospace;font-size:0.7rem;color:#c9943a">193.85° CW</div>
+          <div style="font-size:0.8rem;color:rgba(245,238,216,0.7);margin-top:0.5em;font-style:italic">South Cardinal, CW. O's partner — bowl with a grounding stem.</div>
+        </div>
+      </div>
+
+      <p style="color:rgba(245,238,216,0.8)"><strong style="color:var(--gold-light)">Reading:</strong> STOP opens at the SW Power Zone (maximum energy, S/T sharing the same node with opposing spins — torque then counter-torque), then resolves at the South Cardinal (O/P — weight, closure, landing). The word geometrically describes acceleration then stopping. The compass predicts the word's meaning from its letter-vector structure.</p>
+    </div>
+
+    <div style="border-top:1px solid rgba(201,148,58,0.3);margin-top:3em;padding-top:2em;">
+      <h3>Reference: The Formula Set</h3>
+      <div class="formula-box" style="background:rgba(201,148,58,0.08);border-color:rgba(201,148,58,0.2)">
+        Letter Position: A=1, B=2, C=3 ... Z=26<br><br>
+        Node Index = floor( (Position − 1) ÷ 2 )<br><br>
+        Bearing = Node Index × (360 ÷ 13) = Node × 27.692°<br><br>
+        Direction = ODD position → CCW (anticlockwise) &nbsp;|&nbsp; EVEN position → CW (clockwise)<br><br>
+        Cardinal Nodes: 0 (N), 3 (E), 7 (S), 10 (W) &nbsp;|&nbsp; Power Zone: Node 9 (SW, 249°)
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:4em;padding-top:2em;border-top:1px solid rgba(201,148,58,0.2)">
+      <p style="font-family:Cinzel,serif;color:var(--gold);letter-spacing:0.2em;font-size:0.9rem">THE 13-NODE COMPASS OF LANGUAGE</p>
+      <p style="font-family:Crimson Pro,serif;font-style:italic;color:rgba(245,238,216,0.4);margin-top:0.5em">Language is not a line. It is a vortex.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

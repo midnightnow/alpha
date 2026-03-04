@@ -1,0 +1,328 @@
+{
+  "metadata": {
+    "title": "Plimpton 322",
+    "date": "c. 1800 BCE",
+    "origin": "Old Babylonian, likely Larsa",
+    "currentLocation": "Columbia University, New York",
+    "catalogNumber": "Plimpton 322",
+    "cdliNumber": "P254790",
+    "tabletImage": "https://cdli.mpiwg-berlin.mpg.de/dl/photo/P254790.jpg",
+    "description": "A clay tablet containing a table of Pythagorean triples, possibly the world's oldest trigonometric table",
+    "controversy": "Column I is partially damaged. Values can be interpreted as d²/l² or (d/l)². The 'trigonometric table' interpretation (Mansfield & Wildberger, 2017) is debated."
+  },
+  "columns": {
+    "I": {
+      "name": "Column I",
+      "header": "(d/l)² or d²/l²",
+      "description": "Partially damaged. Usually interpreted as d²/l² or a related ratio.",
+      "status": "damaged",
+      "note": "Values shown are reconstructions. Leading digit(s) uncertain in some rows."
+    },
+    "II": {
+      "name": "Column II",
+      "header": "Width (s)",
+      "description": "Short side (s) of the right triangle",
+      "status": "intact"
+    },
+    "III": {
+      "name": "Column III",
+      "header": "Diagonal (d)",
+      "description": "Hypotenuse (d) of the right triangle",
+      "status": "intact"
+    },
+    "IV": {
+      "name": "Column IV",
+      "header": "Row #",
+      "description": "Sequential row numbers 1-15",
+      "status": "intact"
+    }
+  },
+  "rows": [
+    {
+      "row_id": 1,
+      "s": 119,
+      "d": 169,
+      "l": 120,
+      "tablet": {
+        "colI": "[1;59,0],15",
+        "colII": "1,59",
+        "colIII": "2,49",
+        "colI_damaged": true
+      },
+      "ratio": 0.9917,
+      "angleDeg": 44.760,
+      "pitchPer12": "11.9/12",
+      "reducedTriple": [119, 120, 169],
+      "scaleFactor": 1,
+      "isRegularL": true,
+      "notes": "Near 45° - almost a 1:1 slope (square diagonal)"
+    },
+    {
+      "row_id": 2,
+      "s": 3367,
+      "d": 4825,
+      "l": 3456,
+      "tablet": {
+        "colI": "[1;56,56],58,14,50,6,15",
+        "colII": "56,7",
+        "colIII": "1,20,25",
+        "colI_damaged": true
+      },
+      "ratio": 0.9742,
+      "angleDeg": 44.253,
+      "pitchPer12": "11.7/12",
+      "reducedTriple": [3367, 3456, 4825],
+      "scaleFactor": 1,
+      "isRegularL": true,
+      "notes": "Large numbers preserve precision in sexagesimal"
+    },
+    {
+      "row_id": 3,
+      "s": 4601,
+      "d": 6649,
+      "l": 4800,
+      "tablet": {
+        "colI": "[1;55,7],41,15,33,45",
+        "colII": "1,16,41",
+        "colIII": "1,50,49",
+        "colI_damaged": true
+      },
+      "ratio": 0.9585,
+      "angleDeg": 43.787,
+      "pitchPer12": "11.5/12",
+      "reducedTriple": [4601, 4800, 6649],
+      "scaleFactor": 1,
+      "isRegularL": true,
+      "notes": ""
+    },
+    {
+      "row_id": 4,
+      "s": 12709,
+      "d": 18541,
+      "l": 13500,
+      "tablet": {
+        "colI": "[1;]53,10,29,32,52,16",
+        "colII": "3,31,49",
+        "colIII": "5,9,1",
+        "colI_damaged": true
+      },
+      "ratio": 0.9414,
+      "angleDeg": 43.271,
+      "pitchPer12": "11.3/12",
+      "reducedTriple": [12709, 13500, 18541],
+      "scaleFactor": 1,
+      "isRegularL": true,
+      "notes": "Largest numbers on the tablet"
+    },
+    {
+      "row_id": 5,
+      "s": 65,
+      "d": 97,
+      "l": 72,
+      "tablet": {
+        "colI": "[1;]48,54,1,40",
+        "colII": "1,5",
+        "colIII": "1,37",
+        "colI_damaged": true
+      },
+      "ratio": 0.9028,
+      "angleDeg": 42.075,
+      "pitchPer12": "10.8/12",
+      "reducedTriple": [65, 72, 97],
+      "scaleFactor": 1,
+      "isRegularL": true,
+      "notes": ""
+    },
+    {
+      "row_id": 6,
+      "s": 319,
+      "d": 481,
+      "l": 360,
+      "tablet": {
+        "colI": "[1;]47,6,41,40",
+        "colII": "5,19",
+        "colIII": "8,1",
+        "colI_damaged": true
+      },
+      "ratio": 0.8861,
+      "angleDeg": 41.545,
+      "pitchPer12": "10.6/12",
+      "reducedTriple": [319, 360, 481],
+      "scaleFactor": 1,
+      "isRegularL": true,
+      "notes": "l = 360 = 6×60, very 'regular'"
+    },
+    {
+      "row_id": 7,
+      "s": 2291,
+      "d": 3541,
+      "l": 2700,
+      "tablet": {
+        "colI": "[1;]43,11,56,28,26,40",
+        "colII": "38,11",
+        "colIII": "59,1",
+        "colI_damaged": true
+      },
+      "ratio": 0.8485,
+      "angleDeg": 40.315,
+      "pitchPer12": "10.2/12",
+      "reducedTriple": [2291, 2700, 3541],
+      "scaleFactor": 1,
+      "isRegularL": true,
+      "notes": ""
+    },
+    {
+      "row_id": 8,
+      "s": 799,
+      "d": 1249,
+      "l": 960,
+      "tablet": {
+        "colI": "[1;]41,33,45,14,3,45",
+        "colII": "13,19",
+        "colIII": "20,49",
+        "colI_damaged": true
+      },
+      "ratio": 0.8323,
+      "angleDeg": 39.770,
+      "pitchPer12": "10.0/12",
+      "reducedTriple": [799, 960, 1249],
+      "scaleFactor": 1,
+      "isRegularL": true,
+      "notes": ""
+    },
+    {
+      "row_id": 9,
+      "s": 481,
+      "d": 769,
+      "l": 600,
+      "tablet": {
+        "colI": "[1;]38,33,36,36",
+        "colII": "8,1",
+        "colIII": "12,49",
+        "colI_damaged": true
+      },
+      "ratio": 0.8017,
+      "angleDeg": 38.718,
+      "pitchPer12": "9.6/12",
+      "reducedTriple": [481, 600, 769],
+      "scaleFactor": 1,
+      "isRegularL": true,
+      "notes": "l = 600 = 10×60"
+    },
+    {
+      "row_id": 10,
+      "s": 4961,
+      "d": 8161,
+      "l": 6480,
+      "tablet": {
+        "colI": "[1;]35,10,2,28,27,24,26,40",
+        "colII": "1,22,41",
+        "colIII": "2,16,1",
+        "colI_damaged": true
+      },
+      "ratio": 0.7656,
+      "angleDeg": 37.437,
+      "pitchPer12": "9.2/12",
+      "reducedTriple": [4961, 6480, 8161],
+      "scaleFactor": 1,
+      "isRegularL": true,
+      "notes": ""
+    },
+    {
+      "row_id": 11,
+      "s": 45,
+      "d": 75,
+      "l": 60,
+      "tablet": {
+        "colI": "[1;]33,45",
+        "colII": "45",
+        "colIII": "1,15",
+        "colI_damaged": true
+      },
+      "ratio": 0.75,
+      "angleDeg": 36.870,
+      "pitchPer12": "9/12",
+      "reducedTriple": [3, 4, 5],
+      "scaleFactor": 15,
+      "isRegularL": true,
+      "isUnitTriangle": true,
+      "notes": "The famous 3-4-5 triangle! Volume demo: 3×4×5 = 60 (base unit)"
+    },
+    {
+      "row_id": 12,
+      "s": 1679,
+      "d": 2929,
+      "l": 2400,
+      "tablet": {
+        "colI": "[1;]29,21,54,2,15",
+        "colII": "27,59",
+        "colIII": "48,49",
+        "colI_damaged": true
+      },
+      "ratio": 0.6996,
+      "angleDeg": 34.976,
+      "pitchPer12": "8.4/12",
+      "reducedTriple": [1679, 2400, 2929],
+      "scaleFactor": 1,
+      "isRegularL": true,
+      "notes": ""
+    },
+    {
+      "row_id": 13,
+      "s": 161,
+      "d": 289,
+      "l": 240,
+      "tablet": {
+        "colI": "[1;]27,0,3,45",
+        "colII": "2,41",
+        "colIII": "4,49",
+        "colI_damaged": true
+      },
+      "ratio": 0.6708,
+      "angleDeg": 33.855,
+      "pitchPer12": "8.0/12",
+      "reducedTriple": [161, 240, 289],
+      "scaleFactor": 1,
+      "isRegularL": true,
+      "notes": ""
+    },
+    {
+      "row_id": 14,
+      "s": 1771,
+      "d": 3229,
+      "l": 2700,
+      "tablet": {
+        "colI": "[1;]25,48,51,35,6,40",
+        "colII": "29,31",
+        "colIII": "53,49",
+        "colI_damaged": true
+      },
+      "ratio": 0.6559,
+      "angleDeg": 33.262,
+      "pitchPer12": "7.9/12",
+      "reducedTriple": [1771, 2700, 3229],
+      "scaleFactor": 1,
+      "isRegularL": true,
+      "notes": ""
+    },
+    {
+      "row_id": 15,
+      "s": 56,
+      "d": 106,
+      "l": 90,
+      "tablet": {
+        "colI": "[1;]23,13,46,40",
+        "colII": "56",
+        "colIII": "1,46",
+        "colI_damaged": true
+      },
+      "ratio": 0.6222,
+      "angleDeg": 31.891,
+      "pitchPer12": "7.5/12",
+      "reducedTriple": [28, 45, 53],
+      "scaleFactor": 2,
+      "isRegularL": true,
+      "notes": "Flattest slope on the tablet - approaching 30° territory"
+    }
+  ]
+}

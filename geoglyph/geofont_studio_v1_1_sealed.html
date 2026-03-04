@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEOFONT 13 STUDIO V1.1 — SEALED DETERMINISTIC ARTIFACT</title>
+<style>
+:root {
+    --bg: #050508;
+    --panel: #0a0a12;
+    --border: #1a1a2e;
+    --text: #d8d8f0;
+    --muted: #55556a;
+    --gold: #d4af37;
+    --teal: #4ecdc4;
+    --rust: #e76f51;
+    --prime: #2ecc71;
+    --deep: #0d0d1a;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 48px 1fr 220px;
+}
+
+/* ── HEADER ── */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    z-index: 10;
+}
+.hdr-title { font-size: 13px; letter-spacing: 3px; color: var(--gold); }
+.hdr-sub { font-size: 9px; color: var(--muted); letter-spacing: 1px; }
+.hdr-badge { font-size: 9px; color: var(--prime); border: 1px solid var(--prime); padding: 2px 8px; letter-spacing: 1px; }
+
+/* ── MIDDLE ROW ── */
+.mid-row {
+    display: grid;
+    grid-template-columns: 280px 1fr 280px;
+    overflow: hidden;
+}
+
+/* ── SIDEBARS ── */
+.sidebar {
+    background: var(--panel);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    border-right: 1px solid var(--border);
+}
+.sidebar.right { border-right: none; border-left: 1px solid var(--border); }
+.s-title { font-size: 10px; letter-spacing: 3px; color: var(--gold); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+.s-title.teal { color: var(--teal); }
+
+/* Word Input */
+input[type="text"] {
+    width: 100%;
+    background: #000;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 12px;
+    font-size: 20px;
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    outline: none;
+}
+input[type="text"]:focus { box-shadow: 0 0 15px rgba(212,175,55,0.15); }
+
+/* Metric Cards */
+.mc { border-left: 2px solid var(--border); padding: 8px 10px; background: rgba(255,255,255,0.01); }
+.mc.gold { border-color: var(--gold); }
+.mc.teal { border-color: var(--teal); }
+.mc.prime { border-color: var(--prime); }
+.mc.rust { border-color: var(--rust); }
+.mc-lbl { font-size: 8px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+.mc-val { font-size: 13px; font-weight: 600; }
+.mc-sub { font-size: 9px; color: var(--muted); margin-top: 2px; }
+.prime-glow { color: var(--prime); text-shadow: 0 0 10px var(--prime); }
+
+/* Segment chips */
+.seg-strip { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
+.seg-chip {
+    font-size: 9px; padding: 2px 5px; border-radius: 2px; border: 1px solid;
+    display: flex; flex-direction: column; align-items: center; gap: 1px;
+}
+.chip-g { border-color: var(--teal); color: var(--teal); }
+.chip-e { border-color: var(--rust); color: var(--rust); }
+.chip-t { border-color: var(--gold); color: var(--gold); }
+.chip-char { font-size: 10px; font-weight: 700; }
+.chip-val  { font-size: 7px; opacity: 0.7; }
+
+/* Buttons */
+.btn-row { display: flex; gap: 6px; }
+button {
+    flex: 1; background: transparent; border: 1px solid var(--border);
+    color: var(--muted); padding: 6px; font-family: inherit; font-size: 9px;
+    letter-spacing: 1px; cursor: pointer; transition: all 0.15s;
+}
+button:hover { border-color: var(--gold); color: var(--gold); }
+
+/* Legend */
+.legend { font-size: 9px; color: var(--muted); }
+.legend-row { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── MAIN VIEWPORT ── */
+#viewport {
+    position: relative;
+    background: radial-gradient(ellipse at center, #0f0f1a 0%, #050508 80%);
+    overflow: hidden;
+}
+#threeCanvas { width: 100% !important; height: 100% !important; display: block; }
+.vp-hud {
+    position: absolute; top: 10px; left: 10px;
+    font-size: 8px; color: var(--muted); letter-spacing: 1px; pointer-events: none;
+}
+.vp-hud span { color: var(--gold); }
+
+/* ── BOTTOM ROW: OSCILLOSCOPES ── */
+.osc-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 280px;
+    border-top: 1px solid var(--border);
+}
+.osc-panel {
+    position: relative;
+    background: var(--deep);
+    border-right: 1px solid var(--border);
+    overflow: hidden;
+}
+.osc-panel:last-child { border-right: none; }
+.osc-label {
+    position: absolute; top: 6px; left: 10px;
+    font-size: 8px; color: var(--muted); letter-spacing: 1px; pointer-events: none; z-index: 2;
+}
+.osc-canvas { width: 100% !important; height: 100% !important; display: block; }
+
+/* Vector panel */
+.vector-panel {
+    background: var(--deep);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+    border-left: 1px solid var(--border);
+}
+.vp-title { font-size: 8px; letter-spacing: 2px; color: var(--teal); border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+.force-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; }
+.force-box { padding: 6px; background: rgba(255,255,255,0.02); border-radius: 2px; text-align: center; }
+.force-label { font-size: 7px; color: var(--muted); letter-spacing: 1px; }
+.force-val { font-size: 12px; font-weight: 700; margin-top: 2px; }
+.force-letters { font-size: 7px; margin-top: 2px; opacity: 0.6; }
+
+/* Mod 24 ring display */
+.mod24-ring { position: relative; height: 80px; width: 80px; margin: 0 auto; }
+.mod24-svg { width: 100%; height: 100%; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div>
+        <div class="hdr-title">GEOFONT 13 STUDIO</div>
+        <div class="hdr-sub">DETERMINISTIC VISUAL HASH · 10-24-26 CALIBRATED · GRANT LOG 1.03527618</div>
+    </div>
+    <div class="hdr-badge">V1.1 SEALED</div>
+</header>
+
+<!-- MIDDLE ROW -->
+<div class="mid-row">
+
+    <!-- LEFT: COUNTING HOUSE -->
+    <div class="sidebar">
+        <div class="s-title">COUNTING HOUSE</div>
+        <input type="text" id="wordIn" value="PLATO" spellcheck="false" autocomplete="off" maxlength="18">
+
+        <div id="metrics-left"></div>
+
+        <div class="s-title" style="margin-top:4px;">FORCE TRACE</div>
+        <div id="segStrip"></div>
+
+        <div class="btn-row" style="margin-top:auto;">
+            <button onclick="exportJSON()">↓ JSON</button>
+            <button onclick="exportPNG()">↓ PNG</button>
+        </div>
+
+        <div class="legend">
+            <div class="legend-row"><div class="legend-dot" style="background:var(--teal)"></div>GRAVITY · 1-4-7 · Centripetal</div>
+            <div class="legend-row"><div class="legend-dot" style="background:var(--rust)"></div>EM · 2-5-8 · Centrifugal</div>
+            <div class="legend-row"><div class="legend-dot" style="background:var(--gold)"></div>TIME · 3-6-9 · Angular Momentum</div>
+        </div>
+    </div>
+
+    <!-- CENTER: THREE.JS VIEWPORT -->
+    <div id="viewport">
+        <div class="vp-hud">
+            VIEWPORT_01 · <span>HEXLAND MATRIX</span> · 10-24-26 CALIBRATED<br>
+            <span>GRANT LOG</span> = 1.03527618 · <span>THETA STEP</span> = 15°
+        </div>
+        <canvas id="threeCanvas"></canvas>
+    </div>
+
+    <!-- RIGHT: PRIME AUDIT -->
+    <div class="sidebar right">
+        <div class="s-title teal">PRIME AUDIT</div>
+        <div id="metrics-right"></div>
+
+        <div class="s-title teal" style="margin-top:8px;">CONSTANTS</div>
+        <div class="mc gold">
+            <div class="mc-lbl">Grant Logarithm</div>
+            <div class="mc-val">1.03527618</div>
+            <div class="mc-sub">= √6 − √2 · Spiral Base</div>
+        </div>
+        <div class="mc teal">
+            <div class="mc-lbl">Light-Speed Angle</div>
+            <div class="mc-val">186.349°</div>
+            <div class="mc-sub">(1.03527618 / 2) × 360°</div>
+        </div>
+        <div class="mc gold">
+            <div class="mc-lbl">10-24-26 Triad</div>
+            <div class="mc-val">√(10²+24²) = 26</div>
+            <div class="mc-sub">Base · Spine · Reach</div>
+        </div>
+        <div class="mc">
+            <div class="mc-lbl">Theta Step · Mod 24</div>
+            <div class="mc-val">15° × 24 = 360°</div>
+            <div class="mc-sub">Prime Channels: 1 5 7 11 13 17 19 23</div>
+        </div>
+    </div>
+</div>
+
+<!-- BOTTOM: OSCILLOSCOPES + VECTOR TABLE -->
+<div class="osc-row">
+    <div class="osc-panel">
+        <div class="osc-label">REAL AXIS · GRAVITY (1-4-7) · WATTS / MASS COMPONENT</div>
+        <canvas id="realCanvas" class="osc-canvas"></canvas>
+    </div>
+    <div class="osc-panel">
+        <div class="osc-label">IMAGINARY AXIS · EM (2-5-8) · VARs / PHASE COMPONENT</div>
+        <canvas id="imagCanvas" class="osc-canvas"></canvas>
+    </div>
+    <div class="vector-panel">
+        <div class="vp-title">FORCE VECTOR BREAKDOWN</div>
+        <div class="force-row" id="forceTable"></div>
+        <div id="mod24Display" style="margin-top:8px;"></div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ═══════════════════════════════════════════════════════════
+//  GGE V1.1 CORE — SEALED
+//  Constants: 10-24-26 Triad · Grant Log 1.03527618 · Mod24
+// ═══════════════════════════════════════════════════════════
+
+const GGE = {
+    LOG_BASE:  1.03527618,
+    THETA:     15,
+    PRIMES:    new Set([1,5,7,11,13,17,19,23]),
+    TRIAD:     { base: 10, height: 24, hyp: 26 },
+    LIGHT_ANG: (1.03527618 / 2) * 360,  // 186.349°
+    COL: {
+        GRAVITY: 0x4ecdc4,
+        EM:      0xe76f51,
+        TIME:    0xd4af37,
+    },
+    COL_CSS: { GRAVITY: '#4ecdc4', EM: '#e76f51', TIME: '#d4af37' }
+};
+
+// ── MATH ──────────────────────────────────────────────────
+function digitalRoot(n)  { return (n - 1) % 9 + 1; }
+function force(root)     { 
+    if ([1,4,7].includes(root)) return 'GRAVITY';
+    if ([2,5,8].includes(root)) return 'EM';
+    return 'TIME';
+}
+
+function auditWord(word) {
+    let weight = 0;
+    let radius = 20;          // Initial radius (px units for 2D)
+    let angle  = 0;           // Accumulated angle (degrees)
+
+    const segs = [];
+    const upper = word.toUpperCase();
+
+    for (let i = 0; i < upper.length; i++) {
+        const code = upper.charCodeAt(i) - 64;
+        if (code < 1 || code > 26) continue;
+
+        weight += code;
+        const root = digitalRoot(code);
+        const frc  = force(root);
+        const dir  = (code % 2 !== 0) ? -1 : 1;  // Odd=CCW, Even=CW
+
+        // Grant Logarithmic Radial Expansion
+        radius *= Math.pow(GGE.LOG_BASE, code / 13);
+        angle  += dir * code * GGE.THETA;
+
+        segs.push({
+            char: upper[i], val: code, root, force: frc,
+            radius, angle,
+            isClosure: (segs.length + 1) % 3 === 0
+        });
+    }
+
+    const residue   = weight % 24;
+    const isPrime   = GGE.PRIMES.has(residue);
+    const cubit     = segs.reduce((s, g) => s + g.radius * 0.5, 0);
+    const logShine  = (weight * GGE.LOG_BASE) % 360;
+    const pulseScale = Math.pow(GGE.LOG_BASE, weight / 13);
+
+    return { segs, weight, residue, isPrime, cubit, logShine, pulseScale };
+}
+
+// ── THREE.JS SETUP ────────────────────────────────────────
+const canvas3 = document.getElementById('threeCanvas');
+const renderer = new THREE.WebGLRenderer({ canvas: canvas3, antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+const scene  = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 5000);
+camera.position.set(0, 30, 80);
+camera.lookAt(0, 12, 0);
+
+// Lights
+const ambient = new THREE.AmbientLight(0x112244, 0.8);
+scene.add(ambient);
+const dirLight = new THREE.DirectionalLight(0xd4af37, 1.2);
+dirLight.position.set(20, 40, 30);
+scene.add(dirLight);
+const rimLight = new THREE.DirectionalLight(0x4ecdc4, 0.5);
+rimLight.position.set(-30, 10, -20);
+scene.add(rimLight);
+
+// Grid
+const gridHelper = new THREE.GridHelper(200, 24, 0x1a1a2e, 0x111122);
+scene.add(gridHelper);
+
+// ── Calibrated Pyramid (10-24-26 Triad) ──────────────────
+const S = 10, H = 24;  // Base half = 10, Height = 24
+const apex = new THREE.Vector3( 0,  H,  0);
+const bl   = new THREE.Vector3(-S,  0,  S);
+const br   = new THREE.Vector3( S,  0,  S);
+const fr   = new THREE.Vector3( S,  0, -S);
+const fl   = new THREE.Vector3(-S,  0, -S);
+
+// Build faces
+function makeFace(a, b, c, col) {
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.Float32BufferAttribute([
+        a.x, a.y, a.z,
+        b.x, b.y, b.z,
+        c.x, c.y, c.z
+    ], 3));
+    geo.computeVertexNormals();
+    const mat = new THREE.MeshPhongMaterial({
+        color: col, transparent: true, opacity: 0.25,
+        side: THREE.DoubleSide, shininess: 80
+    });
+    return new THREE.Mesh(geo, mat);
+}
+
+function makeEdge(a, b, col) {
+    const geo = new THREE.BufferGeometry().setFromPoints([a, b]);
+    const mat = new THREE.LineBasicMaterial({ color: col, linewidth: 1 });
+    return new THREE.Line(geo, mat);
+}
+
+const pyramidGroup = new THREE.Group();
+
+// 4 triangular faces — colored by Force Triplet (15-75-90 geometry)
+pyramidGroup.add(makeFace(apex, bl, br, 0x4ecdc4));  // GRAVITY  face (front)
+pyramidGroup.add(makeFace(apex, br, fr, 0xe76f51));  // EM       face (right)
+pyramidGroup.add(makeFace(apex, fr, fl, 0x4ecdc4));  // GRAVITY  face (back)
+pyramidGroup.add(makeFace(apex, fl, bl, 0xd4af37));  // TIME     face (left)
+
+// Base
+pyramidGroup.add(makeFace(bl, br, fr, 0x222244));
+pyramidGroup.add(makeFace(bl, fr, fl, 0x222244));
+
+// Wireframe edges
+const edgeCol  = 0xd4af37;
+const edgeCol2 = 0x4ecdc4;
+[bl,br,fr,fl].forEach(corner => pyramidGroup.add(makeEdge(apex, corner, edgeCol)));
+pyramidGroup.add(makeEdge(bl, br, edgeCol2));
+pyramidGroup.add(makeEdge(br, fr, edgeCol2));
+pyramidGroup.add(makeEdge(fr, fl, edgeCol2));
+pyramidGroup.add(makeEdge(fl, bl, edgeCol2));
+
+scene.add(pyramidGroup);
+
+// Apex marker
+const apexSphere = new THREE.Mesh(
+    new THREE.SphereGeometry(0.5, 12, 12),
+    new THREE.MeshBasicMaterial({ color: 0xffffff })
+);
+apexSphere.position.copy(apex);
+pyramidGroup.add(apexSphere);
+
+// Axis lines (3-4-5 spine reference)
+function axisLine(from, to, col) {
+    const g = new THREE.BufferGeometry().setFromPoints([from, to]);
+    return new THREE.Line(g, new THREE.LineBasicMaterial({ color: col }));
+}
+scene.add(axisLine(new THREE.Vector3(0,-2,0), new THREE.Vector3(0,28,0), 0x333355));
+
+// ── Spiral Path (word geometry in 3D) ─────────────────────
+let spiralGroup = new THREE.Group();
+scene.add(spiralGroup);
+
+function buildSpiral(analysis) {
+    scene.remove(spiralGroup);
+    spiralGroup = new THREE.Group();
+    scene.add(spiralGroup);
+
+    if (!analysis.segs.length) return;
+
+    const maxR  = Math.min(...analysis.segs.map(s => s.radius)) > 0 ? 1 : 1;
+    const scale = 1.5;
+    const points = [];
+
+    analysis.segs.forEach((seg, i) => {
+        const rad = seg.angle * Math.PI / 180;
+        const r   = Math.min(seg.radius * scale, 180);
+        // Spiral upward along Y using radius / TRIAD.height ratio
+        const x = Math.cos(rad) * r;
+        const z = Math.sin(rad) * r;
+        const y = (r / 180) * GGE.TRIAD.height * 0.6;
+        points.push(new THREE.Vector3(x, y, z));
+
+        // Node sphere
+        const col = seg.force === 'GRAVITY' ? GGE.COL.GRAVITY :
+                    seg.force === 'EM'       ? GGE.COL.EM      : GGE.COL.TIME;
+        const nodeSize = seg.isClosure ? 1.2 : 0.6;
+        const sphere = new THREE.Mesh(
+            new THREE.SphereGeometry(nodeSize, 8, 8),
+            new THREE.MeshBasicMaterial({ color: col })
+        );
+        sphere.position.set(x, y, z);
+        spiralGroup.add(sphere);
+    });
+
+    if (points.length > 1) {
+        const curve = new THREE.CatmullRomCurve3(points);
+        const pts   = curve.getPoints(200);
+        const geo   = new THREE.BufferGeometry().setFromPoints(pts);
+        const mat   = new THREE.LineBasicMaterial({ color: 0xd4af37, opacity: 0.6, transparent: true });
+        spiralGroup.add(new THREE.Line(geo, mat));
+    }
+}
+
+// Resize helper
+function resizeRenderer() {
+    const vp = document.getElementById('viewport');
+    const w = vp.clientWidth, h = vp.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+}
+
+// ── ANIMATION LOOP ────────────────────────────────────────
+// Declare BEFORE animate() so the closure can reference it safely
+let currentAnalysis = null;
+let t = 0;
+
+function animate() {
+    requestAnimationFrame(animate);
+    t += 0.005;
+
+    // Slow pyramid rotation
+    pyramidGroup.rotation.y = t * 0.3;
+
+    // Pulse scale from Grant Log (guard against null on first frame)
+    const ps = (currentAnalysis && currentAnalysis.pulseScale) ? currentAnalysis.pulseScale : 1;
+    const pulse = 1 + 0.015 * Math.sin(t * 2);
+    pyramidGroup.scale.setScalar(Math.min(ps * 0.25, 1.8) * pulse);
+
+    resizeRenderer();
+    renderer.render(scene, camera);
+}
+animate();
+
+// ── 2D OSCILLOSCOPES ──────────────────────────────────────
+function fitCanvas(canvas) {
+    const p = canvas.parentElement;
+    canvas.width  = p.clientWidth;
+    canvas.height = p.clientHeight;
+}
+
+function drawOscilloscope(id, segs, component) {
+    const canvas = document.getElementById(id);
+    fitCanvas(canvas);
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    const midY = H / 2;
+    ctx.clearRect(0, 0, W, H);
+
+    // Grid
+    ctx.strokeStyle = '#0f0f1f';
+    ctx.lineWidth = 1;
+    for (let y = 0; y <= H; y += H / 4) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+    }
+    ctx.strokeStyle = '#1a1a2e';
+    ctx.beginPath(); ctx.moveTo(0, midY); ctx.lineTo(W, midY); ctx.stroke();
+
+    if (!segs.length) return;
+
+    const stepX = W / (segs.length + 1);
+    const maxAmp = H / 2.5;
+
+    // Force channel isolation lines
+    // Real: show GRAVITY signal
+    // Imag: show EM signal
+    const targetForce = component === 'real' ? 'GRAVITY' : 'EM';
+
+    // Glow pass
+    ctx.save();
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = component === 'real' ? '#4ecdc4' : '#e76f51';
+    ctx.strokeStyle = component === 'real' ? '#4ecdc4' : '#e76f51';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+
+    let started = false;
+    segs.forEach((seg, i) => {
+        const x = (i + 1) * stepX;
+        const ang = seg.angle * Math.PI / 180;
+        const amp = (seg.val / 26) * maxAmp;
+        const raw = component === 'real'
+            ? amp * Math.cos(ang)
+            : amp * Math.sin(ang);
+        const y = midY - raw;
+
+        if (!started) { ctx.moveTo(x, y); started = true; }
+        else ctx.lineTo(x, y);
+
+        // Closure marker
+        if (seg.isClosure) {
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(x, y, 4, 0, Math.PI * 2);
+            ctx.fillStyle = '#d4af37';
+            ctx.fill();
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+    });
+    ctx.stroke();
+    ctx.restore();
+
+    // Force-colored node dots
+    segs.forEach((seg, i) => {
+        const x = (i + 1) * stepX;
+        const ang = seg.angle * Math.PI / 180;
+        const amp = (seg.val / 26) * maxAmp;
+        const raw = component === 'real'
+            ? amp * Math.cos(ang)
+            : amp * Math.sin(ang);
+        const y = midY - raw;
+        const col = GGE.COL_CSS[seg.force];
+        ctx.beginPath();
+        ctx.arc(x, y, seg.isClosure ? 4 : 2, 0, Math.PI * 2);
+        ctx.fillStyle = col;
+        ctx.fill();
+
+        // Char label
+        ctx.fillStyle = '#44445a';
+        ctx.font = '8px monospace';
+        ctx.fillText(seg.char, x - 3, midY + 14);
+    });
+}
+
+// ── UI UPDATE ─────────────────────────────────────────────
+function updateUI(a) {
+    // Left metrics
+    document.getElementById('metrics-left').innerHTML = `
+        <div class="mc gold">
+            <div class="mc-lbl">Marrow Weight</div>
+            <div class="mc-val">${a.weight}</div>
+        </div>
+        <div class="mc">
+            <div class="mc-lbl">Cubit Volume</div>
+            <div class="mc-val">${a.cubit.toFixed(2)}</div>
+            <div class="mc-sub">∫ Real·Imag dθ</div>
+        </div>
+        <div class="mc teal">
+            <div class="mc-lbl">Log Shine (Light Angle)</div>
+            <div class="mc-val">${a.logShine.toFixed(4)}°</div>
+        </div>
+        <div class="mc">
+            <div class="mc-lbl">Pulse Scale</div>
+            <div class="mc-val">${a.pulseScale.toFixed(6)}</div>
+            <div class="mc-sub">LOG_BASE ^ (W / 13)</div>
+        </div>
+    `;
+
+    // Segment chips
+    const strip = a.segs.map(s => {
+        const cls = s.force === 'GRAVITY' ? 'chip-g' : s.force === 'EM' ? 'chip-e' : 'chip-t';
+        return `<div class="seg-chip ${cls}">
+            <span class="chip-char">${s.char}</span>
+            <span class="chip-val">${s.val}</span>
+        </div>`;
+    }).join('');
+    document.getElementById('segStrip').innerHTML = `<div class="seg-strip">${strip}</div>`;
+
+    // Right metrics
+    const primeChan = [1,5,7,11,13,17,19,23].map(p => {
+        const active = p === a.residue;
+        return `<span style="display:inline-block;padding:2px 5px;margin:2px;font-size:9px;
+            border:1px solid ${active ? 'var(--prime)' : 'var(--border)'};
+            color:${active ? 'var(--prime)' : 'var(--muted)'};
+            ${active ? 'text-shadow:0 0 8px var(--prime);' : ''}">${p}</span>`;
+    }).join('');
+
+    document.getElementById('metrics-right').innerHTML = `
+        <div class="mc ${a.isPrime ? 'prime' : ''}">
+            <div class="mc-lbl">Mod 24 Residue</div>
+            <div class="mc-val ${a.isPrime ? 'prime-glow' : ''}">${a.residue}</div>
+        </div>
+        <div class="mc ${a.isPrime ? 'prime' : ''}">
+            <div class="mc-lbl">Vitrification Status</div>
+            <div class="mc-val ${a.isPrime ? 'prime-glow' : ''}">
+                ${a.isPrime ? '⬡ PRIME_CHANNEL_LOCK' : '○ COMPOSITE_DRIFT'}
+            </div>
+        </div>
+        <div class="mc">
+            <div class="mc-lbl">Prime Channels</div>
+            <div style="margin-top:4px;">${primeChan}</div>
+        </div>
+    `;
+
+    // Force breakdown table
+    const gSegs = a.segs.filter(s => s.force === 'GRAVITY');
+    const eSegs = a.segs.filter(s => s.force === 'EM');
+    const tSegs = a.segs.filter(s => s.force === 'TIME');
+    const gW = gSegs.reduce((s,x) => s + x.val, 0);
+    const eW = eSegs.reduce((s,x) => s + x.val, 0);
+    const tW = tSegs.reduce((s,x) => s + x.val, 0);
+
+    document.getElementById('forceTable').innerHTML = `
+        <div class="force-box">
+            <div class="force-label" style="color:var(--teal)">GRAVITY</div>
+            <div class="force-val" style="color:var(--teal)">${gW}</div>
+            <div class="force-letters">${gSegs.map(s=>s.char).join('')||'—'}</div>
+        </div>
+        <div class="force-box">
+            <div class="force-label" style="color:var(--rust)">EM</div>
+            <div class="force-val" style="color:var(--rust)">${eW}</div>
+            <div class="force-letters">${eSegs.map(s=>s.char).join('')||'—'}</div>
+        </div>
+        <div class="force-box">
+            <div class="force-label" style="color:var(--gold)">TIME</div>
+            <div class="force-val" style="color:var(--gold)">${tW}</div>
+            <div class="force-letters">${tSegs.map(s=>s.char).join('')||'—'}</div>
+        </div>
+    `;
+
+    // Mod 24 mini display
+    document.getElementById('mod24Display').innerHTML = `
+        <div class="mc-lbl" style="margin-bottom:4px;">ARC POSITION · MOD 24</div>
+        <div style="font-size:11px; color:var(--gold);">${a.residue} / 24 = ${(a.residue/24*360).toFixed(1)}°</div>
+        <div style="font-size:9px; color:var(--muted); margin-top:2px;">${(a.residue/24*100).toFixed(1)}% of full cycle</div>
+    `;
+}
+
+// ── MAIN RENDER ───────────────────────────────────────────
+function render() {
+    const word = document.getElementById('wordIn').value.trim() || 'A';
+    currentAnalysis = auditWord(word);
+    updateUI(currentAnalysis);
+    buildSpiral(currentAnalysis);
+    drawOscilloscope('realCanvas', currentAnalysis.segs, 'real');
+    drawOscilloscope('imagCanvas', currentAnalysis.segs, 'imag');
+}
+
+// ── EXPORT ────────────────────────────────────────────────
+function exportJSON() {
+    const word = document.getElementById('wordIn').value.trim() || 'A';
+    const data = auditWord(word);
+    const blob = new Blob([JSON.stringify({ word, ...data }, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = `gge11_${word}.json`; a.click();
+}
+
+function exportPNG() {
+    renderer.render(scene, camera);
+    const url  = canvas3.toDataURL('image/png');
+    const word = document.getElementById('wordIn').value.trim() || 'A';
+    const a = document.createElement('a');
+    a.href = url; a.download = `gge11_${word}.png`; a.click();
+}
+
+// ── EVENTS ────────────────────────────────────────────────
+document.getElementById('wordIn').addEventListener('input', render);
+window.addEventListener('resize', () => {
+    resizeRenderer();
+    render();
+});
+
+// Init
+resizeRenderer();
+render();
+</script>
+</body>
+</html>

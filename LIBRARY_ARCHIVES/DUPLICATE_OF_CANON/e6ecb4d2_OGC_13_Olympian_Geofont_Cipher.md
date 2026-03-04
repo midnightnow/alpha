@@ -1,0 +1,101 @@
+# THE OLYMPIAN GEOFONT CIPHER (OGC-13)
+## Reference Document — The Court of Twelve / The Language Hypotenuse
+
+> **Operational Principle:** $5^2 + 12^2 = 13^2$
+> - **12 Circumference Letters:** The Manifest Olympians (Zodiac).
+> - **5 Vocalic Foundations:** The Core Pentad (Vowels) embedded within the 12.
+> - **1 Central Apex:** The Silent God (The 13th Letter) at the Axis Mundi.
+
+---
+
+## 1. The Geometric Layout
+
+- **The Circle (The Horizon):** Contains the 12 Zodiacal Letters. These represent the cyclical nature of time and the manifest world.
+- **The Equilateral Triangle (The Triple Rule):** Connects three specific vertices on the Circle to form the stabilizing structure of the cosmos.
+  - **Vertex 1 (Sky):** Leo (Zeus)
+  - **Vertex 2 (Sea):** Pisces (Poseidon)
+  - **Vertex 3 (Underworld):** Scorpio (Ares/Hades Shadow)
+- **The Center Point (The Axis Mundi):** The 13th Letter resides here. It is the "Silent Vowel" that vibrates through the triangle to animate the circle.
+
+---
+
+## 2. The Full Cipher Table
+
+| Letter | Type | God (Manilius) | Zodiac Sign | Geometric Position | Element | Esoteric Function |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **A** | **Vowel** | **Zeus (Jupiter)** | **Leo** | **Triangle Vertex 1** | **Aether** | **The Supra-Mundane Sun. The King's Voice.** |
+| B | Consonant | Athena (Pallas) | Aries | Circumference | Fire (Mind) | Strategy & Dawn. The Head of Zeus. |
+| C | Consonant | Aphrodite (Cytherea) | Taurus | Circumference | Earth (Love) | Harmony & Fertility. The Morning Star. |
+| D | Consonant | Hermes (Cyllenius) | Cancer | Circumference | Water (Mind) | The Psychopomp. Night & Compassion. |
+| **E** | **Vowel** | **Demeter (Ceres)** | **Virgo** | **Circumference** | **Earth (Duty)** | **The Mother of Manifest Life. Structural Stability.** |
+| F | Consonant | Hephaestus (Vulcan) | Libra | Circumference | Fire (Craft) | Justice & Innovation. The Scales. |
+| G | Consonant | Artemis (Diana) | Sagittarius | Circumference | Fire (Hunt) | The Light Bearer. Truth & Knowledge. |
+| H | Consonant | Ares (Mars) | Scorpio | **Triangle Vertex 3** | Water (Blood) | The Underworld Shadow. Decay & Renewal. |
+| **I** | **Vowel** | **Apollo (Phoebus)** | **Gemini** | **Circumference** | **Light (Fire)** | **The Harmonizer. Duality & Velocity.** |
+| J | Consonant | Hera (Juno) | Aquarius | Circumference | Air (Sky) | The Queen. Clouds & Storms. |
+| K | Consonant | Hestia (Vesta) | Capricorn | Circumference | Fire (Hearth) | The Center's Anchor. Duty & Work. |
+| L | Consonant | — | — | Circumference | — | Reserve / Structural Filler |
+| **O** | **Vowel** | **Poseidon (Neptune)** | **Pisces** | **Triangle Vertex 2** | **Water (Sea)** | **The Earth Shaker. Dreams & Subconscious.** |
+| **U** | **Vowel** | **Hestia (Vesta)** | **Capricorn** | **Circumference → Center Bridge** | **Fire (Hearth)** | **The 5th Vowel. Bridge to Ω.** |
+| **Ω** | **Silent** | **Dionysus (Aether)** | **Center** | **Axis Mundi** | **Quintessence** | **The 13th Seat. The Silent God. The Breath.** |
+
+---
+
+## 3. The Corrected Pentad (5 Vowels)
+
+| Letter | God | Sign | Role |
+| :--- | :--- | :--- | :--- |
+| **A** | Zeus | Leo | Vowel 1 (Sky) |
+| **E** | Demeter | Virgo | Vowel 2 (Earth) |
+| **I** | Apollo | Gemini | Vowel 3 (Light) |
+| **O** | Poseidon | Pisces | Vowel 4 (Sea) |
+| **U** | Hestia | Capricorn | Vowel 5 (Hearth) |
+| **Ω** | Dionysus | Center | The Silent 13th |
+
+The remaining 7 Gods (Athena, Aphrodite, Hermes, Hephaestus, Ares, Artemis, Hera) are assigned Consonants.
+
+---
+
+## 4. The Manilius Correspondences (12 Zodiacals)
+
+| Sign | Olympian | Manilius Line |
+|---|---|---|
+| Aries | Athena | *"Pallas watches over the Woolbearer"* |
+| Taurus | Aphrodite | *"Cytherea over Taurus"* |
+| Gemini | Apollo | *"Phoebus the shapely Gemini"* |
+| Cancer | Hermes | *"Cyllenius over Cancer"* |
+| Leo | Zeus | *"Jupiter, you yourself rule Leo"* |
+| Virgo | Demeter | *"Virgo who bears ears of grain belongs to Ceres"* |
+| Libra | Hephaestus | *"The forged scales to Vulcan"* |
+| Scorpio | Ares | *"Quarrelsome Scorpio clings to Mars"* |
+| Sagittarius | Artemis | *"Diana cherishes the hunting man part horse"* |
+| Capricorn | Hestia | *"Vesta the contracted stars of Capricorn"* |
+| Aquarius | Hera | *"Opposite Jupiter is Aquarius, the star of Juno"* |
+| Pisces | Poseidon | *"Neptune acknowledges his own Pisces"* |
+
+---
+
+## 5. Activation Logic (The Apertures)
+
+1. **The Vocalic Resonance:** When a character invokes the **5 Vowels (A, E, I, O, U)**, they are calling upon the **Foundation Gods**. This stabilizes the geometry. Speaking the name of **Demeter (E)** anchors the protagonist against chaos (Virgo/Duty).
+2. **The Triangular Lock:** To unlock the **Center (Ω)**, one must align the three vertices: **Zeus (A)**, **Poseidon (O)**, and **Ares/Hades (H)**. This forms the **Pythagorean Triangle** within the circle.
+3. **The 13th Breach:** The Silent Letter **Ω** is never spoken aloud. It is represented by **Silence** or **Breath**. In the text, this manifests as a pause, a gap in the dialogue, or a geometric symbol (the point within the triangle). This is the **Geofont 13** feature—the hidden letter that unlocks the attributes of the other 12.
+
+---
+
+## 6. Narrative Application
+
+- **Scene Setting:** Describe the temple floor as having a **triangle inscribed in a circle**, with 12 markers around the rim and an empty pedestal in the center.
+- **Dialogue:** Characters speak in "Vowels" when invoking power (e.g., "By the **A**ether of Leo...") and "Consonants" when invoking function (e.g., "By the **S**word of Aries...").
+- **Puzzle Solving:** The protagonist must realize that the **13th Letter** is not on the wall, but in the **center of the room** (the Axis Mundi), requiring them to stand in the silence to "hear" the Geofont.
+
+---
+
+## 7. Cross-References
+
+- **Book 2, Ch. X:** [The Olympian Blueprint](../Books/Book_2_The_Court_of_Twelve/Chapter_X_The_Olympian_Blueprint.md)
+- **Book 2, Ch. XI:** [The Activation of the Geofont](../Books/Book_2_The_Court_of_Twelve/Chapter_XI_The_Activation_of_the_Geofont.md)
+- **Book 2, Ch. XII:** [The Descent into the Aperture](../Books/Book_2_The_Court_of_Twelve/Chapter_XII_The_Descent_into_the_Aperture.md)
+- **Book 3, Ch. 9:** [The Singularity of the Word](../Books/Book_3_The_Language_Hypotenuse/Chapter_9_The_Singularity_of_the_Word.md)
+- **Book 5, Ch. 55:** [The Court of the 12](../Books/Book_5_The_Transfinite_Horizon/Chapter_55_The_Court_of_the_12.md)
+- **PMG_LATTICE:** [The Heroine's Canticle](The_Heroine_s_Canticle.md) — The IVORADIX operator and the 13th Post.

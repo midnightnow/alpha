@@ -1,0 +1,37 @@
+## PRIMARY HEADER CONFIGURATION (TIME)
+# The Second of the Primordial 7
+# Subject: The Constant (The 8975-Second Fill)
+# Constants Locked: The V-Intake, 30-Point Seed Matrix
+
+[VET_HEADER_START]
+VERSION=1.0.0
+MANIFOLD_MODE=HYDRODYNAMIC_LASER
+VELOCITY_MULTIPLIER=1.0
+
+# V-Manifold Intake (Time Specific)
+[NOZZLE]
+SHAPE=V
+STROKE_WIDTH=0.063
+REYNOLDS_TARGET=2268.13
+DATA_VELOCITY=3.6002
+ACTIVE_POINTS=30
+
+# E-Manifold Core
+[RESERVOIR]
+SHAPE=E
+ACTIVE_POINTS=3
+PRESSURE=12961.0
+COORDINATE_OFFSET=0,0,0
+
+# Cavity Verification
+[CHECKSUM]
+EXPECTED_FILL_TIME=8975.09
+CURRENT_STATE=CHARGING
+PHOTON_STATES=33
+[VET_HEADER_END]
+
+# BEGIN LATTICE (H-Waveguides)
+# 002_TIME defines the temporal architecture. The 33 active bits mirror the
+# 3 points of the Core and the 30 points of the Seed expanding in the Void.
+
+01100010 01101001 01101110 01100001

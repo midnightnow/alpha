@@ -1,0 +1,22 @@
+/*
+Theme Name: Salient Child (Groovy Menu)
+Theme URI: http://www.themenectar.com
+Description: This is a custom child theme for Salient (version 11+) with Groovy Menu plugin integration
+Author: Grooni
+Author URI: http://grooni.com/
+Template: salient
+Version: 1.0
+*/
+
+.gm-main-menu-wrapper li.gm-menu-item,
+.gm-main-menu-wrapper .gm-dropdown-menu > li
+{
+    list-style: none;
+}
+
+.gm-search-wrapper .gm-search-btn,
+.gm-search-wrapper .gm-search-btn:hover
+{
+    background-color: transparent !important;
+    border-radius: 0 !important;
+}

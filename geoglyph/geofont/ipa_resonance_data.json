@@ -1,0 +1,102 @@
+{
+    "a": {
+        "node": 6,
+        "resonance": 0.7308,
+        "harmonic": 13
+    },
+    "e": {
+        "node": 6,
+        "resonance": 0.1357,
+        "harmonic": 8
+    },
+    "i": {
+        "node": 6,
+        "resonance": 0.0814,
+        "harmonic": 5
+    },
+    "o": {
+        "node": 6,
+        "resonance": 0.6222,
+        "harmonic": 7
+    },
+    "u": {
+        "node": 6,
+        "resonance": 0.405,
+        "harmonic": 5
+    },
+    "p": {
+        "node": 7,
+        "resonance": 0.0271,
+        "harmonic": 2
+    },
+    "b": {
+        "node": 7,
+        "resonance": 0.6326,
+        "harmonic": 2
+    },
+    "t": {
+        "node": 9,
+        "resonance": 0.9457,
+        "harmonic": 3
+    },
+    "d": {
+        "node": 0,
+        "resonance": 0.4489,
+        "harmonic": 3
+    },
+    "k": {
+        "node": 3,
+        "resonance": 0.0814,
+        "harmonic": 5
+    },
+    "g": {
+        "node": 3,
+        "resonance": 0.5679,
+        "harmonic": 4
+    },
+    "s": {
+        "node": 9,
+        "resonance": 0.0859,
+        "harmonic": 61
+    },
+    "z": {
+        "node": 9,
+        "resonance": 0.1402,
+        "harmonic": 64
+    },
+    "h": {
+        "node": 4,
+        "resonance": 0.7285,
+        "harmonic": 15
+    },
+    "m": {
+        "node": 7,
+        "resonance": 0.4593,
+        "harmonic": 2
+    },
+    "n": {
+        "node": 0,
+        "resonance": 0.9457,
+        "harmonic": 3
+    },
+    "l": {
+        "node": 0,
+        "resonance": 0.405,
+        "harmonic": 5
+    },
+    "r": {
+        "node": 0,
+        "resonance": 0.6222,
+        "harmonic": 7
+    },
+    "f": {
+        "node": 10,
+        "resonance": 0.1856,
+        "harmonic": 45
+    },
+    "v": {
+        "node": 10,
+        "resonance": 0.1313,
+        "harmonic": 48
+    }
+}
