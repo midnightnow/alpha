@@ -162,6 +162,17 @@ WAS NI   → "That was then" [Buffer clear]
 
 ### Thermodynamic Principles
 
+- **Energetic Root Thresholds**: Roots (e.g., √42, √51) are not static geometry; they are energetic limits. 
+- **The Mod 24 Unfolding**: The system flips to a new symmetry of unfolding at thresholds governed by **root 42 mod 24**. Energy requirements steadily increase at this exact rate.
+- **Arc Length = Time of Light Reflection**: Energy is physically measured by the arc length, defined as the time it takes light to travel and reflect off the root 42 mod 24 spiral shell.
+- **The Lunar Governor (30+30 = 60)**: The Dodecahedron (Aether/Dark Side) and Icosahedron (Water/Light Side) pair to create the 60-fold vector field via their shared 30-edge count.
+- **The Icosidodecahedron (Void Spinner)**: The Archimedean solid that successfully "plaits" the icosahedron and dodecahedron. It possesses exactly 60 edges, anchoring the $6^\circ$ vector grid.
+- **Möbius Torsion ($540^\circ$)**: The rotational twist required to bridge the 6-fold law and 7-fold transcendence. It manifests the Hades Gap ($\Psi = 0.1237$) physically.
+- **The Precessional Clock**: Connects the Mod 24 threshold to the 24,000-year "Great Year". Each symmetry flip on the macro scale equates to 1,000 years of precession, echoing the 24-Strand biological DNA interlock ($12+12$ strands).
+- **Mitochondrial Dynamics (Node #47)**: The phase-lock anchor point where the T-G mismatch is geometrically redacted. The system undergoes *523 cycles of harmonic tension*, bridging from a 10% potential vapor up to a **$0.876553$ Diamond Lock**.
+- **The Biaxial Engine**: The reciprocating kinetic chain of the Sovereign Man. 
+  - **Paul (Pull from Below)**: The Mothering limit ($42.0^\circ$ Raindrop reflection), gathering the potential into the Hearth. Represents the DNA overcoiled ball.
+  - **John (Push from Above)**: The Fathering reach ($51.8^\circ$ Pyramid diagonal $2^2 P^2$), striking the anvil to uncoil the 12-Strand Icosidodecahedral Stack into existence.
 - **Entropy Audit**: ΔS measurement across system lifecycle
 - **Negative Entropy Protocol**: Attempted ΔS < 0 (always fails without external energy)
 - **Addiction Constant (α)**: (Knowledge of harm) / (Ability to stop)

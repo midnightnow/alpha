@@ -53,15 +53,14 @@ This repository contains the **Principia Mathematica Geometrica** (PMG), a unifi
 ## Sealed vs Active Surfaces
 
 ### SEALED — Do Not Modify Without Explicit Instruction
-- `Root42/` — Phase II complete
-- `Root51/` — Manuscript complete
+- `Roots_Archive/` — Phase I, II & Consolidation complete
 - `PlatonicVerses Chapters/Book_2_Code_of_the_Cosmos/` — Book 2 complete
 - `PlatonicVerses Chapters/` individual sonnet files — Book 1 complete
 
 ### ACTIVE — Safe to Edit and Extend
 - `PlatonicVerses Chapters/Book_3_Voices_of_the_Void/` - **Book 3: Voices of the Void** (7/7 Chapters) - COMPLETE
 - Root42 Chapter 4 narrative (new file to create)
-- `radical-resonance_-root-42/` — mathman features
+- `SovereignEngine/` — Phase III Unified Interface (ACTIVE)
 - `ophanim_toolkit/karma_calibration.py`
 - `sandbox/` — simulation engine
 
@@ -71,7 +70,7 @@ This repository contains the **Principia Mathematica Geometrica** (PMG), a unifi
 
 ### PLATO Formula (appears everywhere)
 ```
-P (Point) → L (Line) → A (Angle) → T (Cross) → O (Circle)
+P (Point) → L (Line) → A (Angle) → T (Triangle) → O (Circle)
 ```
 Governs: NPC behavior, document structure, component lifecycle, user interaction.
 
@@ -266,12 +265,13 @@ The bustling world IS the proof. `Sandbox_World_Architecture.md` — entire docu
 │   ├── Book_2_Code_of_the_Cosmos/     (SEALED)
 │   └── Book_3_Voices_of_the_Void/     (ACTIVE — Ch.15–17 done)
 │
-├── Root42/                            (SEALED — Phase I + II)
-├── Root51/                            (SEALED)
-├── Root42-Transmission/               (git archive)
+├── Roots_Archive/                     (SEALED — Phase I & II Consolidation)
+│   ├── Apps/                          (React/Vite legacy visualizations)
+│   ├── Story_and_Lore/                (Narratives, rules, coefficients)
+│   ├── Scripts/                       (Python mechanics and fracture ops)
+│   └── Assets/                        (Renderings and JSON data)
 │
-├── radical-resonance_-root-42/        (React/Three.js — ACTIVE)
-├── radical-resonance_-root-42 with music/
+├── SovereignEngine/                   (React/Three.js — Phase III ACTIVE)
 ├── sandbox/                           (TypeScript simulation)
 ├── ophanim_toolkit/                   (Python engine)
 ├── notebooklm-mcp-temp/               (MCP server)
