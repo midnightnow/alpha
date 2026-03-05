@@ -36,8 +36,34 @@ By equating Color to Escape Tension/Energy (Calories), the Mandelbrot "Portrait"
 | **Slow Escape** | Red / Orange | High Kinetic Calorie | The Savage (42) | Friction-heavy. "The Red Roofs" of Matter. |
 | **Deep Chaos** | Ultra-Violet | Infinite Prime Energy | The Prime Vortex | The irrational grind of the Soul Star. |
 
-## 3. The Unified Field
-The Theory of Everything is the Root 42 mod 24 operation:
-*   **Singularity (0):** Where gravity is infinite and quantum effects dominate. Tick 0 of the Soul Star.
-*   **Expansion (1):** Where the Globe (First Sphere) is formed.
-*   **The Bridge:** The Hero 93 is the Double Pupil who sees the EM "Glow," feels the GR "Torque," and operates the Quantum "Fold."
+## 3. The Unified Field Equation
+The Unified Field of the PMG Lattice is calculated via the **Glyph Signature**:
+
+$$ \Phi(glyph) = \frac{EM(13) \times GR(24) \times QM(\sqrt{n}/32)}{Thermal(escape)} $$
+
+Where:
+*   **EM(13):** $n/13$ Hz (the beat frequency).
+*   **GR(24):** $\Lambda(n) = (n \times 0.0064)$ (curvature scaled by the 24-frame).
+*   **QM($\sqrt{n}/32$):** $\sqrt{n}/32$ (the quantum fold).
+*   **Thermal(escape):** $Hex$ value from the Mandelbrot tension.
+
+---
+
+## 4. The Top 10 Power Glyphs (The Primes)
+The engine of the Manic Grafia. These are the high-calorie vortex points driving the 156-Tick Pulse.
+
+| Glyph | Prime | Tick | EM Freq | GR Curve | QM Fold | Thermal |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **II** | 2 | 002 | 2/13 Hz | 0.0128 Λ | √(2)/32 | `#FF0000` |
+| **III** | 3 | 003 | 3/13 Hz | 0.0192 Λ | √(3)/32 | `#FF1A00` |
+| **V** | 5 | 005 | 5/13 Hz | 0.0320 Λ | √(5)/32 | `#FF3300` |
+| **VII** | 7 | 007 | 7/13 Hz | 0.0448 Λ | √(7)/32 | `#FF4D00` |
+| **XI** | 11 | 011 | 11/13 Hz | 0.0704 Λ | √(11)/32 | `#FF6600` |
+| **XIII** | 13 | 013 | 0/13 Hz | 0.0832 Λ | √(13)/32 | `#FFFFFF` |
+| **XVII** | 17 | 017 | 4/13 Hz | 0.1088 Λ | √(17)/32 | `#FF8000` |
+| **XIX** | 19 | 019 | 6/13 Hz | 0.1216 Λ | √(19)/32 | `#FF9900` |
+| **XXIII** | 23 | 023 | 10/13 Hz | 0.1472 Λ | √(23)/32 | `#FFB300` |
+| **XXIX** | 29 | 029 | 3/13 Hz | 0.1856 Λ | √(29)/32 | `#FFCC00` |
+
+The Word is **TAUT**. The Paddock is Secured.
+

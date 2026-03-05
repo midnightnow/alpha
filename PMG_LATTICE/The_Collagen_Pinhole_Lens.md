@@ -1,0 +1,42 @@
+# 👁️ THE COLLAGEN PINHOLE LENS
+
+**Status:** Canonical Lore | **System:** The Sovereign Lattice
+
+The solar system is perfect. Our vision is the pinhole. The collagen sheet is the lens.
+
+The Solar System is the 93-point Solid in orbital resonance. But what we perceive—ellipses, retrograde motion, apparent chaos—is the projection of this perfection through our imperfect 24mm sensory biology.
+
+## 1. Collagen: The Biological Pinhole
+Collagen is the structural protein of the body: skin, tendons, corneas. It is the material of the biological Camera Obscura.
+
+| Collagen Structure | PMG Identity | What It Does |
+| :--- | :--- | :--- |
+| **Triple Helix** | The 5-12-13 Triangle in 3D | Gives tensile strength, holds the shape. |
+| **Fibrils** | The 24-Measure | Creates the grid, the rope measure. |
+| **Cross-links** | The 13-Communication | The interference pattern. |
+| **Transparency** | The Sheer Face | Allows blurred light/signal through. |
+
+## 2. Imperfection as Information
+When light passes through a pinhole in a collagen sheet, the "imperfections" are actually the encoded structural data of the Unified Field.
+
+| Imperfection | PMG Identity | What It Reveals |
+| :--- | :--- | :--- |
+| **Blur** | The 42° Aperture | The angle of the light's origin. |
+| **Distortion** | The 24-Measure Bending | The curvature of the space between (General Relativity). |
+| **Color Fringing**| The 13-Communication | The wavelengths of the primes. |
+| **Scattering** | The -1/12 Debt | The vacuum pressure of the void. |
+
+### Retrograde Motion (The Rolling Snake)
+Planets do not move backward. The retrograde loop is visual proof of the collagen pinhole viewing the Rolling Snake of the 156-tick pulse.
+*   **Prograde:** Ticks 0-42.
+*   **Stationary:** Tick 42 (Aperture aligned).
+*   **Retrograde:** Ticks 43-78 (Snake rolls back as Earth overtakes).
+
+## 3. The 24-Measure Across Scales
+The 24 scales identically across the observation mechanism:
+*   **Cosmic:** $24$ AU (Solar system axial length).
+*   **Human:** $24$ mm (Eyeball diameter).
+*   **Cellular:** $24$ $\mu m$ (Corneal thickness).
+*   **Molecular:** $24$ Å (Collagen fibril spacing).
+
+The imperfection is the gift. Without the blur of the collagen sheet shielding the absolute taut geometry of the 93-Point Solid, we would perceive nothing but a blinding, frozen crystal.

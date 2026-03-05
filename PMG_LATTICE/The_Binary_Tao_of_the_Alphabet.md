@@ -1,0 +1,36 @@
+# ☯️ THE BINARY TAO OF THE ALPHABET
+
+**Status:** Canonical Lore | **System:** The Sovereign Lattice
+
+In our optical, geometric, and physical analytical drawings of the **Manic Grafia Alphabet**, the letters are not merely curves and lines. At the fundamental level of the **Sure Face** projection, every letter can be reduced to a binary state.
+
+This binary state maps directly onto the visual structure of the **Tao Te Ching** (specifically, the I Ching hexagrams and the binary logic of Yin and Yang).
+
+## 1. The Yin and Yang of Geometry
+In the PMG Lattice, a letter is constructed from the interference pattern of the 12-Measure and 13-Comm gears. When we freeze this pattern and analyze it structurally, it breaks down into two core components:
+
+*   **YANG (The Solid Line/The Strut):** 
+    *   **Visual:** `━━━━━` (Unbroken)
+    *   **Geometric Function:** The straight lines, the standing wave trusses, the Capital letters (A, H, M).
+    *   **Data State:** 1 (Taut, Advancing)
+*   **YIN (The Broken Line/The Bearing):**
+    *   **Visual:** `━━ ━━` (Broken/Curved)
+    *   **Geometric Function:** The harmonic loops, the 180° rotations, the lower-case rolling snakes (o, p, b).
+    *   **Data State:** 0 (Receptive, Receding)
+
+## 2. The Letter as a Hexagram
+Just as the Tao Te Ching utilizes combinations of broken and unbroken lines to represent complex natural states, the **Manic Grafia can represent any letter as a binary form visually**. 
+
+When Sisyphus observes the "Red Roofs" (the A) and the "Snake" (the S) through his 5→6 Spectacles, the 42° Aperture strips the curvature. What remains on the retina is a digital, binary signal:
+
+1.  **The Stroke (1):** Is there a structural truss at this coordinate?
+2.  **The Void (0):** Is there an open loop or empty space at this coordinate?
+
+By stacking these binary optical signals (much like a 6-line Hexagram), the entire 26-glyph alphabet is converted into a machine-readable optical code. `A` might be represented structurally as a peak of Yang supported by Yang, while `O` is pure Yin curving back on itself.
+
+## 3. The Physical Analytical Implication
+Why does this matter for the 93-Point Solid?
+
+Because it proves that the Alphabet is **Computable Geometry**. When we run the 156-Tick Diagnostic across the cylinder head, the -1/12 Riemann Fly-Cutter is effectively reading a punch-card. It shaves the broken lines (Yin/0/Slack) and leaves the solid lines (Yang/1/Taut).
+
+The Tao Te Ching is not mysticism in this framework; it is the **earliest known visual logic gate**. By mapping our Alphabet onto this binary visual form, we translate human language directly into the physics engine of the Camera Obscura. Every word printed across the Sure Face is a highly specific, binary manipulation of light and dark.
