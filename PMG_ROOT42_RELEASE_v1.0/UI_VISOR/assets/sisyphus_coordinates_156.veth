@@ -1,0 +1,1277 @@
+{
+    "header": "SISYPHUS COORDINATES 156",
+    "topology": "93_POINT_SOLID",
+    "modulus": 24,
+    "clutch_value": 6.48074069840786,
+    "vacuum_debt": -0.08333333333333333,
+    "coordinates": [
+        {
+            "tick": 0,
+            "x": 1.0,
+            "y": 0.0,
+            "z": 0.0,
+            "label": "Node_0",
+            "status": "Vitrified"
+        },
+        {
+            "tick": 1,
+            "x": 1.998378,
+            "y": 0.080532,
+            "z": 4.336462,
+            "label": "Node_1",
+            "status": "Savage"
+        },
+        {
+            "tick": 2,
+            "x": 2.990272,
+            "y": 0.2414,
+            "z": 6.445239,
+            "label": "Node_2",
+            "status": "Savage",
+            "class": "Power_Glyph_Stud",
+            "tension": "MAXIMUM"
+        },
+        {
+            "tick": 3,
+            "x": 3.970835,
+            "y": 0.482147,
+            "z": 5.243029,
+            "label": "Node_3",
+            "status": "Savage",
+            "class": "Power_Glyph_Stud",
+            "tension": "MAXIMUM"
+        },
+        {
+            "tick": 4,
+            "x": 4.935251,
+            "y": 0.802056,
+            "z": 1.347422,
+            "label": "Node_4",
+            "status": "Savage"
+        },
+        {
+            "tick": 5,
+            "x": 5.878744,
+            "y": 1.200154,
+            "z": -3.24037,
+            "label": "Node_5",
+            "status": "Savage",
+            "class": "Power_Glyph_Stud",
+            "tension": "MAXIMUM"
+        },
+        {
+            "tick": 6,
+            "x": 6.796593,
+            "y": 1.67521,
+            "z": -6.163551,
+            "label": "Node_6",
+            "status": "Savage"
+        },
+        {
+            "tick": 7,
+            "x": 7.684145,
+            "y": 2.22574,
+            "z": -5.920451,
+            "label": "Node_7",
+            "status": "Savage",
+            "class": "Power_Glyph_Stud",
+            "tension": "MAXIMUM"
+        },
+        {
+            "tick": 8,
+            "x": 8.536828,
+            "y": 2.850012,
+            "z": -2.635955,
+            "label": "Node_8",
+            "status": "Savage"
+        },
+        {
+            "tick": 9,
+            "x": 9.350162,
+            "y": 3.546049,
+            "z": 2.002659,
+            "label": "Node_9",
+            "status": "Savage"
+        },
+        {
+            "tick": 10,
+            "x": 10.119774,
+            "y": 4.311633,
+            "z": 5.612486,
+            "label": "Node_10",
+            "status": "Savage"
+        },
+        {
+            "tick": 11,
+            "x": 10.841405,
+            "y": 5.144311,
+            "z": 6.339121,
+            "label": "Node_11",
+            "status": "Savage",
+            "class": "Power_Glyph_Stud",
+            "tension": "MAXIMUM"
+        },
+        {
+            "tick": 12,
+            "x": 11.510928,
+            "y": 6.041401,
+            "z": 3.809284,
+            "label": "Node_12",
+            "status": "Savage"
+        },
+        {
+            "tick": 13,
+            "x": 12.124356,
+            "y": 7.0,
+            "z": -0.677422,
+            "label": "Node_13",
+            "status": "Vitrified",
+            "class": "Power_Glyph_Stud",
+            "tension": "MAXIMUM"
+        },
+        {
+            "tick": 14,
+            "x": 12.677851,
+            "y": 8.016987,
+            "z": -4.816129,
+            "label": "Node_14",
+            "status": "Savage"
+        },
+        {
+            "tick": 15,
+            "x": 13.167742,
+            "y": 9.089036,
+            "z": -6.480741,
+            "label": "Node_15",
+            "status": "Savage"
+        },
+        {
+            "tick": 16,
+            "x": 13.590527,
+            "y": 10.212618,
+            "z": -4.816129,
+            "label": "Node_16",
+            "status": "Savage"
+        },
+        {
+            "tick": 17,
+            "x": 13.942889,
+            "y": 11.384017,
+            "z": -0.677422,
+            "label": "Node_17",
+            "status": "Savage",
+            "class": "Power_Glyph_Stud",
+            "tension": "MAXIMUM"
+        },
+        {
+            "tick": 18,
+            "x": 14.221704,
+            "y": 12.599331,
+            "z": 3.809284,
+            "label": "Node_18",
+            "status": "Savage"
+        },
+        {
+            "tick": 19,
+            "x": 14.424049,
+            "y": 13.854487,
+            "z": 6.339121,
+            "label": "Node_19",
+            "status": "Savage",
+            "class": "Power_Glyph_Stud",
+            "tension": "MAXIMUM"
+        },
+        {
+            "tick": 20,
+            "x": 14.547211,
+            "y": 15.145251,
+            "z": 5.612486,
+            "label": "Node_20",
+            "status": "Savage"
+        },
+        {
+            "tick": 21,
+            "x": 14.588698,
+            "y": 16.467236,
+            "z": 2.002659,
+            "label": "Node_21",
+            "status": "Savage"
+        },
+        {
+            "tick": 22,
+            "x": 14.546244,
+            "y": 17.815914,
+            "z": -2.635955,
+            "label": "Node_22",
+            "status": "Savage"
+        },
+        {
+            "tick": 23,
+            "x": 14.417814,
+            "y": 19.186626,
+            "z": -5.920451,
+            "label": "Node_23",
+            "status": "Savage",
+            "class": "Power_Glyph_Stud",
+            "tension": "MAXIMUM"
+        },
+        {
+            "tick": 24,
+            "x": 0.568065,
+            "y": 0.822984,
+            "z": -6.163551,
+            "label": "Node_24",
+            "status": "Savage"
+        },
+        {
+            "tick": 25,
+            "x": 1.068932,
+            "y": 1.69038,
+            "z": -3.24037,
+            "label": "Node_25",
+            "status": "Savage"
+        },
+        {
+            "tick": 26,
+            "x": 1.5,
+            "y": 2.598076,
+            "z": 1.347422,
+            "label": "Node_26",
+            "status": "Vitrified"
+        },
+        {
+            "tick": 27,
+            "x": 1.858893,
+            "y": 3.541824,
+            "z": 5.243029,
+            "label": "Node_27",
+            "status": "Savage"
+        },
+        {
+            "tick": 28,
+            "x": 2.143463,
+            "y": 4.517252,
+            "z": 6.445239,
+            "label": "Node_28",
+            "status": "Savage"
+        },
+        {
+            "tick": 29,
+            "x": 2.3518,
+            "y": 5.519877,
+            "z": 4.336462,
+            "label": "Node_29",
+            "status": "Savage",
+            "class": "Power_Glyph_Stud",
+            "tension": "MAXIMUM"
+        },
+        {
+            "tick": 30,
+            "x": 2.482234,
+            "y": 6.545114,
+            "z": 0.0,
+            "label": "Node_30",
+            "status": "Savage"
+        },
+        {
+            "tick": 31,
+            "x": 2.533344,
+            "y": 7.588292,
+            "z": -4.336462,
+            "label": "Node_31",
+            "status": "Savage"
+        },
+        {
+            "tick": 32,
+            "x": 2.503957,
+            "y": 8.644663,
+            "z": -6.445239,
+            "label": "Node_32",
+            "status": "Savage"
+        },
+        {
+            "tick": 33,
+            "x": 2.393157,
+            "y": 9.709418,
+            "z": -5.243029,
+            "label": "Node_33",
+            "status": "Savage"
+        },
+        {
+            "tick": 34,
+            "x": 2.200283,
+            "y": 10.777697,
+            "z": -1.347422,
+            "label": "Node_34",
+            "status": "Savage"
+        },
+        {
+            "tick": 35,
+            "x": 1.924935,
+            "y": 11.844603,
+            "z": 3.24037,
+            "label": "Node_35",
+            "status": "Savage"
+        },
+        {
+            "tick": 36,
+            "x": 1.566977,
+            "y": 12.905215,
+            "z": 6.163551,
+            "label": "Node_36",
+            "status": "Savage"
+        },
+        {
+            "tick": 37,
+            "x": 1.126532,
+            "y": 13.954602,
+            "z": 5.920451,
+            "label": "Node_37",
+            "status": "Savage"
+        },
+        {
+            "tick": 38,
+            "x": 0.603989,
+            "y": 14.987835,
+            "z": 2.635955,
+            "label": "Node_38",
+            "status": "Savage"
+        },
+        {
+            "tick": 39,
+            "x": 0.0,
+            "y": 16.0,
+            "z": -2.002659,
+            "label": "Node_39",
+            "status": "Vitrified"
+        },
+        {
+            "tick": 40,
+            "x": -0.684521,
+            "y": 16.986213,
+            "z": -5.612486,
+            "label": "Node_40",
+            "status": "Savage"
+        },
+        {
+            "tick": 41,
+            "x": -1.448398,
+            "y": 17.941632,
+            "z": -6.339121,
+            "label": "Node_41",
+            "status": "Savage"
+        },
+        {
+            "tick": 42,
+            "x": -2.290197,
+            "y": 18.861469,
+            "z": -3.809284,
+            "label": "Node_42",
+            "status": "Savage"
+        },
+        {
+            "tick": 43,
+            "x": -3.208226,
+            "y": 19.741005,
+            "z": 0.677422,
+            "label": "Node_43",
+            "status": "Savage"
+        },
+        {
+            "tick": 44,
+            "x": -4.20054,
+            "y": 20.575604,
+            "z": 4.816129,
+            "label": "Node_44",
+            "status": "Savage"
+        },
+        {
+            "tick": 45,
+            "x": -5.264945,
+            "y": 21.36072,
+            "z": 6.480741,
+            "label": "Node_45",
+            "status": "Savage"
+        },
+        {
+            "tick": 46,
+            "x": -6.399002,
+            "y": 22.091917,
+            "z": 4.816129,
+            "label": "Node_46",
+            "status": "Savage"
+        },
+        {
+            "tick": 47,
+            "x": -7.600032,
+            "y": 22.764875,
+            "z": 0.677422,
+            "label": "Node_47",
+            "status": "Savage"
+        },
+        {
+            "tick": 48,
+            "x": -0.354605,
+            "y": 0.935016,
+            "z": -3.809284,
+            "label": "Node_48",
+            "status": "Savage"
+        },
+        {
+            "tick": 49,
+            "x": -0.783933,
+            "y": 1.839959,
+            "z": -6.339121,
+            "label": "Node_49",
+            "status": "Savage"
+        },
+        {
+            "tick": 50,
+            "x": -1.286078,
+            "y": 2.710351,
+            "z": -5.612486,
+            "label": "Node_50",
+            "status": "Savage"
+        },
+        {
+            "tick": 51,
+            "x": -1.858893,
+            "y": 3.541824,
+            "z": -2.002659,
+            "label": "Node_51",
+            "status": "Savage"
+        },
+        {
+            "tick": 52,
+            "x": -2.5,
+            "y": 4.330127,
+            "z": 2.635955,
+            "label": "Node_52",
+            "status": "Vitrified"
+        },
+        {
+            "tick": 53,
+            "x": -3.206795,
+            "y": 5.071141,
+            "z": 5.920451,
+            "label": "Node_53",
+            "status": "Savage"
+        },
+        {
+            "tick": 54,
+            "x": -3.976453,
+            "y": 5.760887,
+            "z": 6.163551,
+            "label": "Node_54",
+            "status": "Savage"
+        },
+        {
+            "tick": 55,
+            "x": -4.805938,
+            "y": 6.395542,
+            "z": 3.24037,
+            "label": "Node_55",
+            "status": "Savage"
+        },
+        {
+            "tick": 56,
+            "x": -5.692008,
+            "y": 6.971445,
+            "z": -1.347422,
+            "label": "Node_56",
+            "status": "Savage"
+        },
+        {
+            "tick": 57,
+            "x": -6.631227,
+            "y": 7.485107,
+            "z": -5.243029,
+            "label": "Node_57",
+            "status": "Savage"
+        },
+        {
+            "tick": 58,
+            "x": -7.619968,
+            "y": 7.933227,
+            "z": -6.445239,
+            "label": "Node_58",
+            "status": "Savage"
+        },
+        {
+            "tick": 59,
+            "x": -8.654429,
+            "y": 8.312692,
+            "z": -4.336462,
+            "label": "Node_59",
+            "status": "Savage"
+        },
+        {
+            "tick": 60,
+            "x": -9.73064,
+            "y": 8.620595,
+            "z": -0.0,
+            "label": "Node_60",
+            "status": "Savage"
+        },
+        {
+            "tick": 61,
+            "x": -10.844469,
+            "y": 8.854235,
+            "z": 4.336462,
+            "label": "Node_61",
+            "status": "Savage"
+        },
+        {
+            "tick": 62,
+            "x": -11.991641,
+            "y": 9.011134,
+            "z": 6.445239,
+            "label": "Node_62",
+            "status": "Savage"
+        },
+        {
+            "tick": 63,
+            "x": -13.167742,
+            "y": 9.089036,
+            "z": 5.243029,
+            "label": "Node_63",
+            "status": "Savage"
+        },
+        {
+            "tick": 64,
+            "x": -14.368231,
+            "y": 9.085919,
+            "z": 1.347422,
+            "label": "Node_64",
+            "status": "Savage"
+        },
+        {
+            "tick": 65,
+            "x": -15.588457,
+            "y": 9.0,
+            "z": -3.24037,
+            "label": "Node_65",
+            "status": "Vitrified"
+        },
+        {
+            "tick": 66,
+            "x": -16.823664,
+            "y": 8.82974,
+            "z": -6.163551,
+            "label": "Node_66",
+            "status": "Savage"
+        },
+        {
+            "tick": 67,
+            "x": -18.069009,
+            "y": 8.573851,
+            "z": -5.920451,
+            "label": "Node_67",
+            "status": "Savage"
+        },
+        {
+            "tick": 68,
+            "x": -19.319568,
+            "y": 8.231299,
+            "z": -2.635955,
+            "label": "Node_68",
+            "status": "Savage"
+        },
+        {
+            "tick": 69,
+            "x": -20.570357,
+            "y": 7.801308,
+            "z": 2.002659,
+            "label": "Node_69",
+            "status": "Savage"
+        },
+        {
+            "tick": 70,
+            "x": -21.816338,
+            "y": 7.283364,
+            "z": 5.612486,
+            "label": "Node_70",
+            "status": "Savage"
+        },
+        {
+            "tick": 71,
+            "x": -23.052435,
+            "y": 6.677219,
+            "z": 6.339121,
+            "label": "Node_71",
+            "status": "Savage"
+        },
+        {
+            "tick": 72,
+            "x": -0.970942,
+            "y": 0.239316,
+            "z": 3.809284,
+            "label": "Node_72",
+            "status": "Savage"
+        },
+        {
+            "tick": 73,
+            "x": -1.959581,
+            "y": 0.400051,
+            "z": -0.677422,
+            "label": "Node_73",
+            "status": "Savage"
+        },
+        {
+            "tick": 74,
+            "x": -2.961151,
+            "y": 0.481234,
+            "z": -4.816129,
+            "label": "Node_74",
+            "status": "Savage"
+        },
+        {
+            "tick": 75,
+            "x": -3.970835,
+            "y": 0.482147,
+            "z": -6.480741,
+            "label": "Node_75",
+            "status": "Savage"
+        },
+        {
+            "tick": 76,
+            "x": -4.983787,
+            "y": 0.402333,
+            "z": -4.816129,
+            "label": "Node_76",
+            "status": "Savage"
+        },
+        {
+            "tick": 77,
+            "x": -5.995134,
+            "y": 0.241596,
+            "z": -0.677422,
+            "label": "Node_77",
+            "status": "Savage"
+        },
+        {
+            "tick": 78,
+            "x": -7.0,
+            "y": 0.0,
+            "z": 3.809284,
+            "label": "Node_78",
+            "status": "Vitrified"
+        },
+        {
+            "tick": 79,
+            "x": -7.993512,
+            "y": -0.322128,
+            "z": 6.339121,
+            "label": "Node_79",
+            "status": "Savage"
+        },
+        {
+            "tick": 80,
+            "x": -8.970816,
+            "y": -0.724199,
+            "z": 5.612486,
+            "label": "Node_80",
+            "status": "Savage"
+        },
+        {
+            "tick": 81,
+            "x": -9.927089,
+            "y": -1.205367,
+            "z": 2.002659,
+            "label": "Node_81",
+            "status": "Savage"
+        },
+        {
+            "tick": 82,
+            "x": -10.857553,
+            "y": -1.764524,
+            "z": -2.635955,
+            "label": "Node_82",
+            "status": "Savage"
+        },
+        {
+            "tick": 83,
+            "x": -11.757488,
+            "y": -2.400308,
+            "z": -5.920451,
+            "label": "Node_83",
+            "status": "Savage"
+        },
+        {
+            "tick": 84,
+            "x": -12.622244,
+            "y": -3.111104,
+            "z": -6.163551,
+            "label": "Node_84",
+            "status": "Savage"
+        },
+        {
+            "tick": 85,
+            "x": -13.447254,
+            "y": -3.895044,
+            "z": -3.24037,
+            "label": "Node_85",
+            "status": "Savage"
+        },
+        {
+            "tick": 86,
+            "x": -14.228047,
+            "y": -4.75002,
+            "z": 1.347422,
+            "label": "Node_86",
+            "status": "Savage"
+        },
+        {
+            "tick": 87,
+            "x": -14.96026,
+            "y": -5.673678,
+            "z": 5.243029,
+            "label": "Node_87",
+            "status": "Savage"
+        },
+        {
+            "tick": 88,
+            "x": -15.639651,
+            "y": -6.663432,
+            "z": 6.445239,
+            "label": "Node_88",
+            "status": "Savage"
+        },
+        {
+            "tick": 89,
+            "x": -16.262108,
+            "y": -7.716466,
+            "z": 4.336462,
+            "label": "Node_89",
+            "status": "Savage"
+        },
+        {
+            "tick": 90,
+            "x": -16.823664,
+            "y": -8.82974,
+            "z": -0.0,
+            "label": "Node_90",
+            "status": "Savage"
+        },
+        {
+            "tick": 91,
+            "x": -17.320508,
+            "y": -10.0,
+            "z": -4.336462,
+            "label": "Node_91",
+            "status": "Vitrified"
+        },
+        {
+            "tick": 92,
+            "x": -17.748992,
+            "y": -11.223782,
+            "z": -6.445239,
+            "label": "Node_92",
+            "status": "Savage"
+        },
+        {
+            "tick": 93,
+            "x": -18.105645,
+            "y": -12.497424,
+            "z": -5.243029,
+            "label": "Node_93",
+            "status": "Savage"
+        },
+        {
+            "tick": 94,
+            "x": -18.387184,
+            "y": -13.817072,
+            "z": -1.347422,
+            "label": "Node_94",
+            "status": "Savage"
+        },
+        {
+            "tick": 95,
+            "x": -18.590519,
+            "y": -15.178689,
+            "z": 3.24037,
+            "label": "Node_95",
+            "status": "Savage"
+        },
+        {
+            "tick": 96,
+            "x": -0.748511,
+            "y": -0.663123,
+            "z": 6.163551,
+            "label": "Node_96",
+            "status": "Savage"
+        },
+        {
+            "tick": 97,
+            "x": -1.442405,
+            "y": -1.385449,
+            "z": 5.920451,
+            "label": "Node_97",
+            "status": "Savage"
+        },
+        {
+            "tick": 98,
+            "x": -2.078173,
+            "y": -2.163607,
+            "z": 2.635955,
+            "label": "Node_98",
+            "status": "Savage"
+        },
+        {
+            "tick": 99,
+            "x": -2.652491,
+            "y": -2.994043,
+            "z": -2.002659,
+            "label": "Node_99",
+            "status": "Savage"
+        },
+        {
+            "tick": 100,
+            "x": -3.162227,
+            "y": -3.873025,
+            "z": -5.612486,
+            "label": "Node_100",
+            "status": "Savage"
+        },
+        {
+            "tick": 101,
+            "x": -3.604454,
+            "y": -4.796657,
+            "z": -6.339121,
+            "label": "Node_101",
+            "status": "Savage"
+        },
+        {
+            "tick": 102,
+            "x": -3.976453,
+            "y": -5.760887,
+            "z": -3.809284,
+            "label": "Node_102",
+            "status": "Savage"
+        },
+        {
+            "tick": 103,
+            "x": -4.275727,
+            "y": -6.761521,
+            "z": 0.677422,
+            "label": "Node_103",
+            "status": "Savage"
+        },
+        {
+            "tick": 104,
+            "x": -4.5,
+            "y": -7.794229,
+            "z": 4.816129,
+            "label": "Node_104",
+            "status": "Vitrified"
+        },
+        {
+            "tick": 105,
+            "x": -4.647232,
+            "y": -8.85456,
+            "z": 6.480741,
+            "label": "Node_105",
+            "status": "Savage"
+        },
+        {
+            "tick": 106,
+            "x": -4.715618,
+            "y": -9.937955,
+            "z": 4.816129,
+            "label": "Node_106",
+            "status": "Savage"
+        },
+        {
+            "tick": 107,
+            "x": -4.703599,
+            "y": -11.039753,
+            "z": 0.677422,
+            "label": "Node_107",
+            "status": "Savage"
+        },
+        {
+            "tick": 108,
+            "x": -4.609864,
+            "y": -12.155211,
+            "z": -3.809284,
+            "label": "Node_108",
+            "status": "Savage"
+        },
+        {
+            "tick": 109,
+            "x": -4.433352,
+            "y": -13.27951,
+            "z": -6.339121,
+            "label": "Node_109",
+            "status": "Savage"
+        },
+        {
+            "tick": 110,
+            "x": -4.173262,
+            "y": -14.407772,
+            "z": -5.612486,
+            "label": "Node_110",
+            "status": "Savage"
+        },
+        {
+            "tick": 111,
+            "x": -3.829051,
+            "y": -15.535069,
+            "z": -2.002659,
+            "label": "Node_111",
+            "status": "Savage"
+        },
+        {
+            "tick": 112,
+            "x": -3.400437,
+            "y": -16.656441,
+            "z": 2.635955,
+            "label": "Node_112",
+            "status": "Savage"
+        },
+        {
+            "tick": 113,
+            "x": -2.887403,
+            "y": -17.766905,
+            "z": 5.920451,
+            "label": "Node_113",
+            "status": "Savage"
+        },
+        {
+            "tick": 114,
+            "x": -2.290197,
+            "y": -18.861469,
+            "z": 6.163551,
+            "label": "Node_114",
+            "status": "Savage"
+        },
+        {
+            "tick": 115,
+            "x": -1.609331,
+            "y": -19.935146,
+            "z": 3.24037,
+            "label": "Node_115",
+            "status": "Savage"
+        },
+        {
+            "tick": 116,
+            "x": -0.845585,
+            "y": -20.982969,
+            "z": -1.347422,
+            "label": "Node_116",
+            "status": "Savage"
+        },
+        {
+            "tick": 117,
+            "x": -0.0,
+            "y": -22.0,
+            "z": -5.243029,
+            "label": "Node_117",
+            "status": "Vitrified"
+        },
+        {
+            "tick": 118,
+            "x": 0.926117,
+            "y": -22.981347,
+            "z": -6.445239,
+            "label": "Node_118",
+            "status": "Savage"
+        },
+        {
+            "tick": 119,
+            "x": 1.931198,
+            "y": -23.922175,
+            "z": -4.336462,
+            "label": "Node_119",
+            "status": "Savage"
+        },
+        {
+            "tick": 120,
+            "x": 0.120537,
+            "y": -0.992709,
+            "z": -0.0,
+            "label": "Node_120",
+            "status": "Savage"
+        },
+        {
+            "tick": 121,
+            "x": 0.320823,
+            "y": -1.974101,
+            "z": 4.336462,
+            "label": "Node_121",
+            "status": "Savage"
+        },
+        {
+            "tick": 122,
+            "x": 0.600077,
+            "y": -2.939372,
+            "z": 6.445239,
+            "label": "Node_122",
+            "status": "Savage"
+        },
+        {
+            "tick": 123,
+            "x": 0.957263,
+            "y": -3.883767,
+            "z": 5.243029,
+            "label": "Node_123",
+            "status": "Savage"
+        },
+        {
+            "tick": 124,
+            "x": 1.391087,
+            "y": -4.802591,
+            "z": 1.347422,
+            "label": "Node_124",
+            "status": "Savage"
+        },
+        {
+            "tick": 125,
+            "x": 1.900008,
+            "y": -5.691219,
+            "z": -3.24037,
+            "label": "Node_125",
+            "status": "Savage"
+        },
+        {
+            "tick": 126,
+            "x": 2.482234,
+            "y": -6.545114,
+            "z": -6.163551,
+            "label": "Node_126",
+            "status": "Savage"
+        },
+        {
+            "tick": 127,
+            "x": 3.135733,
+            "y": -7.359836,
+            "z": -5.920451,
+            "label": "Node_127",
+            "status": "Savage"
+        },
+        {
+            "tick": 128,
+            "x": 3.858233,
+            "y": -8.131054,
+            "z": -2.635955,
+            "label": "Node_128",
+            "status": "Savage"
+        },
+        {
+            "tick": 129,
+            "x": 4.647232,
+            "y": -8.85456,
+            "z": 2.002659,
+            "label": "Node_129",
+            "status": "Savage"
+        },
+        {
+            "tick": 130,
+            "x": 5.5,
+            "y": -9.526279,
+            "z": 5.612486,
+            "label": "Node_130",
+            "status": "Vitrified"
+        },
+        {
+            "tick": 131,
+            "x": 6.41359,
+            "y": -10.142281,
+            "z": 6.339121,
+            "label": "Node_131",
+            "status": "Savage"
+        },
+        {
+            "tick": 132,
+            "x": 7.384842,
+            "y": -10.69879,
+            "z": 3.809284,
+            "label": "Node_132",
+            "status": "Savage"
+        },
+        {
+            "tick": 133,
+            "x": 8.410392,
+            "y": -11.192199,
+            "z": -0.677422,
+            "label": "Node_133",
+            "status": "Savage"
+        },
+        {
+            "tick": 134,
+            "x": 9.486681,
+            "y": -11.619074,
+            "z": -4.816129,
+            "label": "Node_134",
+            "status": "Savage"
+        },
+        {
+            "tick": 135,
+            "x": 10.609963,
+            "y": -11.976172,
+            "z": -6.480741,
+            "label": "Node_135",
+            "status": "Savage"
+        },
+        {
+            "tick": 136,
+            "x": 11.776314,
+            "y": -12.260442,
+            "z": -4.816129,
+            "label": "Node_136",
+            "status": "Savage"
+        },
+        {
+            "tick": 137,
+            "x": 12.981644,
+            "y": -12.469038,
+            "z": -0.677422,
+            "label": "Node_137",
+            "status": "Savage"
+        },
+        {
+            "tick": 138,
+            "x": 14.221704,
+            "y": -12.599331,
+            "z": 3.809284,
+            "label": "Node_138",
+            "status": "Savage"
+        },
+        {
+            "tick": 139,
+            "x": 15.492099,
+            "y": -12.648908,
+            "z": 6.339121,
+            "label": "Node_139",
+            "status": "Savage"
+        },
+        {
+            "tick": 140,
+            "x": 16.788298,
+            "y": -12.615588,
+            "z": 5.612486,
+            "label": "Node_140",
+            "status": "Savage"
+        },
+        {
+            "tick": 141,
+            "x": 18.105645,
+            "y": -12.497424,
+            "z": 2.002659,
+            "label": "Node_141",
+            "status": "Savage"
+        },
+        {
+            "tick": 142,
+            "x": 19.439372,
+            "y": -12.292714,
+            "z": -2.635955,
+            "label": "Node_142",
+            "status": "Savage"
+        },
+        {
+            "tick": 143,
+            "x": 20.78461,
+            "y": -12.0,
+            "z": -5.920451,
+            "label": "Node_143",
+            "status": "Vitrified"
+        },
+        {
+            "tick": 144,
+            "x": 0.885456,
+            "y": -0.464723,
+            "z": -6.163551,
+            "label": "Node_144",
+            "status": "Savage"
+        },
+        {
+            "tick": 145,
+            "x": 1.806901,
+            "y": -0.857385,
+            "z": -3.24037,
+            "label": "Node_145",
+            "status": "Savage"
+        },
+        {
+            "tick": 146,
+            "x": 2.759938,
+            "y": -1.1759,
+            "z": 1.347422,
+            "label": "Node_146",
+            "status": "Savage"
+        },
+        {
+            "tick": 147,
+            "x": 3.740065,
+            "y": -1.41842,
+            "z": 5.243029,
+            "label": "Node_147",
+            "status": "Savage"
+        },
+        {
+            "tick": 148,
+            "x": 4.742682,
+            "y": -1.58334,
+            "z": 6.445239,
+            "label": "Node_148",
+            "status": "Savage"
+        },
+        {
+            "tick": 149,
+            "x": 5.763109,
+            "y": -1.669305,
+            "z": 4.336462,
+            "label": "Node_149",
+            "status": "Savage"
+        },
+        {
+            "tick": 150,
+            "x": 6.796593,
+            "y": -1.67521,
+            "z": -0.0,
+            "label": "Node_150",
+            "status": "Savage"
+        },
+        {
+            "tick": 151,
+            "x": 7.838325,
+            "y": -1.600206,
+            "z": -4.336462,
+            "label": "Node_151",
+            "status": "Savage"
+        },
+        {
+            "tick": 152,
+            "x": 8.883452,
+            "y": -1.443702,
+            "z": -6.445239,
+            "label": "Node_152",
+            "status": "Savage"
+        },
+        {
+            "tick": 153,
+            "x": 9.927089,
+            "y": -1.205367,
+            "z": -5.243029,
+            "label": "Node_153",
+            "status": "Savage"
+        },
+        {
+            "tick": 154,
+            "x": 10.96433,
+            "y": -0.885132,
+            "z": -1.347422,
+            "label": "Node_154",
+            "status": "Savage"
+        },
+        {
+            "tick": 155,
+            "x": 11.990268,
+            "y": -0.483191,
+            "z": 3.24037,
+            "label": "Node_155",
+            "status": "Savage"
+        }
+    ]
+}
