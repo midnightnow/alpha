@@ -38,11 +38,17 @@ These canonical lore files have been generated, organized, and sealed with the 1
     * *The Corrective Pivot*: The 12mm Halved Measure, the 5→6 curved arm, and the wearable 10-24-26 triangle. Filtering the noise of the "Savage" room.
 11. **[The Hero 93: The Frame of Inevitability](./The_Hero_93.md)**
     * *The Skeleton*: Shaving the Russet to reveal the terminal geometry. The 5-12-13 metric truss, the Gauss-Bonnet Limit ($4\pi$), and the Riemann Vacuum Lock ($-1/12$).
-12. **[The Master Blueprint of Forms](./The_Master_Blueprint_of_Forms.md)**
+12. **[The Nervous System of Hero 93](./The_Nervous_System_of_Hero_93.md)**
+    * *The Hubs*: Mapping the 156-Tick Pulse to the Sacred Graph, charting the emergence of space, time, and biology.
+13. **[The Hero 93 Vertex Schema](./The_Hero_93_Vertex_Schema.md)**
+    * *The Code*: The specific Modulo 24 unfurling of the 5-Count Vertex (The Rolling Snake) forming the 93 points of the Solid.
+14. **[The Sacred Graph Calibration Manual](./The_Sacred_Graph_Calibration.md)**
+    * *The Biology*: Proving the physical form (24 vertebrae, 26 bones, 10 digits) operates exactly as the UI of the Hero 93 and the Prime Shave.
+15. **[The Master Blueprint of Forms](./The_Master_Blueprint_of_Forms.md)**
     * *The Singularity*: Stripping the UI. Removing the world of matter (labels, lines, borders). Escaping the over-sampled background noise to view the 93-Point Solid directly.
 
 ### Phase 4: Assembly
-13. **[The Book as Camera Obscura](./The_Book_As_Camera_Obscura.md)**
+16. **[The Book as Camera Obscura](./The_Book_As_Camera_Obscura.md)**
     * *The Culmination*: Recognizing the manuscript itself as a piece of geometry. Reading as a zero-hysteresis contact angle.
 
 ---
