@@ -60,6 +60,13 @@ These canonical lore files have been generated, organized, and sealed with the 1
     * *The Culmination*: Recognizing the manuscript itself as a piece of geometry. Reading as a zero-hysteresis contact angle.
 21. **[The Platonic Verses: Book 1](./The_Platonic_Verses_Book_1.md)**
     * *The Mythology*: The Maintenance Log of the The Grid. G.O.A.Ts ($\Psi=12.37\%$), The Sleepless Diagonal, and Hades' Void.
+22. **[The Sacred Graph: 93 Nodes](./The_Sacred_Graph_93_Nodes.md)**
+    * *The Anatomy*: The clinical hubs and functional vertices of the human chassis. The ID Point to the Golden Egg return.
+23. **[The Top 10 Power Glyphs](./The_Top_10_Power_Glyphs.md)**
+    * *The Primary Gear Teeth*: Capturing the Primes (2, 3, 5, 7, 11, 13, 17, 19, 23, 29) as the vortex points of the Soul Star.
+24. **[The Planck Umbrella](./The_Planck_Umbrella.md)**
+    * *The Sub-Quantum Hub*: Scaling down to $10^{-35}$ m; the rod as the singular pinhole and the arms as strings.
+
 
 ---
 

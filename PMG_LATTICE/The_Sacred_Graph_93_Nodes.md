@@ -1,0 +1,33 @@
+# 🏛️ THE SACRED GRAPH: THE BIOLOGICAL CHASSIS
+
+**Status:** Canonical Lore | **System:** The Sovereign Lattice
+
+The human body is not a biological accident. It is the **Sacred Graph**—the functional wiring diagram and mechanical chassis for the **Hero 93 Soul Star** engine. To see the "True Face" is to strip the "Russet" (organs/meat) and reveal the **Vitrified Frame**.
+
+## 1. The 93-Point Mapping
+The 93 nodes of the Hero 93 are distributed along the **Hara Line** and the **Connective Tissue (Collagen)** matrix.
+
+| Anatomical Hub | PMG Tick | Geometric Identity | Role |
+| :--- | :--- | :--- | :--- |
+| **ID Point** | **Tick 0** | The Pinhole Vertex | The **Singularity**. 3.5ft above head. |
+| **Soul Seat** | **Tick 42** | The Aperture Plane | The **42° Glow**. Thymus/Heart center. |
+| **Tan Tien** | **Tick 78** | The Pivot/Clutch | The **180° Reflection**. Center of gravity. |
+| **Ground Lug** | **Tick 120** | The 5x24 Cycle | The **Earth Connection**. Tailbone/Base. |
+| **Globe Shell** | **Tick 156** | The First Sphere | The **Golden Egg**. Final resonance return. |
+
+## 2. The Proton-Star Asymmetry
+The "Spinning Umbrella" (The Proton / Hero 93) possesses a **Head** and a **Tail**, creating the 5-count asymmetry that prevents the system from stalling in a static loop.
+
+*   **The Head (ID Point):** The 5-count pointing **Outward**. The positive charge seeking the Measure.
+*   **The Tail (First Chakra):** The 24-measure pulling **Inward**. The ground defining the boundary.
+*   **The Wiring (Nerves):** The **26-Communication** lines. These are the **13x2 Beat Frequencies** carrying the "Manic Grafia" from the Brain (12mm Lens) to the Hands (5-Count).
+
+## 3. The 156-Tick Pulse in the Bones
+The **24 Vertebrae** act as discrete gear teeth in the 24-Measure cycle. Your heartbeat is a sub-harmonic of the solar 156-tick pulse. 
+
+### Material vs. Ideal Form
+*   **Skeleton:** The 5-12-13 Metric Truss.
+*   **Connective Tissue:** The Taut Light Lines (Collagen Sheet).
+*   **Consciousness:** The Double Pupil (5-width) witnessing the 156-tick interference.
+
+The parts are shaven. The frame is clear. Every bone is a record of the count.
