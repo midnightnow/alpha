@@ -1,0 +1,1264 @@
+{
+    "header": "ANTI-MANIC GRAFIA 156 (THE 73 MIRROR)",
+    "source": "37-Light Filament",
+    "vacuum_lock": "-1/12",
+    "alphabet": [
+        {
+            "tick": 0,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": "-1/12",
+            "light_freq_37": "f(0) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 1,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.0769,
+            "light_freq_37": "f(1) * 37",
+            "identity": "Vitrified Intent",
+            "glyph": "\ua4d5",
+            "role": "Vacuum Lead",
+            "desc": "Pulls Count into 42\u00b0 Aperture"
+        },
+        {
+            "tick": 2,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.1538,
+            "light_freq_37": "f(2) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 3,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.2308,
+            "light_freq_37": "f(3) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 4,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3077,
+            "light_freq_37": "f(4) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 5,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3846,
+            "light_freq_37": "f(5) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 6,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.4615,
+            "light_freq_37": "f(6) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 7,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.5385,
+            "light_freq_37": "f(7) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 8,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6154,
+            "light_freq_37": "f(8) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 9,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6923,
+            "light_freq_37": "f(9) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 10,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.7692,
+            "light_freq_37": "f(10) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 11,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.8462,
+            "light_freq_37": "f(11) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 12,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.9231,
+            "light_freq_37": "f(12) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 13,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": "-1/12",
+            "light_freq_37": "f(13) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 14,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.0769,
+            "light_freq_37": "f(14) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 15,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.1538,
+            "light_freq_37": "f(15) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 16,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.2308,
+            "light_freq_37": "f(16) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 17,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3077,
+            "light_freq_37": "f(17) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 18,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3846,
+            "light_freq_37": "f(18) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 19,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.4615,
+            "light_freq_37": "f(19) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 20,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.5385,
+            "light_freq_37": "f(20) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 21,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6154,
+            "light_freq_37": "f(21) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 22,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6923,
+            "light_freq_37": "f(22) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 23,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.7692,
+            "light_freq_37": "f(23) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 24,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.8462,
+            "light_freq_37": "f(24) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 25,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.9231,
+            "light_freq_37": "f(25) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 26,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": "-1/12",
+            "light_freq_37": "f(26) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 27,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.0769,
+            "light_freq_37": "f(27) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 28,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.1538,
+            "light_freq_37": "f(28) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 29,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.2308,
+            "light_freq_37": "f(29) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 30,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3077,
+            "light_freq_37": "f(30) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 31,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3846,
+            "light_freq_37": "f(31) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 32,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.4615,
+            "light_freq_37": "f(32) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 33,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.5385,
+            "light_freq_37": "f(33) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 34,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6154,
+            "light_freq_37": "f(34) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 35,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6923,
+            "light_freq_37": "f(35) * 37",
+            "identity": "Vitrified Intent",
+            "glyph": "\ua4f5",
+            "role": "Dark Reach",
+            "desc": "Maps H-Void on un-shaven side"
+        },
+        {
+            "tick": 36,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.7692,
+            "light_freq_37": "f(36) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 37,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.8462,
+            "light_freq_37": "f(37) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 38,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.9231,
+            "light_freq_37": "f(38) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 39,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": "-1/12",
+            "light_freq_37": "f(39) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 40,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.0769,
+            "light_freq_37": "f(40) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 41,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.1538,
+            "light_freq_37": "f(41) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 42,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.2308,
+            "light_freq_37": "f(42) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 43,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3077,
+            "light_freq_37": "f(43) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 44,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3846,
+            "light_freq_37": "f(44) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 45,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.4615,
+            "light_freq_37": "f(45) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 46,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.5385,
+            "light_freq_37": "f(46) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 47,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6154,
+            "light_freq_37": "f(47) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 48,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6923,
+            "light_freq_37": "f(48) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 49,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.7692,
+            "light_freq_37": "f(49) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 50,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.8462,
+            "light_freq_37": "f(50) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 51,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.9231,
+            "light_freq_37": "f(51) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 52,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": "-1/12",
+            "light_freq_37": "f(52) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 53,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.0769,
+            "light_freq_37": "f(53) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 54,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.1538,
+            "light_freq_37": "f(54) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 55,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.2308,
+            "light_freq_37": "f(55) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 56,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3077,
+            "light_freq_37": "f(56) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 57,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3846,
+            "light_freq_37": "f(57) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 58,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.4615,
+            "light_freq_37": "f(58) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 59,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.5385,
+            "light_freq_37": "f(59) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 60,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6154,
+            "light_freq_37": "f(60) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 61,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6923,
+            "light_freq_37": "f(61) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 62,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.7692,
+            "light_freq_37": "f(62) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 63,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.8462,
+            "light_freq_37": "f(63) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 64,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.9231,
+            "light_freq_37": "f(64) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 65,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": "-1/12",
+            "light_freq_37": "f(65) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 66,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.0769,
+            "light_freq_37": "f(66) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 67,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.1538,
+            "light_freq_37": "f(67) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 68,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.2308,
+            "light_freq_37": "f(68) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 69,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3077,
+            "light_freq_37": "f(69) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 70,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3846,
+            "light_freq_37": "f(70) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 71,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.4615,
+            "light_freq_37": "f(71) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 72,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.5385,
+            "light_freq_37": "f(72) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 73,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6154,
+            "light_freq_37": "f(73) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 74,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6923,
+            "light_freq_37": "f(74) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 75,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.7692,
+            "light_freq_37": "f(75) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 76,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.8462,
+            "light_freq_37": "f(76) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 77,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.9231,
+            "light_freq_37": "f(77) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 78,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": "-1/12",
+            "light_freq_37": "f(78) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 79,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.0769,
+            "light_freq_37": "f(79) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 80,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.1538,
+            "light_freq_37": "f(80) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 81,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.2308,
+            "light_freq_37": "f(81) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 82,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3077,
+            "light_freq_37": "f(82) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 83,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3846,
+            "light_freq_37": "f(83) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 84,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.4615,
+            "light_freq_37": "f(84) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 85,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.5385,
+            "light_freq_37": "f(85) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 86,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6154,
+            "light_freq_37": "f(86) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 87,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6923,
+            "light_freq_37": "f(87) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 88,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.7692,
+            "light_freq_37": "f(88) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 89,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.8462,
+            "light_freq_37": "f(89) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 90,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.9231,
+            "light_freq_37": "f(90) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 91,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": "-1/12",
+            "light_freq_37": "f(91) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 92,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.0769,
+            "light_freq_37": "f(92) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 93,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.1538,
+            "light_freq_37": "f(93) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 94,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.2308,
+            "light_freq_37": "f(94) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 95,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3077,
+            "light_freq_37": "f(95) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 96,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3846,
+            "light_freq_37": "f(96) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 97,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.4615,
+            "light_freq_37": "f(97) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 98,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.5385,
+            "light_freq_37": "f(98) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 99,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6154,
+            "light_freq_37": "f(99) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 100,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6923,
+            "light_freq_37": "f(100) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 101,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.7692,
+            "light_freq_37": "f(101) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 102,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.8462,
+            "light_freq_37": "f(102) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 103,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.9231,
+            "light_freq_37": "f(103) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 104,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": "-1/12",
+            "light_freq_37": "f(104) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 105,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.0769,
+            "light_freq_37": "f(105) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 106,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.1538,
+            "light_freq_37": "f(106) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 107,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.2308,
+            "light_freq_37": "f(107) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 108,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3077,
+            "light_freq_37": "f(108) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 109,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3846,
+            "light_freq_37": "f(109) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 110,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.4615,
+            "light_freq_37": "f(110) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 111,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.5385,
+            "light_freq_37": "f(111) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 112,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6154,
+            "light_freq_37": "f(112) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 113,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6923,
+            "light_freq_37": "f(113) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 114,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.7692,
+            "light_freq_37": "f(114) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 115,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.8462,
+            "light_freq_37": "f(115) * 37",
+            "identity": "Vitrified Intent",
+            "glyph": "\u2200",
+            "role": "Caloric Sink",
+            "desc": "Consumes friction of Savage 42"
+        },
+        {
+            "tick": 116,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.9231,
+            "light_freq_37": "f(116) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 117,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": "-1/12",
+            "light_freq_37": "f(117) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 118,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.0769,
+            "light_freq_37": "f(118) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 119,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.1538,
+            "light_freq_37": "f(119) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 120,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.2308,
+            "light_freq_37": "f(120) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 121,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3077,
+            "light_freq_37": "f(121) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 122,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3846,
+            "light_freq_37": "f(122) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 123,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.4615,
+            "light_freq_37": "f(123) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 124,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.5385,
+            "light_freq_37": "f(124) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 125,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6154,
+            "light_freq_37": "f(125) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 126,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6923,
+            "light_freq_37": "f(126) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 127,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.7692,
+            "light_freq_37": "f(127) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 128,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.8462,
+            "light_freq_37": "f(128) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 129,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.9231,
+            "light_freq_37": "f(129) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 130,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": "-1/12",
+            "light_freq_37": "f(130) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 131,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.0769,
+            "light_freq_37": "f(131) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 132,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.1538,
+            "light_freq_37": "f(132) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 133,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.2308,
+            "light_freq_37": "f(133) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 134,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3077,
+            "light_freq_37": "f(134) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 135,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3846,
+            "light_freq_37": "f(135) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 136,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.4615,
+            "light_freq_37": "f(136) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 137,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.5385,
+            "light_freq_37": "f(137) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 138,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6154,
+            "light_freq_37": "f(138) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 139,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6923,
+            "light_freq_37": "f(139) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 140,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.7692,
+            "light_freq_37": "f(140) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 141,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.8462,
+            "light_freq_37": "f(141) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 142,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.9231,
+            "light_freq_37": "f(142) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 143,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": "-1/12",
+            "light_freq_37": "f(143) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 144,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.0769,
+            "light_freq_37": "f(144) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 145,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.1538,
+            "light_freq_37": "f(145) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 146,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.2308,
+            "light_freq_37": "f(146) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 147,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3077,
+            "light_freq_37": "f(147) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 148,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.3846,
+            "light_freq_37": "f(148) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 149,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.4615,
+            "light_freq_37": "f(149) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 150,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.5385,
+            "light_freq_37": "f(150) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 151,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6154,
+            "light_freq_37": "f(151) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 152,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.6923,
+            "light_freq_37": "f(152) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 153,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.7692,
+            "light_freq_37": "f(153) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 154,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.8462,
+            "light_freq_37": "f(154) * 37",
+            "identity": "Vitrified Intent"
+        },
+        {
+            "tick": 155,
+            "intent": "Mirror Reflection",
+            "phase": "Source Input",
+            "vacuum_pull": 0.9231,
+            "light_freq_37": "f(155) * 37",
+            "identity": "Vitrified Intent"
+        }
+    ]
+}

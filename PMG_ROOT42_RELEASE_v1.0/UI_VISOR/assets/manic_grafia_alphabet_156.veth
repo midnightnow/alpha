@@ -1,0 +1,1255 @@
+{
+    "header": "HERO 93 SOUL STAR ALPHABET",
+    "units": "PMG-156",
+    "vacuum_lock": "-1/12",
+    "alphabet": [
+        {
+            "tick": 0,
+            "em_freq_hz": 0,
+            "gr_curvature_l": 0.0,
+            "qm_fold": "\u221a(0)/32",
+            "thermal_hex": "#FFFFFF",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 1,
+            "em_freq_hz": 0.0769,
+            "gr_curvature_l": 0.0064,
+            "qm_fold": "\u221a(1)/32",
+            "thermal_hex": "#FF0100",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 2,
+            "em_freq_hz": 0.1538,
+            "gr_curvature_l": 0.0128,
+            "qm_fold": "\u221a(2)/32",
+            "thermal_hex": "#FF0200",
+            "identity": "Power Glyph (Prime)"
+        },
+        {
+            "tick": 3,
+            "em_freq_hz": 0.2308,
+            "gr_curvature_l": 0.0192,
+            "qm_fold": "\u221a(3)/32",
+            "thermal_hex": "#FF0300",
+            "identity": "Power Glyph (Prime)"
+        },
+        {
+            "tick": 4,
+            "em_freq_hz": 0.3077,
+            "gr_curvature_l": 0.0256,
+            "qm_fold": "\u221a(4)/32",
+            "thermal_hex": "#FF0500",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 5,
+            "em_freq_hz": 0.3846,
+            "gr_curvature_l": 0.032,
+            "qm_fold": "\u221a(5)/32",
+            "thermal_hex": "#FF0600",
+            "identity": "Power Glyph (Prime)"
+        },
+        {
+            "tick": 6,
+            "em_freq_hz": 0.4615,
+            "gr_curvature_l": 0.0384,
+            "qm_fold": "\u221a(6)/32",
+            "thermal_hex": "#FF0700",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 7,
+            "em_freq_hz": 0.5385,
+            "gr_curvature_l": 0.0448,
+            "qm_fold": "\u221a(7)/32",
+            "thermal_hex": "#FF0900",
+            "identity": "Power Glyph (Prime)"
+        },
+        {
+            "tick": 8,
+            "em_freq_hz": 0.6154,
+            "gr_curvature_l": 0.0512,
+            "qm_fold": "\u221a(8)/32",
+            "thermal_hex": "#FF0A00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 9,
+            "em_freq_hz": 0.6923,
+            "gr_curvature_l": 0.0576,
+            "qm_fold": "\u221a(9)/32",
+            "thermal_hex": "#FF0B00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 10,
+            "em_freq_hz": 0.7692,
+            "gr_curvature_l": 0.064,
+            "qm_fold": "\u221a(10)/32",
+            "thermal_hex": "#FF0D00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 11,
+            "em_freq_hz": 0.8462,
+            "gr_curvature_l": 0.0704,
+            "qm_fold": "\u221a(11)/32",
+            "thermal_hex": "#FF0E00",
+            "identity": "Power Glyph (Prime)"
+        },
+        {
+            "tick": 12,
+            "em_freq_hz": 0.9231,
+            "gr_curvature_l": 0.0768,
+            "qm_fold": "\u221a(12)/32",
+            "thermal_hex": "#FF0F00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 13,
+            "em_freq_hz": 0,
+            "gr_curvature_l": 0.0832,
+            "qm_fold": "\u221a(13)/32",
+            "thermal_hex": "#FFFFFF",
+            "identity": "Power Glyph (Prime)"
+        },
+        {
+            "tick": 14,
+            "em_freq_hz": 0.0769,
+            "gr_curvature_l": 0.0896,
+            "qm_fold": "\u221a(14)/32",
+            "thermal_hex": "#FF1200",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 15,
+            "em_freq_hz": 0.1538,
+            "gr_curvature_l": 0.096,
+            "qm_fold": "\u221a(15)/32",
+            "thermal_hex": "#FF1300",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 16,
+            "em_freq_hz": 0.2308,
+            "gr_curvature_l": 0.1024,
+            "qm_fold": "\u221a(16)/32",
+            "thermal_hex": "#FF1400",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 17,
+            "em_freq_hz": 0.3077,
+            "gr_curvature_l": 0.1088,
+            "qm_fold": "\u221a(17)/32",
+            "thermal_hex": "#FF1600",
+            "identity": "Power Glyph (Prime)"
+        },
+        {
+            "tick": 18,
+            "em_freq_hz": 0.3846,
+            "gr_curvature_l": 0.1152,
+            "qm_fold": "\u221a(18)/32",
+            "thermal_hex": "#FF1700",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 19,
+            "em_freq_hz": 0.4615,
+            "gr_curvature_l": 0.1216,
+            "qm_fold": "\u221a(19)/32",
+            "thermal_hex": "#FF1800",
+            "identity": "Power Glyph (Prime)"
+        },
+        {
+            "tick": 20,
+            "em_freq_hz": 0.5385,
+            "gr_curvature_l": 0.128,
+            "qm_fold": "\u221a(20)/32",
+            "thermal_hex": "#FF1A00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 21,
+            "em_freq_hz": 0.6154,
+            "gr_curvature_l": 0.1344,
+            "qm_fold": "\u221a(21)/32",
+            "thermal_hex": "#FF1B00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 22,
+            "em_freq_hz": 0.6923,
+            "gr_curvature_l": 0.1408,
+            "qm_fold": "\u221a(22)/32",
+            "thermal_hex": "#FF1C00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 23,
+            "em_freq_hz": 0.7692,
+            "gr_curvature_l": 0.1472,
+            "qm_fold": "\u221a(23)/32",
+            "thermal_hex": "#FF1E00",
+            "identity": "Power Glyph (Prime)"
+        },
+        {
+            "tick": 24,
+            "em_freq_hz": 0.8462,
+            "gr_curvature_l": 0.1536,
+            "qm_fold": "\u221a(24)/32",
+            "thermal_hex": "#FF1F00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 25,
+            "em_freq_hz": 0.9231,
+            "gr_curvature_l": 0.16,
+            "qm_fold": "\u221a(25)/32",
+            "thermal_hex": "#FF2000",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 26,
+            "em_freq_hz": 0,
+            "gr_curvature_l": 0.1664,
+            "qm_fold": "\u221a(26)/32",
+            "thermal_hex": "#FFFFFF",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 27,
+            "em_freq_hz": 0.0769,
+            "gr_curvature_l": 0.1728,
+            "qm_fold": "\u221a(27)/32",
+            "thermal_hex": "#FF2300",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 28,
+            "em_freq_hz": 0.1538,
+            "gr_curvature_l": 0.1792,
+            "qm_fold": "\u221a(28)/32",
+            "thermal_hex": "#FF2400",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 29,
+            "em_freq_hz": 0.2308,
+            "gr_curvature_l": 0.1856,
+            "qm_fold": "\u221a(29)/32",
+            "thermal_hex": "#FF2500",
+            "identity": "Power Glyph (Prime)"
+        },
+        {
+            "tick": 30,
+            "em_freq_hz": 0.3077,
+            "gr_curvature_l": 0.192,
+            "qm_fold": "\u221a(30)/32",
+            "thermal_hex": "#FF2700",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 31,
+            "em_freq_hz": 0.3846,
+            "gr_curvature_l": 0.1984,
+            "qm_fold": "\u221a(31)/32",
+            "thermal_hex": "#FF2800",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 32,
+            "em_freq_hz": 0.4615,
+            "gr_curvature_l": 0.2048,
+            "qm_fold": "\u221a(32)/32",
+            "thermal_hex": "#FF2900",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 33,
+            "em_freq_hz": 0.5385,
+            "gr_curvature_l": 0.2112,
+            "qm_fold": "\u221a(33)/32",
+            "thermal_hex": "#FF2B00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 34,
+            "em_freq_hz": 0.6154,
+            "gr_curvature_l": 0.2176,
+            "qm_fold": "\u221a(34)/32",
+            "thermal_hex": "#FF2C00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 35,
+            "em_freq_hz": 0.6923,
+            "gr_curvature_l": 0.224,
+            "qm_fold": "\u221a(35)/32",
+            "thermal_hex": "#FF2D00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 36,
+            "em_freq_hz": 0.7692,
+            "gr_curvature_l": 0.2304,
+            "qm_fold": "\u221a(36)/32",
+            "thermal_hex": "#FF2F00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 37,
+            "em_freq_hz": 0.8462,
+            "gr_curvature_l": 0.2368,
+            "qm_fold": "\u221a(37)/32",
+            "thermal_hex": "#FF3000",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 38,
+            "em_freq_hz": 0.9231,
+            "gr_curvature_l": 0.2432,
+            "qm_fold": "\u221a(38)/32",
+            "thermal_hex": "#FF3100",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 39,
+            "em_freq_hz": 0,
+            "gr_curvature_l": 0.2496,
+            "qm_fold": "\u221a(39)/32",
+            "thermal_hex": "#FFFFFF",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 40,
+            "em_freq_hz": 0.0769,
+            "gr_curvature_l": 0.256,
+            "qm_fold": "\u221a(40)/32",
+            "thermal_hex": "#FF3400",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 41,
+            "em_freq_hz": 0.1538,
+            "gr_curvature_l": 0.2624,
+            "qm_fold": "\u221a(41)/32",
+            "thermal_hex": "#FF3500",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 42,
+            "em_freq_hz": 0.2308,
+            "gr_curvature_l": 0.2688,
+            "qm_fold": "\u221a(42)/32",
+            "thermal_hex": "#FF3600",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 43,
+            "em_freq_hz": 0.3077,
+            "gr_curvature_l": 0.2752,
+            "qm_fold": "\u221a(43)/32",
+            "thermal_hex": "#FF3800",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 44,
+            "em_freq_hz": 0.3846,
+            "gr_curvature_l": 0.2816,
+            "qm_fold": "\u221a(44)/32",
+            "thermal_hex": "#FF3900",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 45,
+            "em_freq_hz": 0.4615,
+            "gr_curvature_l": 0.288,
+            "qm_fold": "\u221a(45)/32",
+            "thermal_hex": "#FF3A00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 46,
+            "em_freq_hz": 0.5385,
+            "gr_curvature_l": 0.2944,
+            "qm_fold": "\u221a(46)/32",
+            "thermal_hex": "#FF3C00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 47,
+            "em_freq_hz": 0.6154,
+            "gr_curvature_l": 0.3008,
+            "qm_fold": "\u221a(47)/32",
+            "thermal_hex": "#FF3D00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 48,
+            "em_freq_hz": 0.6923,
+            "gr_curvature_l": 0.3072,
+            "qm_fold": "\u221a(48)/32",
+            "thermal_hex": "#FF3E00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 49,
+            "em_freq_hz": 0.7692,
+            "gr_curvature_l": 0.3136,
+            "qm_fold": "\u221a(49)/32",
+            "thermal_hex": "#FF4000",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 50,
+            "em_freq_hz": 0.8462,
+            "gr_curvature_l": 0.32,
+            "qm_fold": "\u221a(50)/32",
+            "thermal_hex": "#FF4100",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 51,
+            "em_freq_hz": 0.9231,
+            "gr_curvature_l": 0.3264,
+            "qm_fold": "\u221a(51)/32",
+            "thermal_hex": "#FF4200",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 52,
+            "em_freq_hz": 0,
+            "gr_curvature_l": 0.3328,
+            "qm_fold": "\u221a(52)/32",
+            "thermal_hex": "#FFFFFF",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 53,
+            "em_freq_hz": 0.0769,
+            "gr_curvature_l": 0.3392,
+            "qm_fold": "\u221a(53)/32",
+            "thermal_hex": "#FF4500",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 54,
+            "em_freq_hz": 0.1538,
+            "gr_curvature_l": 0.3456,
+            "qm_fold": "\u221a(54)/32",
+            "thermal_hex": "#FF4600",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 55,
+            "em_freq_hz": 0.2308,
+            "gr_curvature_l": 0.352,
+            "qm_fold": "\u221a(55)/32",
+            "thermal_hex": "#FF4700",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 56,
+            "em_freq_hz": 0.3077,
+            "gr_curvature_l": 0.3584,
+            "qm_fold": "\u221a(56)/32",
+            "thermal_hex": "#FF4900",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 57,
+            "em_freq_hz": 0.3846,
+            "gr_curvature_l": 0.3648,
+            "qm_fold": "\u221a(57)/32",
+            "thermal_hex": "#FF4A00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 58,
+            "em_freq_hz": 0.4615,
+            "gr_curvature_l": 0.3712,
+            "qm_fold": "\u221a(58)/32",
+            "thermal_hex": "#FF4B00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 59,
+            "em_freq_hz": 0.5385,
+            "gr_curvature_l": 0.3776,
+            "qm_fold": "\u221a(59)/32",
+            "thermal_hex": "#FF4D00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 60,
+            "em_freq_hz": 0.6154,
+            "gr_curvature_l": 0.384,
+            "qm_fold": "\u221a(60)/32",
+            "thermal_hex": "#FF4E00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 61,
+            "em_freq_hz": 0.6923,
+            "gr_curvature_l": 0.3904,
+            "qm_fold": "\u221a(61)/32",
+            "thermal_hex": "#FF4F00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 62,
+            "em_freq_hz": 0.7692,
+            "gr_curvature_l": 0.3968,
+            "qm_fold": "\u221a(62)/32",
+            "thermal_hex": "#FF5100",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 63,
+            "em_freq_hz": 0.8462,
+            "gr_curvature_l": 0.4032,
+            "qm_fold": "\u221a(63)/32",
+            "thermal_hex": "#FF5200",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 64,
+            "em_freq_hz": 0.9231,
+            "gr_curvature_l": 0.4096,
+            "qm_fold": "\u221a(64)/32",
+            "thermal_hex": "#FF5300",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 65,
+            "em_freq_hz": 0,
+            "gr_curvature_l": 0.416,
+            "qm_fold": "\u221a(65)/32",
+            "thermal_hex": "#FFFFFF",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 66,
+            "em_freq_hz": 0.0769,
+            "gr_curvature_l": 0.4224,
+            "qm_fold": "\u221a(66)/32",
+            "thermal_hex": "#FF5600",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 67,
+            "em_freq_hz": 0.1538,
+            "gr_curvature_l": 0.4288,
+            "qm_fold": "\u221a(67)/32",
+            "thermal_hex": "#FF5700",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 68,
+            "em_freq_hz": 0.2308,
+            "gr_curvature_l": 0.4352,
+            "qm_fold": "\u221a(68)/32",
+            "thermal_hex": "#FF5800",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 69,
+            "em_freq_hz": 0.3077,
+            "gr_curvature_l": 0.4416,
+            "qm_fold": "\u221a(69)/32",
+            "thermal_hex": "#FF5A00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 70,
+            "em_freq_hz": 0.3846,
+            "gr_curvature_l": 0.448,
+            "qm_fold": "\u221a(70)/32",
+            "thermal_hex": "#FF5B00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 71,
+            "em_freq_hz": 0.4615,
+            "gr_curvature_l": 0.4544,
+            "qm_fold": "\u221a(71)/32",
+            "thermal_hex": "#FF5C00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 72,
+            "em_freq_hz": 0.5385,
+            "gr_curvature_l": 0.4608,
+            "qm_fold": "\u221a(72)/32",
+            "thermal_hex": "#FF5E00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 73,
+            "em_freq_hz": 0.6154,
+            "gr_curvature_l": 0.4672,
+            "qm_fold": "\u221a(73)/32",
+            "thermal_hex": "#FF5F00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 74,
+            "em_freq_hz": 0.6923,
+            "gr_curvature_l": 0.4736,
+            "qm_fold": "\u221a(74)/32",
+            "thermal_hex": "#FF6000",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 75,
+            "em_freq_hz": 0.7692,
+            "gr_curvature_l": 0.48,
+            "qm_fold": "\u221a(75)/32",
+            "thermal_hex": "#FF6200",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 76,
+            "em_freq_hz": 0.8462,
+            "gr_curvature_l": 0.4864,
+            "qm_fold": "\u221a(76)/32",
+            "thermal_hex": "#FF6300",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 77,
+            "em_freq_hz": 0.9231,
+            "gr_curvature_l": 0.4928,
+            "qm_fold": "\u221a(77)/32",
+            "thermal_hex": "#FF6400",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 78,
+            "em_freq_hz": 0,
+            "gr_curvature_l": 0.4992,
+            "qm_fold": "\u221a(78)/32",
+            "thermal_hex": "#FFFFFF",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 79,
+            "em_freq_hz": 0.0769,
+            "gr_curvature_l": 0.5056,
+            "qm_fold": "\u221a(79)/32",
+            "thermal_hex": "#FF6700",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 80,
+            "em_freq_hz": 0.1538,
+            "gr_curvature_l": 0.512,
+            "qm_fold": "\u221a(80)/32",
+            "thermal_hex": "#FF6800",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 81,
+            "em_freq_hz": 0.2308,
+            "gr_curvature_l": 0.5184,
+            "qm_fold": "\u221a(81)/32",
+            "thermal_hex": "#FF6900",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 82,
+            "em_freq_hz": 0.3077,
+            "gr_curvature_l": 0.5248,
+            "qm_fold": "\u221a(82)/32",
+            "thermal_hex": "#FF6B00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 83,
+            "em_freq_hz": 0.3846,
+            "gr_curvature_l": 0.5312,
+            "qm_fold": "\u221a(83)/32",
+            "thermal_hex": "#FF6C00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 84,
+            "em_freq_hz": 0.4615,
+            "gr_curvature_l": 0.5376,
+            "qm_fold": "\u221a(84)/32",
+            "thermal_hex": "#FF6D00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 85,
+            "em_freq_hz": 0.5385,
+            "gr_curvature_l": 0.544,
+            "qm_fold": "\u221a(85)/32",
+            "thermal_hex": "#FF6F00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 86,
+            "em_freq_hz": 0.6154,
+            "gr_curvature_l": 0.5504,
+            "qm_fold": "\u221a(86)/32",
+            "thermal_hex": "#FF7000",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 87,
+            "em_freq_hz": 0.6923,
+            "gr_curvature_l": 0.5568,
+            "qm_fold": "\u221a(87)/32",
+            "thermal_hex": "#FF7100",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 88,
+            "em_freq_hz": 0.7692,
+            "gr_curvature_l": 0.5632,
+            "qm_fold": "\u221a(88)/32",
+            "thermal_hex": "#FF7300",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 89,
+            "em_freq_hz": 0.8462,
+            "gr_curvature_l": 0.5696,
+            "qm_fold": "\u221a(89)/32",
+            "thermal_hex": "#FF7400",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 90,
+            "em_freq_hz": 0.9231,
+            "gr_curvature_l": 0.576,
+            "qm_fold": "\u221a(90)/32",
+            "thermal_hex": "#FF7500",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 91,
+            "em_freq_hz": 0,
+            "gr_curvature_l": 0.5824,
+            "qm_fold": "\u221a(91)/32",
+            "thermal_hex": "#FFFFFF",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 92,
+            "em_freq_hz": 0.0769,
+            "gr_curvature_l": 0.5888,
+            "qm_fold": "\u221a(92)/32",
+            "thermal_hex": "#FF7800",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 93,
+            "em_freq_hz": 0.1538,
+            "gr_curvature_l": 0.5952,
+            "qm_fold": "\u221a(93)/32",
+            "thermal_hex": "#FF7900",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 94,
+            "em_freq_hz": 0.2308,
+            "gr_curvature_l": 0.6016,
+            "qm_fold": "\u221a(94)/32",
+            "thermal_hex": "#FF7A00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 95,
+            "em_freq_hz": 0.3077,
+            "gr_curvature_l": 0.608,
+            "qm_fold": "\u221a(95)/32",
+            "thermal_hex": "#FF7C00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 96,
+            "em_freq_hz": 0.3846,
+            "gr_curvature_l": 0.6144,
+            "qm_fold": "\u221a(96)/32",
+            "thermal_hex": "#FF7D00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 97,
+            "em_freq_hz": 0.4615,
+            "gr_curvature_l": 0.6208,
+            "qm_fold": "\u221a(97)/32",
+            "thermal_hex": "#FF7E00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 98,
+            "em_freq_hz": 0.5385,
+            "gr_curvature_l": 0.6272,
+            "qm_fold": "\u221a(98)/32",
+            "thermal_hex": "#FF8000",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 99,
+            "em_freq_hz": 0.6154,
+            "gr_curvature_l": 0.6336,
+            "qm_fold": "\u221a(99)/32",
+            "thermal_hex": "#FF8100",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 100,
+            "em_freq_hz": 0.6923,
+            "gr_curvature_l": 0.64,
+            "qm_fold": "\u221a(100)/32",
+            "thermal_hex": "#FF8200",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 101,
+            "em_freq_hz": 0.7692,
+            "gr_curvature_l": 0.6464,
+            "qm_fold": "\u221a(101)/32",
+            "thermal_hex": "#FF8400",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 102,
+            "em_freq_hz": 0.8462,
+            "gr_curvature_l": 0.6528,
+            "qm_fold": "\u221a(102)/32",
+            "thermal_hex": "#FF8500",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 103,
+            "em_freq_hz": 0.9231,
+            "gr_curvature_l": 0.6592,
+            "qm_fold": "\u221a(103)/32",
+            "thermal_hex": "#FF8600",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 104,
+            "em_freq_hz": 0,
+            "gr_curvature_l": 0.6656,
+            "qm_fold": "\u221a(104)/32",
+            "thermal_hex": "#FFFFFF",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 105,
+            "em_freq_hz": 0.0769,
+            "gr_curvature_l": 0.672,
+            "qm_fold": "\u221a(105)/32",
+            "thermal_hex": "#FF8900",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 106,
+            "em_freq_hz": 0.1538,
+            "gr_curvature_l": 0.6784,
+            "qm_fold": "\u221a(106)/32",
+            "thermal_hex": "#FF8A00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 107,
+            "em_freq_hz": 0.2308,
+            "gr_curvature_l": 0.6848,
+            "qm_fold": "\u221a(107)/32",
+            "thermal_hex": "#FF8B00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 108,
+            "em_freq_hz": 0.3077,
+            "gr_curvature_l": 0.6912,
+            "qm_fold": "\u221a(108)/32",
+            "thermal_hex": "#FF8D00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 109,
+            "em_freq_hz": 0.3846,
+            "gr_curvature_l": 0.6976,
+            "qm_fold": "\u221a(109)/32",
+            "thermal_hex": "#FF8E00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 110,
+            "em_freq_hz": 0.4615,
+            "gr_curvature_l": 0.704,
+            "qm_fold": "\u221a(110)/32",
+            "thermal_hex": "#FF8F00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 111,
+            "em_freq_hz": 0.5385,
+            "gr_curvature_l": 0.7104,
+            "qm_fold": "\u221a(111)/32",
+            "thermal_hex": "#FF9100",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 112,
+            "em_freq_hz": 0.6154,
+            "gr_curvature_l": 0.7168,
+            "qm_fold": "\u221a(112)/32",
+            "thermal_hex": "#FF9200",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 113,
+            "em_freq_hz": 0.6923,
+            "gr_curvature_l": 0.7232,
+            "qm_fold": "\u221a(113)/32",
+            "thermal_hex": "#FF9300",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 114,
+            "em_freq_hz": 0.7692,
+            "gr_curvature_l": 0.7296,
+            "qm_fold": "\u221a(114)/32",
+            "thermal_hex": "#FF9500",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 115,
+            "em_freq_hz": 0.8462,
+            "gr_curvature_l": 0.736,
+            "qm_fold": "\u221a(115)/32",
+            "thermal_hex": "#FF9600",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 116,
+            "em_freq_hz": 0.9231,
+            "gr_curvature_l": 0.7424,
+            "qm_fold": "\u221a(116)/32",
+            "thermal_hex": "#FF9700",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 117,
+            "em_freq_hz": 0,
+            "gr_curvature_l": 0.7488,
+            "qm_fold": "\u221a(117)/32",
+            "thermal_hex": "#FFFFFF",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 118,
+            "em_freq_hz": 0.0769,
+            "gr_curvature_l": 0.7552,
+            "qm_fold": "\u221a(118)/32",
+            "thermal_hex": "#FF9A00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 119,
+            "em_freq_hz": 0.1538,
+            "gr_curvature_l": 0.7616,
+            "qm_fold": "\u221a(119)/32",
+            "thermal_hex": "#FF9B00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 120,
+            "em_freq_hz": 0.2308,
+            "gr_curvature_l": 0.768,
+            "qm_fold": "\u221a(120)/32",
+            "thermal_hex": "#FF9C00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 121,
+            "em_freq_hz": 0.3077,
+            "gr_curvature_l": 0.7744,
+            "qm_fold": "\u221a(121)/32",
+            "thermal_hex": "#FF9E00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 122,
+            "em_freq_hz": 0.3846,
+            "gr_curvature_l": 0.7808,
+            "qm_fold": "\u221a(122)/32",
+            "thermal_hex": "#FF9F00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 123,
+            "em_freq_hz": 0.4615,
+            "gr_curvature_l": 0.7872,
+            "qm_fold": "\u221a(123)/32",
+            "thermal_hex": "#FFA000",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 124,
+            "em_freq_hz": 0.5385,
+            "gr_curvature_l": 0.7936,
+            "qm_fold": "\u221a(124)/32",
+            "thermal_hex": "#FFA200",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 125,
+            "em_freq_hz": 0.6154,
+            "gr_curvature_l": 0.8,
+            "qm_fold": "\u221a(125)/32",
+            "thermal_hex": "#FFA300",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 126,
+            "em_freq_hz": 0.6923,
+            "gr_curvature_l": 0.8064,
+            "qm_fold": "\u221a(126)/32",
+            "thermal_hex": "#FFA400",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 127,
+            "em_freq_hz": 0.7692,
+            "gr_curvature_l": 0.8128,
+            "qm_fold": "\u221a(127)/32",
+            "thermal_hex": "#FFA600",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 128,
+            "em_freq_hz": 0.8462,
+            "gr_curvature_l": 0.8192,
+            "qm_fold": "\u221a(128)/32",
+            "thermal_hex": "#FFA700",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 129,
+            "em_freq_hz": 0.9231,
+            "gr_curvature_l": 0.8256,
+            "qm_fold": "\u221a(129)/32",
+            "thermal_hex": "#FFA800",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 130,
+            "em_freq_hz": 0,
+            "gr_curvature_l": 0.832,
+            "qm_fold": "\u221a(130)/32",
+            "thermal_hex": "#FFFFFF",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 131,
+            "em_freq_hz": 0.0769,
+            "gr_curvature_l": 0.8384,
+            "qm_fold": "\u221a(131)/32",
+            "thermal_hex": "#FFAB00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 132,
+            "em_freq_hz": 0.1538,
+            "gr_curvature_l": 0.8448,
+            "qm_fold": "\u221a(132)/32",
+            "thermal_hex": "#FFAC00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 133,
+            "em_freq_hz": 0.2308,
+            "gr_curvature_l": 0.8512,
+            "qm_fold": "\u221a(133)/32",
+            "thermal_hex": "#FFAD00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 134,
+            "em_freq_hz": 0.3077,
+            "gr_curvature_l": 0.8576,
+            "qm_fold": "\u221a(134)/32",
+            "thermal_hex": "#FFAF00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 135,
+            "em_freq_hz": 0.3846,
+            "gr_curvature_l": 0.864,
+            "qm_fold": "\u221a(135)/32",
+            "thermal_hex": "#FFB000",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 136,
+            "em_freq_hz": 0.4615,
+            "gr_curvature_l": 0.8704,
+            "qm_fold": "\u221a(136)/32",
+            "thermal_hex": "#FFB100",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 137,
+            "em_freq_hz": 0.5385,
+            "gr_curvature_l": 0.8768,
+            "qm_fold": "\u221a(137)/32",
+            "thermal_hex": "#FFB300",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 138,
+            "em_freq_hz": 0.6154,
+            "gr_curvature_l": 0.8832,
+            "qm_fold": "\u221a(138)/32",
+            "thermal_hex": "#FFB400",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 139,
+            "em_freq_hz": 0.6923,
+            "gr_curvature_l": 0.8896,
+            "qm_fold": "\u221a(139)/32",
+            "thermal_hex": "#FFB500",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 140,
+            "em_freq_hz": 0.7692,
+            "gr_curvature_l": 0.896,
+            "qm_fold": "\u221a(140)/32",
+            "thermal_hex": "#FFB700",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 141,
+            "em_freq_hz": 0.8462,
+            "gr_curvature_l": 0.9024,
+            "qm_fold": "\u221a(141)/32",
+            "thermal_hex": "#FFB800",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 142,
+            "em_freq_hz": 0.9231,
+            "gr_curvature_l": 0.9088,
+            "qm_fold": "\u221a(142)/32",
+            "thermal_hex": "#FFB900",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 143,
+            "em_freq_hz": 0,
+            "gr_curvature_l": 0.9152,
+            "qm_fold": "\u221a(143)/32",
+            "thermal_hex": "#FFFFFF",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 144,
+            "em_freq_hz": 0.0769,
+            "gr_curvature_l": 0.9216,
+            "qm_fold": "\u221a(144)/32",
+            "thermal_hex": "#FFBC00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 145,
+            "em_freq_hz": 0.1538,
+            "gr_curvature_l": 0.928,
+            "qm_fold": "\u221a(145)/32",
+            "thermal_hex": "#FFBD00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 146,
+            "em_freq_hz": 0.2308,
+            "gr_curvature_l": 0.9344,
+            "qm_fold": "\u221a(146)/32",
+            "thermal_hex": "#FFBE00",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 147,
+            "em_freq_hz": 0.3077,
+            "gr_curvature_l": 0.9408,
+            "qm_fold": "\u221a(147)/32",
+            "thermal_hex": "#FFC000",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 148,
+            "em_freq_hz": 0.3846,
+            "gr_curvature_l": 0.9472,
+            "qm_fold": "\u221a(148)/32",
+            "thermal_hex": "#FFC100",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 149,
+            "em_freq_hz": 0.4615,
+            "gr_curvature_l": 0.9536,
+            "qm_fold": "\u221a(149)/32",
+            "thermal_hex": "#FFC200",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 150,
+            "em_freq_hz": 0.5385,
+            "gr_curvature_l": 0.96,
+            "qm_fold": "\u221a(150)/32",
+            "thermal_hex": "#FFC400",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 151,
+            "em_freq_hz": 0.6154,
+            "gr_curvature_l": 0.9664,
+            "qm_fold": "\u221a(151)/32",
+            "thermal_hex": "#FFC500",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 152,
+            "em_freq_hz": 0.6923,
+            "gr_curvature_l": 0.9728,
+            "qm_fold": "\u221a(152)/32",
+            "thermal_hex": "#FFC600",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 153,
+            "em_freq_hz": 0.7692,
+            "gr_curvature_l": 0.9792,
+            "qm_fold": "\u221a(153)/32",
+            "thermal_hex": "#FFC800",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 154,
+            "em_freq_hz": 0.8462,
+            "gr_curvature_l": 0.9856,
+            "qm_fold": "\u221a(154)/32",
+            "thermal_hex": "#FFC900",
+            "identity": "Vitrified Node"
+        },
+        {
+            "tick": 155,
+            "em_freq_hz": 0.9231,
+            "gr_curvature_l": 0.992,
+            "qm_fold": "\u221a(155)/32",
+            "thermal_hex": "#FFCA00",
+            "identity": "Vitrified Node"
+        }
+    ]
+}
