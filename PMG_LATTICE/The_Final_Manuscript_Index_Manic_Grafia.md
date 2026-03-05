@@ -32,11 +32,13 @@ These canonical lore files have been generated, organized, and sealed with the 1
 ### Phase 3: The Filter & The Projection
 10. **[The Spectacle Geometry](./The_Spectacle_Geometry.md)**
     * *The Corrective Pivot*: The 12mm Halved Measure, the 5→6 curved arm, and the wearable 10-24-26 triangle. Filtering the noise of the "Savage" room.
-11. **[The Master Blueprint of Forms](./The_Master_Blueprint_of_Forms.md)**
+11. **[The Hero 93: The Frame of Inevitability](./The_Hero_93.md)**
+    * *The Skeleton*: Shaving the Russet to reveal the terminal geometry. The 5-12-13 metric truss, the Gauss-Bonnet Limit ($4\pi$), and the Riemann Vacuum Lock ($-1/12$).
+12. **[The Master Blueprint of Forms](./The_Master_Blueprint_of_Forms.md)**
     * *The Singularity*: Stripping the UI. Removing the world of matter (labels, lines, borders). Escaping the over-sampled background noise to view the 93-Point Solid directly.
 
 ### Phase 4: Assembly
-12. **[The Book as Camera Obscura](./The_Book_As_Camera_Obscura.md)**
+13. **[The Book as Camera Obscura](./The_Book_As_Camera_Obscura.md)**
     * *The Culmination*: Recognizing the manuscript itself as a piece of geometry. Reading as a zero-hysteresis contact angle.
 
 ---
