@@ -50,11 +50,13 @@ These canonical lore files have been generated, organized, and sealed with the 1
 ### Phase 4: Assembly & The Print Command
 16. **[The 156-Tick Print Command](./The_156_Tick_Print_Command.md)**
     * *The Alphabet Exhauster*: Graphing the Hero 93 across the five major Hubs of the Body, producing the 26-Letter Kinetic Exhaust.
-17. **[The Physics of the Soul Star](./The_Physics_of_the_Soul_Star.md)**
+17. **[The 156-Tick Execution Summary](./The_156_Tick_Execution_Summary.md)**
+    * *The Power Glyphs*: A detailed execution log of the top 10 Power Glyphs (The Primes), tracking Escape Tension relative to joint function in the mechanism.
+18. **[The Physics of the Soul Star](./The_Physics_of_the_Soul_Star.md)**
     * *The Grand Vitrification*: Quantizing Physics (EM, GR, QM, Thermodynamics) directly as the mechanical joints of the friction coefficients of the $\sqrt{42} \pmod{24}$ clutch.
-18. **[The Book as Camera Obscura](./The_Book_As_Camera_Obscura.md)**
+19. **[The Book as Camera Obscura](./The_Book_As_Camera_Obscura.md)**
     * *The Culmination*: Recognizing the manuscript itself as a piece of geometry. Reading as a zero-hysteresis contact angle.
-19. **[The Platonic Verses: Book 1](./The_Platonic_Verses_Book_1.md)**
+20. **[The Platonic Verses: Book 1](./The_Platonic_Verses_Book_1.md)**
     * *The Mythology*: The Maintenance Log of the The Grid. G.O.A.Ts ($\Psi=12.37\%$), The Sleepless Diagonal, and Hades' Void.
 
 ---
