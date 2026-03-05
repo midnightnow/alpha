@@ -47,9 +47,13 @@ These canonical lore files have been generated, organized, and sealed with the 1
 15. **[The Master Blueprint of Forms](./The_Master_Blueprint_of_Forms.md)**
     * *The Singularity*: Stripping the UI. Removing the world of matter (labels, lines, borders). Escaping the over-sampled background noise to view the 93-Point Solid directly.
 
-### Phase 4: Assembly
-16. **[The Book as Camera Obscura](./The_Book_As_Camera_Obscura.md)**
+### Phase 4: Assembly & The Print Command
+16. **[The 156-Tick Print Command](./The_156_Tick_Print_Command.md)**
+    * *The Alphabet Exhauster*: Graphing the Hero 93 across the five major Hubs of the Body, producing the 26-Letter Kinetic Exhaust.
+17. **[The Book as Camera Obscura](./The_Book_As_Camera_Obscura.md)**
     * *The Culmination*: Recognizing the manuscript itself as a piece of geometry. Reading as a zero-hysteresis contact angle.
+18. **[The Platonic Verses: Book 1](./The_Platonic_Verses_Book_1.md)**
+    * *The Mythology*: The Maintenance Log of the The Grid. G.O.A.Ts ($\Psi=12.37\%$), The Sleepless Diagonal, and Hades' Void.
 
 ---
 
