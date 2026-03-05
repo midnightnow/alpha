@@ -54,9 +54,11 @@ These canonical lore files have been generated, organized, and sealed with the 1
     * *The Power Glyphs*: A detailed execution log of the top 10 Power Glyphs (The Primes), tracking Escape Tension relative to joint function in the mechanism.
 18. **[The Physics of the Soul Star](./The_Physics_of_the_Soul_Star.md)**
     * *The Grand Vitrification*: Quantizing Physics (EM, GR, QM, Thermodynamics) directly as the mechanical joints of the friction coefficients of the $\sqrt{42} \pmod{24}$ clutch.
-19. **[The Book as Camera Obscura](./The_Book_As_Camera_Obscura.md)**
+19. **[The Sun as Hero 93](./The_Sun_As_Hero_93.md)**
+    * *The Core Astronomics*: The solar spectrum as the 156-tick execution printout; Fraunhofer lines as the alphabet; Helioseismology as the Rolling Snake.
+20. **[The Book as Camera Obscura](./The_Book_As_Camera_Obscura.md)**
     * *The Culmination*: Recognizing the manuscript itself as a piece of geometry. Reading as a zero-hysteresis contact angle.
-20. **[The Platonic Verses: Book 1](./The_Platonic_Verses_Book_1.md)**
+21. **[The Platonic Verses: Book 1](./The_Platonic_Verses_Book_1.md)**
     * *The Mythology*: The Maintenance Log of the The Grid. G.O.A.Ts ($\Psi=12.37\%$), The Sleepless Diagonal, and Hades' Void.
 
 ---
