@@ -1,0 +1,162 @@
+{
+    "A": {
+        "freq": 428.49,
+        "type": "Tonal_Node",
+        "index": 1,
+        "status": "ASC_ZENITH"
+    },
+    "B": {
+        "freq": 436.64,
+        "type": "Tonal_Node",
+        "index": 2,
+        "status": "ASC_ZENITH"
+    },
+    "C": {
+        "freq": 444.79,
+        "type": "Tonal_Node",
+        "index": 3,
+        "status": "ASC_ZENITH"
+    },
+    "D": {
+        "freq": 452.94,
+        "type": "Tonal_Node",
+        "index": 4,
+        "status": "ASC_ZENITH"
+    },
+    "E": {
+        "freq": 461.09,
+        "type": "Tonal_Node",
+        "index": 5,
+        "status": "ASC_ZENITH"
+    },
+    "F": {
+        "freq": 469.24,
+        "type": "Tonal_Node",
+        "index": 6,
+        "status": "ASC_ZENITH"
+    },
+    "G": {
+        "freq": 477.39,
+        "type": "Tonal_Node",
+        "index": 7,
+        "status": "ASC_ZENITH"
+    },
+    "H": {
+        "freq": 485.54,
+        "type": "Tonal_Node",
+        "index": 8,
+        "status": "ASC_ZENITH"
+    },
+    "I": {
+        "freq": 493.69,
+        "type": "Tonal_Node",
+        "index": 9,
+        "status": "ASC_ZENITH"
+    },
+    "J": {
+        "freq": 501.84,
+        "type": "Tonal_Node",
+        "index": 10,
+        "status": "ASC_ZENITH"
+    },
+    "K": {
+        "freq": 509.99,
+        "type": "Tonal_Node",
+        "index": 11,
+        "status": "ASC_ZENITH"
+    },
+    "L": {
+        "freq": 518.14,
+        "type": "Tonal_Node",
+        "index": 12,
+        "status": "ASC_ZENITH"
+    },
+    "M": {
+        "freq": 526.29,
+        "type": "Tonal_Node",
+        "index": 13,
+        "status": "ASC_ZENITH"
+    },
+    "N": {
+        "freq": 648.07,
+        "type": "Tonal_Node",
+        "index": 14,
+        "status": "DESC_NADIR"
+    },
+    "O": {
+        "freq": 0.0,
+        "type": "Pivot",
+        "coordinate": [
+            0,
+            0,
+            0
+        ],
+        "status": "VOID_LOCKED"
+    },
+    "P": {
+        "freq": 664.37,
+        "type": "Tonal_Node",
+        "index": 16,
+        "status": "DESC_NADIR"
+    },
+    "Q": {
+        "freq": 672.52,
+        "type": "Tonal_Node",
+        "index": 17,
+        "status": "DESC_NADIR"
+    },
+    "R": {
+        "freq": 680.67,
+        "type": "Tonal_Node",
+        "index": 18,
+        "status": "DESC_NADIR"
+    },
+    "S": {
+        "freq": 688.82,
+        "type": "Tonal_Node",
+        "index": 19,
+        "status": "DESC_NADIR"
+    },
+    "T": {
+        "freq": 696.97,
+        "type": "Tonal_Node",
+        "index": 20,
+        "status": "DESC_NADIR"
+    },
+    "U": {
+        "freq": 705.12,
+        "type": "Tonal_Node",
+        "index": 21,
+        "status": "DESC_NADIR"
+    },
+    "V": {
+        "freq": 713.27,
+        "type": "Tonal_Node",
+        "index": 22,
+        "status": "DESC_NADIR"
+    },
+    "W": {
+        "freq": 721.42,
+        "type": "Tonal_Node",
+        "index": 23,
+        "status": "DESC_NADIR"
+    },
+    "X": {
+        "freq": 729.57,
+        "type": "Tonal_Node",
+        "index": 24,
+        "status": "DESC_NADIR"
+    },
+    "Y": {
+        "freq": 737.72,
+        "type": "Tonal_Node",
+        "index": 25,
+        "status": "DESC_NADIR"
+    },
+    "Z": {
+        "freq": 745.87,
+        "type": "Tonal_Node",
+        "index": 26,
+        "status": "DESC_NADIR"
+    }
+}

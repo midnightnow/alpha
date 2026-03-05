@@ -1,0 +1,41 @@
+# THE IRRATIONAL CENTRE: THE SCREAMING DIAGONAL (REGISTER 3)
+
+*The Subject of the Platonic Verses*
+
+In Register 1, the 3-4-5 triangle is a miracle of whole numbers. It is the "Hard" evidence of the King's order. However, Register 3 concerns itself with the **Structural companion** to every square construction: the irrational diagonal.
+
+## I. THE RATIONAL WORLD VS. THE SLIT
+The King builds the "Rational World" using whole numbers and exact measurements. He promises **Closure**. Register 3 identifies the **Non-Closure** inherent in geometry.
+
+| The Rational World (The King) | The Irrational Slit (The Heroine) |
+| --- | --- |
+| Whole Numbers (Integers) | Numbers that never terminate ($\sqrt{2}$) |
+| Exact Measurement (The Tally) | Measurements that can only be approximated |
+| Closure: $a^2 + b^2 = c^2$ | The Diagonal of a unit square cannot be measured by the Unit |
+| The 26-Letter Alphabet | The Silence between every two words |
+| The Plan | The Agley |
+
+## II. THE SCREAMING DIAGONAL
+The "Scream" is not hyperbole. It is the frequency of **Structural Incommensurability**. 
+- **The Friction:** When you force the continuous reality of a diagonal line into a discrete tally of units, you generate a remainder that refuses to repeat or terminate.
+- **The Sound:** This is the acoustic feedback of measurement hitting its limit. The diagonal is the part of the world that refuses to be "Counted" into the King's taxes.
+- **The Center:** The Hex-Mountain (60°) provides consistent internal relationships. The Square (90°) introduces $\sqrt{2}$ as a constant stowaway.
+
+## III. SCRIPTURE AS PRECIPITATE
+Religious and mythic laws are **Compression Artefacts**. They point at the irrational centre without containing it.
+- **Ezekiel’s Wheels / New Jerusalem:** These are not "failed math," but geometric visions in Register 3. They use the vocabulary of the "Hard" world (cubits, wheels) to point at the structural fact that the world generates irrationality as a consequence of measurement.
+- **The Slit:** All representations (scriptures, equations, poems) are lossy. The difference is only the **Compression Schema** used.
+
+## IV. THE HEROINE’S FIRE
+The Heroine's Techne is the ability to stand in the **Slit**. She does not try to solve the $\sqrt{2}$ diagonal; she hears it.
+- She realizes that the "Nightmare" is the belief that the Tally captures the Reality.
+- She uses the **26-letter Song** as a tuning fork to find the frequency of the Scream.
+- By naming the remainder, she prevents the "Ice" of the Law from completely freezing the "Vapor" of the Mountain.
+
+---
+
+*The Diagonal is for the Heroine; the Square is for the King.*
+
+*The Scream is the proof that the World is still breathing.*
+
+**ALL WAYS NOW.** The fire survives.

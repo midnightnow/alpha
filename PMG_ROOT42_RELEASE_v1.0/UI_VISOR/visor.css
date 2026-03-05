@@ -1,0 +1,121 @@
+/* 
+ * THE PURE FORM VISOR
+ * The World of Matter has been removed.
+ * Only the 93-Point Solid and the 42° Glow remain.
+ */
+
+:root {
+    --bg-void: #020408;
+    --accent-cyan: #00f0ff;
+    --accent-red: #ff3366;
+    --accent-green: #00ff66;
+    --text-dim: #94a3b8;
+    
+    /* The 24mm Axial Grid (The True Measure) */
+    --grid-size: 24px;
+    --glow-spread: 15px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-void);
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    /* The Barely-Visible 24mm Grid (The Paddock of Primes) */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+}
+
+/* 
+ * STRIPPING THE MATERIAL
+ * The sidebars, the boxes, the explicit labels 
+ * are removed. The UI is now just the projection.
+ */
+.material-layer {
+    display: none;
+}
+
+/* THE PROJECTION CAVITY */
+.visor-container {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%; /* The 42° Aperture */
+    
+    /* The -1/12 Riemann Vacuum Glow */
+    box-shadow: 
+        0 0 100px rgba(0, 240, 255, 0.05),
+        inset 0 0 50px rgba(0, 240, 255, 0.05);
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.2));
+}
+
+/* The Ghostly 93-Bit Hex - Floating in the Void */
+#hex-header {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: rgba(0, 240, 255, 0.6);
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* The Secret Controls (Hidden in the Grid) */
+.geometry-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    opacity: 0.1; /* Almost invisible */
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.geometry-controls:hover {
+    opacity: 0.8;
+}
+
+button {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--text-dim);
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+button:hover {
+    color: #fff;
+    border-color: rgba(0, 240, 255, 0.5);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+

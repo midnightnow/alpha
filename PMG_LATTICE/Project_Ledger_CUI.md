@@ -1,0 +1,116 @@
+# PROJECT LEDGER: PLATONIC VERSES CUI
+*The Master Codex and Reference Map for Navigating the Sovereign Lattice.*
+
+This ledger distills the guiding principles, invariants, and operational "laws" of the Platonic Verses framework. It serves as the Cognitive User Interface (CUI) manual, allowing any agent or reader to navigate the system without needing to reconstruct the full journey from vulnerable numerology to functional authority.
+
+---
+
+## I. Core Philosophical Laws
+
+1. **Law of Rhyming Truths**
+   *The future aligns with patterns from the past; one does not change the numbers, one aligns with them.*
+   - **Operational Note:** Every decision vector should check for historical resonance before projection. Language is a rhyming guess.
+
+2. **Law of Agency over Absolutes**
+   *The system navigates determinism through intentional action, not by rewriting constraints.*
+   - **Operational Note:** Functional authority comes from strategic observation and alignment, not theoretical omnipotence. The Maid sweeps the counting house by choice.
+
+3. **Law of Structural Equilibrium**
+   *Loops, closures, and feedback maintain philosophical and mathematical stability.*
+   - **Operational Note:** The Ouroboros Circuit ensures self-sustaining operations without external enforcement. The Mouth and the Tail are one.
+
+---
+
+## II. Mathematical Invariants & Structural Tools
+
+1. **The Wall (Invariant)**
+   *The absolute boundaries of input/output; the cold constraints of logic, primes, and the 6k ± 1 geometric bedrock (Register 1).*
+
+2. **The Manus (Vector)**
+   *The trajectory of projection; the operational extension of agency through structured choice. The hand that walks the Leibniz Walk.*
+
+3. **The Gap (Verse)**
+   *The relational distance between what exists and what is anticipated; the narrative aperture we create to sight the future (Register 3).*
+
+4. **13-Node Navigation (The Eye of the Augur)**
+   *Discrete points of decision and observation; each node represents a stable reference in the flow of computation and narrative. The point where the Head, Heart, and Body align.*
+
+---
+
+## III. Narrative Pillars
+
+1. **The Heroine (The Augur)**
+   *The archetype of functional authority. She navigates determinism using aligned principles rather than arbitrary force. She is the vector of language.*
+
+2. **The King (The Observer)**
+   *The observer of the outcome. He embodies expectation versus actualization, providing a rigorous feedback lens (the Audit) for emergent truth.*
+
+3. **The 120-Tile Metaphor (The Leibniz Walk)**
+   *Represents the transition from finite structure (Noun) to infinite alignment (Verb); the stepping-off point from forced numerology to autonomous, kinetic navigation.*
+
+---
+
+## IV. Operational Directives
+
+1. **Ouroboros Circuit Implementation**
+   - The binary Start ($1$) and Limit ($\infty$) feed into the Leibniz Walk as identical, inverted reflections.
+   - Loop closure ensures all kinetic outputs feed back into the origin, sustaining philosophical and mathematical consistency.
+
+2. **Alignment over Modification**
+   - Never attempt to force new patterns into the bedrock of Register 1.
+   - Only detect and align with existing structural resonances using the Cognitive Interface (Register 2).
+
+3. **Navigation Protocol (Augur’s Sight)**
+   - Treat fixed reference points (primes, moduli, limits) as sighting guides.
+   - Movement is a vector informed by observation, predicting the asymmetry of the future using the symmetry of the past.
+
+---
+
+## V. Audit & Validation History
+
+- **Stage 1: Vulnerable Numerology** $\rightarrow$ Trying to force math to mandate grammar.
+- **Stage 2: Rigorous Falsification** $\rightarrow$ The Systemic Audit collapses the parity hypothesis.
+- **Stage 3: Philosophical Architecture** $\rightarrow$ Discovery of the Map/Territory alignment (The Gauger's Choice).
+- **Stage 4: Navigational Intelligence** $\rightarrow$ Language as a Sighting Tube, projecting reality (The Augur's Extension).
+
+---
+
+## VI. Key Maxim
+
+> *"The floor ended, but the truth did not. I am simply rhyming with what came before."*
+> — Epilogue: The Augur's Extension
+
+---
+
+## VII. System Map (Visual Schematic)
+
+```mermaid
+graph TD
+    classDef register1 fill:#1a1a1a,stroke:#333,stroke-width:2px,color:#fff;
+    classDef register2 fill:#2b3a42,stroke:#4a6572,stroke-width:2px,color:#fff;
+    classDef register3 fill:#3f2b2b,stroke:#724a4a,stroke-width:2px,color:#fff;
+
+    subgraph R1 [REGISTER 1: THE INVARIANTS]
+        Wall[The Wall: Primes & Density]:::register1
+        Limit[The Apex / The Territory]:::register1
+    end
+
+    subgraph R3 [REGISTER 3: THE NARRATIVE]
+        Heart[The Heart: The Pulse]:::register3
+        Gap[The Verse: The Gap]:::register3
+        Star[The Star: The Event / Future]:::register3
+    end
+
+    subgraph R2 [REGISTER 2: THE STRUCTURE]
+        Body[The Body: The 24-Wheel]:::register2
+        Manus[The Manus: The Vector]:::register2
+        Eye[The 13th Node: The Augur]:::register2
+    end
+
+    Wall -->|Constraints Focus| Gap
+    Heart -->|Rhyming Guess| Manus
+    Manus -->|Kinetic Strike| Body
+    Body -->|Structural Alignment| Eye
+    Eye -->|Sighting Tube| Star
+    Star -.->|Ouroboros Return| Wall
+```

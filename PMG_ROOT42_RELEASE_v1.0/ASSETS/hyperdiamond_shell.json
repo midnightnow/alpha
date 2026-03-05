@@ -1,4 +1,5 @@
 {
+    "status": "SEALED",
     "nodes": [
         {
             "x": 0.0,
@@ -466,7 +467,6 @@
             "z": 0.17624345015830511
         }
     ],
-    "status": "SEALED",
-    "hades_damping_ratio": 0.12368461409261193,
-    "invariant_volume": 42.00000000000001
+    "invariant_volume": 42.0,
+    "hades_damping_ratio": 0.12368461409261193
 }

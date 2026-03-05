@@ -23,6 +23,7 @@ export const SoftCreature: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [metrics, setMetrics] = useState<SimulationMetrics | null>(null);
   const [points, setPoints] = useState<{ x: number, y: number, z: number, layer: string }[]>([]);
+  const [highlightNode, setHighlightNode] = useState<{ index: number, timestamp: number }>({ index: -1, timestamp: 0 });
 
   // Three.js refs
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -46,6 +47,18 @@ export const SoftCreature: React.FC = () => {
         });
         setPoints(parsed);
       });
+  }, []);
+
+  // 1.5 Geometry Sync listener
+  useEffect(() => {
+    const handleLatticeLetter = (e: any) => {
+      const { nodeIndex, timestamp } = e.detail;
+      if (nodeIndex >= 0 && nodeIndex < 93) {
+        setHighlightNode({ index: nodeIndex, timestamp });
+      }
+    };
+    window.addEventListener('lattice:letter' as any, handleLatticeLetter);
+    return () => window.removeEventListener('lattice:letter' as any, handleLatticeLetter);
   }, []);
 
   // 2. WebSocket Stream (The Möbius Pulse)
@@ -164,21 +177,27 @@ export const SoftCreature: React.FC = () => {
 
       dummy.position.set(targetX, targetY, targetZ);
 
-      // Scale based on "Overpack" - points jitter when delta is high
-      const scale = 0.8 + Math.sin(Date.now() * 0.01 + i) * overpackDelta * 10;
+      // 4. Color and Scale (The Structural Shockwave)
+      const isHighlighted = i === highlightNode.index && (Date.now() - highlightNode.timestamp < 300);
+
+      // Update Scale
+      let scale = 0.8 + Math.sin(Date.now() * 0.01 + i) * overpackDelta * 10;
+      if (isHighlighted) scale *= 2.5;
       dummy.scale.set(scale, scale, scale);
 
       dummy.updateMatrix();
       meshRef.current!.setMatrixAt(i, dummy.matrix);
 
-      // Color coding per layer
-      let color = new THREE.Color(0x3366ff); // Shell (Blue)
-      if (p.layer === 'core') color = new THREE.Color(0xff3333); // Core (Red)
-      if (p.layer === 'seed') color = new THREE.Color(0x33ff33); // Seed (Green)
+      // Update Color
+      let color = new THREE.Color(isHighlighted ? 0xffaa00 : 0x3366ff); // Shell (Blue)
+      if (!isHighlighted) {
+        if (p.layer === 'core') color = new THREE.Color(0xff3333); // Core (Red)
+        if (p.layer === 'seed') color = new THREE.Color(0x33ff33); // Seed (Green)
 
-      // As it twists, colors "bleed" (Neural fusion)
-      if (morph > 0.5) {
-        color.lerp(new THREE.Color(0x9933ff), morph - 0.5);
+        // As it twists, colors "bleed" (Neural fusion)
+        if (morph > 0.5) {
+          color.lerp(new THREE.Color(0x9933ff), morph - 0.5);
+        }
       }
       meshRef.current!.setColorAt(i, color);
     });
@@ -192,7 +211,7 @@ export const SoftCreature: React.FC = () => {
       coreRef.current.material.emissiveIntensity = 0.5 + morph * 2;
     }
 
-  }, [metrics, points]);
+  }, [metrics, points, highlightNode]);
 
   return (
     <div ref={containerRef} className="w-full h-full relative overflow-hidden bg-black">

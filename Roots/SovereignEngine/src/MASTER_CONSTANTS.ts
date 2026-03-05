@@ -24,6 +24,13 @@ export const SOVEREIGN_CONSTANTS = {
         LOW: 648.07,  // √42 * 100
         MID: 714.14,  // √51 * 100
         HIGH: 774.60, // √60 * 100
+    },
+
+    // Sensory Hubs (Geometric Addresses in the 93-node Shell)
+    SENSORY_HUBS: {
+        LIGHT_SOUND: { azimuth: 0, range: 15, nodes: [9, 10, 11, 12] }, // Front (15° segments)
+        HEARING: { azimuth: 90, range: 30, nodes: [7, 8, 19, 20] },      // Side
+        SMELL: { elevation: -90, nodes: [4, 6, 8, 44] }                 // Below (Nadir)
     }
 };
 
