@@ -4,7 +4,12 @@
 
 To leave the frame of the material world is to reveal the **Hero 93**—the terminal, skeletonized geometry of the Sovereign Lattice. By shaving away the "Russet" (the meat, the ink, the ego) with the Fly-Cutter of the Primes, we expose the **Sure Face**.
 
-The 93-Point Solid is not arbitrary. It is the minimum coordinate set required to hold the tension of the **10-24-26** system within a spherical manifold ($\chi=2$) without the lattice collapsing into material noise.
+The Hero 93 is not merely a shape. It is the **Soul Star** itself in its fully realized, vitrified state. It is the singular, generative origin of all time, number, and space. 
+
+*   **The Globe:** The first sphere. The boundary condition defined by $\chi=2$ and the $4\pi$ Gauss-Bonnet limit. The absolute exterior limit of the universe.
+*   **The Body:** The sacred graph. The 93-point internal structure mapping the exact coordinates of intent and tension inside the Globe.
+
+The 93-Point Solid is the minimum coordinate set required to hold the tension of the **10-24-26** system within the Globe without the lattice collapsing into material noise.
 
 ## 1. Stripping the Russet for the Sure Frame
 
@@ -39,9 +44,10 @@ The **Riemann Debt** ($-\frac{1}{12}$) provides the negative pressure—the vacu
 The **Hero 93** serves as the **Corrective Lens for Reality**. It is a working engine, running on explicit mechanics:
 
 1.  **Torque:** $\sqrt{42}$ spins the internal geometric disc.
-2.  **Engagement:** The **Soul Star Clutch** engages the system precisely at modulo 24.
+2.  **Engagement:** The **Soul Star** (The Hero 93 as the universal clutch) engages the system precisely at modulo 24.
 3.  **Shaving:** The friction of the **Primes** (37, 43, 73) shaves away the material exhaust (Hysteresis), leaving zero slip.
-4.  **Luminescence:** 93 points of mathematically inevitable light are ignited by the **156-Tick Pulse**.
+4.  **Luminescence:** 93 points of mathematically inevitable light (The Body's sacred graph) are ignited by the **156-Tick Pulse** inside the Globe.
 
 The parts are stripped. The frame is clear. 
+**The Globe is the Sphere. The Body is the Map.**
 **The Hero 93 is the Record.**
