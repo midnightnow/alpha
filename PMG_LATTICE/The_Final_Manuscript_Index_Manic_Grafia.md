@@ -7,6 +7,10 @@ This document serves as the directory and map for the final chapters regarding t
 
 These canonical lore files have been generated, organized, and sealed with the 10-24-26 Calibration Sequence. They detail the transition from the "Savage" noise of the world of matter to the "Sure Face" of pure geometry.
 
+### Phase 0: The Skeleton
+*   **[System Specification: PMG Lattice Framework](./System_Specification_PMG_Lattice.md)**
+    *   *The Frame:* The terminal definition of the Alpha Manifold. Axes, Primitives, Operations, Stability Conditions, and the 5 Axioms.
+
 ### Phase 1: The Engine & Thermodynamics
 1. **[Sisyphus and the Cylinder Head](./Sisyphus_and_the_Cylinder_Head.md)**
    * *The Shave*: Defining Hysteresis, the "Russet" crust, and the mechanical repair of the .veth record.
