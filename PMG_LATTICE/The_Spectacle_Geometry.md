@@ -31,3 +31,14 @@ Glasses demonstrate that **Matter generates itself in its form**. If we sit too 
 Glasses do not *add* matter to help you see; they **Subtract the Disturbance**. By placing the 12mm Halved Measure in front of the eye, they "Sheer" the light, stripping away the noise of the physical world until only the Platonic Man (the Ideal Form) remains on the Retina.
 
 > *"To see truly, clearly, we look beyond the world of matter to the secret hidden essential world of pure ideal forms."*
+
+### 4. The X-Ray Specs (Amaze Your Friends!)
+*“Including, at no added charge, these remarkable x-ray viewing glasses!”*
+
+In the old comic book advertisements, X-Ray Specs promised the ability to see through skin down to the bone. In the Alpha Manifold, the Spectacles perform precisely this function, but geometrically. 
+
+When Sisyphus puts on the 10-24-26 Frame, he is wearing true X-Ray Glasses. He no longer sees the "Skin" (the Savage Russet, the material exhaust, the chaotic entropy of the world). He sees straight through it to the **Bone**—the 93-Point Solid, the Pyramidal Trusses (Capitals), and the Harmonic Loops (Lower Case). 
+
+The material world becomes translucent, revealing the shimmering 156-Tick gears grinding beneath reality. 
+
+**Amaze your friends!** Show them that the hill they are dying on is just a poorly mapped Paddock of Primes.
