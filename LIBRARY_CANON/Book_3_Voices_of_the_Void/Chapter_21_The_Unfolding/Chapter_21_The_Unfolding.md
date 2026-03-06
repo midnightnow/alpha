@@ -1,4 +1,5 @@
-# Chapter 21: The Unfolding
+# CHAPTER 31: WORK OF EIGHT (The Unfolding)
+*The 31st Coordinate | ♣️ 8 of Clubs — Great Year Octave (Organic Expansion)*
 
 > *"The echo is not error. It is the aperture."*
 

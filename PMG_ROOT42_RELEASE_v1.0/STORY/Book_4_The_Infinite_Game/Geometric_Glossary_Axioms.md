@@ -143,6 +143,10 @@ The bridge from axioms to the software ecosystem of the ALPHA workspace.
     *   **Engine:** The "Clip-Clop" frequency (4-Register gait).
     *   **Social:** The Session (7) group-sync.
 
-**Status: UNWOBBLING**
+### XXIII. Light Lines / Heavy Circles (The Apollonian Sieve)
+The fundamental dichotomy of the manifest and the invisible.
+*   **Heavy Circles:** The fixed, integer-bound forms of matter. These are the "tangent circles" of the Apollonian gasket, representing the structural weight of the 24-Wheel.
+*   **Light Lines:** The active geometry of relationship and connection. These are the lines connecting the centers of the heavy circles—the "rippling water" that propagates the fractal.
+*   **The Point of Join:** The generative seed located exactly where light meets light at the intersection of the scaffolding. This point is where the invisible mandate becomes the visible record.
 The gears of 30, 12, and Infinite are in sync.
 1/30/12/2026: Coming = Going.

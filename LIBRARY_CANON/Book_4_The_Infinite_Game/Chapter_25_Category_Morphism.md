@@ -1,6 +1,5 @@
-# CHAPTER 25: CATEGORY MORPHISM
-
-**Book 4 — The Infinite Game**
+# CHAPTER 36: ECHO OF NINE (Category Morphism)
+*The 36th Coordinate | ♥️ 9 of Hearts — Great Year Ennead (Resonance of Form)*
 **Shift:** Geometry (Coordinates) → Category (Relationships)
 
 ---

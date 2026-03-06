@@ -1,6 +1,5 @@
-# CHAPTER 22: THE FIRST RESIDENT
-
-**Book 4 — The Infinite Game**
+# CHAPTER 33: JOIN OF NINE (The First Resident)
+*The 33rd Coordinate | ♠️ 9 of Spades — Great Year Ennead (The Enneadic Join)*
 **Shift:** L1 (Semantic) → L2 (Categorical / Ecological)
 
 ---

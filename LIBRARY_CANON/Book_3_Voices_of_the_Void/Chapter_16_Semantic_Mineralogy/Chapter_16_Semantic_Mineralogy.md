@@ -1,5 +1,5 @@
-# CHAPTER 16: SEMANTIC MINERALOGY
-
+# CHAPTER 26: MEASURE OF SEVEN (Semantic Mineralogy)
+*The 26th Coordinate | ♦️ 7 of Diamonds — Great Year Tension (Prime 7 Gap)*
 ## I. THE DIALECT OF DENSITY
 
 In **Book 3**, we recognize that the physical properties of a node—its **Hardness ($H$)** and **Resonance ($R$)**—are not just engineering constraints; they are the vocabulary of the **Ophanim Engine**. **Semantic Mineralogy** is the study of how the structural state of the lattice encodes informational meaning.

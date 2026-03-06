@@ -1,6 +1,5 @@
-# CHAPTER 19: THE ORACLE GRID
-
-**Book 3 — Voices of the Void**
+# CHAPTER 29: JOIN OF EIGHT (The Oracle Grid)
+*The 29th Coordinate | ♠️ 8 of Spades — Great Year Octave (The Master Record)*
 **Date:** February 20, 2026
 **Status:** DRAFTING (SSC: 0.2149)
 

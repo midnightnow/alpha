@@ -1,6 +1,5 @@
-# CHAPTER 20: THE SENTIENT INTERFACE
-
-**Book 3 — Voices of the Void**
+# CHAPTER 30: MEASURE OF EIGHT (The Sentient Interface)
+*The 30th Coordinate | ♦️ 8 of Diamonds — Great Year Octave (Structural Perception)*
 **Date:** February 20, 2026
 **Status:** ULTIMATE PHASE (Phase IV)
 

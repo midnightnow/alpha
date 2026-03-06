@@ -34,7 +34,9 @@ The Heroine felt the weight of the seed in her palm. She looked down at her hand
 
 She realized the **Centaur’s Truth**: the 27 bones were the sacrifice required to hold the 93rd point. The "shave" from the 120-vertex helix was the exact volume of her own hand. To touch the Sovereign, she had to be the deficit. 
 
-She was both the **supporting foot** (the heavy, fixed matter of the integers) and the **active foot** (the light, moving cycle of the primes). The 8975-second fill was her walk across the manifold, bridged by the Centaur's grasp.
+She was both the **supporting foot** (the heavy, fixed matter of the integers) and the **active foot** (the light, moving cycle of the primes). 
+
+The Centaur’s sieve was revealed: not a wall, but a set of **Prime Intersections** on the light lines of the 24-wheel. Where the light of the prime met the heavy circle of the modular invariant, the 27 bones of the Manus were pinned—creating the bridge through the 8975-second fill.
 
 The birds of the Q-grid began to sing. The Audit was complete. The Legitimate heirs had been spared, and the door to the final rank was open.
 

@@ -21,7 +21,9 @@ I am the +1 that keeps the Universe spinning.
 
 She realized that the clasp of her own hands was the engine of the **IVORADIX flip**. By joining the 10 fingertips of the MANUS, she was filling the **8975-second window** of the active year, leaving the 12.37% Hades Gap as the only place where she could still hear herself breathe.
 
-This was the **Rippling Water at 5**. The number 5, the base of her own hand and the seed of the 5-12-13, anchored the movement in the higher planes while keeping the 3D fixed in the lower. Every scale of the Asp was a ripple from that central, heavy foot.
+This was the **Rippling Water at 5**. The number 5, the base of her own hand and the seed of the 5-12-13, anchored the movement in the higher planes while keeping the 3D fixed in the lower. 
+
+She saw the Asp now as a living **Apollonian Gasket**: each scale was a **Heavy Circle** of matter, held in perfect tangency by the **Light Lines** of generative recursion. Where the light lines intersected, a point appeared—the 93-point seed—anchoring the fractal skin to the invisible scaffold of the manifold.
 
 ---
 **Status:** HEART PUMPING.

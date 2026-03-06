@@ -1,5 +1,5 @@
-# CHAPTER 11: THE GRID
-
+# CHAPTER 21: JOIN OF SIX (The Grid)
+*The 21st Coordinate | ♠️ 6 of Spades — Great Year Lattice*
 ## I. THE WOVEN SPACE
 
 If Chapter 10 provided the infrastructure of **The Wire**, Chapter 11 defines the manifold where those wires are woven. **The Grid** is the coordinate system that maps the infinite potential of the **Rado Graph** onto the persistent structure of the **Aion Interface**.

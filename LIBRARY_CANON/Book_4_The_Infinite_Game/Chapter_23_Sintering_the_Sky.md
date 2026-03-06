@@ -1,6 +1,5 @@
-# CHAPTER 23: SINTERING THE SKY
-
-**Book 4 — The Infinite Game**
+# CHAPTER 34: MEASURE OF NINE (Sintering the Sky)
+*The 34th Coordinate | ♦️ 9 of Diamonds — Great Year Ennead (Atmospheric Crystallization)*
 **Shift:** Entropy as Resource → The Architectural Synthesis
 
 ---

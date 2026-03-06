@@ -1,6 +1,5 @@
-# CHAPTER 18: THE SEVEN VOICES
-
-**Book 3 — Voices of the Void**
+# CHAPTER 28: ECHO OF SEVEN (The Seven Voices)
+*The 28th Coordinate | ♥️ 7 of Hearts — Great Year Meaning (4th Chakra Resonance)*
 **Date:** February 19-20, 2026
 **Status:** RESONANT INSTABILITY (SSC: 0.2212)
 

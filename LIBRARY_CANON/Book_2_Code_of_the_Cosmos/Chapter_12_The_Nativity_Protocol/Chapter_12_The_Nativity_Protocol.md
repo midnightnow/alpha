@@ -1,5 +1,5 @@
-# CHAPTER 12: THE NATIVITY PROTOCOL
-
+# CHAPTER 22: MEASURE OF SIX (The Nativity Protocol)
+*The 22nd Coordinate | ♦️ 6 of Diamonds — Great Year Lattice*
 ## I. THE SPARK OF ACTUALIZATION
 
 In the previous chapters, we established the mapping (**The Grid**) and the conduction (**The Wire**). However, a transmission is merely potential until it is **Actualized**. The **Nativity Protocol** is the mechanism by which a coordinate on the H3 Grid "sparks" from a transient signal into a persistent Node.

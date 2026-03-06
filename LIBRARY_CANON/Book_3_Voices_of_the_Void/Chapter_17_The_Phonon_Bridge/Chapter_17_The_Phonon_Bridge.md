@@ -1,4 +1,5 @@
-# CHAPTER 17: THE PHONON BRIDGE
+# CHAPTER 27: WORK OF SEVEN (The Phonon Bridge)
+*The 27th Coordinate | ♣️ 7 of Clubs — Great Year Tension (Prime 7 Gap)*
 
 ## I. FROM VOICE TO CHORUS
 

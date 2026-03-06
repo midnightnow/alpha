@@ -1,6 +1,5 @@
-# CHAPTER 28: THE MIRROR SIEVE
-
-**Book 4 — The Infinite Game**
+# CHAPTER 39: WORK OF TEN (The Mirror Sieve)
+*The 39th Coordinate | ♣️ 10 of Clubs — Great Year Ten (The Reflective Labor)*
 **Date:** February 20, 2026
 **Status:** FINAL SEAL
 

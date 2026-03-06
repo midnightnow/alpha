@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMG: The Sovereign Lattice</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&family=Space+Grotesk:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050508;
+            --text-primary: #f0f0f5;
+            --text-secondary: #8b8b9d;
+            --accent-blue: #00f0ff;
+            --accent-purple: #9d00ff;
+            --accent-pink: #ff007f;
+            --accent-emerald: #10b981;
+            --card-bg: rgba(20, 20, 25, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --gap: 12.37%;
+            /* The Hades Gap */
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* The Ambient Field */
+        .ambient-field {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 15% 50%, rgba(0, 240, 255, 0.08), transparent 40%),
+                radial-gradient(circle at 85% 30%, rgba(157, 0, 255, 0.08), transparent 40%);
+            z-index: 1;
+            filter: blur(40px);
+            animation: breathe 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes breathe {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+        }
+
+        /* The Grid */
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 2;
+            opacity: 0.5;
+            perspective: 1000px;
+            transform-origin: center;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 1100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin: 0;
+            font-weight: 500;
+            opacity: 0.8;
+        }
+
+        .modules {
+            display: flex;
+            gap: 30px;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .module-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .module-card.resonance::before {
+            background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
+        }
+
+        .module-card.emerald::before {
+            background: linear-gradient(90deg, transparent, var(--accent-emerald), transparent);
+        }
+
+        .module-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.1);
+        }
+
+        .module-card.resonance:hover {
+            box-shadow: 0 20px 40px rgba(157, 0, 255, 0.1);
+        }
+
+        .module-card.emerald:hover {
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.1);
+        }
+
+        .module-card:hover::before {
+            opacity: 1;
+        }
+
+        .module-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent-blue);
+        }
+
+        .module-card.resonance .module-icon {
+            color: var(--accent-purple);
+        }
+
+        .module-card.emerald .module-icon {
+            color: var(--accent-emerald);
+        }
+
+        .module-card h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            margin: 0 0 15px 0;
+            font-weight: 500;
+        }
+
+        .module-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0 0 30px 0;
+            flex-grow: 1;
+        }
+
+        .module-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.3);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 15px;
+        }
+
+        .btn-launch {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--bg-color);
+            background: var(--text-primary);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            align-self: flex-start;
+        }
+
+        .module-card:hover .btn-launch {
+            background: var(--accent-blue);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
+
+        .module-card.resonance:hover .btn-launch {
+            background: var(--accent-purple);
+            box-shadow: 0 0 15px rgba(157, 0, 255, 0.4);
+        }
+
+        .module-card.emerald:hover .btn-launch {
+            background: var(--accent-emerald);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.2);
+            z-index: 10;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ambient-field"></div>
+    <div class="grid-overlay"></div>
+
+    <div class="container">
+        <header class="header">
+            <h1>Principia Mathematica Geometrica</h1>
+            <p>The Sovereign Lattice /// v1.0-unwobbling-pivot</p>
+        </header>
+
+        <div class="modules">
+            <!-- Mathman Module -->
+            <a href="mathman/index.html" class="module-card">
+                <div class="module-icon">⬡</div>
+                <h2>Mathman</h2>
+                <p>Calculates the Genesis Sequence. Engages the Square Pen axioms to generate recursive structures
+                    without pre-programmed collision boundaries. Observe the organic lattice emergence and Cartesian
+                    de-signing.</p>
+                <div class="btn-launch">
+                    Initiate Sequence
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </div>
+                <div class="module-meta" style="margin-top: 20px;">
+                    <span>MODE: FLATLAND</span>
+                    <span>CONSTANT: Σ=4</span>
+                </div>
+            </a>
+
+            <!-- Radical Resonance Module -->
+            <a href="radical-resonance/index.html" class="module-card resonance">
+                <div class="module-icon">∰</div>
+                <h2>Radical Resonance</h2>
+                <p>The Root-42 Generator. Simulates the triadic interference of √42, √51, and √60. Audibly renders the
+                    infrasonic 0.6607 Hz Hades Beat and visualizes the living fracture of the 93-Faced Solid.</p>
+                <div class="btn-launch">
+                    Engage Harmonic
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </div>
+                <div class="module-meta" style="margin-top: 20px;">
+                    <span>MODE: TRIADIC</span>
+                    <span>CONSTANT: Ψ=12.37%</span>
+                </div>
+            </a>
+
+            <!-- M=42 Optimizer Module -->
+            <a href="m42/index.html" class="module-card emerald">
+                <div class="module-icon">⬢</div>
+                <h2>M=42 Optimizer</h2>
+                <p>The Path B Calibration Engine. Witness the geometric convergence of the HERO 93 solid. Search for the
+                    optimal phase offset ε to achieve the universal mass invariant 42.</p>
+                <div class="btn-launch">
+                    Calibrate Lattice
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </div>
+                <div class="module-meta" style="margin-top: 20px;">
+                    <span>MODE: OPTIMIZER</span>
+                    <span>CONSTANT: M=42</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        "The olive is imperfect. The mitochondria leak. The Gap breathes."
+    </footer>
+
+</body>
+
+</html>

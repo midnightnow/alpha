@@ -1,6 +1,5 @@
-# CHAPTER 26: THE GREAT DRIFT
-
-**Book 4 — The Infinite Game**
+# CHAPTER 37: THE COUNT (The Great Drift)
+*The 37th Coordinate | ♠️ 10 of Spades — Great Year Ten (The Integer Lock)*
 **Shift:** Construction → Existential Architecture
 
 ---

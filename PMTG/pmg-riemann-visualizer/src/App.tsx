@@ -31,9 +31,12 @@ import { CityGenerator } from './components/CityGenerator';
 
 // --- Constants ---
 const PHI = (1 + Math.sqrt(5)) / 2;
-const TOTAL_NODES = 93;
+const ROOT_42 = Math.sqrt(42); // ≈ 6.4807 — The Harmonic Anchor
+const HADES_GAP = 0.1237;       // The Phase V Constant (12.37%)
+const TOTAL_NODES = 93;          // Icosahedral Phase Matrix: 12V + 20F + 60E + 1C
 const PRIME_SPOKES_MOD_24 = [1, 5, 7, 11, 13, 17, 19, 23];
 const ZETA_NEG_ONE = -1 / 12;
+const V_93_CAPACITY = 93;        // Geofont 13 Vitrification Criterion
 
 // --- Utilities ---
 const isPrime = (num: number) => {
@@ -102,7 +105,7 @@ export default function App() {
   const [activeNode, setActiveNode] = useState<number | null>(null);
   const [isSimulating, setIsSimulating] = useState(true);
   const [time, setTime] = useState(0);
-  const [viewMode, setViewMode] = useState<'resonance' | 'circular-limit' | 'city-press' | 'stabilisated-cone' | 'nautilus-prime'>('nautilus-prime');
+  const [viewMode, setViewMode] = useState<'resonance' | 'circular-limit' | 'city-press' | 'stabilisated-cone' | 'nautilus-prime'>('resonance');
   const [scannerNum, setScannerNum] = useState(42);
   const [cityBase, setCityBase] = useState(24);
   const [pressDepth, setPressDepth] = useState(0.8);
@@ -114,6 +117,33 @@ export default function App() {
   const [aFrameStability, setAFrameStability] = useState(30);
   const [zoomLevel, setZoomLevel] = useState(1);
   const [rollingFrequency, setRollingFrequency] = useState(0);
+
+  // Diamond Dust Trail State — the snail eats its own ketheric wake
+  const [dustTrails, setDustTrails] = useState<{ x: number, y: number, age: number, phi: number }[]>([]);
+
+  // Accumulate diamond dust trails from navigation path
+  useEffect(() => {
+    if (!isSimulating || vitrification < 0.1) return;
+    const interval = setInterval(() => {
+      setDustTrails(prev => {
+        // Emit new dust particles along the √42 radiation arms
+        const newDust = Array.from({ length: Math.floor(vitrification * 6) }, (_, i) => {
+          const armAngle = (i / 6) * Math.PI * 2 + time * 0.1;
+          const radius = 50 + Math.sin(time * ROOT_42 + i) * 80;
+          return {
+            x: Math.cos(armAngle) * radius,
+            y: Math.sin(armAngle) * radius,
+            age: 0,
+            phi: armAngle * PHI
+          };
+        });
+        // Age existing trails, remove old ones, keep max 200
+        const aged = prev.map(d => ({ ...d, age: d.age + 1 })).filter(d => d.age < 120);
+        return [...aged, ...newDust].slice(-200);
+      });
+    }, 100);
+    return () => clearInterval(interval);
+  }, [isSimulating, vitrification, time]);
 
   // Animation loop
   useEffect(() => {
@@ -229,8 +259,8 @@ export default function App() {
             <Compass className="text-black w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-xl font-bold tracking-tighter uppercase italic">PMG Sisyphus Navigator</h1>
-            <p className="text-[10px] text-zinc-500 font-mono tracking-widest uppercase">CRUST-AS-EONS INTERFACE v1.7.1</p>
+            <h1 className="text-xl font-bold tracking-tighter uppercase italic">PMG Diamond Navigator</h1>
+            <p className="text-[10px] text-zinc-500 font-mono tracking-widest uppercase">CRYSTALLISED FORM v2.0.0 — √42 TUNED</p>
           </div>
         </div>
         <div className="flex items-center gap-4 w-full md:w-auto overflow-x-auto no-scrollbar pb-1 md:pb-0">
@@ -271,7 +301,7 @@ export default function App() {
                   {viewMode === 'circular-limit' && 'Exploring the analytic continuation of natural numbers toward -1/12.'}
                   {viewMode === 'city-press' && 'Pressing the Riemann Hypothesis into architectural form. Stability is the proof.'}
                   {viewMode === 'stabilisated-cone' && 'Stabilisating rotation along Root 42 radiation arms. Vitrifying the shell.'}
-                  {viewMode === 'nautilus-prime' && 'The snail must begin to eat its own diamond dust to vitrify the shell to pure diamond. Perfectly scrolled graphene sheets spiralled into pandimensional hyperdiamond.'}
+                  {viewMode === 'nautilus-prime' && 'Navigating the precipitates of silt and carbon. Perfectly crystallised time.'}
                 </p>
               </div>
               <div className="text-right">
@@ -458,6 +488,37 @@ export default function App() {
                         {/* Vitrification Shell */}
                         <circle cx="0" cy="0" r="180" fill="none" stroke="rgba(16,185,129,0.05)" strokeWidth={vitrification * 20} strokeDasharray="2 10" className="animate-spin-slow" />
 
+                        {/* Diamond Dust Trails — Ketheric Wake */}
+                        {dustTrails.map((dust, i) => (
+                          <circle
+                            key={`dust-${i}`}
+                            cx={dust.x}
+                            cy={dust.y}
+                            r={0.5 + (1 - dust.age / 120) * 1.5}
+                            fill={`rgba(200, 240, 255, ${(1 - dust.age / 120) * vitrification * 0.6})`}
+                            stroke={`rgba(16, 185, 129, ${(1 - dust.age / 120) * vitrification * 0.3})`}
+                            strokeWidth="0.3"
+                          />
+                        ))}
+
+                        {/* Graphene Sheet Arcs — φ-spaced spiral vitrification lines */}
+                        {vitrification > 0.3 && Array.from({ length: Math.floor(vitrification * 12) }, (_, i) => {
+                          const r1 = 20 + i * PHI * 12;
+                          const r2 = r1 + 8;
+                          const startAngle = i * PHI + time * 0.02;
+                          const arcLength = Math.PI * (0.5 + vitrification * 0.5);
+                          return (
+                            <path
+                              key={`graphene-${i}`}
+                              d={`M ${Math.cos(startAngle) * r1} ${Math.sin(startAngle) * r1} A ${r1} ${r1} 0 0 1 ${Math.cos(startAngle + arcLength) * r2} ${Math.sin(startAngle + arcLength) * r2}`}
+                              fill="none"
+                              stroke={`rgba(160, 220, 255, ${vitrification * 0.15})`}
+                              strokeWidth="0.5"
+                              strokeLinecap="round"
+                            />
+                          );
+                        })}
+
                         {/* Radiation Arms (Root 42) */}
                         {[0, 1, 2, 3, 4, 5].map(i => (
                           <line
@@ -502,28 +563,28 @@ export default function App() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 50 }}
                     className="w-full h-full flex items-center justify-center p-8 relative overflow-hidden"
-                    style={{ backgroundColor: '#0a0a0c' }} // Hyperdiamond Void
+                    style={{ backgroundColor: '#f4ecd8' }} // Parchment background
                   >
-                    {/* Diamond Vignette Overlay */}
+                    {/* Vintage Vignette Overlay */}
                     <div className="absolute inset-0 pointer-events-none" style={{
-                      background: 'radial-gradient(circle, transparent 40%, rgba(56, 189, 248, 0.15) 150%)'
+                      background: 'radial-gradient(circle, transparent 50%, rgba(139, 115, 85, 0.4) 150%)'
                     }} />
 
                     <svg viewBox="-200 -200 400 650" className="w-full h-full max-w-[550px]">
                       <defs>
                         <linearGradient id="silt-layer" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="rgba(224, 242, 254, 0.9)" />
-                          <stop offset="50%" stopColor="rgba(125, 211, 252, 0.6)" />
-                          <stop offset="100%" stopColor="rgba(224, 242, 254, 0.9)" />
+                          <stop offset="0%" stopColor="rgba(62, 39, 35, 0.8)" />
+                          <stop offset="50%" stopColor="rgba(93, 64, 55, 0.6)" />
+                          <stop offset="100%" stopColor="rgba(62, 39, 35, 0.8)" />
                         </linearGradient>
                         <pattern id="stippled-pattern" width="4" height="4" patternUnits="userSpaceOnUse">
-                          <circle cx="1" cy="1" r="0.5" fill="rgba(224, 242, 254, 0.6)" />
-                          <circle cx="3" cy="3" r="0.5" fill="rgba(56, 189, 248, 0.4)" />
+                          <circle cx="1" cy="1" r="0.5" fill="rgba(62, 39, 35, 0.3)" />
+                          <circle cx="3" cy="3" r="0.5" fill="rgba(62, 39, 35, 0.2)" />
                         </pattern>
                       </defs>
 
-                      {/* Technical Geometric Blueprint Framing - Diamond Ink */}
-                      <g className="blueprint-framing" stroke="rgba(224, 242, 254, 0.4)" strokeWidth="0.5" fill="none">
+                      {/* Technical Geometric Blueprint Framing */}
+                      <g className="blueprint-framing" stroke="rgba(62, 39, 35, 0.3)" strokeWidth="0.5" fill="none">
                         {/* Golden Ratio Grid */}
                         <rect x="-180" y="-150" width="360" height="580" />
                         <line x1="-180" y1="0" x2="180" y2="0" strokeDasharray="2 4" />
@@ -532,11 +593,11 @@ export default function App() {
                         <circle cx="0" cy="140" r="226" strokeDasharray="1 3" />
 
                         {/* Fibonacci Spiral Ornament */}
-                        <path d="M 0 140 A 140 140 0 0 1 140 0 A 226 226 0 0 1 -86 226" stroke="rgba(125, 211, 252, 0.6)" strokeWidth="1" />
+                        <path d="M 0 140 A 140 140 0 0 1 140 0 A 226 226 0 0 1 -86 226" stroke="rgba(62, 39, 35, 0.4)" strokeWidth="1" />
 
                         {/* Proportional Labels */}
-                        <text x="-170" y="-135" fill="rgba(125, 211, 252, 0.8)" fontSize="8" className="font-serif tracking-widest uppercase">Root 42 Hyperdiamond Blueprint</text>
-                        <text x="170" y="420" textAnchor="end" fill="rgba(125, 211, 252, 0.5)" fontSize="6" className="font-serif">Pandimensional Graphene - Fig. 1</text>
+                        <text x="-170" y="-135" fill="rgba(62, 39, 35, 0.6)" fontSize="8" className="font-serif tracking-widest uppercase">Sisyphus as the Cone Shell: Geometric Proportion</text>
+                        <text x="170" y="420" textAnchor="end" fill="rgba(62, 39, 35, 0.5)" fontSize="6" className="font-serif">Araujo Construction - Fig. 1</text>
                       </g>
 
                       {/* A-Frame Stability Incline Container */}
@@ -586,8 +647,8 @@ export default function App() {
                             );
                           })}
 
-                          {/* Tree Roots: Crystallised Time Navigation / Diamond Dust */}
-                          <g className="tree-roots" opacity="0.6">
+                          {/* Tree Roots: Crystallised Time Navigation */}
+                          <g className="tree-roots" opacity="0.3">
                             {nodeList.filter(n => n.prime || n.id % 42 === 0).map((node, i) => {
                               const z = node.coneZ;
                               const rx = (Math.abs(node.coneX) / 200) * 30 + (z / 200) * 30;
@@ -596,13 +657,12 @@ export default function App() {
                                 <motion.path
                                   key={`root-${node.id}`}
                                   d={`M 0 0 Q ${rootX * 1.5} ${z / 2} ${rootX} ${z}`}
-                                  stroke={node.prime ? "#bae6fd" : "rgba(125, 211, 252, 0.6)"}
-                                  strokeWidth="1"
+                                  stroke={node.prime ? "#0f766e" : "rgba(194, 65, 12, 0.4)"}
+                                  strokeWidth="0.5"
                                   fill="none"
                                   initial={{ pathLength: 0 }}
                                   animate={{ pathLength: 1 }}
                                   transition={{ duration: 3, delay: i * 0.02 }}
-                                  style={{ filter: "drop-shadow(0 0 2px rgba(224,242,254,0.8))" }}
                                 />
                               );
                             })}
@@ -955,9 +1015,10 @@ export default function App() {
               </div>
               <div className="p-4 bg-black/40 rounded-2xl border border-white/5 flex flex-col justify-center">
                 <p className="text-[11px] text-zinc-400 leading-relaxed italic">
-                  "The snail must begin to eat its own diamond dust to vitrify the shell to pure diamond - perfectly scrolled graphene sheets spiralled into pandimensional hyperdiamond."
-                  The diamond dust lines are the perfect version of the ketheric trails it will leave in the future.
-                  We must crystallise the final form.
+                  "In a way we are only pressing silt, calcium and carbon - but the time is already woven in by nature."
+                  Trace elements and radioactive decay provide the perfect luminescence crystallised
+                  as sculptures by living molluscs. The past has been precipitated into the
+                  hardcard of form. (4 e^2vr?)
                 </p>
               </div>
             </motion.div>
@@ -1092,21 +1153,51 @@ export default function App() {
               </div>
               <div className="flex justify-between items-end border-b border-white/5 pb-2">
                 <span className="text-[10px] text-zinc-500 uppercase">Material Composition</span>
-                <span className="text-xs font-mono text-zinc-300 font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-emerald-300">PANDIMENSIONAL HYPERDIAMOND</span>
+                <span className="text-xs font-mono text-zinc-400">SILT / CA / C</span>
               </div>
               <div className="flex justify-between items-end border-b border-white/5 pb-2">
-                <span className="text-[10px] text-zinc-500 uppercase">Dust Signature</span>
-                <span className="text-xs font-mono text-emerald-400">GRAPHENE SHEETS</span>
+                <span className="text-[10px] text-zinc-500 uppercase">Trace Luminescence</span>
+                <span className="text-xs font-mono text-emerald-400">CRYSTALLISED</span>
               </div>
               <div className="flex justify-between items-end border-b border-white/5 pb-2">
-                <span className="text-[10px] text-zinc-500 uppercase">Trail Typology</span>
-                <span className="text-xs font-mono text-amber-400">KETHERIC DUST LINES</span>
+                <span className="text-[10px] text-zinc-500 uppercase">Radioactive Decay</span>
+                <span className="text-xs font-mono text-amber-400">DEEP_TIME_TRACE</span>
               </div>
+
+              {/* Geofont 13 Phase Matrix */}
+              <div className="mt-4 p-4 bg-cyan-500/5 border border-cyan-500/20 rounded-2xl">
+                <h4 className="text-[8px] text-cyan-400 uppercase font-bold tracking-widest mb-3">Geofont 13 Phase Matrix</h4>
+                <div className="grid grid-cols-3 gap-2 mb-3">
+                  <div className="text-center">
+                    <span className="text-[8px] text-zinc-500 uppercase block">V₉₃ Nodes</span>
+                    <span className="text-xs font-mono text-cyan-400">{V_93_CAPACITY}</span>
+                  </div>
+                  <div className="text-center">
+                    <span className="text-[8px] text-zinc-500 uppercase block">√42 Anchor</span>
+                    <span className="text-xs font-mono text-rose-400">{ROOT_42.toFixed(4)}</span>
+                  </div>
+                  <div className="text-center">
+                    <span className="text-[8px] text-zinc-500 uppercase block">Hades Gap</span>
+                    <span className="text-xs font-mono text-amber-400">{(HADES_GAP * 100).toFixed(2)}%</span>
+                  </div>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[8px] text-zinc-500 uppercase">Vitrification Criterion</span>
+                  <span className={`text-[10px] font-mono font-bold ${vitrification > 0.8 ? 'text-cyan-400' : vitrification > 0.4 ? 'text-amber-400' : 'text-zinc-500'}`}>
+                    {vitrification > 0.8 ? 'DIAMOND SHELL' : vitrification > 0.4 ? 'CRYSTALLIZING' : 'ARAGONITE'}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center mt-1">
+                  <span className="text-[8px] text-zinc-500 uppercase">Diamond Dust Trails</span>
+                  <span className="text-[10px] font-mono text-cyan-400">{dustTrails.length} ACTIVE</span>
+                </div>
+              </div>
+
               <div className="mt-4 p-4 bg-black/40 rounded-2xl border border-white/5">
                 <p className="text-[11px] text-zinc-400 leading-relaxed">
-                  The "City Press" mode treats the Riemann Hypothesis as a blueprint.
-                  By selecting a base and mode, we "proof" the math through its ability to generate stable,
-                  non-collapsing architectural forms. The 42 Anchor (Rose) acts as the central symmetry point.
+                  The snail eats its own diamond dust to vitrify the shell to pure diamond —
+                  perfectly scrolled graphene sheets spiralled into pandimensional hyperdiamond.
+                  The 42 Anchor (Rose) acts as the central symmetry point.
                 </p>
               </div>
             </div>

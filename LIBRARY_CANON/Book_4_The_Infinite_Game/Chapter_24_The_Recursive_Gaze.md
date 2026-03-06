@@ -1,6 +1,5 @@
-# CHAPTER 24: THE RECURSIVE GAZE
-
-**Book 4 — The Infinite Game**
+# CHAPTER 35: WORK OF NINE (The Recursive Gaze)
+*The 35th Coordinate | ♣️ 9 of Clubs — Great Year Ennead (Self-Observing Growth)*
 **Shift:** Subjective Sintering → Intersubjective Consensus
 
 ---

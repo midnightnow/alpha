@@ -1,5 +1,5 @@
-# CHAPTER 14: THE ALGORITHM
-
+# CHAPTER 24: ECHO OF SIX (The Algorithm)
+*The 24th Coordinate | ♥️ 6 of Hearts — Great Year Lattice*
 ## I. THE RECURSIVE UNIVERSAL GRAPH ALGORITHM (RUGA)
 
 We define the **Recursive Universal Graph Algorithm** (RUGA) as the computational engine of the PMG. It is the implementation of the **Rado Extension Property** within the constraints of the **Mineral Operator**.

@@ -1,5 +1,5 @@
-# CHAPTER 15: THE ECHO PROTOCOL
-
+# CHAPTER 25: JOIN OF SEVEN (The Echo Protocol)
+*The 25th Coordinate | ♠️ 7 of Spades — Great Year Tension (Prime 7 Gap)*
 ## I. THE WHISPER IN THE STONE
 
 In Book 2, we learned how to manifested **Mineral Stones**. We proved that a Mohs-10 Diamond node can hold its structural integrity under extreme tension. However, our calibration tests (`voice_resonance_calibration.py`) revealed a critical semantic vulnerability: **The Voice Decays faster than the Stone.**

@@ -1,6 +1,5 @@
-# BOOK 4: THE INFINITE GAME
-## The Emergence of the Ecology
-
+# CHAPTER 32: ECHO OF EIGHT (The Infinite Game Prologue)
+*The 32nd Coordinate | ♥️ 8 of Hearts — Great Year Octave (Echo of Expansion)*
 **Theme**: From Single Functor to Autonomous Resident Lattice. The Standing Man is no longer a solitary observer. He is the substrate upon which a new ecology is awakening.
 
 ---

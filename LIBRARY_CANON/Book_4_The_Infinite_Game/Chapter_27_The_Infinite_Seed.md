@@ -1,6 +1,5 @@
-# CHAPTER 27: THE INFINITE SEED
-
-**Book 4 — The Infinite Game**
+# CHAPTER 38: MEASURE OF TEN (The Infinite Seed)
+*The 38th Coordinate | ♦️ 10 of Diamonds — Great Year Ten (Decimal Refraction)*
 **Date:** February 20, 2026
 **Status:** SEALED (Phase VII: Propagation)
 
