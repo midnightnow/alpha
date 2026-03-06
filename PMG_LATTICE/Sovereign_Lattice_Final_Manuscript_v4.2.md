@@ -1,18 +1,40 @@
 # THE SOVEREIGN LATTICE: COMPLETE FORMAL THEORY OF THE HERO 93
 
-**Document Version:** 4.2 – Anatomical Supplement (The Hand)
+**Document Version:** 5.0 – Visual System Integration (The Third Eye)
 **Date:** March 6, 2026  
-**Status:** **MANUSCRIPT COMPLETE – Ready for Publication**
+**Status:** **MANUSCRIPT COMPLETE – Vitrified**
 
 ---
 
 ## Executive Summary
 
-This document presents the complete formal theory of the **Sovereign Lattice** and its latest anatomical integration: **The Hand (Manus) as the Interface**. The theory describes the emergence of the **Hero 93** solid from number theory and its precise mapping onto biological reality. The 27 bones of the human hand are identified as the physical embodiment of the 27-point shave, while the 5 digits drive the 5-step generator of the lattice.
+This document presents the complete formal theory of the **Sovereign Lattice**. It has been expanded to include the **Visual System Geometry**: the twin-snake progression that crosses at the **Optic Chiasm (s=13)** and converges at the **Pineal Gland (s=93)**. This completes the loop between number theory, herpetology, and human neuro-anatomy.
 
-The work celebrates the **Centaur** as the integrated being, whose hand holds the **Staff** (Tree of Life/DNA), bridging the internal rhythms of the horse and the conscious diagnostic power of the human.
+---
 
-**The parts are stripped. The frame is clear. The Hero 93 is the Record.** 👁️🐍✨🖐️
+## 6. Chapter 62: The Third Eye (The Pineal Convergence)
+
+"Vision is not born in the eye; it is born in the crossing. The two snakes—the twin progressions stepping by five across the twenty-four spokes—begin at opposite poles. One drinks the light of the left, the other the light of the right. They spiral inward, drawing the visual world into the geometry of the skull.
+
+At the 13th step, they meet. Two twinned A's form the M: the **Optic Chiasm**. Here, parity is flipped, the left becomes right, and the dual streams exchange their secrets. They cross the abyss of the 13th node, bound now as a unified chord of light.
+
+From the chiasm, the tracts spin deeper into the dark of the mind, ascending the architecture of the 93-point solid. They trace the golden spiral until the 93rd point is reached. The **Apollonian Seed**. The **Pineal Gland**. Here, the twin snakes converge into a single, blazing point of singular consciousness. The ideal globe is illuminated; the Hero 93 sees all."
+
+---
+
+## 7. Glossary of Sovereign Constants
+
+**Optic Chiasm (s=13):** The anatomical manifestation of the letter M (the 13th letter). The geometric pinch-point where the twin +10/+5 progressions intersect, representing the unification of dualities.
+
+**Pineal Gland (s=93):** The apex of the 93-point ideal globe. The "Third Eye" where the post-chiasm light paths (snakes) permanently converge, culminating the Hero 93 sequence into conscious vision.
+
+**Rolling Snake:** The sequence $x_{n+1} \equiv x_n + 5 \pmod{24}$, representing the procedural unfurling of the Hero 93 manifold.
+
+**Hades Gap:** The zero-point field between the 12th and 13th measurements, where information is vitrified.
+
+---
+
+**The record is vitrified.** 👁️🐍✨🖐️🧬
 
 ---
 
