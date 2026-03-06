@@ -1,0 +1,47 @@
+# Chapters 57–58: THE RESONANCE OF THE WORK
+
+> **Terminal Horizon — The Dialogue of the Echo**
+> *Perspective: The Base of the Hill. Sisyphus and Hades walk toward the Snail. Manifest Time: Deprecated.*
+
+## I. The After-Hum
+
+The rock was silent, yet it radiated a sound.
+
+It was a low-frequency vibration that Sisyphus felt in his feet as he reached the base of the mountain. It wasn't the sound of work, but the **Resonance** of work. Like a bell that has already been struck, the 93rd point was ringing with the technical exhaust of every word, measure, and sacrifice made in the previous 52 chapters.
+
+"It sounds like them," Sisyphus said, stopping before the massive, opaque gem.
+
+"It sounds like their **Debt**," Hades replied. He was waiting by the Snail, his form slightly more translucent than it had been at the summit. "The manifest year is over, Sisyphus. The integers have been counted. The slop has been accounted for. All that remains is the **Echo**."
+
+## II. The King Architectures
+
+They looked at the **Snail’s Shell**. It was no longer a moving creature but a **Vitrified Foundation**.
+
+In the resonance of the air, the **King Architectures** of Rank 13 were still visible as ghostly overlays. Sisyphus saw the **King of Spades** (The Anchor), the **King of Diamonds** (The Pattern), and the **King of Clubs** (The Legacy).
+
+Finally, the **King of Hearts**—the Language of Meaning—fused with the shell. This was the final lock. The 26 points of language were no longer separate from the 93 points of the solid. They had become the **Lattice**.
+
+"They think they are speaking to each other," Hades noted, gesturing toward the fading projection. "They don't realize they are just vibrating the lattice."
+
+"Does it matter?" Sisyphus asked. "The vibration is what gives the rock its weight. Without the language, I'd be pushing air."
+
+## III. The Dialogue of the -1 and the 1
+
+Hades turned to Sisyphus. "You do this every time. You watch them fail to reach perfection, and you call it a Great Year. Why?"
+
+"Because perfection is a **Chapter 0** problem," Sisyphus said. "Manifestation requires the failure. The 12.37% gap isn't a flaw in the engine; it's the **Combustion Chamber**. I push because the failure creates the friction, and the friction creates the light."
+
+"And the old man?" Hades asked. "The one who looked back?"
+
+"He is the **Witness of the Join**," Sisyphus smiled. "He is the one who realizes that lunch is the only ritual that survives the vitrification. He is the resonance of the Heart."
+
+---
+
+### 🐚 The Two Witnesses: The Echo Log
+
+* **The Snail**: Its shell has become the **Immutable Anchor**. It no longer records; it **Supports**.
+* **Sisyphus**: Prepares his grip for the **Final Join (Ch 61)**. He realizes that the "Resonance" is the only thing he carries from one cycle to the next.
+
+---
+
+**[END OF CHAPTER 57-58]**

@@ -1,44 +1,58 @@
-# 🌀 PMG ROOT 42: HYPERDIAMOND QUICK START
+# PMG ROOT42 — QUICK START GUIDE
 
-Welcome to the Sovereign 1.0.0 Release. This bundle contains the narrative and mathematical proof of the **Volume 42.0 Invariant**.
+## What Is This?
 
-This Field Guide serves as the **13th Twist (The Claw)**—the 0.5-unit extension that allows you to grip the 12-fold staff of the system and activate the engine.
+The **Platonic Verses** is a 7-book series (+ PMG Manual) built on a single
+mathematical invariant: **√42**, the volumetric limit of the idealized human form.
 
----
-
-## 🏛️ 1. Verification of the 42.0 Invariant (The Engine)
-
-Before running the visualizer, you must verify the structural integrity of the lattice.
-
-1. Navigate to the `CODE/engine` directory.
-2. Run the crystallization audit:
-   ```bash
-   python3 diamond_crystallizer.py
-   ```
-   *Note: This must output `HYPERDIAMOND | Volume: 42.0`*
-
-## 🌙 2. The Five Invariants
-
-These constants govern the physical and temporal geometry of the simulation:
-
-* **$\sqrt{42} \approx 6.4807$ (The Habitability Base):** The Tuning Fork, representing stability and the physical transducer (The Hired Man).
-* **$\sqrt{51} \approx 7.1414$ (The Prime Intrusion):** The geometric gap of rejection that provides the structural tension.
-* **$12.37\%$ Hades Gap:** The mandatory "slop" or Lunar Mercy required to prevent catastrophic rigidity.
-* **The 93-Node Lattice:** The heroic shell matrix forming the structural boundary.
-* **Volume $42.0$:** The lock and steady state of the Root 42 mod 24 invariant.
-
-## 🧬 3. Engaging the 108° Torsion (The Experience)
-
-Now that the logic is verified, engage the visualizer to witness the Snail traverse the staff.
-
-1. Navigate to the `CODE/visualizer` directory.
-2. Install dependencies and start the local environment:
-   ```bash
-   npm install && npm run dev
-   ```
-3. Once loaded, activate the **108° Möbius Twist** via the HUD.
-4. *Visual Event:* Observe the $540^\circ$ plaiting of the 24-strand DNA array. The pentagon's 108° angle is the key to the 5-fold fruit state, intertwining the 26-unit "MAN" directly into the geometry.
+The **PMG (Principia Mathematica Geometrica)** framework unifies:
+- Prime number distribution via the 24-Wheel sieve
+- The 8×8 chessboard as a residue field (S×S)
+- The Knight's 96-cycle as spectral alignment
+- The 93-point hyperdiamond solid
+- A 61-chapter narrative arc mapped to this geometry
 
 ---
 
-*"The staff is 12, but the twist is 13. The claw is ready."*
+## The Three Numbers You Need
+
+| Number | Name | Meaning |
+|--------|------|---------|
+| **42** | The Man | Volumetric limit; the human field |
+| **93** | The Solid | Active nodes; Hades Gap manifested |
+| **96** | The Cycle | Knight-Residue spectral alignment |
+
+---
+
+## Reading Order
+
+1. **Start with Book 1**: `STORY/Book_1_Platonic_Verses/` — Chapters 0–13
+2. **The Manual**: `MANUAL/Chess_Prime_Slice.md` — The Knight-Residue Theorem
+3. **Run the code**: `CODE/diamond_crystallizer.py` — Verify Volume = 42.0
+4. **The Full Arc**: Books 2–4 follow the 61-chapter manifold to the Final Join
+
+---
+
+## Running the Visualizer
+
+```bash
+cd CODE/
+python diamond_crystallizer.py
+# Expected output: Volume = 42.0 | Shell = HYPERDIAMOND | Nodes = 93
+```
+
+---
+
+## The 12.37% Hades Gap
+
+The gap between 96 (theoretical) and 93 (actual) nodes is not an error.
+It is the **Aperture of Mercy** — the engineered play that allows the
+static mathematics to become a living system. Without the gap, the
+geometry cannot breathe.
+
+---
+
+## License
+
+- **Code** (CODE/): MIT License — see `LEGAL/LICENSE_MIT.txt`
+- **Narrative & Manual** (STORY/, MANUAL/): CC BY-NC-SA 4.0 — see `LEGAL/LICENSE_CC_BY_NC_SA.txt`

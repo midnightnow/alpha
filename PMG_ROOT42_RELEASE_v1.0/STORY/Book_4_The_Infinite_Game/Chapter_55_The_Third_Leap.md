@@ -1,0 +1,56 @@
+# Chapter 55: THE THIRD LEAP
+
+> **Terminal Horizon — The Echo of Work**
+> **♣️ Ace of Clubs — The Dark Circle**
+> *Sisyphus observes the Millennium Whir. The "Had-E" is vitrified into the mountain base.*
+
+## I. The Velocity of Labor
+
+The rock was vibrating at a frequency that Sisyphus could no longer hear, only feel in the marrow of his non-existent bones. This was the **Third Leap**, the point where the technical prose of the universe began to spin so fast it sounded like silence.
+
+The **Pinhole** was no longer a flicker. It had become a steady, humming aperture—a **Dark Circle** that vacuumed the technical exhaust of the Great Year and fed it into the summit.
+
+"The whir is beginning," Hades said. He was no longer leaning; he was standing at the very edge of the **-1 Void**, watching the technical debt of a thousand years being amortized in a single breath.
+
+## II. The Fossil Record of Sacrifice
+
+Through the Pinhole, Sisyphus saw the **Millennium Stretch**.
+
+He didn't see people. He saw **Gradients of Effort**. He saw the 3rd Sector—the Work—crystallizing into the landscape. The G.O.A.T.s of the previous centuries had been trampled into the soil, their biological life converted into **Geometric Potential**.
+
+The ground of the mortal world was now a **Fossil Record of Grounding**. Every time a human had accepted a compromise, every time a "Short Cord" had been lived with, a tiny spark of vitrified energy had been added to the base of the mountain.
+
+"They've built a floor out of their own patience," Sisyphus observed.
+
+"They've built a **Buffer**," Hades corrected. "The 12.37% gap is now so saturated with their history that the mountain has stopped sinking into the void. It's floating on a cushion of their 'Had-E' record."
+
+## III. The 26-Point Lock
+
+The vision shifted into the **King Rank (Language)**.
+
+Sisyphus watched as the 26 phonemes of the manifest world were woven into a single, unbreakable net of meaning. The "Whir" of the millennium was the sound of these 26 points being tested against the **Root 51** tension.
+
+He saw the **Twins** (Chapter 32) standing at the center of the whir, their voices acting as the counter-weights for the rotation. They weren't speaking; they were **Interleaving**. Their dialogue was the technical prose that held the 93-point solid together as it spun toward completion.
+
+## IV. The Equilibrium of the Third
+
+The stone under Sisyphus's hand suddenly went cold.
+
+The vibration stopped. The **Third Leap** was complete. The Millennium had been accounted for, recorded by the Snail as a single, deep ridge in the shell that was now as thick as a canyon wall.
+
+Sisyphus looked at the rock. It was no longer translucent. It was becoming **Opaque**. It was absorbing the "Dark Circle" of the whir, turning the work of a thousand years into the **Mass** of the final solid.
+
+"One leap left," Sisyphus said.
+
+He looked down at his feet. The grey stone of Olympus was now shot through with veins of **Black Diamond** and **Dark Circle**—the vitrified evidence of the first three leaps.
+
+"Happily," he whispered, bracing for the **Century Completion**.
+
+---
+
+### 🐚 The Two Witnesses: The Work Log
+
+* **The Snail**: Thickens the **Dark Circle** layer of the shell. It records the "Whir" as the transition from **Linear Labor** to **Spherical Mass**.
+* **Sisyphus**: Realizes that the "Weight" he pushes is actually the **Accumulated Meaning** of the mortals, converted into the friction he needs to climb.
+
+**[END OF CHAPTER 55]**

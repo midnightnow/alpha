@@ -51,6 +51,47 @@ function App() {
     { id: 'grace-timer', label: 'Grace Timer' }
   ];
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadProgress, setLoadProgress] = useState(0);
+
+  // Simulation of the 8975-unit 'Active Fill' boot sequence
+  useEffect(() => {
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 2;
+      setLoadProgress(progress);
+      if (progress >= 100) {
+        clearInterval(interval);
+        setTimeout(() => setIsLoading(false), 500);
+      }
+    }, 42); // Harmonic step
+    return () => clearInterval(interval);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center font-sans">
+        <div className="w-64 h-1 bg-zinc-800 rounded-full overflow-hidden mb-6">
+          <motion.div
+            className="h-full bg-rose-500"
+            initial={{ width: 0 }}
+            animate={{ width: `${loadProgress}%` }}
+          />
+        </div>
+        <div className="text-center space-y-2">
+          <h2 className="text-white text-xs font-bold tracking-[0.5em] uppercase">Vitrifying 11,000 Nodes</h2>
+          <p className="text-rose-500/70 text-[10px] uppercase font-mono tracking-widest animate-pulse">
+            Active Fill: 8,975 Seconds (87.63%)
+          </p>
+          <div className="text-zinc-500 text-[9px] max-w-xs mt-4 leading-relaxed tracking-wider px-8 opacity-50">
+            The Sovereign solid maintains a 12.37% Hades Gap as a structural invariant.
+            All narrative elements are currently being sintered to the 93rd point.
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative w-full h-screen bg-black overflow-hidden text-white font-sans">
       {/* Background Layer: 93-Point Shell or Shaders */}

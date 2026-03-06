@@ -189,14 +189,18 @@ export const SoftCreature: React.FC = () => {
       meshRef.current!.setMatrixAt(i, dummy.matrix);
 
       // Update Color
-      let color = new THREE.Color(isHighlighted ? 0xffaa00 : 0x3366ff); // Shell (Blue)
+      let color = new THREE.Color(isHighlighted ? 0xffaa00 : 0xf43f5e); // Shell (Rose-500)
       if (!isHighlighted) {
-        if (p.layer === 'core') color = new THREE.Color(0xff3333); // Core (Red)
-        if (p.layer === 'seed') color = new THREE.Color(0x33ff33); // Seed (Green)
+        if (p.layer === 'core') color = new THREE.Color(0x333333); // Core (Dark)
+        if (p.layer === 'seed') color = new THREE.Color(0xffffff); // Seed (Bright)
+
+        if (!metrics.isPhaseLocked) {
+          color.lerp(new THREE.Color(0x000000), 0.5); // Fade in Hades Gap
+        }
 
         // As it twists, colors "bleed" (Neural fusion)
         if (morph > 0.5) {
-          color.lerp(new THREE.Color(0x9933ff), morph - 0.5);
+          color.lerp(new THREE.Color(0x9d174d), morph - 0.5); // Deep Rose
         }
       }
       meshRef.current!.setColorAt(i, color);
