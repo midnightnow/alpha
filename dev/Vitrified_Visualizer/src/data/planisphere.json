@@ -1,0 +1,189 @@
+{
+  "artifact": {
+    "name": "The Sumerian Planisphere",
+    "designation": "K8538",
+    "museum": "British Museum",
+    "origin": "Library of Ashurbanipal, Nineveh, Iraq",
+    "dateDiscovered": "1849-1851",
+    "tabletDate": "c. 700 BCE (Neo-Assyrian period)",
+    "observationDate": "c. 3300 BCE (controversial - based on precession calculations)",
+    "dateNote": "The physical tablet dates to ~700 BCE from Ashurbanipal's library. The '5,500 years old' claim refers to a disputed theory that it records observations from ~3300 BCE, calculated by matching star positions to ancient skies using precession.",
+    "dimensions": {
+      "diameter": "14 cm",
+      "thickness": "2.5 cm"
+    },
+    "material": "Clay tablet",
+    "script": "Neo-Assyrian cuneiform",
+    "description": "A circular clay tablet divided into 8 sectors by lines radiating from the center, containing observations of the night sky including constellations, stars, and possibly a meteor impact event."
+  },
+  "sectors": [
+    {
+      "id": 1,
+      "name": "Pisces / Fish",
+      "sumerian": "KUN.ME",
+      "akkadian": "zibbatu",
+      "modernConstellation": "Pisces",
+      "content": "Fish symbol with star markers",
+      "inscriptions": ["MUL", "KUN", "ME"],
+      "stars": [
+        { "name": "Al Rischa", "designation": "Alpha Piscium", "magnitude": 3.8 }
+      ],
+      "interpretation": "Western fish of Pisces constellation, marking the celestial equator in ancient times.",
+      "angleDeg": 0,
+      "color": "#4a90d9"
+    },
+    {
+      "id": 2,
+      "name": "Aries / Hired Man",
+      "sumerian": "MUL.LU.HUN.GA",
+      "akkadian": "agru",
+      "modernConstellation": "Aries",
+      "content": "Ram figure with cuneiform labels",
+      "inscriptions": ["LU", "HUN", "GA"],
+      "stars": [
+        { "name": "Hamal", "designation": "Alpha Arietis", "magnitude": 2.0 },
+        { "name": "Sheratan", "designation": "Beta Arietis", "magnitude": 2.6 }
+      ],
+      "interpretation": "The Hired Man or Agrarian Worker, associated with agricultural calendar and spring equinox.",
+      "angleDeg": 45,
+      "color": "#d94a4a"
+    },
+    {
+      "id": 3,
+      "name": "Pleiades / Stars",
+      "sumerian": "MUL.MUL",
+      "akkadian": "zappu",
+      "modernConstellation": "Taurus (Pleiades cluster)",
+      "content": "Seven dots representing the star cluster",
+      "inscriptions": ["MUL", "MUL", "7"],
+      "stars": [
+        { "name": "Alcyone", "designation": "Eta Tauri", "magnitude": 2.9 },
+        { "name": "Merope", "designation": "23 Tauri", "magnitude": 4.2 },
+        { "name": "Electra", "designation": "17 Tauri", "magnitude": 3.7 }
+      ],
+      "interpretation": "The Seven Stars (MUL.MUL literally 'Stars Stars'), crucial for agricultural timing and navigation.",
+      "angleDeg": 90,
+      "color": "#d9a74a"
+    },
+    {
+      "id": 4,
+      "name": "Orion / True Shepherd",
+      "sumerian": "MUL.SIPA.ZI.AN.NA",
+      "akkadian": "sitaddaru",
+      "modernConstellation": "Orion",
+      "content": "Standing figure with raised arm",
+      "inscriptions": ["SIPA", "ZI", "AN", "NA"],
+      "stars": [
+        { "name": "Betelgeuse", "designation": "Alpha Orionis", "magnitude": 0.5 },
+        { "name": "Rigel", "designation": "Beta Orionis", "magnitude": 0.1 },
+        { "name": "Bellatrix", "designation": "Gamma Orionis", "magnitude": 1.6 }
+      ],
+      "interpretation": "The True Shepherd of Anu, one of the most prominent constellations, associated with the god Ninurta.",
+      "angleDeg": 135,
+      "color": "#4ad9a7"
+    },
+    {
+      "id": 5,
+      "name": "Gemini / Great Twins",
+      "sumerian": "MUL.MASH.TAB.BA.GAL.GAL",
+      "akkadian": "tuamu rabuti",
+      "modernConstellation": "Gemini",
+      "content": "Twin figures holding hands",
+      "inscriptions": ["MASH", "TAB", "BA"],
+      "stars": [
+        { "name": "Castor", "designation": "Alpha Geminorum", "magnitude": 1.6 },
+        { "name": "Pollux", "designation": "Beta Geminorum", "magnitude": 1.1 }
+      ],
+      "interpretation": "The Great Twins, associated with the gods Lugalgirra and Meslamtaea.",
+      "angleDeg": 180,
+      "color": "#9b4ad9"
+    },
+    {
+      "id": 6,
+      "name": "Leo / Lion",
+      "sumerian": "MUL.UR.GU.LA",
+      "akkadian": "urgulu",
+      "modernConstellation": "Leo",
+      "content": "Lion figure with prominent mane",
+      "inscriptions": ["UR", "GU", "LA"],
+      "stars": [
+        { "name": "Regulus", "designation": "Alpha Leonis", "magnitude": 1.4 },
+        { "name": "Denebola", "designation": "Beta Leonis", "magnitude": 2.1 }
+      ],
+      "interpretation": "The Great Lion, associated with the summer heat and the goddess Ishtar in her warlike aspect.",
+      "angleDeg": 225,
+      "color": "#d94a8f"
+    },
+    {
+      "id": 7,
+      "name": "Triangulum / Plough",
+      "sumerian": "MUL.APIN",
+      "akkadian": "epinnu",
+      "modernConstellation": "Triangulum and Andromeda",
+      "content": "Triangular plough symbol",
+      "inscriptions": ["APIN", "MUL"],
+      "stars": [
+        { "name": "Beta Trianguli", "designation": "Beta Tri", "magnitude": 3.0 },
+        { "name": "Mirach", "designation": "Beta Andromedae", "magnitude": 2.1 }
+      ],
+      "interpretation": "The Plough constellation, namesake of the MUL.APIN astronomical compendium.",
+      "angleDeg": 270,
+      "color": "#4ad9d9"
+    },
+    {
+      "id": 8,
+      "name": "Pegasus / Field",
+      "sumerian": "MUL.IKU",
+      "akkadian": "iku",
+      "modernConstellation": "Pegasus (Great Square)",
+      "content": "Square field symbol with markers",
+      "inscriptions": ["IKU", "A", "SHA"],
+      "stars": [
+        { "name": "Markab", "designation": "Alpha Pegasi", "magnitude": 2.5 },
+        { "name": "Scheat", "designation": "Beta Pegasi", "magnitude": 2.4 },
+        { "name": "Algenib", "designation": "Gamma Pegasi", "magnitude": 2.8 }
+      ],
+      "interpretation": "The Field, representing the Great Square of Pegasus, used as a reference for the first point of Aries.",
+      "angleDeg": 315,
+      "color": "#a7d94a"
+    }
+  ],
+  "centerSymbol": {
+    "name": "Celestial Axis / Ecliptic Pole",
+    "description": "The central circle may represent the celestial pole or the ecliptic, serving as the axis around which the heavens appear to rotate.",
+    "inscription": "AN"
+  },
+  "theories": {
+    "astronomical": {
+      "title": "Star Chart Interpretation",
+      "description": "The tablet represents the night sky as observed from Mesopotamia, divided into eight equal sectors corresponding to specific constellations and celestial regions.",
+      "proponents": ["Wayne Horowitz", "John Britton"]
+    },
+    "kofelImpact": {
+      "title": "Astrophysical Event Theory",
+      "description": "Bond & Hempsell (2008) proposed that the tablet records a catastrophic asteroid impact at Kofels, Austria around 3123 BCE, with the sectors tracking the object's trajectory.",
+      "proponents": ["Alan Bond", "Mark Hempsell"],
+      "controversial": true
+    },
+    "calendaric": {
+      "title": "Agricultural Calendar",
+      "description": "The sectors may correspond to agricultural seasons and important stellar risings/settings used for planting and harvest timing.",
+      "proponents": ["Francesca Rochberg"]
+    }
+  },
+  "culturalContext": {
+    "purpose": [
+      "Astronomical observation and recording",
+      "Religious and ritual timing",
+      "Agricultural calendar reference",
+      "Navigation aid",
+      "Scribal training and education"
+    ],
+    "significance": "This planisphere represents one of the earliest systematic attempts to map and understand the night sky, demonstrating sophisticated observational astronomy in ancient Mesopotamia.",
+    "relatedTexts": [
+      "MUL.APIN (astronomical compendium)",
+      "Enuma Anu Enlil (celestial omens)",
+      "Astronomical Diaries"
+    ]
+  }
+}

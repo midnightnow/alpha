@@ -1,0 +1,44 @@
+[
+    {
+        "row_id": 1,
+        "ratio": 0.9917,
+        "angle": 44.76,
+        "label": "Deepest Descent",
+        "use": "Ziggurat Face / Monumental Steps"
+    },
+    {
+        "row_id": 5,
+        "ratio": 0.9028,
+        "angle": 42.08,
+        "label": "Diamond Pivot",
+        "use": "Structural Ramp (Balance of Force)"
+    },
+    {
+        "row_id": 7,
+        "ratio": 0.8485,
+        "angle": 40.32,
+        "label": "Anchor Vector",
+        "use": "Nodal Connection (Diagonal)"
+    },
+    {
+        "row_id": 10,
+        "ratio": 0.7656,
+        "angle": 37.44,
+        "label": "Polar Alignment",
+        "use": "Celestial Sightline"
+    },
+    {
+        "row_id": 11,
+        "ratio": 0.75,
+        "angle": 36.87,
+        "label": "3-4-5 Anchor",
+        "use": "Standard Right Angle Generator"
+    },
+    {
+        "row_id": 15,
+        "ratio": 0.6222,
+        "angle": 31.89,
+        "label": "Leveling Slope",
+        "use": "Irrigation Channel / Minimal Erosion"
+    }
+]
