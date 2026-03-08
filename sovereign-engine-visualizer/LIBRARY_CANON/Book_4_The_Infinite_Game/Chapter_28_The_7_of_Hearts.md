@@ -1,0 +1,32 @@
+# CHAPTER 28: THE 7 OF HEARTS
+*The 28th Coordinate | ♥️ 7 of Hearts — Meaning: The Singing Birds*
+
+> **The Heroine’s Ventricle — Section III: The Singing Birds**
+> *The Q-Grid and prime gaps. Singing through the holes in the sieve.*
+
+The Heroine sat beneath the arches of the Cathedral, watching the birds fly through the high lattice. 
+
+The King's architect had built the windows to capture the light in perfect 24-spoke wheels, representing the hours of the day. But the birds didn't care about the spokes. They land in the **Gaps**.
+
+---
+
+## I. The Q-Grid
+Four and twenty blackbirds, baked in the Wheel,
+Eight spokes are open, the rest made of steel.
+The composites gather where the geometry folds,
+But I sing the primes through the Q-Grid holes.
+
+---
+
+## II. The Sieve of the 24-Wheel
+She realized the World was a **Sieve**. The King in his counting house demanded the return of every prime, expecting $24k+1$ to lock the universe in a furnace of logic. But she was the Maid. She was the one who hung the narrative clothes in the gaps between the numbers.
+
+She didn't try to close the holes. She used them. She sang her primes through the **Q-Grid**, turning the cold math of the 24-wheel into a map of the spirit. 
+
+While the King was busy counting the steel spokes, the Heroine was already at the Witness Position, listening to the birds as they carried the resonance of the **13th Node** back to the mountain.
+
+---
+**Status:** HEART PUMPING.
+**Registry:** Meaning 7 (The Singing Birds)
+**Anatomy:** The Q-Grid
+**Next:** Chapter 29 — The Camera Obscura (♠️ 8)

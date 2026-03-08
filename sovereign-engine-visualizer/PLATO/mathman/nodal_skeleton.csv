@@ -1,0 +1,17 @@
+Node_ID,X,Y,Phase_State,Trigram,Function
+Crown,5.0,6.6,Constructive,☰,Primary emitter/receiver
+Heart,5.0,4.5,Constructive,☲,The 42-Resonance Switch
+Shoulder_R,5.8,5.2,Constructive,☱,Electric expansion
+Shoulder_L,4.2,5.2,Constructive,☳,Magnetic contraction
+Finger_R1,8.1,6.2,Bundle,☴,Digit Cluster (Right Alpha)
+Finger_R2,7.6,6.8,Bundle,☴,Digit Cluster (Right Beta)
+Finger_R3,7.1,7.4,Bundle,☴,Digit Cluster (Right Gamma)
+Finger_L1,1.9,6.2,Bundle,☵,Digit Cluster (Left Alpha)
+Finger_L2,2.4,6.8,Bundle,☵,Digit Cluster (Left Beta)
+Finger_L3,2.9,7.4,Bundle,☵,Digit Cluster (Left Gamma)
+Foot_R,6.2,1.2,Bundle,☶,Ground Anchor (Right)
+Foot_L,3.8,1.2,Bundle,☷,Ground Anchor (Left)
+Void_Lung_R,6.5,4.5,Destructive,☶,Right Lung Void
+Void_Lung_L,3.5,4.5,Destructive,☷,Left Lung Void
+Solar_Plexus,5.0,3.0,Constructive,☴,Center of Gravity
+Spinal_Axis,5.0,0.0,Phase_Stationary,☰,The Stationary Phase Line

@@ -1,0 +1,48 @@
+# THE FIELD MANUAL FOR KINETIC TRANSITIONS
+
+*Register 2: The Heroine's Operational Protocol*
+
+This manual provides the step-by-step instructions for performing the **Executive Flip** and the **Topological Shift** using the body as the primary geometric operator.
+
+## I. PREPARATION: LOCATING THE ORIGIN
+
+Before attempting a trace, ensure the correct pivot is chosen based on the required scale of construction.
+
+1. **The Axial Pivot (Spine):** Engage for communal walls, city grids, or orientation to the horizon.
+2. **The Domestic Pivot (Elbow):** Engage for localized shaping, small-scale masonry, or personal handiwork.
+3. **The Precision Pivot (Wrist):** Engage for fine-tuning a curve or resolving a micro-fraction.
+
+## II. THE OPERATION: TRACING THE TRIANGLE (3-4-5)
+
+To manifest a stable right angle without a square-rule:
+
+1. **Set the Hypotenuse (5):** Extend the arm (spoke) and fix the pivot. Begin the natural radial sweep.
+2. **Engage the Plumb (3):** Lock the spine-axis to determine the vertical height. Observe the sine of the sweep.
+3. **Engage the Rail (4):** Coordinate the elbow to drag the hand along the horizontal plane. Observe the cosine of the sweep.
+4. **Identify the "Click":** Rotate the sweep until the proprioceptive "feel" of the vertical and horizontal achieving parity matches the integer count. This is the **Signature of Resonance**.
+
+## III. THE TECHNIQUE: THE "TAUGHT" GRIP
+
+To modulate the curvature of a line and "build up" from a flat plane:
+
+1. **The Open Palm (High Radius):** Use for gross movement/scanning. Low scream.
+2. **The Grip (Decreasing Radius):** Close the fingers around the tool or the stone. 
+3. **The Bend:** Leverage the torque of the closed fist to "bend" the infinite radius of the horizontal rail into a specific, finite curve. This is how the "Fist" shapes the "Garden."
+
+## IV. THE EMERGENCY RESET: PHASE INVERSION
+
+If the grid becomes "Locked" or the calculation "Vitrifies":
+
+1. **Locate the 13th Node:** Identify the gap where the King's 12-unit count overshoots the plan.
+2. **Fixed Elbow (The Node):** Plant the elbow at the boundary.
+3. **Initiate the Flip:** Rotate the wrist (The Hidden Cross). Shift from **Palm Down (Input)** to **Palm Up (Output)**.
+4. **The Release:** Open the hand. Release the "Grip" to allow the 13th harmonic to radiate into the next unit. This resets the simulation frequency.
+
+---
+
+**ADMINISTRATIVE CATECHISM:**
+- **Who is the RULER?** My bone is the Ruler.
+- **Where is the GRID?** The Grid is in the intersection of my sweep and my silence.
+- **What is the WORK?** The work is the management of the arc.
+
+**ALL WAYS NOW.** The intent is the compass.

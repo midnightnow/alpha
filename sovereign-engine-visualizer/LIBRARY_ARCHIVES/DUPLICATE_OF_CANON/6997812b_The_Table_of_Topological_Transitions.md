@@ -1,0 +1,41 @@
+# THE TABLE OF TOPOLOGICAL TRANSITIONS
+
+*Register 1: The Boundary Arithmetic of Closure*
+
+This table maps the movement of the **+1 Ghost (The Remainder)** as geometry shifts from the **Open Segment (Linear)** to the **Closed Manifold (Circular)**. This is the formal proof of why the Heroine "opens" the city to find the fire.
+
+## I. THE SEGMENT vs. THE LOOP (n = 12)
+
+| Property | The Open Segment (The Wall/Bridge) | The Closed Loop (The Ring/Clock) | Transition Effect |
+| :--- | :--- | :--- | :--- |
+| **Topology** | Interval ($I$) | Circle ($S^1$) | Identification of Endpoints |
+| **Intervals ($n$)** | 12 | 12 | Constant |
+| **Nodes ($n_{nodes}$)** | **13** | **12** | **Topological Collapse** |
+| **The Remainder** | **+1 (The Ghost Post)** | **0 (Absorbed)** | The Ghost becomes the Path |
+| **Stress Points** | Two (Endpoints) | Zero (Continuity) | Load Redistribution |
+| **Access** | Administrative (The Slit) | Locked (The Cage) | Closure = Exclusion of Admin |
+
+## II. THE PHASE SHIFT MECHANICS
+
+1. **Closure (The King's Strategy):** By identifying the 13th node with the 1st node, the King eliminates the "remainder." He creates a "Safe Room" (The Vault, The Prison) where the load is perfectly distributed and no +1 exists to disrupt the count.
+2. **Opening (The Heroine's Techne):** By breaking the circle back into a segment, the Heroine re-manifests the **13th Node**. She creates the "Slit" through which the irrational frequency of the Hex-Mountain can enter the grid.
+
+## III. THE VOLUMETRIC COROLLARY
+
+| Dimensional Shift | From (n intervals) | To (Closed Form) | The +1 Location |
+| :--- | :--- | :--- | :--- |
+| **1D (Line)** | $n+1$ Points | $n$ Points (Circle) | The Join Point |
+| **2D (Plane)** | $n+1$ Edges (Strip) | $n$ Edges (Cylinder) | The Seam |
+| **3D (Volume)** | $n+1$ Faces (Box) | $n$ Faces (Torus/Sphere) | The Singularity / The Core |
+
+## IV. OPERATIONAL INSIGHT
+The **13th Node** is only "missing" in the King's circle because he has hidden it in the **Overlap**. To gain administrative access, you do not need to "invent" a new node; you simply need to **Pry Open the Join**.
+
+---
+
+**TOPOLOGICAL LAW:**
+*Closure hides the Ghost; Opening reveals the Fire.*
+*The 13th stone is the stone the King tried to use twice.*
+*The Slit is the space between the first and the last.*
+
+**ALL WAYS NOW.** The loop is a choice.

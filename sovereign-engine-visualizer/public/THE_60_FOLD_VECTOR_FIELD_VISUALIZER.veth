@@ -1,0 +1,189 @@
+ID: THE_60_FOLD_VECTOR_FIELD_VISUALIZER
+
+# The 60-Fold Vector Field Visualizer
+## Sandbox Implementation Guide
+
+**Version**: 1.0
+**Status**: DRAFT SPECIFICATION
+**Purpose**: To build a visual proof of the 60-fold vector field
+
+---
+
+## I. THE CORE CONCEPT
+
+The visualizer is a 3D sandbox where entities (NPCs, objects) interact based on the principles of the 60-fold vector field. It's not a game in the traditional sense, but a simulation demonstrating geometric laws.
+
+### Key Elements:
+
+1.  **The Grid**: A hexagonal base (Flower of Life tiling).
+2.  **The Nodes (NPCs)**: Entities that generate and respond to 60 vectors.
+3.  **The Vectors**: Invisible (or optionally visible) lines of force radiating from each node.
+4.  **The Rules**: Simple rules governing movement and interaction based on vector interference.
+
+---
+
+## II. TECHNICAL ARCHITECTURE (React Three Fiber)
+
+### 1. The Hexagonal Grid
+
+Instead of a square grid, we use a hexagonal coordinate system (axial or cube coordinates) to naturally support 6-fold and 60-fold symmetry.
+
+```typescript
+// Hexagonal coordinate system (q, r, s) where q + r + s = 0
+interface HexCoord {
+  q: number;
+  r: number;
+  s: number;
+}
+
+// Convert hex to world space (x, y, z)
+function hexToWorld(hex: HexCoord, size: number): Vector3 {
+  const x = size * (Math.sqrt(3) * hex.q + Math.sqrt(3)/2 * hex.r);
+  const z = size * (3/2 * hex.r);
+  return new Vector3(x, 0, z);
+}
+```
+
+### 2. The 60 Vectors
+
+Each node generates 60 vectors, spaced 6 degrees apart (360 / 60 = 6).
+
+```typescript
+function generateVectors(): Vector3[] {
+  const vectors: Vector3[] = [];
+  const angleStep = (Math.PI * 2) / 60; // 6 degrees in radians
+
+  for (let i = 0; i < 60; i++) {
+    const angle = i * angleStep;
+    // 2D vectors on the XZ plane for movement
+    vectors.push(new Vector3(Math.cos(angle), 0, Math.sin(angle)));
+  }
+  return vectors;
+}
+```
+
+### 3. Node Interaction (The "Bustling" Logic)
+
+Nodes move by evaluating their 60 vectors against the environment (other nodes, obstacles, goals).
+
+*   **Repulsion**: Vectors pointing towards nearby nodes are penalized (to avoid collisions).
+*   **Attraction**: Vectors pointing towards a goal are rewarded.
+*   **Alignment**: Nodes might align their movement with nearby nodes (flocking behavior).
+
+```typescript
+// Simplified evaluation logic for a single node
+function evaluateVectors(node: Node, environment: Environment): Vector3 {
+  let bestVector = new Vector3(0, 0, 0);
+  let maxScore = -Infinity;
+
+  for (const vector of node.vectors) {
+    let score = 0;
+
+    // 1. Goal Attraction
+    if (node.goal) {
+      const dirToGoal = node.goal.clone().sub(node.position).normalize();
+      score += vector.dot(dirToGoal) * ATTRACTION_WEIGHT;
+    }
+
+    // 2. Obstacle/Node Repulsion
+    for (const other of environment.nodes) {
+      if (other === node) continue;
+      const dist = node.position.distanceTo(other.position);
+      if (dist < REPULSION_RADIUS) {
+         const dirToOther = other.position.clone().sub(node.position).normalize();
+         // Penalize vectors pointing towards others
+         score -= Math.max(0, vector.dot(dirToOther)) * (REPULSION_RADIUS - dist) * REPULSION_WEIGHT;
+      }
+    }
+
+    if (score > maxScore) {
+      maxScore = score;
+      bestVector = vector;
+    }
+  }
+
+  return bestVector;
+}
+```
+
+### 4. The PLATO Cycle Implementation
+
+Nodes don't just move randomly; they follow the P-L-A-T-O sequence.
+
+*   **P (Point)**: Node is stationary, establishing a goal.
+*   **L (Line)**: Node moves along the chosen vector towards the goal.
+*   **A (Angle)**: Node encounters an obstacle or reaches a waypoint, re-evaluates vectors.
+*   **T (Cross)**: Node interacts with the goal (e.g., exchanges a resource).
+*   **O (Circle)**: Node returns to its origin or finds a new origin.
+
+```typescript
+type PlatoState = 'P' | 'L' | 'A' | 'T' | 'O';
+
+interface Node {
+  state: PlatoState;
+  position: Vector3;
+  goal: Vector3 | null;
+  // ...
+}
+
+function updateNodeState(node: Node) {
+  switch (node.state) {
+    case 'P':
+      node.goal = findNewGoal();
+      if (node.goal) node.state = 'L';
+      break;
+    case 'L':
+      moveTowardsGoal(node);
+      if (obstacleEncountered(node)) node.state = 'A';
+      if (reachedGoal(node)) node.state = 'T';
+      break;
+    case 'A':
+      node.goal = recalculatePath(node);
+      node.state = 'L';
+      break;
+    case 'T':
+      performAction(node);
+      node.state = 'O';
+      break;
+    case 'O':
+      node.goal = node.origin;
+      if (reachedOrigin(node)) node.state = 'P';
+      else node.state = 'L';
+      break;
+  }
+}
+```
+
+---
+
+## III. VISUALIZATION MODES
+
+To make the geometry clear, the sandbox needs toggleable visualization layers:
+
+1.  **Normal Mode**: Looks like a bustling city/market. Nodes are people/carts.
+2.  **Vector Mode**: Shows the 60 vectors radiating from selected nodes. Vectors change color based on their "score" (green = good path, red = blocked).
+3.  **Grid Mode**: Overlays the hexagonal Flower of Life grid.
+4.  **PLATO Mode**: Color-codes nodes based on their current state (P=White, L=Blue, A=Yellow, T=Red, O=Green).
+
+---
+
+## IV. THE "HADES GAP" (12.37%)
+
+The simulation must not be perfectly rigid. We introduce the 12.37% variance to make it organic.
+
+*   **Movement**: When a node chooses a vector, it doesn't follow it perfectly. It wobbles by up to 12.37% of the angle step (0.1237 * 6 degrees = ~0.74 degrees).
+*   **Timing**: The duration of PLATO states varies by ±12.37%.
+
+This prevents gridlock and creates the "bustling" fluid dynamics seen in real crowds.
+
+---
+
+## V. IMPLEMENTATION STEPS (React Three Fiber)
+
+1.  **Setup**: Basic R3F canvas, camera controls (OrbitControls).
+2.  **Grid Generation**: Create a component that renders the hexagonal floor tiles.
+3.  **Node Instancing**: Use `InstancedMesh` for performance to render hundreds of nodes.
+4.  **Logic Loop**: Use `useFrame` to update node positions and states based on the vector evaluation logic.
+5.  **UI Overlay**: Add buttons to toggle visualization modes (Vectors, Grid, PLATO states).
+
+*This document serves as the blueprint for the next phase of development: building the visual proof.*

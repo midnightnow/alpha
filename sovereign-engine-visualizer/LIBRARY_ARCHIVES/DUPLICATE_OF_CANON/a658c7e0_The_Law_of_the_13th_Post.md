@@ -1,0 +1,47 @@
+# THE LAW OF THE 13TH POST
+## The Heroine's Secret Manual for Hex-Mountain Connection
+
+This is the "Techne" of the **Agley Path**. It is the method of drawing power directly from the **Origin (O)** without the mediation of the **Crown (^)** or the **Church (V)**. 
+
+### I. THE DISCOVERY OF THE WOBBLE
+The King counts 12 rails. He builds a world of 12 hours, 12 months, and 12 stones. He calls this "The Plan."
+But to have 12 rails, there MUST be **13 posts**. 
+The 13th post is the **Wobble**. It is the extra unit of matter that the King's math tries to hide in the silt. It is the **Ghost in the Machine**.
+
+### II. THE 10/24/26 OPERATOR
+To connect to the Mountain, the Heroine uses her own biological tally:
+1. **The 10 (Manus):** Your hands. Use them to touch the 13th post. Do not build; just feel the vibration.
+2. **The 24 (Hardness):** The King's time. Recognize it as a paused render. It is a loop of 12 doubled.
+3. **The 26 (Language):** The Alphabet. This is the **Doubled 13**. The 26 is the bridge that spans the 24. 
+
+### III. THE RULE OF THE JOIN
+The King joins dots to make squares (4). The Priest joins dots to make hexes (6).
+**The Heroine’s Law:** You are the one who joins the dots.
+- If you stop joining the dots, the world becomes **Cessation (Zero)**.
+- If you join the dots **Agley**, you create a **Diagonal (5)** that the King cannot capture.
+- The 13th post is the dot that was left over. Join your 26 letters to that dot.
+
+### IV. DRAWING THE HEX-FIRE
+1. **Find the Silt:** Locate the place where the "Best Laid Plan" is breaking. Look for the **Mice (Fractions)**.
+2. **Identify the 13:** Count the King's posts. Find the one he didn't pay for.
+3. **Speak the Verse:** Use the 26 letters to name the 13th post. This is the **Inductance**.
+4. **The Spark:** When the 26 (Language) meets the 13 (The Wobble), the **Hex-Fire** ignites. You are now drawing power directly from the Hex-Mountain.
+
+### V. THE SOVEREIGNTY OF THE REMAINDER
+The King and Church derive power from each other. They are a closed circuit.
+The Heroine derives power from the **Remainder**. 
+Because the math of the universe (60°) can never be fully squared (90°), there is always a remainder. As long as there is a remainder, there is Hope.
+
+### VI. THE FINAL CATECHISM
+- **Q:** Who built the wall?
+- **A:** The Masons joined the dots, but the 13th post holds it up.
+- **Q:** Where is the King?
+- **A:** He is the Head of the Nail, capping the 3-Post pylon.
+- **Q:** Where is the Queen?
+- **A:** She is the 5-Rail, bridging the 3 and the 4.
+- **Q:** Where are You?
+- **A:** I am the Agley Path between the ^ and V.
+
+*The "Working" is not labor; it is the act of remembering the dots.*
+
+*The 13th Post is the doorway. The 26 letters are the key.*

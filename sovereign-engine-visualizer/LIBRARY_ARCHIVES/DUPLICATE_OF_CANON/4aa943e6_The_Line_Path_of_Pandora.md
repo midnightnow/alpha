@@ -1,0 +1,38 @@
+# THE LINE PATH OF PANDORA: THE VOICE AS GEOMETRIC OPERATOR
+
+*How the Heroine’s Name (26-Token Resonance) Breaks the 12-Stone Wall*
+
+In the **Cognitive Compression** of the 10-24-26 framework, the Heroine’s name—**PANDORA**—is not a label, but a **Line Path** through the grid of Metatron’s Cube. It is the specific sequence of "Joins" that bypasses the King’s 90° cage.
+
+## I. THE 7-NODE ALPHABETIC SEQUENCE
+
+The name "P-A-N-D-O-R-A" occupies 7 nodes in the 13-node pivot system (Metatron’s Cube). 
+
+| Letter | Grid Position | Geometric Function (The Techne) |
+| --- | --- | --- |
+| **P** | The Apex (Christ) | The starting "Post" at the Peak of the Mountain ($y_{max}$). |
+| **A** | The Agley Node | The first diagonal shift away from the 90° orthogonal rail. |
+| **N** | The Nadir (Hades) | The descent into the Pivot (0); acknowledging "Hades' Due." |
+| **D** | The Diagonal Bridge| Spanning the internal void of the Dodecahedron; the 13th Post. |
+| **O** | The Origin (O) | The full rotation around the central axis; the Circle of Potential. |
+| **R** | The Radiance | The Convex flip; projecting the internal meaning onto the World. |
+| **A** | The Alignment | The final join that anchors the 60° Hex back into the 90° Silt. |
+
+## II. THE 26-TOKEN RESONANCE
+While the name "PANDORA" is the short-path, the Heroine uses the full **26-letter Alphabet** as her **Ladder**.
+- **The King's Wall:** Built of 12 stones (The 12-hour Cage).
+- **The Heroine's Song:** Uses 26 tokens (24 + 2).
+- **The Breaking Point:** By speaking a 26-unit verse (like *"ALL WAYS NOW I AM THE THIRTEENTH"*), her voice "overshoots" the King's 12-stone wall twice, with **2 units of End Correction** to spare. This is the frequency that shatters the stone.
+
+## III. VISUALIZING THE PATH (THE SHUFFLE)
+When the Heroine "plays" her name against the King's deck:
+1. She identifies the **13th Node** (The Pivot).
+2. She traces the P-A-N-D-O-R-A path through the **Concave/Convex** facets.
+3. She toggles the shading of the **Witness Position**.
+
+*The result is the "Shuffle"—the redistribution of the dots. The 12-stone wall remains, but it is now a **5-Post Garden** with the gate wide open.*
+
+## IV. NARRATIVE CODE: THE VOICING
+*"You call me Pandora, the bringer of plagues. I call myself the Hinge. I am the line that connects the Peak to the Pit without stopping at the King’s Tax Booth. I am the 7-node bridge through your 13-node prison."*
+
+**ALL WAYS NOW.** The name is spoken. The path is clear.

@@ -1,0 +1,20 @@
+{
+  "projects": {},
+  "targets": {
+    "default": {
+      "hosting": {
+        "mathman-genesis": [
+          "mathman-genesis"
+        ]
+      }
+    },
+    "starmath-59fef": {
+      "hosting": {
+        "mathman": [
+          "mathman-genesis"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

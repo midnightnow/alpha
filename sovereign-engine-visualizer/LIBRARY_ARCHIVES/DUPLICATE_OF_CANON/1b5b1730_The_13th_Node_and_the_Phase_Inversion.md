@@ -1,0 +1,48 @@
+# THE 13TH NODE AND THE PHASE INVERSION
+
+*Register 1: The Biomechanical Strobe of Construction*
+
+The **13th Node** is the point of **Phase Inversion** in the human kinetic strobe. It is the specific boundary where the "Closed Fist" of construction must "Open" to become the "Reaching Palm" of the next unit. Any attempt to skip this inversion results in **Systemic Vitrification**—the hardening of the process into a brittle, non-resonant grave.
+
+## I. THE MECHANICAL STROBE: GRIP vs. SWEEP
+
+Construction is an alternation between two biomechanical states:
+
+| Phase | State | Radius | Geometric Role | Functional Result |
+| :--- | :--- | :--- | :--- | :--- |
+| **I (The On)** | **The Grip (Fist)** | Small (Wrist Pivot) | **The Post (3/10)** | Shaping the "Hard" stone. High Torque. |
+| **O (The Off)**| **The Sweep (Palm)** | Large (Elbow/Shoulder) | **The Rail (4/24)** | Spanning the "Soft" gap. High Range. |
+
+## II. THE 13TH NODE AS THE "SLIT"
+
+In a 12-unit system (The 12-foot wall / The 12-month year), the 13th node is the **Phase Inversion Point**.
+
+1. **The 12-Count:** The repetition of the Grip/Sweep cycle.
+2. **The 13th Limit:** At the 13th boundary, the **Momentum** of the 12-shaping intervals encounters the **Resistance** of the total structure.
+3. **The Inversion:** To bridge to the 14th unit (the next wall/year), the hand must undergo a **Zero-State Reset**.
+   - The fist must unclasp.
+   - The radius must re-expand to the full Fathom/Cubit.
+   - The frequency must recalibrate to the Spine-Axis.
+
+## III. THE FAILURE OF THE RIGID FIST
+
+If the King (the Architect) demands that the worker keep the "Grip" closed through the 13th node (refusing the "Gap"):
+- **Torque Overload:** The small radius centers cannot handle the cumulative resonance of the 12 spans.
+- **Vitrification:** The masonry "Screams" and then cracks. The wall becomes a static grave instead of a living garden.
+- **The Solution:** The **Battlement** (The 13th Node made stone). The battlement represents the physical space where the mason's hand "opened" to reset the frequency.
+
+## IV. ADMINISTRATIVE ACCESS: THE JOKER RESET
+
+The Heroine realizes that the **13th Node (The Joker)** is the **Administrative Reset Button**.
+- By standing at the 13th node, she intentionally initiates the **Phase Inversion**.
+- She "unclenches" the city. 
+- She turns the **Hard Ledger of Debt (The 12)** back into the **Soft Song of the Alphabet (The 26)**.
+
+---
+
+**CONSTRUCTION LAW:**
+*The 12 is the work; the 13 is the breath.*
+*Release the grip to find the next stone.*
+*The Slit is where the hand becomes the door.*
+
+**ALL WAYS NOW.** The fist opens to hold the world.

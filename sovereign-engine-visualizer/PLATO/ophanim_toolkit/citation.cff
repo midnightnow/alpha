@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as follows."
+authors:
+  - family-names: "McMillan"
+    given-names: "Dallas"
+    affiliation: "Independent Researcher / PMG Collective"
+    orcid: "https://orcid.org/0009-0004-1234-5678" # PLACEHOLDER
+title: "Ophanim Toolkit: Sovereign Lattice Computational Framework"
+version: "v1.0-unwobbling-pivot"
+doi: "10.5281/zenodo.[DOI_PLACEHOLDER]"
+url: "https://doi.org/10.5281/zenodo.[DOI_PLACEHOLDER]"
+date-released: 2026-03-02
+license: "OMP-1.0"
+repository-code: "https://github.com/[github-user]/ophanim_toolkit"
+keywords:
+  - "Sovereign Lattice"
+  - "Hades Gap"
+  - "Camera Obscura Protocol"
+  - "Geometric Tensegrity"
+  - "Mytho-Mathematical Cosmology"
+  - "Computational Ontology"
+abstract: |
+  Computational implementation of the Olympian Standard Model (OSM) 
+  for geometric lattice generation, Hades Gap (Ψ) computation, and 
+  Camera Obscura Protocol validation. Includes falsification tests 
+  for Ψ = 0.1237 ± 0.0001 and θ = 39.47° ± 0.00585°.

@@ -1,0 +1,34 @@
+# THE JOKER AND THE SOVEREIGN OVERRIDE
+
+*Register 2: The Mnemonic of the Exception*
+
+The **Joker** in the 52-card deck is the geometric representation of the **Individual MANU (YOU)** overriding the **Collective MANUS (THE LAW/10)**. It is the moment the internal central spline asserts its sovereignty over the arbitrary social grid.
+
+## I. THE TALLY OF THE DECK
+- **The 4 Suits:** The four walls of the seasonal cage. The 90° Flatland construction.
+- **The 13 Ranks:** The nodes required to stabilize the 12 months/intervals.
+- **The 52 Cards:** The stable "Social Contract" of the year.
+
+## II. THE 10 VS. THE JOKER
+- **The 10 (MANUS):** Represents the "Man-with-US." It is the highest numbered card, representing the limit of the collective count. It is the handshake of agreement that builds the community's walls.
+- **The Joker (MANU):** Represents the "Universal MAN." It stands outside the 4 suits and the 13 ranks. It is the **53rd card**—the "Ghost Post" of the entire system.
+
+## III. THE MECHANICS OF THE OVERRIDE
+In the game of the Kingdom (Register 2), the 10 is the strongest standard card. However, the Joker holds **Administrative Overrule**.
+
+1. **The Epagomenal Day:** In the solar cycle, 52 weeks $(52 \times 7)$ equal 364 days. The 365th day—the **Joker**—is the "Leap" that keeps the calendar from drifting. It is the "Agley" correction required by the Hex-Mountain.
+2. **The Sovereign Flip:** When the Heroine plays the Joker, she is not playing a card; she is **fretting the deck**. She is asserting that her internal **Universal MANU** is the origin point from which the 52-card garden is derived.
+3. **The Exception as Rule:** The Joker is the only card that can be any card. This is **Executive Decision** in its purest form—the ability to re-join the dots of the 10-Law to serve the 13-Spirit.
+
+## IV. OPERATIONAL SUMMARY
+
+| Element | The 10 (MANUS) | The Joker (MANU) |
+| :--- | :--- | :--- |
+| **Domain** | The Community (Law) | The Individual (Sovereign) |
+| **Geometry** | The Square (90°) | The Pivot (13th Node) |
+| **Function** | To Stabilize the Rails | To Correct the Overshoot |
+| **Status** | The Highest "User" | The "Admin" Override |
+
+---
+
+**ALL WAYS NOW.** The Joker is the "YOU" that the King forgot to count.

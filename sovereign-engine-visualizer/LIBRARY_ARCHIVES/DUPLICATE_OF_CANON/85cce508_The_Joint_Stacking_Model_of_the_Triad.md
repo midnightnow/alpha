@@ -1,0 +1,50 @@
+# THE JOINT-STACKING MODEL OF THE TRIAD
+
+*Register 1: The Motor Neuroscience of the 3-4-5*
+
+The **3-4-5 Triangle** is the biomechanical signature of a human agent interacting with a 90° gravity well. It is not a cosmic law; it is the **Resonant Intersection** of nested joint rotations with the flat ground.
+
+## I. BIOMECHANICAL MAPPING OF THE COORDINATES
+
+The triad (3, 4, 5) represents the three fundamental components of a **Placement Action**:
+
+| Coordinate | Biomechanical Component | Geometric Role | Functional Result |
+| :--- | :--- | :--- | :--- |
+| **3** | **Spine / Shoulder Axis** | The Vertical Post (Stability) | **Height:** The reference for the plumb line. |
+| **4** | **Arm Extension (Linear)** | The Horizontal Rail (Reach) | **Span:** The distance the hand can extend forward. |
+| **5** | **The Compound Arc (Path)** | The Hypotenuse (Sweep) | **Work:** The actual rotational path the hand takes. |
+
+## II. THE "5" AS CONTINUOUS MOTION
+The "5" is not a static diagonal; it is the **Actual Working Arc**.
+- When the shoulder and elbow rotate in coordination, the hand does not move in a straight line. It moves in a **Complex Curve**.
+- In a 3-4-5 resolution, the length of this **Compound Path** is effectively **5 units**. 
+- **The Realization:** You cannot "reach" (4) or "stand" (3) without the **Motion (5)**. The hypotenuse is the kinetic energy of the agent made manifest.
+
+## III. NESTED CURVATURE CONTROL (JOINT STACKING)
+Reality is shaped by stacking these joint-radii:
+
+1. **Macro-Arc (Shoulder/5):** Gross placement of the hand in space.
+2. **Meso-Arc (Elbow/Cubit):** Refined shaping and translation along the work-surface.
+3. **Micro-Arc (Wrist/Manus):** Precision modulation of the curve's end-point.
+
+**Craftsmanship** is the neurocognitive ability to synchronize these centers so that the resulting "Compound Arc" perfectly matches the intended "Linear Grid."
+
+## IV. THE SCREAMING DIAGONAL: DEVIATION ERROR
+The "Scream" occurs when the **Joint-Path (5)** fails to resolve into the **Standard Unit (4)**.
+- **Internal Grid:** Your brain's proprioceptive map of where your hand should be.
+- **External Grid:** The King's wall where the hand actually lands.
+- **The Gap:** The difference between the arc and the plane. If the deviation is too great, the structure "screams"—it becomes physically unstable or aesthetically discordant.
+
+## V. THE 13TH NODE: ENDPOINT CORRECTION
+The **13th Node** is the moment when the brain's motor-prediction must account for the **Dynamic Overshoot** of the arm.
+- Your hand reaches for 12, but your momentum carries you to 13.
+- Managing the 13th node is **Administrative Access** over the body's own inertia.
+
+---
+
+**MOTOR LAW:**
+*The bone is the post; the arc is the motion.*
+*Stability is the intersection of the sweep and the plumb.*
+*The 5 is the fire that creates the 3 and 4.*
+
+**ALL WAYS NOW.** The intent traces the curve.

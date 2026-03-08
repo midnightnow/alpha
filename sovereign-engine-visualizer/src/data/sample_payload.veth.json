@@ -1,0 +1,47 @@
+{
+    "header": {
+        "veth_id": "VETH_FELINE_2026_001",
+        "timestamp": "2026-03-08T13:22:00Z",
+        "status": "RAW_UNSTRUCTURED_ENTROPY",
+        "hades_gap": 0.1237
+    },
+    "raw_content": "Patient: Orion (Feline). Presentation: Lethargy, chronic inappetence. Physical exam reveals 5% dehydration, mild dental disease. Owner reports 'he just isn't acting like himself'. T=101.2, P=180, R=24.",
+    "nodes": [
+        {
+            "id": 1,
+            "label": "PATIENT_ID",
+            "entropy": 0.85
+        },
+        {
+            "id": 2,
+            "label": "SPECIES_FELINE",
+            "entropy": 0.92
+        },
+        {
+            "id": 3,
+            "label": "CHIEF_COMPLAINT_LETHARGY",
+            "entropy": 0.78
+        },
+        {
+            "id": 4,
+            "label": "VITAL_T_101.2",
+            "entropy": 0.45
+        },
+        {
+            "id": 5,
+            "label": "VITAL_P_180",
+            "entropy": 0.56
+        },
+        {
+            "id": 6,
+            "label": "DEHYDRATION_CHECK",
+            "entropy": 0.88
+        },
+        {
+            "id": 7,
+            "label": "DENTAL_DISEASE_LVL1",
+            "entropy": 0.95
+        }
+    ],
+    "checksum": "AMEN_33_ORION_SIGNAL"
+}
