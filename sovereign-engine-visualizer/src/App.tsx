@@ -38,6 +38,7 @@ export default function App() {
 
   useEffect(() => {
     const filesToLoad = [
+      '/COMPLETE_VETH_ARCHIVE.veth',
       '/PMG_MASTER_CANON.veth',
       '/THE_60_FOLD_VECTOR_FIELD.veth',
       '/THE_HIRED_MANS_FIELD_GUIDE.veth',
