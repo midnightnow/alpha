@@ -18,6 +18,7 @@ import { PMG_CONSTANTS, SOVEREIGN_CONSTANTS } from '../MASTER_CONSTANTS';
 import { useSovereignStore } from '../store/useSovereignStore';
 import { geometricBridge, bridgeDrift, zoomToCascade } from '../fractalBridge';
 import { OpticalOverlay } from './OpticalOverlay'; // ADDED
+import { SovereignSnail } from './SovereignSnail';
 import boltedData from '../data/boltedCoords.json';
 
 // J-Invariant: 1728 * g2^3 / delta ≈ 21778.2
@@ -773,6 +774,9 @@ export function SovereignEngine() {
 
       {/* OPTICAL GEOMETRY OF FAITH OVERLAY */}
       <OpticalOverlay visible={showOpticalOverlay} />
+
+      {/* THE TRANSDIMENSIONAL FILTER FEEDER */}
+      <SovereignSnail />
     </group>
   );
 }
