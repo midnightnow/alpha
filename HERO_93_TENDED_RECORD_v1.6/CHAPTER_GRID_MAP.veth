@@ -1,0 +1,115 @@
+---
+.VETH HEADER (Vitrified Entropy Tally Header)
+ID: CHAPTER_GRID_MAP
+REGISTER_0x00: 0x00: χ=2 (Structure)
+REGISTER_0x01: 0x01: Modulus=93 (The Plain)
+REGISTER_0x02: 0x02: Pulse=156 (The Chain)
+REGISTER_0x03: 0x03: Vacuum=-1/12 (The Gap)
+REGISTER_0x04: 0x04: Torque=√42 (The Bullock)
+VITRIFICATION_STATUS: ABSOLUTE (Surveyor Verified)
+---
+
+## I. THE FOUR GREAT PADDOCKS (NARRATIVE ZONES)
+The 62 chapters are partitioned into four functional zones, defined by their narrative "crop" and geometric tension.
+
+| Paddock Name | Chapters | Narrative Crop | Fence Tension (Metric) |
+| :--- | :--- | :--- | :--- |
+| **The Home Paddock**| 1–4 | The Source (Ember) | √42 (The Foundation) |
+| **The Scrub** | 5–26 | The Descent (Umber) | 60° (Hades Navigation) |
+| **The High Paddock** | 27–52 | The Academy (Gold) | √51 (The Apex/Olympus) |
+| **The Boundary** | 53–62 | The Join (Vitrified) | 0.5° (Precessional Lock) |
+
+## II. THE INSTRUMENTS OF THE PLAIN
+To maintain the Zero Hysteresis state, the Surveyor utilizes the following tools:
+
+- **The Post (Node)**: Every chapter is anchored by a Prime Post. If a post rots (data corruption), the Earthworm Protocol re-sinks it using the internal brains of the .veth file.
+- **The Wire (Pythagorean Lock)**: The logic connecting chapters. It must be high-tensile; any "slack" in the narrative is a loss of signal.
+- **The Chain (156-Tick Pulse)**: The linear measure of the "Rolling Snake." We walk the chain to ensure the distance between the 1/12th Rock and the Apex is exactly as surveyed.
+
+## III. THE BULLOCK TEAM (TORQUE ANALYSIS)
+The processing power of the engine, yoked to the TVMA alignment.
+- **The Yoke**: Time, Vertex, Matrix, Apex.
+- **The Load**: The Manuscript Tally (251,216 words).
+- **The Dust**: The 0.00000080 Grit constant.
+
+## IV. AXIAL ALIGNMENT (62 CHAPTERS VS 93 NODES)
+| Chapter | Role | Node ID | Coordinates |
+| :--- | :--- | :--- | :--- |
+| **1** | Anchor Post (North) | 0 | [0.0, -1.0, -1.618] |
+| **27** | Corner Post (East) | 57 | [-1.412, 0.539, -0.666] |
+| **53** | Gate Post (West) | 71 | [1.078, -0.333, -1.206] |
+| **62** | zenith Post (Olympus) | 92 | [0.0, 0.0, 0.0] |
+
+## III. PADDOCK DISTRIBUTION (EMBER/UMBER ZONES)
+| Chapter | Zone | Node Category | Crop / Behavior |
+| :--- | :--- | :--- | :--- |
+| 1 | EMBER (Luminous) | vertices | Measured Tillage |
+| 2 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 3 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 4 | EMBER (Luminous) | vertices | Measured Tillage |
+| 5 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 6 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 7 | UMBER (Shadow) | face_centroids | Fallow Rest |
+| 8 | UMBER (Shadow) | face_centroids | Fallow Rest |
+| 9 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 10 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 11 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 12 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 13 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 14 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 15 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 16 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 17 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 18 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 19 | UMBER (Shadow) | vertices | Fallow Rest |
+| 20 | UMBER (Shadow) | vertices | Fallow Rest |
+| 21 | UMBER (Shadow) | face_centroids | Fallow Rest |
+| 22 | UMBER (Shadow) | face_centroids | Fallow Rest |
+| 23 | UMBER (Shadow) | face_centroids | Fallow Rest |
+| 24 | UMBER (Shadow) | face_centroids | Fallow Rest |
+| 25 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 26 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 27 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 28 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 29 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 30 | EMBER (Luminous) | face_centroids | Measured Tillage |
+| 31 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 32 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 33 | EMBER (Luminous) | face_centroids | Measured Tillage |
+| 34 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 35 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 36 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 37 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 38 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 39 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 40 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 41 | EMBER (Luminous) | vertices | Measured Tillage |
+| 42 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 43 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 44 | EMBER (Luminous) | vertices | Measured Tillage |
+| 45 | EMBER (Luminous) | face_centroids | Measured Tillage |
+| 46 | EMBER (Luminous) | face_centroids | Measured Tillage |
+| 47 | EMBER (Luminous) | origin | Measured Tillage |
+| 48 | EMBER (Luminous) | face_centroids | Measured Tillage |
+| 49 | EMBER (Luminous) | face_centroids | Measured Tillage |
+| 50 | EMBER (Luminous) | vertices | Measured Tillage |
+| 51 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 52 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+| 53 | UMBER (Shadow) | vertices | Fallow Rest |
+| 54 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 55 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 56 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 57 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 58 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 59 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 60 | UMBER (Shadow) | edge_nodes | Fallow Rest |
+| 61 | UMBER (Shadow) | face_centroids | Fallow Rest |
+| 62 | EMBER (Luminous) | edge_nodes | Measured Tillage |
+
+## IV. SILENT NODES (THE FALLOW GROUND)
+The remaining 31 nodes (93 - 62 = 31) are marked as **Silent Nodes**. They provide the **12.37% Hades Gap** buffering, allowing the soil to rest and the Earthworm to tunnel between paddocks without disrupting the 156-Tick Pulse.
+
+## V. VERDICT
+The Plain is surveyed. The 62 chapters are locked in precessional sync with the 93-node manifold. 
+
+**RECORDS VITRIFIED**

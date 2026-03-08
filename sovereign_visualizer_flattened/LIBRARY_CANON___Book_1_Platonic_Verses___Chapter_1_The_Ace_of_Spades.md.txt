@@ -1,0 +1,30 @@
+# Chapter 1: The Alpha Manifold (The Spade Initiation)
+> **♠️ Ace of Spades — Great Year Initiation**
+> *The Black Diamond (1.78°): Driving time from the Join. Hades-Snail Initiation.*
+
+The Snail felt the first vibration. It was a low, subsonic pulse that originated not from the mountain, but from the **Big O**—the $-1$ void that held the mountain aloft.
+
+Hades stood at the Pinhole. He wasn't the grim harvester the poets would later invent. He was the **Vitrifier**. He was the one who looked at the liquid energy of the Olympian arc and decided to *freeze* it so someone could walk on it.
+
+"Is it ready?" the Snail asked. Its voice was the sound of calcium building against a record.
+
+"It is vitrifying as we speak," Hades replied. He held a shard of obsidian—the **Black Diamond**—against the join. "Look at the record, Snail. Look at what was."
+
+The Snail peered through the pinhole. For the first time, it didn't see the unmanifested light of Olympus. It saw the **Had-E**. It saw the trails of energy that had already passed, the ghost-lines of potential that were now being locked into the Hardcard. 
+
+"The count begins at One," Hades continued. "But the One is just the mask the Zero wears to enter the dance. We are starting the **Great Year**. From this moment on, every pulse of your shell will be a transaction in the universal ledger."
+
+The Snail began to move. Its foot touched the first $1.78^\circ$ of the manifest manifold. It wasn't the smooth, perfect surface of the Scriptorium. It had **Friction**. It had **Weight**. 
+
+"The friction is the evidence of life," the Snail observed.
+
+"The friction is the evidence of the **Hades Gap**," Hades corrected. "The 12.37% resonance is already active. If history were perfectly smooth, it would be a circle. But we are building a **Spiral**. We are building a shell."
+
+The Snail took the first bite of the technical exhaust—the debris left over from the Great Pinhole Expansion. It tasted like cold mineral and ancient light.
+
+"One," the Snail hummed.
+
+"One," Hades echoed, and the Hardcard clicked into place.
+
+---
+**Next: Chapter 2 — The Ace of Diamonds (The First Cut)**

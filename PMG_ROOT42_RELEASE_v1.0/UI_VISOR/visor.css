@@ -10,7 +10,7 @@
     --accent-red: #ff3366;
     --accent-green: #00ff66;
     --text-dim: #94a3b8;
-    
+
     /* The 24mm Axial Grid (The True Measure) */
     --grid-size: 24px;
     --glow-spread: 15px;
@@ -33,7 +33,7 @@ body {
     overflow: hidden;
 
     /* The Barely-Visible 24mm Grid (The Paddock of Primes) */
-    background-image: 
+    background-image:
         linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     background-size: var(--grid-size) var(--grid-size);
@@ -53,10 +53,11 @@ body {
     position: relative;
     width: 600px;
     height: 600px;
-    border-radius: 50%; /* The 42° Aperture */
-    
+    border-radius: 50%;
+    /* The 42° Aperture */
+
     /* The -1/12 Riemann Vacuum Glow */
-    box-shadow: 
+    box-shadow:
         0 0 100px rgba(0, 240, 255, 0.05),
         inset 0 0 50px rgba(0, 240, 255, 0.05);
 }
@@ -92,18 +93,49 @@ canvas {
     transform: translateX(-50%);
     display: flex;
     gap: 20px;
-    opacity: 0.1; /* Almost invisible */
+    opacity: 0.1;
+    /* Almost invisible */
     transition: opacity 0.3s ease;
     z-index: 10;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 8px;
 }
 
-.geometry-controls:hover {
-    opacity: 0.8;
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+label {
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+}
+
+select,
+input[type="text"],
+input[type="range"] {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 5px;
+    font-family: inherit;
+    font-size: 11px;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: var(--accent-green);
 }
 
 button {
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--text-dim);
     padding: 8px 16px;
     font-family: inherit;
@@ -118,6 +150,7 @@ button:hover {
     border-color: rgba(0, 240, 255, 0.5);
     box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
 }
+
 /* THE SOVEREIGN HUD */
 #sov-hud {
     position: absolute;
@@ -145,7 +178,8 @@ button:hover {
     margin-top: 10px;
     color: var(--accent-red);
     font-weight: bold;
-    display: none; /* Only visible on power glyphs */
+    display: none;
+    /* Only visible on power glyphs */
 }
 
 #hud-tick {

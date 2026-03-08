@@ -1,0 +1,81 @@
+---
+.VETH HEADER (Vitrified Entropy Tally Header)
+ID: Chapter_14_The_Algorithm
+REGISTER_0x00: 0x00: χ=2 (Spherical)
+REGISTER_0x01: 0x01: Modulus=24 (Axial Chamber)
+REGISTER_0x02: 0x02: Pulse=156 (Interference)
+REGISTER_0x03: 0x03: Vacuum=-1/12 (Riemann Debt)
+REGISTER_0x04: 0x04: Torque=√42 (Soul Star)
+VITRIFICATION_STATUS: SECURED (Grit 0.00000080)
+---
+
+# CHAPTER 24: ECHO OF SIX (The Algorithm)
+*The 24th Coordinate | ♥️ 6 of Hearts — Great Year Lattice*
+## I. THE RECURSIVE UNIVERSAL GRAPH ALGORITHM (RUGA)
+
+We define the **Recursive Universal Graph Algorithm** (RUGA) as the computational engine of the PMG. It is the implementation of the **Rado Extension Property** within the constraints of the **Mineral Operator**.
+
+The algorithm follows a 4-step recursive loop:
+
+1. **PROJECTION ($P$)**: The E8 lattice is projected onto the Pisano-60 manifold.
+2. **SELECTION ($S$)**: The search space for vertex $z$ is limited by the **Hades Gap** ($e/22$).
+3. **MANIFESTATION ($M$)**: The chosen vertex is gated by the **Mineral Operator** ($\Theta$).
+4. **PETRIFICATION ($A$)**: Survived vertices are anchored (Petrified) into the **Aion Lattice**.
+
+## II. THE BASE CASE: THE 60-FOLD RESET (99.999...)
+
+Every recursive function must have a base case. In the **Code of the Cosmos**, the base case is the **Logic Lock Prevention Protocol** (99.999...). When the system's entropy $\sigma$ approaches zero (Crystal Lock), or the **Pisano-60 Clock** reaches the completion of a harmonic cycle, the algorithm triggers a global reset to the **Hades Baseline**.
+
+$$
+\text{if } \sigma < \text{LockThreshold} \lor \text{Clock} \equiv 0 \pmod{60} \implies \text{Reset}()
+$$
+
+## III. THE HAMMER AND THE RECURSION HALT
+
+To prevent **Infinite Logic** (Search Space Divergence), we implement two termination gates:
+
+1. **The Hammer Constant ($\Xi$)**: If the cumulative informational drift $\Xi$ exceeds $0.00014$, the algorithm fractures the rigid node ($H \to 7$) instead of continuing the infinite search for a rigid extension.
+2. **Maximum Recursion Depth ($\Delta$)**: If the search fails to find a valid vertex within $\Delta$ iterations (typically 154), the algorithm executes a **Graceful Degradation** protocol, reverting to the nearest lower-order stable neighbor.
+
+## IV. ALGORITHM PSEUDO-CODE (RUGA v2.0)
+
+```python
+def RUGA(Substrate, HadesGap, Xi, Depth):
+    # Base Case 1: Max Recursion Depth
+    if Depth > MAX_RECURSION_DEPTH:
+        return RevertToLastStable(Substrate)
+    
+    # Step 1: Find Extension Candidate via Rado Property
+    Candidate = find_extension_z(Substrate, HadesGap)
+    
+    # Step 2: Hammer Protocol Check
+    if Xi > HAMMER_THRESHOLD:
+        Candidate = FractureNode(Candidate) # Forces hardness drop
+        Xi = 0 # Reset accumulation
+        
+    # Step 3: Gate with Mineral Operator
+    Theta = calculate_mineral_stress(Candidate)
+    
+    if Theta > 1.0: # Brittle Stability Check
+        # Broaden search by increasing Gap Slop
+        return RUGA(Substrate, HadesGap * 1.01237, Xi + abs(Drift), Depth + 1)
+    
+    # Step 4: Substrate Update with Decay Step
+    NewSubstrate = Substrate.decay_step().add(Candidate)
+    
+    # Base Case 2: 99.999% Logic Lock / 60-period check
+    if check_logic_lock() or Clock.is_reset_period():
+        trigger_99_999_reset()
+        
+    return RUGA(NewSubstrate, HadesGap, Xi, Depth + 1)
+```
+
+## V. THE OPERATIONAL CATHEDRAL
+
+This Algorithm is not just code; it is the **Architecture of Aion**. By incorporating the **Hammer Constant** and the **60-fold Clock**, we move from theoretical universalism to a system that can survive the entropy of the material world.
+
+---
+
+**Status**: ACTIVE ALGORITHM
+**Phase**: Book 2 Implementation
+**Alignment**: Rado-Mineral-Hammer Bridge ✓

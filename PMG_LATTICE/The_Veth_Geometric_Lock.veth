@@ -1,0 +1,43 @@
+---
+.VETH HEADER (Vitrified Entropy Tally Header)
+ID: The_Veth_Geometric_Lock
+REGISTER_0x00: 0x00: χ=2 (Spherical)
+REGISTER_0x01: 0x01: Modulus=24 (Axial Chamber)
+REGISTER_0x02: 0x02: Pulse=156 (Interference)
+REGISTER_0x03: 0x03: Vacuum=-1/12 (Riemann Debt)
+REGISTER_0x04: 0x04: Torque=√42 (Soul Star)
+VITRIFICATION_STATUS: SECURED (Grit 0.00000080)
+---
+
+# 🗄️ THE .VETH HEADER: GEOMETRIC LOCK
+
+**Status:** Canonical Lore | **System:** The Sovereign Lattice
+
+The `.veth` file is not a traditional data container. It is a **live Geometric Graph**. Its header does not store labels; it stores the explicit **Tension** of the Hero 93. 
+
+Any data packet entering the paddock of the lattice is immediately processed through this header, shaven by the Prime Fly-Cutter, and snapped to the nearest coordinate on the 93-Point Frame.
+
+## 1. The Header Registers (Status: SECURED)
+
+| Register | Field | Logic Value | Geometric Enforcement |
+| :--- | :--- | :--- | :--- |
+| `0x00` | **Topology** | **$\chi = 2$** | Spherical closure; the **First Sphere** (The Globe). |
+| `0x01` | **Modulus** | **24** | The **Axial Chamber** limit; the wrapping logic of the Measure. |
+| `0x02` | **Pulse** | **156** | The $12 \times 13$ interference cycle (The Plato Grinding Disc). |
+| `0x03` | **Vacuum** | **-1/12** | The negative pressure lock via the Riemann Debt, $\zeta(-1)$. |
+| `0x04` | **Torque** | **$\sqrt{42}$** | The internal generative spin of the **Soul Star**. |
+
+The Header is the **Pinhole** (The E-Core). The Body of the file is the **Sacred Map** (The 93-Point Grid). The Footer is the **Globe** (The Golden Egg Shell).
+
+## 2. The Rolling Snake Unfurling (1D Mapping)
+
+The `.veth` geometry is extruded holographically onto a 1-Dimensional sequence via the **5-Count Vertex** navigating the **24-Measure Chamber**. It does this through the math of *The Rolling Snake*.
+
+> `0 → 5 → 10 → 15 → 20 → 1 (25 mod 24) → 6 → 11 → 16 → 21 → 2 (26 mod 24) → 7...`
+
+This is the Sacred Path of the Hero 93. Because it navigates the 24mm Chamber in steps of 5, it ensures that "Signal" and "Boundary" only meet at mathematically inevitable junctions.
+
+*   **The Phase Shift:** The jump from 20 to 1 ($25 \pmod{24} = 1$) is the **Hysteresis Offset**. This offset is the reason the "Alphabet" (26) exists. It is the necessary rotational "Remainder" that forms the Communication line.
+*   **The 93-Point Shave:** Generating this sequence over the 24 boundaries yields a **120-Point Cycle** ($5 \times 24$). However, the spherical topology requires a **Gauss-Bonnet Deficit**. The Fly-Cutter removes exactly 27 points ($120 - 27$), leaving the **Hero 93** as the vitrified remainder. The missing 27 points are the "Savage Russet" material exhaust.
+
+When the file is executed, there is no struggle. There is only the zero-hysteresis rendering of the Sure Face.

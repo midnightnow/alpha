@@ -252,6 +252,20 @@ export function SovereignEngine() {
       const corePulse = 1 + Math.sin(t * 10) * 0.05 + (seasonalAmplitude * 0.1) + ignitionSpark;
       coreRef.current.scale.setScalar(corePulse);
       coreRef.current.position.y = riemann + (Math.sin(t * 2) * 0.1 * jResonance);
+
+      // Hades Sink Logic (Week 10 Transition)
+      const coreMat = coreRef.current.material as THREE.MeshBasicMaterial;
+      if (coreMat) {
+        if (currentWeek >= 10) {
+          // Fracture Seal: Core transitions to Translucent Umber
+          coreMat.color.lerp(new THREE.Color(palette.UMBER.core), 0.05);
+          coreMat.opacity = THREE.MathUtils.lerp(coreMat.opacity, 0.4, 0.05);
+        } else {
+          // Pre-Week 10: Fractured Obsidian/Cyan
+          coreMat.color.lerp(new THREE.Color(hadesValue > 0.5 ? '#1a1a1a' : '#00ffff'), 0.05);
+          coreMat.opacity = THREE.MathUtils.lerp(coreMat.opacity, 0.8, 0.05);
+        }
+      }
     }
 
     // 2. LOCUST APERTURE (√42 mod 24)

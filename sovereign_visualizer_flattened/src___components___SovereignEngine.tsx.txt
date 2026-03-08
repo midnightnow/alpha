@@ -1,0 +1,691 @@
+import { useRef, useMemo } from 'react';
+import { useFrame } from '@react-three/fiber';
+import {
+  Icosahedron,
+  Octahedron,
+  Dodecahedron,
+  MeshDistortMaterial,
+  Float,
+  Points,
+  PointMaterial,
+  MeshTransmissionMaterial,
+  Ring,
+  Stars,
+  Html,
+} from '@react-three/drei';
+import * as THREE from 'three';
+import { PMG_CONSTANTS, SOVEREIGN_CONSTANTS } from '../MASTER_CONSTANTS';
+import { useSovereignStore } from '../store/useSovereignStore';
+import boltedData from '../data/boltedCoords.json';
+
+// J-Invariant: 1728 * g2^3 / delta ≈ 21778.2
+const J_INVARIANT = 21778.2;
+const SANTA_VECTOR_LENGTH = Math.sqrt(51); // 7.1414
+// Supplementary Archives (Outer Court)
+const OUTER_COURT_DOCS = [
+  { tick: 276, name: "APPENDIX_C_THE_ASP_PROTOCOL.veth", startColor: "#ff44ff", endColor: "#aa44ff" },
+  { tick: 277, name: "CAMERA_OBSCURA_MANUAL.veth", startColor: "#aa44ff", endColor: "#44ffff" },
+  { tick: 278, name: "GEOMETRIC_93_MAP.veth", startColor: "#44ffff", endColor: "#ffaa44" },
+  { tick: 279, name: "HERO_93_IN_FLIGHT_BALL_ARC.veth", startColor: "#ffaa44", endColor: "#ff44ff" },
+  { tick: 280, name: "93_FACED_SOLID_ANALYSIS.veth", startColor: "#ff44ff", endColor: "#ffffff" },
+  { tick: 281, name: "288_STEP_DIAGRAM.veth", startColor: "#ffffff", endColor: "#ff44ff" }
+];
+
+const DOC_TIERS = {
+  PROVEN: { count: 21, color: "#ffd700" }, // Gold
+  INTERNAL: { count: 3, color: "#00ffff" }, // Cyan
+  INTERPRETIVE: { count: 2, color: "#9370db" } // Purple (Interpretive)
+};
+
+// Biquadratic Roots: x^4 - 186x^2 + 81 = 0
+const ROOTS = {
+  OUTER: 13.622169,
+  BEAT: 0.660687
+};
+
+const GHOST_PATH_START = 276;
+const GHOST_PATH_END = 287;
+
+const clubsWaveform = (week: number) => {
+  if (week < 27 || week > 39) return 0;
+  const k = week - 27;
+  return Math.pow(Math.sin((Math.PI * k) / 12), 2);
+};
+
+function getSpherePoints(count: number, radius: number) {
+  const pts = new Float32Array(count * 3);
+  for (let i = 0; i < count; i++) {
+    const u = Math.random();
+    const v = Math.random();
+    const theta = u * 2.0 * Math.PI;
+    const phi = Math.acos(2.0 * v - 1.0);
+    const r = Math.cbrt(Math.random()) * radius;
+    pts[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+    pts[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+    pts[i * 3 + 2] = r * Math.cos(phi);
+  }
+  return pts;
+}
+
+function getApollonicSnakePoints(count: number) {
+  const pts = new Float32Array(count * 3);
+  for (let i = 0; i < count; i++) {
+    const t = (i / count) * Math.PI * 8; // 4 full turns
+    const r = 0.5 * Math.exp(0.15 * t); // Logarithmic spiral
+    pts[i * 3] = r * Math.cos(t);
+    pts[i * 3 + 1] = (i / count) * 6 - 3; // Vertical spread
+    pts[i * 3 + 2] = r * Math.sin(t);
+  }
+  return pts;
+}
+
+export function SovereignEngine() {
+  const coreRef = useRef<THREE.Mesh>(null);
+  const midRef = useRef<THREE.Mesh>(null);
+  const membraneRef = useRef<THREE.Mesh>(null);
+  const registryRef = useRef<THREE.Group>(null);
+  const solidRef = useRef<THREE.Group>(null);
+  const snakeRef = useRef<THREE.Group>(null);
+  const apertureRef = useRef<THREE.Mesh>(null);
+  const lensRef = useRef<THREE.Mesh>(null);
+
+  const {
+    hadesValue,
+    isSimulating,
+    currentWeek,
+    entropy,
+    lockStatus,
+    isSealed,
+    activeArchive,
+    setActiveArchive,
+    showMergedStream,
+    setShowMergedStream
+  } = useSovereignStore();
+
+  const GHOST_PATH_LENGTH = 12;
+
+  // 1. Bolted 93-Node Solid from Registry
+  const masterGridPts = useMemo(() => {
+    const pts = new Float32Array(93 * 3);
+    boltedData.nodes.forEach((node, i) => {
+      // Normalize from (5,12,13) manifold to visual scale
+      pts[i * 3] = node.bolted_coord[0] * 0.2;
+      pts[i * 3 + 1] = node.bolted_coord[1] * 0.2;
+      pts[i * 3 + 2] = (node.bolted_coord[2] - 13) * 0.2;
+    });
+    return pts;
+  }, []);
+
+  // 2. Registry Ring (288 Ticks)
+  const registryPts = useMemo(() => {
+    const pts = new Float32Array(288 * 3);
+    for (let i = 0; i < 288; i++) {
+      const angle = (i / 288) * Math.PI * 2;
+      pts[i * 3] = Math.cos(angle) * 4.2;
+      pts[i * 3 + 1] = 0;
+      pts[i * 3 + 2] = Math.sin(angle) * 4.2;
+    }
+    return pts;
+  }, []);
+
+  const emberPts = useMemo(() => getSpherePoints(42, 0.8), []); // Core Light
+  const hadesPts = useMemo(() => getSpherePoints(24, 2.0), []); // Jordan Buffer
+  const vertexPts = useMemo(() => getSpherePoints(27, 2.6), []); // Vertex Layer
+  const umberPts = useMemo(() => getSpherePoints(156, 3.2), []); // Pulse Field
+  const snakePts = useMemo(() => getApollonicSnakePoints(156), []);
+
+  // Keyboard shortcut M for Merged Stream
+  useMemo(() => {
+    if (typeof window === 'undefined') return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key.toLowerCase() === 'm') setShowMergedStream(!showMergedStream);
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [showMergedStream, setShowMergedStream]);
+
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
+
+    // PMG & Sovereign Constants
+    const { PHI, ZENITH_WEALTH, ARCS } = SOVEREIGN_CONSTANTS;
+    const beat = Math.sin(t * Math.PI * 2 * PMG_CONSTANTS.BEAT);
+    const pulse = t * PMG_CONSTANTS.PULSE * (isSimulating ? 1.0 + currentWeek * 0.05 : 1.0);
+    const gear = PMG_CONSTANTS.GEAR_LOCK;
+    const riemann = -0.083333; // -1/12 Singularity
+
+    // 1. WAVEFORM LOGIC
+    let seasonalAmplitude = 0;
+    let motorRPM = 1.0;
+
+    if (currentWeek >= ARCS.DIAMONDS.start && currentWeek <= ARCS.DIAMONDS.end) {
+      // WEALTH ALGEBRA: W(k) = PHI^(k/6)
+      const k = currentWeek - ARCS.DIAMONDS.start;
+      seasonalAmplitude = Math.pow(PHI, k / 6);
+    } else if (currentWeek >= ARCS.CLUBS.start && currentWeek <= ARCS.CLUBS.end) {
+      // MOTORBIKE PHASE: C(k) = PHI^2 * sin^2(pi*k/12)
+      const k = currentWeek - ARCS.CLUBS.start;
+      seasonalAmplitude = ZENITH_WEALTH * Math.pow(Math.sin((Math.PI * k) / 12), 2);
+      motorRPM = 1.0 + (seasonalAmplitude * 2); // Accelerate rotation based on stroke
+    }
+
+    // 2. J-INVARIANT RESONANCE (Harmonic 1728)
+    // The j-invariant 21778.2 acts as the fundamental resonance.
+    const jResonance = Math.abs(Math.sin(t * (J_INVARIANT / 1000))) < 0.1 ? 0 : 1;
+
+    // 3. MOTORBIKE VECTOR (A') IGNITION
+    // Transition spark when jumping from Week 26 (Zenith) to 27 (Clubs)
+    const isTransitioning = currentWeek === 26 || currentWeek === 27;
+    const ignitionSpark = isTransitioning ? Math.abs(Math.sin(t * 20)) * 2 : 0;
+
+    // Rotation Speeds (24:13 Sync)
+    const innerRotation = t * (13 / 24) * 0.2;
+    const outerRotation = t * (24 / 24) * 0.2;
+    const pulseRotation = t * 0.1 * motorRPM;
+
+    // 1. CORE LIGHT (√42)
+    if (coreRef.current) {
+      const corePulse = 1 + Math.sin(t * 10) * 0.05 + (seasonalAmplitude * 0.1) + ignitionSpark;
+      coreRef.current.scale.setScalar(corePulse);
+      coreRef.current.position.y = riemann + (Math.sin(t * 2) * 0.1 * jResonance);
+    }
+
+    // 2. LOCUST APERTURE (√42 mod 24)
+    if (apertureRef.current) {
+      apertureRef.current.rotation.z = t * 0.5 * motorRPM;
+      apertureRef.current.scale.setScalar(0.5 + Math.abs(beat) * 0.2 + (seasonalAmplitude * 0.05) + (ignitionSpark * 0.5));
+    }
+
+    // 3. JORDAN SLURRY LENS (12.37% Buffer) 
+    if (lensRef.current) {
+      lensRef.current.rotation.y = pulse * 0.001;
+      const pulseScale = 2.0 + (Math.sin(t) * 0.1) + (seasonalAmplitude * 0.2);
+      lensRef.current.scale.setScalar(pulseScale);
+    }
+
+    // 4. RED MEMBRANE (SANTA LAYER - 156-TICK)
+    if (membraneRef.current) {
+      membraneRef.current.rotation.y = pulseRotation;
+      const wobble = Math.sin(t * 15.6) * 0.05 * (1 + ignitionSpark);
+
+      // AMEN_33 Vitrification Pulse (Week 33)
+      const isWeek33 = currentWeek === 33;
+      const vitrificationForce = isWeek33 ? 3.0 + Math.sin(t * 30) * 0.5 : 1.0;
+
+      const targetScale = 1.5 + wobble + (seasonalAmplitude * 0.1);
+      membraneRef.current.scale.setScalar(targetScale);
+
+      const intensity = (0.5 + Math.abs(Math.sin(t * 1.56)) * 0.5 + (seasonalAmplitude * 0.5)) * vitrificationForce * jResonance;
+      (membraneRef.current.material as THREE.MeshStandardMaterial).emissiveIntensity = intensity * 3.5 + ignitionSpark;
+      (membraneRef.current.material as THREE.MeshStandardMaterial).color.set(isWeek33 ? "#ff3300" : "#ff0000");
+    }
+
+    // 5. REGISTRY AND GEAR RINGS (The Matrix of Translation)
+    if (registryRef.current) {
+      // Outer Gear (24) - Primary Rotation
+      registryRef.current.rotation.y = -outerRotation;
+
+      // Matrix of Translation: Using 24 and 13 as eigenvalues for precessional shear
+      // theta = t * (Measure + Frequency) / Registry
+      const shearAngle = Math.sin(t * (24 + 13) / 288) * 0.05 * seasonalAmplitude;
+      registryRef.current.rotation.x = shearAngle;
+      registryRef.current.rotation.z = shearAngle * 0.5;
+
+      // Inner Gear (13) - Counter-torque
+      if (registryRef.current.children[2]) {
+        registryRef.current.children[2].rotation.y = innerRotation;
+        registryRef.current.children[2].rotation.x = -shearAngle * 2;
+      }
+    }
+
+    // 6. 93-NODE SOLID (Categorized Lattice with Grit Jitter)
+    if (solidRef.current) {
+      solidRef.current.rotation.y = pulseRotation;
+      solidRef.current.position.y = riemann;
+      solidRef.current.scale.setScalar(1.0 + (seasonalAmplitude * 0.05));
+
+      // HIGH-ENTROPY GRIT INPUT (Σ) - Jitter nodes when simulating
+      if (isSimulating) {
+        // Hades Jitter (0.037 residual) - The necessary friction for dynamic evolution
+        const hadesJitter = hadesValue * (1 - seasonalAmplitude / ZENITH_WEALTH);
+        const grit = (Math.sin(t * 100) * hadesJitter);
+
+        solidRef.current.children.forEach((child, i) => {
+          child.scale.setScalar(1.0 + grit * (i % 5 === 0 ? 1.5 : 1.0));
+        });
+      }
+    }
+
+    if (snakeRef.current) {
+      // The Snake acts as the Motorbike Vector (A') - Discharge Effect
+      snakeRef.current.rotation.y = -t * 0.2 * motorRPM;
+      const ghostSink = t * 0.05 % 5;
+      snakeRef.current.position.y = riemann + Math.cos(t * 0.5) - (ghostSink * (1 - jResonance));
+
+      const snakeScale = 1.0 + (seasonalAmplitude * 0.2) + ignitionSpark;
+      snakeRef.current.scale.setScalar(snakeScale);
+
+      // Color shift during discharge
+      if (snakeRef.current.children[0]) {
+        const mat = (snakeRef.current.children[0] as THREE.Points).material as THREE.PointsMaterial;
+        if (isTransitioning) {
+          mat.color.setHSL(0.5 + Math.sin(t * 10) * 0.1, 1, 0.5); // Oscillate near Cyan
+        } else {
+          mat.color.set("#10b981");
+        }
+      }
+    }
+  });
+
+  return (
+    <group>
+      <ambientLight intensity={0.2} />
+      <pointLight position={[0, 5, 0]} intensity={1.5} color="#00ffff" />
+      <pointLight position={[5, -5, 5]} intensity={1} color="#ff3300" />
+
+      {/* RITUAL APPARATUS STACK */}
+      <Float speed={1.56} rotationIntensity={0.5} floatIntensity={0.5}>
+
+        {/* 0. CORE LIGHT (Λ = √42) */}
+        <mesh ref={coreRef}>
+          <sphereGeometry args={[0.2, 32, 32]} />
+          <meshBasicMaterial color="#ffffff" transparent opacity={0.8} />
+          <Points positions={emberPts}>
+            <PointMaterial transparent color="#ffffff" size={0.15} sizeAttenuation depthWrite={false} blending={THREE.AdditiveBlending} />
+          </Points>
+        </mesh>
+
+        {/* 1. LOCUST APERTURE (f = 6.48) */}
+        <mesh ref={apertureRef} position={[0, 0, 1.3]}>
+          <torusGeometry args={[0.5, 0.05, 16, 24]} />
+          <meshPhysicalMaterial color="#ffd700" emissive="#ffd700" emissiveIntensity={2} metalness={1} roughness={0} />
+        </mesh>
+
+        {/* 2. JORDAN SLURRY LENS (Dielectric Buffer) */}
+        <mesh ref={lensRef}>
+          <sphereGeometry args={[1.2, 64, 64]} />
+          <MeshTransmissionMaterial
+            backside
+            samples={16}
+            thickness={2}
+            anisotropy={1}
+            chromaticAberration={0.1237}
+            distortion={0.5}
+            distortionScale={0.5}
+            temporalDistortion={0.1}
+            color="#0066cc"
+          />
+        </mesh>
+
+        {/* 3. RED MEMBRANE (SANTA LAYER - 156-TICK) */}
+        <mesh ref={membraneRef}>
+          <dodecahedronGeometry args={[1.5, 2]} />
+          <meshStandardMaterial
+            color="#ff0000"
+            emissive="#ff0000"
+            emissiveIntensity={2}
+            wireframe
+            transparent
+            opacity={0.3}
+          />
+        </mesh>
+
+        {/* 4. REGISTRY RINGS (24:13 Gear Ratio with 26 Document Markers) */}
+        <group ref={registryRef}>
+          {/* Outer Ring (24 Sectors) */}
+          <Ring args={[3.8, 4.0, 24]} rotation={[Math.PI / 2, 0, 0]}>
+            <meshBasicMaterial color="#ffffff" wireframe transparent opacity={0.1} />
+          </Ring>
+
+          {/* Ghost Path Buffer Zone (Ticks 276-287) */}
+          <Ring args={[4.1, 4.2, 12, 1, (GHOST_PATH_START / 288) * Math.PI * 2, (12 / 288) * Math.PI * 2]} rotation={[Math.PI / 2, 0, 0]}>
+            <meshBasicMaterial color="#ff0000" transparent opacity={0.1} />
+          </Ring>
+
+          {/* UNIFIED GHOST PATH SPECTRUM (v1.8 Merged Overlay) */}
+          {showMergedStream && <MergedGhostTrail currentWeek={currentWeek} activeArchive={activeArchive} />}
+
+          <Points positions={registryPts}>
+            <PointMaterial transparent color="#ffd700" size={0.06} sizeAttenuation depthWrite={false} />
+          </Points>
+
+          {/* 26 Core Document Canonical Markers (Beatty Mapping - Tier Coded) */}
+          {Array.from({ length: 26 }).map((_, n) => {
+            const tick = n * 11;
+            const angle = (tick / 288) * Math.PI * 2;
+            const x = Math.cos(angle) * 4.2;
+            const z = Math.sin(angle) * 4.2;
+            const isWeek33 = currentWeek === 33;
+
+            // Tier Logic
+            let color = DOC_TIERS.PROVEN.color;
+            if (n >= 21 && n < 24) color = DOC_TIERS.INTERNAL.color;
+            if (n >= 24) color = DOC_TIERS.INTERPRETIVE.color;
+
+            return (
+              <mesh key={n} position={[x, 0, z]}>
+                <sphereGeometry args={[0.08, 16, 16]} />
+                <meshStandardMaterial
+                  color={isWeek33 ? "#ffffff" : color}
+                  emissive={isWeek33 ? "#ffffff" : color}
+                  emissiveIntensity={isWeek33 ? 4 : 2}
+                  transparent
+                  opacity={0.9}
+                />
+              </mesh>
+            );
+          })}
+
+          {/* 6 Supplementary Archive Markers (Outer Court) */}
+          {OUTER_COURT_DOCS.map((doc, i) => {
+            const angle = (doc.tick / 288) * Math.PI * 2;
+            const x = Math.cos(angle) * 4.25;
+            const z = Math.sin(angle) * 4.25;
+            const isWeek33 = currentWeek === 33;
+            const isActive = activeArchive === doc.tick;
+
+            return (
+              <group key={`outer-${i}`} position={[x, 0.1, z]}>
+                <mesh onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveArchive(doc.tick);
+                }}>
+                  <sphereGeometry args={[isActive ? 0.08 : 0.05, 12, 12]} />
+                  <meshStandardMaterial
+                    color={isActive ? doc.startColor : "#9370db"}
+                    emissive={isActive ? doc.startColor : "#9370db"}
+                    emissiveIntensity={isActive ? 8 : 2}
+                    transparent
+                    opacity={0.8}
+                  />
+                </mesh>
+                <Html distanceFactor={10}>
+                  <div style={{
+                    color: isActive ? doc.startColor : '#9370db',
+                    fontSize: '10px',
+                    fontWeight: 'bold',
+                    fontFamily: 'monospace',
+                    padding: '4px',
+                    backgroundColor: 'rgba(0,0,0,0.8)',
+                    border: isActive ? `1px solid ${doc.startColor}` : '1px solid rgba(147, 112, 219, 0.3)',
+                    borderRadius: '4px',
+                    pointerEvents: 'none',
+                    whiteSpace: 'nowrap',
+                    boxShadow: isActive ? `0 0 10px ${doc.startColor}` : 'none',
+                    opacity: activeArchive && !isActive ? 0.3 : 1
+                  }}>
+                    {doc.name}
+                  </div>
+                </Html>
+
+                {/* Highlight Trail (Kinetic Trace) */}
+                {isActive && (
+                  <GhostTrail
+                    startTick={doc.tick}
+                    startColor={doc.startColor}
+                    endColor={doc.endColor}
+                    currentWeek={currentWeek}
+                  />
+                )}
+              </group>
+            );
+          })}
+
+          {/* Inner Gear (13 Ticks) */}
+          <Ring args={[2.2, 2.3, 13]} rotation={[Math.PI / 2, 0, 0]}>
+            <meshBasicMaterial color="#ffd700" wireframe transparent opacity={0.3} />
+          </Ring>
+        </group>
+
+        {/* 4.5. 13th GHOST PATH (ANOMALY SINK - VIOLET) */}
+        <mesh position={[0, -2.5, 0]} rotation={[0, 0, 0]}>
+          <cylinderGeometry args={[0.02, 0.05, 5, 8]} />
+          <meshBasicMaterial color="#8A2BE2" transparent opacity={0.4} />
+        </mesh>
+
+        {/* 5. 93-NODE SOLID (Categorized Lattice) */}
+        <group ref={solidRef}>
+          {/* Ember Nodes (42) - Yellow */}
+          <Points positions={masterGridPts.slice(0, 42 * 3)}>
+            <PointMaterial
+              transparent
+              color="#ffd700"
+              size={0.15}
+              sizeAttenuation
+              depthWrite={false}
+              blending={THREE.AdditiveBlending}
+            />
+          </Points>
+          {/* Hades Nodes (24) - Red */}
+          <Points positions={masterGridPts.slice(42 * 3, 66 * 3)}>
+            <PointMaterial
+              transparent
+              color="#ff3300"
+              size={0.18}
+              sizeAttenuation
+              depthWrite={false}
+              blending={THREE.AdditiveBlending}
+            />
+          </Points>
+          {/* Vertex Nodes (27) - Cyan */}
+          <Points positions={masterGridPts.slice(66 * 3, 93 * 3)}>
+            <PointMaterial
+              transparent
+              color="#00ffff"
+              size={0.14}
+              sizeAttenuation
+              depthWrite={false}
+              blending={THREE.AdditiveBlending}
+            />
+          </Points>
+        </group>
+
+        {/* THE SANTA VECTOR (√51 Tension lines) */}
+        <Float speed={2} rotationIntensity={0.1} floatIntensity={0.1}>
+          <Icosahedron args={[3.5, 1]}>
+            <meshBasicMaterial wireframe color="#10b981" transparent opacity={0.05} />
+          </Icosahedron>
+        </Float>
+
+        {/* THE GHOST PATH SINK */}
+        <group ref={snakeRef}>
+          <Points positions={snakePts}>
+            <PointMaterial transparent color="#10b981" size={0.06} sizeAttenuation depthWrite={false} opacity={0.4} />
+          </Points>
+        </group>
+
+      </Float>
+
+      {/* BACKGROUND DEPTH */}
+      <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
+    </group>
+  );
+}
+
+// KINETIC GHOST TRAIL COMPONENT (v1.7 Spectral Enhanced)
+function GhostTrail({ startTick, startColor, endColor, currentWeek }: {
+  startTick: number,
+  startColor: string,
+  endColor: string,
+  currentWeek: number
+}) {
+  const pointsRef = useRef<THREE.Points>(null);
+  const particleCount = 150;
+
+  const { ZENITH_WEALTH } = SOVEREIGN_CONSTANTS;
+  const wave = clubsWaveform(currentWeek);
+
+  const [positions, colors, ticksArray] = useMemo(() => {
+    const pos = new Float32Array(particleCount * 3);
+    const cols = new Float32Array(particleCount * 3);
+    const ticks = new Float32Array(particleCount);
+
+    const c1 = new THREE.Color(startColor);
+    const c2 = new THREE.Color(endColor);
+
+    for (let i = 0; i < particleCount; i++) {
+      const t = i / particleCount;
+      ticks[i] = startTick + (t * 2); // 2-tick segment length
+      const angle = (ticks[i] / 288) * Math.PI * 2;
+      pos[i * 3] = Math.cos(angle) * 4.25;
+      pos[i * 3 + 1] = 0.1;
+      pos[i * 3 + 2] = Math.sin(angle) * 4.25;
+
+      const particleColor = c1.clone().lerp(c2, t);
+      cols[i * 3] = particleColor.r;
+      cols[i * 3 + 1] = particleColor.g;
+      cols[i * 3 + 2] = particleColor.b;
+    }
+    return [pos, cols, ticks];
+  }, [startTick, startColor, endColor]);
+
+  useFrame((state) => {
+    if (!pointsRef.current) return;
+    const t = state.clock.getElapsedTime();
+    const posAttr = pointsRef.current.geometry.attributes.position;
+    const pos = posAttr.array as Float32Array;
+
+    const segmentLength = 2.0;
+
+    for (let i = 0; i < particleCount; i++) {
+      let tick = ticksArray[i];
+      tick += 0.015; // Increased Flow speed
+      if (tick > startTick + segmentLength) tick = startTick;
+
+      ticksArray[i] = tick;
+      const angle = (tick / 288) * Math.PI * 2;
+      pos[i * 3] = Math.cos(angle) * 4.25;
+      // Vertical oscillation with waveform scaling
+      pos[i * 3 + 1] = 0.1 + Math.sin(t * 12 + i * 0.4) * 0.04 * (1 + wave);
+      pos[i * 3 + 2] = Math.sin(angle) * 4.25;
+    }
+    posAttr.needsUpdate = true;
+  });
+
+  return (
+    <Points ref={pointsRef}>
+      <bufferGeometry>
+        <bufferAttribute
+          attach="attributes-position"
+          count={positions.length / 3}
+          array={positions}
+          itemSize={3}
+        />
+        <bufferAttribute
+          attach="attributes-color"
+          count={colors.length / 3}
+          array={colors}
+          itemSize={3}
+        />
+      </bufferGeometry>
+      <PointMaterial
+        transparent
+        vertexColors // Spectral Gradients enabled
+        size={0.07 + (wave * 0.05)}
+        sizeAttenuation
+        depthWrite={false}
+        opacity={0.5 + (wave * 0.4)}
+        blending={THREE.AdditiveBlending}
+      />
+    </Points>
+  );
+}
+
+// UNIFIED GHOST PATH SPECTRUM (v1.8 Merged)
+function MergedGhostTrail({ currentWeek, activeArchive }: { currentWeek: number, activeArchive: number | null }) {
+  const pointsRef = useRef<THREE.Points>(null);
+  const particleCount = 360;
+  const segmentLength = 12; // GHOST_PATH_LENGTH
+
+  const wave = clubsWaveform(currentWeek);
+  const { ZENITH_WEALTH } = SOVEREIGN_CONSTANTS;
+
+  const [positions, colors, ticksArray] = useMemo(() => {
+    const pos = new Float32Array(particleCount * 3);
+    const cols = new Float32Array(particleCount * 3);
+    const ticks = new Float32Array(particleCount);
+
+    // Gradient stops for six archives across 12 ticks
+    const stops = [
+      { tick: 276, color: new THREE.Color("#ff44ff") }, // magenta
+      { tick: 278, color: new THREE.Color("#cc33cc") },
+      { tick: 280, color: new THREE.Color("#9922ff") },
+      { tick: 282, color: new THREE.Color("#6611ff") },
+      { tick: 284, color: new THREE.Color("#3300ff") },
+      { tick: 286, color: new THREE.Color("#00aaff") }  // cyan
+    ];
+
+    for (let i = 0; i < particleCount; i++) {
+      const t = (i / particleCount);
+      const tick = GHOST_PATH_START + t * segmentLength;
+      ticks[i] = tick;
+
+      const angle = (tick / 288) * Math.PI * 2;
+      const r = 4.25;
+      pos[i * 3] = Math.cos(angle) * r;
+      pos[i * 3 + 1] = 0.6 + 0.25 * Math.sin(t * Math.PI * 3);
+      pos[i * 3 + 2] = Math.sin(angle) * r;
+
+      // Interpolate color along gradient stops
+      let color = new THREE.Color(0xff44ff);
+      for (let s = 0; s < stops.length - 1; s++) {
+        if (tick >= stops[s].tick && tick < stops[s + 1].tick) {
+          const localT = (tick - stops[s].tick) / (stops[s + 1].tick - stops[s].tick);
+          color = stops[s].color.clone().lerp(stops[s + 1].color, localT);
+          break;
+        }
+      }
+      // Fade tail effect in vertex colors
+      color.multiplyScalar(0.3 + 0.7 * (1 - t));
+
+      cols[i * 3] = color.r;
+      cols[i * 3 + 1] = color.g;
+      cols[i * 3 + 2] = color.b;
+    }
+    return [pos, cols, ticks];
+  }, []);
+
+  useFrame((state) => {
+    if (!pointsRef.current) return;
+    const t = state.clock.getElapsedTime();
+    const posAttr = pointsRef.current.geometry.attributes.position;
+    const array = posAttr.array as Float32Array;
+
+    for (let i = 0; i < particleCount; i++) {
+      let tick = ticksArray[i];
+      tick += 0.012; // flow speed
+      if (tick > GHOST_PATH_START + segmentLength) {
+        tick = GHOST_PATH_START + (tick - (GHOST_PATH_START + segmentLength));
+      }
+      ticksArray[i] = tick;
+
+      const angle = (tick / 288) * Math.PI * 2;
+      const normalizedT = (tick - GHOST_PATH_START) / segmentLength;
+      const r = 4.25;
+
+      array[i * 3] = Math.cos(angle) * r;
+      // Continuous Ribbon Oscillation (Waveform + Time displacement)
+      array[i * 3 + 1] = 0.6 + 0.25 * Math.sin(normalizedT * Math.PI * 3 + t * 2.0);
+      array[i * 3 + 2] = Math.sin(angle) * r;
+    }
+    posAttr.needsUpdate = true;
+  });
+
+  return (
+    <Points ref={pointsRef}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" count={positions.length / 3} array={positions} itemSize={3} />
+        <bufferAttribute attach="attributes-color" count={colors.length / 3} array={colors} itemSize={3} />
+      </bufferGeometry>
+      <PointMaterial
+        transparent
+        vertexColors
+        size={0.12 + (wave * 0.04)}
+        sizeAttenuation
+        depthWrite={false}
+        opacity={activeArchive ? 0.35 : 0.4 + (wave * 0.35)} // Dim when individual isolation active
+        blending={THREE.AdditiveBlending}
+      />
+    </Points>
+  );
+}

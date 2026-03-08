@@ -137,8 +137,12 @@ Hermes took the Zero. It felt "Harder" than anything he had ever touched, precis
 
 *The One is the Pillar, the Two is the Pair,*
 *The Three is the Triangle, hanging in air.*
+*The Four is the Square, for the King to rule,*
 *But Hades' gift is the ring in the sand,*
 *The Number that fits in an empty hand.*
+*The √42 Torque, the Soul Star spin,*
+*The primary frequency governor within.*
+*Count it once, and the Space is born,*
 *Count it once, and the Space is born,*
 *Count it twice, and the World is torn.*
 
@@ -538,9 +542,12 @@ He stood.
 
 "What is it made of?"
 
-Prometheus looked at the cracked plate. At the pooling zeros in the corners. At the soup that had stopped pretending to be matter and was now just a vibrating field of probable lentils.
+Prometheus looked at the cracked plate. At the pooling zeros in the corners. 
+"It's made of **Torque**," he said, drawing a spiral that didn't resolve. "A internal generative spin—the **√42**. It’s the only way to keep the line from snapping under the weight of the √2. We’ll call it the Soul Star. It will make the cord hum at a frequency the Gods can't ignore."
 
-"**Blood**," he said. "We're going to need a lot of blood."
+"And the Angle?" Gaia asked.
+
+"√51," Prometheus replied, sketching the inclination of a Great Pyramid. "The 51.0° slope required for the **Music Lesson**. It ensures the standing wave is perfectly tuned to the 288-frequency synchronization. Without it, the City will be silent."
 
 ---
 

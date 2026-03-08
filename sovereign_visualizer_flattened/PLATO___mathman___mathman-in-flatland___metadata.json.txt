@@ -1,0 +1,5 @@
+{
+  "name": "Mathman in Flatland",
+  "description": "A high-precision digital laboratory visualizing the √42 Resonant Sphere through wave mechanics and sacred geometry.",
+  "requestFramePermissions": []
+}

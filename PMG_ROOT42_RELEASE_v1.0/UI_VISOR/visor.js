@@ -45,39 +45,39 @@ let state = {
         try {
             const resp = await fetch('point_001.veth');
             const data = await resp.json();
-            
+
             // Re-render based on realistic values
             hexLabel.textContent = data.header.hex;
             this.hysteresis = data.hysteresis;
             this.isTaut = data.isTaut;
-            
+
             // Build the string tension
             tensionDot.className = this.isTaut ? 'dot active' : 'dot warning';
             tensionStatus.textContent = this.isTaut ? 'TAUT (SHEER FACE)' : 'SLACK (HYSTERESIS DETECTED)';
             tensionStatus.style.color = this.isTaut ? 'var(--accent-green)' : 'var(--accent-red)';
-            
+
             hysteresisVal.textContent = this.hysteresis + '°';
-            
+
             // Build nodes from the field counts (Volume I, II, III)
             this.nodes = [];
             // Seed nodes representing fields
             const totalFields = data.header.count + data.header.measure + data.header.comm;
-            for(let i=0; i<30; i++) {
+            for (let i = 0; i < 30; i++) {
                 const angle = (i / 30) * Math.TAU;
                 const active = i < totalFields;
                 this.nodes.push({ r: RADIUS * 0.8, a: angle, type: 'seed', active: active, dR: 0, dA: 0 });
             }
             // Shell nodes
-            for(let i=0; i<60; i++) {
+            for (let i = 0; i < 60; i++) {
                 const angle = (i / 60) * Math.TAU;
                 const r = (i % 2 === 0) ? RADIUS : RADIUS * 0.9;
-                this.nodes.push({ r: r, a: angle + (Math.PI/60), type: 'shell', dR: 0, dA: 0 });
+                this.nodes.push({ r: r, a: angle + (Math.PI / 60), type: 'shell', dR: 0, dA: 0 });
             }
-            for(let i=0; i<3; i++) {
+            for (let i = 0; i < 3; i++) {
                 const angle = (i / 3) * Math.TAU;
                 this.nodes.push({ r: RADIUS * 0.2, a: angle, type: 'core', dR: 0, dA: 0 });
             }
-            
+
             if (this.isTaut) {
                 this.repair();
             } else {
@@ -91,24 +91,30 @@ let state = {
     },
     initNodes() {
         this.nodes = [];
-        // The 30 Field Types (The Perimeter/Area)
-        for (let i = 0; i < 30; i++) {
-            const angle = (i / 30) * Math.TAU;
-            // Radius scales to 24mm Measure mapping
-            this.nodes.push({ r: RADIUS * 0.8, a: angle, type: 'seed', dR: 0, dA: 0 });
-        }
-        // The 60 MW-Shell Nodes
-        for (let i = 0; i < 60; i++) {
-            const angle = (i / 60) * Math.TAU;
-            // Staggered radius
+        const set = this.inflationSets[this.activeSet];
+
+        // The Inflation Nodes (90, 120, 150...)
+        for (let i = 0; i < set.inflation; i++) {
+            const angle = (i / set.inflation) * Math.TAU;
             const r = (i % 2 === 0) ? RADIUS : RADIUS * 0.9;
-            this.nodes.push({ r: r, a: angle + (Math.PI / 60), type: 'shell', dR: 0, dA: 0 });
+            this.nodes.push({ r: r, a: angle, type: 'inflation', dR: 0, dA: 0 });
         }
-        // The 3 Core Nodes (The Trinity)
-        for (let i = 0; i < 3; i++) {
-            const angle = (i / 3) * Math.TAU;
-            this.nodes.push({ r: RADIUS * 0.2, a: angle, type: 'core', dR: 0, dA: 0 });
+
+        // The Anchor Nodes (3, 4, 5...)
+        for (let i = 0; i < set.seed; i++) {
+            const angle = (i / set.seed) * Math.TAU;
+            this.nodes.push({ r: RADIUS * 0.2, a: angle, type: 'anchor', dR: 0, dA: 0 });
         }
+
+        // The Ghost Nodes (Vowel Thresholds)
+        // 16, 31, 46, 61, 76 for Triangle (M=171)
+        const thresholds = [16, 31, 46, 61, 76];
+        thresholds.forEach(idx => {
+            if (idx < set.total) {
+                // These nodes are "invisible" but active as thresholds
+                this.nodes[idx].isThreshold = true;
+            }
+        });
     },
 
     disturb() {
@@ -141,6 +147,42 @@ let state = {
         btnRepair.disabled = false;
     },
 
+    setHardening(val) {
+        this.hardening = val;
+    },
+
+    setInflation(setName) {
+        this.activeSet = setName;
+        this.initNodes();
+    },
+
+    getAnchorIndices() {
+        const seed = this.inflationSets[this.activeSet].seed;
+        return Array.from({ length: seed }, (_, i) => i);
+    },
+
+    // --- WORD ACTIVATION ---
+    activeWord: '',
+    wordPathNodes: [],
+
+    setWord(word) {
+        this.activeWord = word.toUpperCase().replace(/[^A-Z]/g, '');
+        this.updateWordPath();
+    },
+
+    updateWordPath() {
+        const set = this.inflationSets[this.activeSet];
+        const M = set.spark;
+        const MOD = set.total;
+
+        this.wordPathNodes = [];
+        for (let char of this.activeWord) {
+            const m_k = char.charCodeAt(0) - 64; // A=1, B=2...
+            const nodeIndex = ((m_k - 1) * M) % MOD;
+            this.wordPathNodes.push(nodeIndex);
+        }
+    },
+
     repair() {
         this.isTaut = true;
         this.hysteresis = 0;
@@ -164,6 +206,29 @@ let state = {
 
         btnDisturb.disabled = false;
         btnRepair.disabled = true;
+    },
+
+    // --- NODAL INFLATION & PUPIL MODE EXTENSIONS ---
+    hardening: 0.5,
+    activeSet: 'TRIANGLE',
+    inflationSets: {
+        TRIANGLE: { seed: 3, inflation: 90, total: 93, name: 'Set Triangles' },
+        SQUARE: { seed: 4, inflation: 120, total: 124, name: 'Set Squares' },
+        PENTAGON: { seed: 5, inflation: 150, total: 155, name: 'Set Pentagons' }
+    },
+
+    setHardening(val) {
+        this.hardening = val;
+    },
+
+    setInflation(setName) {
+        this.activeSet = setName;
+        this.initNodes();
+    },
+
+    getAnchorIndices() {
+        const seed = this.inflationSets[this.activeSet].seed;
+        return Array.from({ length: seed }, (_, i) => i);
     }
 };
 
@@ -229,14 +294,55 @@ function render() {
         }
 
         // Draw the point (Pinhole)
-        ctx.fillStyle = state.isTaut ?
-            (n.type === 'core' ? '#fff' : (n.type === 'seed' ? 'var(--accent-cyan)' : 'var(--text-dim)')) :
-            'var(--accent-red)';
+        const isAnchor = n.type === 'anchor';
+        const hardening = state.hardening;
 
-        let dotSize = n.type === 'core' ? 4 : (n.type === 'seed' ? 3 : 2);
+        // Color transition: Graphite (#4A4A4A) -> Emerald (#50C878) / Anchor White
+        let color;
+        if (state.isTaut) {
+            if (isAnchor) {
+                color = '#fff';
+            } else {
+                // Lerp between Graphite (74, 74, 74) and Emerald (80, 200, 120)
+                const r = Math.round(74 + (80 - 74) * hardening);
+                const g = Math.round(74 + (200 - 74) * hardening);
+                const b = Math.round(74 + (120 - 74) * hardening);
+                color = `rgb(${r},${g},${b})`;
+            }
+        } else {
+            color = 'var(--accent-red)';
+        }
+        ctx.fillStyle = color;
+
+        let dotSize = isAnchor ? 5 : 2.5;
         if (!state.isTaut) dotSize += Math.random() * 2; // Blur effect
 
-        ctx.fillRect(x - dotSize / 2, y - dotSize / 2, dotSize, dotSize);
+        // Add "Soft" tools jitter if hardening is low
+        const jitter = (1 - hardening) * 5 * (Math.random() - 0.5);
+        ctx.fillRect(x + jitter - dotSize / 2, y + jitter - dotSize / 2, dotSize, dotSize);
+
+        // Anchor Triangle/Square Highlight
+        if (isAnchor && hardening > 0.5) {
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = '#fff';
+            ctx.fillRect(x - dotSize / 2, y - dotSize / 2, dotSize, dotSize);
+            ctx.shadowBlur = 0;
+        }
+
+        // Vowel Threshold (Ghost Node) Highlight
+        if (n.isThreshold) {
+            ctx.save();
+            ctx.strokeStyle = 'rgba(255, 51, 102, 0.4)';
+            ctx.beginPath();
+            ctx.arc(x, y, 6, 0, Math.TAU);
+            ctx.stroke();
+
+            if (hardening > 0.8) {
+                ctx.fillStyle = 'rgba(255, 51, 102, 0.2)';
+                ctx.fill();
+            }
+            ctx.restore();
+        }
 
         // The 5-12-13 Connection Lines (Draw lines from shell back to core)
         if (state.isTaut && n.type === 'seed' && n.active && (idx % 3 === 0)) {
@@ -263,6 +369,36 @@ function render() {
     ctx.lineWidth = state.isTaut ? 0.5 : 2;
     ctx.stroke();
 
+    // 3. Draw Word Path (The 171 Spark)
+    if (state.wordPathNodes.length > 1) {
+        ctx.beginPath();
+        ctx.strokeStyle = state.isTaut ? 'rgba(255, 255, 255, 0.4)' : 'rgba(255, 51, 102, 0.5)';
+        ctx.lineWidth = 1.5;
+        ctx.setLineDash([5, 2]); // Spiritual connection
+
+        state.wordPathNodes.forEach((nodeIdx, i) => {
+            const n = state.nodes[nodeIdx];
+            if (!n) return;
+            const actR = n.r + n.dR;
+            const actA = n.a + n.dA;
+            const x = Math.cos(actA) * actR;
+            const y = Math.sin(actA) * actR;
+
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+
+            // Highlight active nodes
+            ctx.save();
+            ctx.fillStyle = '#fff';
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = 'var(--accent-cyan)';
+            ctx.fillRect(x - 3, y - 3, 6, 6);
+            ctx.restore();
+        });
+        ctx.stroke();
+        ctx.setLineDash([]); // Reset
+    }
+
     ctx.restore();
 
     requestAnimationFrame(render);
@@ -271,7 +407,24 @@ function render() {
 // Init
 state.loadRecord();
 
+const selectSet = document.getElementById('select-set');
+const rangeHardening = document.getElementById('range-hardening');
+const inputWord = document.getElementById('input-word');
+
 btnDisturb.addEventListener('click', () => state.disturb());
 btnRepair.addEventListener('click', () => state.repair());
 
+selectSet.addEventListener('change', (e) => {
+    state.setInflation(e.target.value);
+});
+
+rangeHardening.addEventListener('input', (e) => {
+    state.setHardening(parseFloat(e.target.value));
+});
+
+inputWord.addEventListener('input', (e) => {
+    state.setWord(e.target.value);
+});
+
 render();
+Broadway

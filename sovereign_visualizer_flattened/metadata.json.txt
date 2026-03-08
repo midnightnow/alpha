@@ -1,0 +1,5 @@
+{
+  "name": "Sovereign Engine Visualizer",
+  "description": "A high-fidelity React/Three.js geometric visualizer.",
+  "requestFramePermissions": []
+}

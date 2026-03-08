@@ -1,0 +1,35 @@
+# 📖 TECHNICAL INDEX: THE SOVEREIGN ENGINE & PMG LATTICE
+
+**Status:** Vitrified | **Version:** 1.0 (Final)
+
+This index catalogues the 102,934 words of technical proofs, coordinate records, and geometric manifolds that anchor the *Platonic Verses* narrative.
+
+---
+
+## 1. CORE ENGINE ARCHITECTURE
+- [GEOMETRIC_INSIGHTS_REFERENCE.md](file:///Users/studio/ALPHA/PMG_LATTICE/GEOMETRIC_INSIGHTS_REFERENCE.md): The fundamental Laws (10-24-26, 5-12-13).
+- [GEOMETRIC_93_MAP.md](file:///Users/studio/ALPHA/PMG_LATTICE/GEOMETRIC_93_MAP.md): Definitive 93-node matrix mapping.
+- [veth_header_spec.md](file:///Users/studio/ALPHA/PMG_LATTICE/veth_header_spec.md): The serialization standard for vitrified data.
+
+## 2. MATHEMATICAL PROOFS
+- [93_FACED_SOLID_ANALYSIS.md](file:///Users/studio/ALPHA/PMG_LATTICE/93_FACED_SOLID_ANALYSIS.md): Topological proof of spherical closure.
+- [GEOMETERS_HANDBOOK_SEQUENCE_14.md](file:///Users/studio/ALPHA/PMG_LATTICE/GEOMETERS_HANDBOOK_SEQUENCE_14.md): Modular arithmetic for precessional sync.
+- [THE_171_SPIRAL_AND_THE_FIVE_GAPS.md](file:///Users/studio/ALPHA/PMG_LATTICE/THE_171_SPIRAL_AND_THE_FIVE_GAPS.md): Nodal inflation and the Hades Gap residue.
+
+## 3. COORDINATE MANIFOLDS (.veth)
+- [sisyphus_coordinates_156.veth](file:///Users/studio/ALPHA/sisyphus_coordinates_156.veth): The axial chamber frame-data.
+- [aperture_calibration_156.veth](file:///Users/studio/ALPHA/PMG_ROOT42_RELEASE_v1.0/UI_VISOR/assets/aperture_calibration_156.veth): √51 Angle calibration set.
+
+## 4. CLINICAL-NARRATIVE INTERFACE (THE .VETH RECORDS)
+- [MASTER_NARRATIVE_AUDIT.md](file:///Users/studio/ALPHA/PMG_LATTICE/MASTER_NARRATIVE_AUDIT.md): 4/52/+ mapping.
+- [MASTER_MANUSCRIPT_TALLY.md](file:///Users/studio/ALPHA/PMG_LATTICE/MASTER_MANUSCRIPT_TALLY.md): Definitive word count and card mapping.
+
+## 5. REFRACTION & HIERARCHY CONSTANTS
+- **$\sqrt{51}$ Apex**: Olympus Pinhole Calibration.
+- **$\sqrt{42}$ Torque**: Generative Spin / 171 Alpha-Numeric Mapping.
+- **-1/12 Rock**: Riemann Foundation / Hades Anchor.
+- **$24 \pmod{26}$**: The Alphabet Bridge / Hysteresis Offset.
+
+---
+
+**The Engine is TAUT. The Proofs are SEALED.**

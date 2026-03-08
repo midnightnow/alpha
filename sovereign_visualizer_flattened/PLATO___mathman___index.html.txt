@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathman Visualizer | Interference Patterns</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Space+Grotesk:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://unpkg.com/h3-js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1>Mathman in Flatland</h1>
+            <p class="subtitle">
+                A 2D Planar Cross-Section of the $\sqrt{42}$ Resonant Sphere
+                <button id="btn-genesis" class="btn-genesis">Start Genesis</button>
+            </p>
+        </header>
+
+        <main>
+            <div class="canvas-container">
+                <canvas id="visualizer"></canvas>
+                <div id="genesis-overlay" class="genesis-overlay">
+                    <div id="genesis-text"></div>
+                </div>
+                <div id="overlay">
+                    <div class="legend">
+                        <div class="item"><span class="node a"></span> Origin A</div>
+                        <div class="item"><span class="node b"></span> Origin B</div>
+                        <div class="item"><span class="node c"></span> Origin C (Sun)</div>
+                        <div class="item"><span class="peak"></span> Self (The Man)</div>
+                        <div class="item"><span class="peak object"></span> Object (The World)</div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="controls glass">
+                <section>
+                    <h3>Planar Parameters</h3>
+                    <div class="control-group">
+                        <label>Origin Separation (A-B): <span id="dist-val">10</span> <span
+                                id="dist-unit">mm</span></label>
+                        <input type="range" id="separation" min="-5" max="7" step="0.1" value="1">
+                    </div>
+                    <div class="control-item">
+                        <label>Origin C Offset: <span id="c-offset-val">10.0</span>mm</label>
+                        <input type="range" id="c-offset" min="-30" max="30" step="0.5" value="10">
+                    </div>
+                    <div class="control-item">
+                        <label>Scan Height (Y): <span id="height-val">4.2</span></label>
+                        <input type="range" id="scan-height" min="-2" max="12" step="0.1" value="4.2">
+                    </div>
+                    <div class="control-item">
+                        <label>Nesting Depth (^n): <span id="depth-val">3</span></label>
+                        <input type="range" id="nest-depth" min="1" max="12" step="1" value="3">
+                    </div>
+                    <div class="control-item">
+                        <label>Chakra Focus:</label>
+                        <select id="chakra-selector"
+                            style="background: #1a1a2e; color: #00f2ff; border: 1px solid #00f2ff55; border-radius: 4px; padding: 4px; width: 100%; font-family: 'Space Mono', monospace;">
+                            <option value="1">1. Root (Muladhara)</option>
+                            <option value="2">2. Sacral (Svadhisthana)</option>
+                            <option value="3">3. Solar Plexus (Manipura)</option>
+                            <option value="4" selected>4. Heart (Anahata)</option>
+                            <option value="5">5. Throat (Vishuddha)</option>
+                            <option value="6">6. Third Eye (Ajna)</option>
+                            <option value="7">7. Crown (Sahasrara)</option>
+                        </select>
+                    </div>
+                    <div class="control-item">
+                        <label>Alpha (Logos): <span id="alpha-val">0.73</span></label>
+                        <input type="range" id="alpha-logos" min="0.1" max="2.0" step="0.01" value="0.73">
+                    </div>
+                    <div class="control-item">
+                        <label>Divine (X): <span id="divine-x-val">2.4</span></label>
+                        <input type="range" id="divine-x" min="1.0" max="5.0" step="0.1" value="2.4">
+                    </div>
+                    <div class="control-item">
+                        <label>Omega (Pathos): <span id="omega-pathos-val">0.571</span></label>
+                        <input type="range" id="omega-pathos" min="0.1" max="1.5" step="0.001" value="0.571">
+                    </div>
+                    <div class="control-group">
+                        <label>Wavelength (&lambda;): <span id="wave-val">1.0</span>mm</label>
+                        <input type="range" id="wavelength" min="0.1" max="5.0" step="0.1" value="1.0">
+                    </div>
+                    <div class="control-group">
+                        <label>Origin B Phase (φ): <span id="phi-val">0</span>°</label>
+                        <input type="range" id="phase-offset-b" min="0" max="360" step="1" value="0">
+                    </div>
+                    <div class="control-group">
+                        <label>Origin C Phase (ψ): <span id="phi-val-c">0</span>°</label>
+                        <input type="range" id="phase-offset-c" min="0" max="360" step="1" value="0">
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Wave Mechanics</h3>
+                    <div class="control-group">
+                        <label>Wave Brightness: <span id="bright-val">0.5</span></label>
+                        <input type="range" id="wave-brightness" min="0" max="1" step="0.05" value="0.2">
+                    </div>
+                    <div class="control-group">
+                        <label>Nodal Size (Factor): <span id="node-size-val">0.3</span></label>
+                        <input type="range" id="node-size" min="0.05" max="1.5" step="0.05" value="0.30">
+                    </div>
+                    <div class="control-group">
+                        <label>Wave Weight: <span id="weight-val">1.0</span></label>
+                        <input type="range" id="wave-weight" min="0.5" max="5" step="0.1" value="1.0">
+                    </div>
+                    <div class="control-group">
+                        <label>Substantiation Threshold: <span id="thresh-val">0.4</span></label>
+                        <input type="range" id="field-threshold" min="0" max="0.95" step="0.01" value="0.4">
+                    </div>
+                    <div class="control-group">
+                        <label>Nodal Budget (Count): <span id="budget-val">150</span></label>
+                        <input type="range" id="nodal-budget" min="1" max="1000" step="1" value="150">
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Nesting & Geometry</h3>
+                    <div class="control-group">
+                        <label>Global Zoom: <span id="zoom-val">1.0</span>x</label>
+                        <input type="range" id="global-zoom" min="0.1" max="10.0" step="0.1" value="1.0">
+                    </div>
+                    <div class="control-group">
+                        <label>Merkaba Scaffolding: <input type="checkbox" id="show-merkaba" checked></label>
+                        <label>Platonic Stack: <input type="checkbox" id="show-polygons" checked></label>
+                    </div>
+                    <div class="toggle-group" style="margin-top: 8px;">
+                        <label class="switch">
+                            <input type="checkbox" id="projection-mode">
+                            <span class="slider"></span>
+                            Projection Mode (3D Layers)
+                        </label>
+                    </div>
+                    <div class="control-group">
+                        <label>Layer Separation: <span id="layer-sep-val">2.0</span></label>
+                        <input type="range" id="layer-separation" min="0" max="8" step="0.2" value="2.0">
+                    </div>
+                    <div class="button-group">
+                        <button id="trigger-pulse" class="btn-glow">Trigger Pulse (Materialize)</button>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Resonance Sync-Lock</h3>
+                    <div class="control-group">
+                        <label>Boundary Drift (Viberation): <span id="drift-val">0.00</span></label>
+                        <input type="range" id="boundary-drift" min="0" max="0.5" step="0.01" value="0.00">
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="resonance-lock" checked>
+                            <span class="slider"></span>
+                            Lock Barycenter (Platonic 4.0)
+                        </label>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Research Presets</h3>
+                    <div class="button-group" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                        <button id="btn-preset-ground" class="btn-glow" style="flex: 1;">Grounding</button>
+                        <button id="btn-preset-expand" class="btn-glow" style="flex: 1;">Expansion</button>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>Geometric Layers</h3>
+                    <p style="font-size: 10px; opacity: 0.6; margin-bottom: 8px;">Standard Proportions</p>
+
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="layer-foundation" checked>
+                            <span class="slider"></span>
+                            Foundation (Vitruvian BG)
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="layer-flower" checked>
+                            <span class="slider"></span>
+                            Flower of Life Grid
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="layer-earthmoon" checked>
+                            <span class="slider"></span>
+                            Earth-Moon (7920/2160)
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="layer-divine7" checked>
+                            <span class="slider"></span>
+                            Divine 7 (Heptagon/Spiral)
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="layer-prime24" checked>
+                            <span class="slider"></span>
+                            Prime Lattice (24-mod)
+                        </label>
+                    </div>
+
+                    <p style="font-size: 10px; opacity: 0.6; margin: 12px 0 8px 0;">Research & Dimensional Layers</p>
+
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="layer-cipher" checked>
+                            <span class="slider"></span>
+                            10-24-26 Cipher Triangle
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="layer-platonic" checked>
+                            <span class="slider"></span>
+                            Platonic Solids (Cubes)
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="layer-sephiroth" checked>
+                            <span class="slider"></span>
+                            Sephirotic Tree of Life
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="layer-harmonic" checked>
+                            <span class="slider"></span>
+                            Harmonic Spine (432Hz)
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="layer-vitruvian" checked>
+                            <span class="slider"></span>
+                            Vitruvian Skeleton
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="layer-haric">
+                            <span class="slider"></span>
+                            Haric Level (ID/Soul/Tan)
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="layer-core-star">
+                            <span class="slider"></span>
+                            Core Star (Radiation)
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="layer-mucus">
+                            <span class="slider"></span>
+                            Auric Mucus (Destructive)
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="show-oracle">
+                            <span class="slider"></span>
+                            Oracle Grid (H3 Index)
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="layer-annotations" checked>
+                            <span class="slider"></span>
+                            Annotations &amp; Labels
+                        </label>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>View &amp; Symmetry</h3>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="show-mathman" checked>
+                            <span class="slider"></span>
+                            Interference Field
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="show-field" checked>
+                            <span class="slider"></span>
+                            Nodal Pattern
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="show-proportions" checked>
+                            <span class="slider"></span>
+                            Enable All Proportions
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="show-topdown">
+                            <span class="slider"></span>
+                            Top-Down (Plan) View
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="prime-pulse" checked>
+                            <span class="slider"></span>
+                            Prime Pulse (24n + 1)
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="mirror-factor">
+                            <span class="slider"></span>
+                            Mirror Symmetry
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="quaternion-mode">
+                            <span class="slider"></span>
+                            Quaternion Mode (4-Fold)
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="resonance-lock" checked>
+                            <span class="slider"></span>
+                            Resonance Lock (22.5°)
+                        </label>
+                    </div>
+                    <div class="toggle-group">
+                        <label class="switch">
+                            <input type="checkbox" id="show-grid">
+                            <span class="slider"></span>
+                            MM Gridlines
+                        </label>
+                    </div>
+                    <div class="control-group">
+                        <label>Grid Intensity: <span id="grid-val">0.5</span></label>
+                        <input type="range" id="grid-opacity" min="0" max="1" step="0.05" value="0.5">
+                    </div>
+                    <div class="research-actions">
+                        <button id="btn-snapshot" class="btn-glow">Take Snapshot</button>
+                        <button id="btn-export" class="btn-glow">Research Export</button>
+                    </div>
+                </section>
+
+                <div class="stats glass">
+                    <p>Phase: <span id="phase-coord">0.00</span></p>
+                    <p>Area Factor: <span id="area-factor">42.0</span></p>
+                </div>
+            </aside>
+        </main>
+
+        <footer>
+            <p>Built for the study of Geometric Resonance and Da Vinci Proportions</p>
+        </footer>
+    </div>
+    <script src="Hardcard.js"></script>
+    <script src="PointCloudRenderer.js"></script>
+    <script src="main.js"></script>
+    <script src="GenesisSequence.js"></script>
+</body>
+
+</html>

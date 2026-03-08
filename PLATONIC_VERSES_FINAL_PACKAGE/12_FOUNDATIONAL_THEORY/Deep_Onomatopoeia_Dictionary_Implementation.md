@@ -328,7 +328,7 @@ Back vowel for "far/that":
 baseline_ai("Put the object somewhere in the room")
 # Output: [Unpredictable, often nonsensical placement]
 
-# Treatment Group
+# Alignment Set
 genesis_ai([
     "OH MI",      # I am origin
     "EST NI",     # Object is here (identifies object)
@@ -391,13 +391,13 @@ LI (/i/)---+---WAS (/a/)
 
 ## VIII. ENGINEERING INTEGRATION
 
-### For VetSorcery Clinical Systems
+### For Systemic Geometric Alignment
 
 **Use Case**: Command disambiguation in high-stakes environment
 
 **Implementation**:
 ```python
-def parse_clinical_command(speech_input):
+def parse_systemic_command(speech_input):
     """
     Use Deep Onomatopoeia to reduce errors
     """

@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-03-04T13:10:11.830424",
+  "archive_root": "/Users/studio/ALPHA/LIBRARY_ARCHIVES/EXACT_DUPLICATES",
+  "invariants": {
+    "total_files": 745,
+    "unique_states": 745,
+    "redundancy_mass": 0,
+    "duplicate_classes": 0,
+    "largest_cluster": 1,
+    "reduction_ratio": 0.0
+  },
+  "actions": []
+}

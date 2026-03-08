@@ -21,6 +21,8 @@ import {
     HABITABILITY_DELTA_PHI,
     TIGER_STRIPE,
     NODE_COUNT,
+    INFLATION_SETS,
+    PUPIL_COLORS,
     IOR_GLASS,
     IOR_ICE,
     COLOR_MATTER,
@@ -49,6 +51,8 @@ export interface SimulationParams {
     fracture: boolean;
     harmonicMode: 'smooth' | 'fracture';
     hadesSlider: number;    // 0.0 (pure Europa) → 1.0 (pure Enceladus)
+    inflationSet: keyof typeof INFLATION_SETS;
+    hardeningFactor: number; // 0.0 (Soft Graphene) → 1.0 (Hardened Emerald)
     showGrid?: boolean;
     time?: number;          // For damped harmonic envelope
 }
@@ -234,6 +238,11 @@ export function computeVertex(
         r += deformer.deform(theta, phi, hadesSlider);
     }
 
+    // 4.5 Hardening / Pupil's Mode Jitter
+    // As hardeningFactor -> 0, the geometry "wobbles" like a graphite line
+    const jitter = (1 - params.hardeningFactor) * 0.05 * Math.sin(theta * 20 + phi * 20);
+    r += jitter;
+
     // 5. Damped envelope (if time dimension active)
     if (params.time !== undefined) {
         const envelope = dampedEnvelope(params.time) / ROOT_42; // Normalize to [0,1]
@@ -289,4 +298,20 @@ export function computeWobble(elapsedTime: number): { x: number; y: number; z: n
         y: 0, // Y rotation driven by rotationSpeed externally
         z: wobble,
     };
+}
+
+/**
+ * Returns the indices of the "Anchor" nodes for a given inflation set.
+ * In our model, the anchor nodes are always the first N nodes where N is the seed.
+ */
+export function getAnchorIndices(setName: keyof typeof INFLATION_SETS): number[] {
+    const seed = INFLATION_SETS[setName].seed;
+    return Array.from({ length: seed }, (_, i) => i);
+}
+
+/**
+ * Returns the total node count for a given inflation set.
+ */
+export function getNodeCount(setName: keyof typeof INFLATION_SETS): number {
+    return INFLATION_SETS[setName].total;
 }

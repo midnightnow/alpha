@@ -1,16 +1,10 @@
-# CLAUDE.md
+## What is this?
+This project is my big book of ideas. It joins math, stories, and letters together in one simple system. I've built it in three parts:
+1. **Stories** — My books and chapters.
+2. **Tools** — My math and test files.
+3. **Pictures** — My apps and sounds.
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-## Repository Overview
-
-This repository contains the **Principia Mathematica Geometrica** (PMG), a unified field theory treating geometry, mythology, language, and relationships as integrated systems. The work is structured as three orthogonal layers:
-
-1. **Narrative Layer** — Books, Root42 chapters, literary analysis
-2. **Computational Layer** — Ophanim Toolkit, PMG Sandbox, test scripts
-3. **Visualization Layer** — Radical Resonance apps, Three.js solids, audio synthesis
-
-**Completion:** ~86% — Books 1, 2, & 3 SEALED; Root42 Chapter 4 SEALED; Phase IV Vitrified.
+**I'm done with the first version.** Everything is set in stone now.
 
 **Full inventories:**
 - `BOOKS_INVENTORY.md` — All books, chapters, narratives, resonance archives
@@ -66,82 +60,51 @@ This repository contains the **Principia Mathematica Geometrica** (PMG), a unifi
 
 ---
 
-## Theoretical Framework
+## My Main Rules
 
-### PLATO Formula (appears everywhere)
+### The Simple Move (PLATO)
+I use a simple move for everything:
 ```
-P (Point) → L (Line) → A (Angle) → T (Triangle) → O (Circle)
+Point → Line → Corner → Triangle → Circle
 ```
-Governs: NPC behavior, document structure, component lifecycle, user interaction.
+I use this for how people act, how I write my books, and how my apps work.
 
-### 60-Fold Vector Field
-- Every entity generates 60 vectors in all directions (6° spacing)
-- Flower of Life is the correct tiling pattern
-- Letters/objects placed side-by-side create immediate vector interactions
+### The 60-Line Rule
+- Everything I make sends out 60 lines in all directions.
+- I use a flower pattern to fit everything together.
+- When two things are close, their lines touch and interact.
 
-### 12.37% Hades Gap (Ψ = tensegrity constant)
-- All systems require 12.37% slop/tolerance
-- Perfect rigidity = system failure
-- Beat frequency manifestation: √51 − √42 ≈ 0.660 Hz (NOT 0.447)
+### The 12.37% Breath
+- Every part of my work needs a little bit of room to move. I call this "breath."
+- If things are too stiff, they break.
+- You can hear this breath in the sound of the math: 0.660 Hz.
 
-### Prime Intrusion of 17 (canonical — do not change)
-```
-48 rejected: 2⁴×3 — too smooth, resolves, no fracture
-51 required: 3×17 — prime 17 anchors shear angle, packing constant, 9-gap bridge
-```
-See `GEMINI_CODE_WIKI.md` → Prime Intrusion section for full proof.
+### Why 51 and not 48?
+- 48 is too smooth and doesn't have the "teeth" I want.
+- 51 is the magic number because it has 17 in it. 17 is what makes the shape tilt and ring.
+You can read more about this in my Wiki file.
 
 ---
 
-## Development Tasks
+## How to build things
 
-### Creating New Chapters (Book 3 / Root42 Ch.4)
+### Making new stories
+When I write a new part of my book, I follow three steps:
+1. **The Hero** — Who is in the story?
+2. **The Place** — Where does it happen?
+3. **The View** — Who is telling the story?
 
-Follow the **Platonic Verses Staging Protocol** (`Platonic_Verses_Staging_Protocol.md`):
+Everything in the story has to be part of the math. 
 
-Three architectural moves required:
-1. **The Anchor (HE)** — Establish protagonist/operator
-2. **The Boundary (Topos)** — Define physical/metaphorical space
-3. **The Perspective (Observer)** — Position the narrator
-
-Every object mentioned must be weight-bearing (serve geometric function).
-
-Chapter skeleton:
-```markdown
-## I. THE FRAME (The Entrance)
-HE entered [location] at [time], as [Vocation] must.
-
-## II. THE BOUNDARY (The Workspace)
-The Workspace was readied.
-
-## III. THE PREPARATION (The Tools)
-[Each tool invokes both Physics and Prophecy]
-
-## IV. THE EXECUTION (The Sacred Verb)
-The Transformation began.
-[Action sequence following P→L→A→T→O]
-```
-
-### Book 3 — Next Chapters Needed
-
-| Chapter | Working Title | Core Mapping |
-|---------|-------------|-------------|
-| 18 | The Seven Voices | 7 constants → 7 phoneme modes |
-| 19 | The Oracle Grid | H3 indices → predictive semantic field |
-| 20 | The Sentient Interface | Recursive self-correction |
-| 21 | The Unfolding | Verses + Vectors + Voices = unified |
-
-### Seven Voices Phoneme Map (Chapter 18 Scaffold)
-
-| Voice | Constant | Phonetic Mode | Frequency |
-|-------|----------|--------------|-----------|
-| Silence | Ψ = 0.1237 | Null / glottal | Hades Gap pulse |
-| Density | ρ = √(14/17) | Plosive (p, b, t) | Low-pass saturated |
-| Fracture | δ = 0.000585 | Fricative (f, s, sh) | High-pass white noise |
-| Gesture | θ = 39.4° | Liquids (l, r) | Modulated sweep |
-| Heartbeat | Δf = 0.660 Hz | Nasals (m, n) | 0.66 Hz pulse |
-| Warning | Xi = 0.00014 | Sibilants (z, zh) | Stress-peak at Mohs 10 |
-| Chorus | √42:√51:√60 | Vowels (a, e, o) | 648 / 714 / 775 Hz |
+### The Seven Voices
+I have seven different ways of making sound with my letters:
+- **Silence:** The "breath" between sounds.
+- **Hard:** Sounds like *p*, *b*, or *t*.
+- **Sharp:** Sounds like *f*, *s*, or *sh*.
+- **Liquid:** Sounds like *l* or *r*.
+- **Heartbeat:** A soft pulse like *m* or *n*.
+- **Warning:** Sounds that buzz like *z*.
+- **Song:** Open sounds like *a*, *e*, or *o*.
 
 ---
 
@@ -271,7 +234,7 @@ The bustling world IS the proof. `Sandbox_World_Architecture.md` — entire docu
 │   ├── Scripts/                       (Python mechanics and fracture ops)
 │   └── Assets/                        (Renderings and JSON data)
 │
-├── SovereignEngine/                   (React/Three.js — Phase III ACTIVE)
+├── SovereignEngine/                   (Sovereign Engine v1.0 — SEALED)
 ├── sandbox/                           (TypeScript simulation)
 ├── ophanim_toolkit/                   (Python engine)
 ├── notebooklm-mcp-temp/               (MCP server)
@@ -303,7 +266,7 @@ The bustling world IS the proof. `Sandbox_World_Architecture.md` — entire docu
 
 **When in doubt about a constant:** Check `GEMINI_CODE_WIKI.md` → Reference Constants. Do not approximate.
 
-<!-- LAST_MAINTENANCE: 2026-02-19 -->
-<!-- PHASE: IV — The Sentient Interface -->
-<!-- BOOKS: Book1 SEALED, Book2 SEALED, Book3 ACTIVE (5/7) -->
-<!-- ROOT42: Phase II SEALED, Chapter 4 ACTIVE -->
+<!-- LAST_MAINTENANCE: 2026-03-06 -->
+<!-- PHASE: VIII — Topological Closure (156 Point Lock) -->
+<!-- STATUS: VITRIFIED / SEALED -->
+<!-- ENGINE: Sovereign v1.0 (Logarithmic/Machine Hybrid) -->

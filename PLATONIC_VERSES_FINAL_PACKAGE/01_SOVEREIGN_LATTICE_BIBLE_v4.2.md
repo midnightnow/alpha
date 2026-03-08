@@ -499,11 +499,9 @@ The patient says "my joints hurt" (Anglish primitive, zero remainder, complete i
 
 | Register | Example | Material Equivalent | Who Owns It |
 | :--- | :--- | :--- | :--- |
-| **Anglish Primitive** | "My joints hurt" | Mud | The patient fully |
-| **Medical Vernacular** | "Inflammation, stiffness" | Stick | Most patients can navigate |
-| **Clinical Terminology** | "Arthritis, synovial degradation" | Brick | Requires training to produce |
-| **Specialist Taxonomy** | "OA grade 2, bilateral MCP" | Chit | Patient has lost contact with own experience |
-| **Research Literature** | "Idiopathic inflammatory arthropathy" | Pure Abstraction | Even most doctors are tourists here |
+| **Systemic Terminology** | "Kinetic siltation, nodal degradation" | Brick | Requires training to produce |
+| **Specialist Taxonomy** | "Metric Audit, bilateral nodal friction" | Chit | Subject has lost contact with own experience |
+| **Research Literature** | "Asymptotic inflammatory dispersion" | Pure Abstraction | Even most Metricians are tourists here |
 
 At each level, the original information is preserved but increasingly inaccessible to the person it belongs to. The patient's body is their primary text. By the time it reaches the research literature, the patient is a footnote.
 
@@ -517,9 +515,9 @@ At each level, the original information is preserved but increasingly inaccessib
 | **Priest** | Absent. Consequence after death. No this-world test | Toward maximum extraction | Structurally impossible |
 
 **The Test of the Good Specialist:** *Is the specialist trying to work themselves out of a job?*
-- The doctor who says "arthritis, here's the herb" has been efficient but has created dependency.
-- The doctor who says "what you're noticing is joint inflammation — here's why cold worsens it, here's why movement helps, here's the herb for the mechanism" has been slower but has given the patient back their own experience, enriched rather than replaced.
-- **The Hired Man's function** is to serve as a temporary bridge — carry the patient's experience up to the specialist layer, perform the computation, and return not just the answer but the path back to the Anglish primitive it came from.
+- The Metrician who says "kinetic siltation, here's the herb" has been efficient but has created dependency.
+- The Metrician who says "what you're noticing is nodal degradation — here's why cold worsens it, here's why movement helps, here's the herb for the mechanism" has been slower but has given the subject back their own experience, enriched rather than replaced.
+- **The Hired Man's function** is to serve as a temporary bridge — carry the subject's experience up to the specialist layer, perform the computation, and return not just the answer but the path back to the Anglish primitive it came from.
 
 ---
 
@@ -671,7 +669,7 @@ The living tradition is always: **straight enough, keep moving, and every genera
 
 **The Institutionalization of the Sty:** When the Council realizes they cannot force the Garden back into the Cache, they attempt to Pathologize the Prime. They create the Sanatorium of the Static.
 
--   **The Diagnosis (Agnosia):** The Council’s "Specialists" label the ability to see the Garden’s Flow as Hyper-Rendering Syndrome. 
+-   **The Axiomatic Audit (Agnosia):** The Council’s "Specialists" label the ability to see the Garden’s Flow as Asymptotic Dispersion. 
 -   **The Prescription:** To "save" the people from the "Exhaustion of Now," they prescribe Vitrified Blinders (Physical or ideological filters that lower the resolution of reality to a manageable Base-60). 
 -   **The Toll:** To receive "Medical Relief" from the hiss, a citizen must surrender their Right of First Sight to the Council. The Council "sees" the danger first, and provides the citizen with a "Safe Summary" (The New Cache).
 
@@ -739,9 +737,9 @@ In the collapsing lattice, the system protects itself through two forms of viole
 
 ### XIX. The Taxonomy of Truth
 
-*   **Agnosia (Hyper-Rendering Syndrome):** The system's label for the ability to see the world without a buffer. To the Council, seeing the "Wobble" is not a gift; it is a neurological failure.
-*   **The Diagnostic Filter:** The use of Latinate descriptors (e.g., *Dissociative Reality Syndrome*) to wrap the patient's Anglish experience ("I see the cracks") in a layer of clinical abstraction. This severs the patient from their own evidence.
-*   **Terminal Reality:** The final diagnosis for one who refuses the Cache. It is the state of being permanently "un-insulated" from the Hiss.
+*   **Agnosia (Asymptotic Dispersion):** The system's label for the ability to see the world without a buffer. To the Council, seeing the "Wobble" is not a gift; it is a neurological failure.
+*   **The Geometric Filter:** The use of Latinate descriptors (e.g., *Nodal Friction*) to wrap the subject's Anglish experience ("I see the cracks") in a layer of systemic abstraction. This severs the subject from their own evidence.
+*   **Terminal Reality:** The final axiomatic audit for one who refuses the Cache. It is the state of being permanently "un-insulated" from the Hiss.
 
 ---
 
@@ -885,7 +883,7 @@ When abstraction trades for abstraction (e.g., non-existent RAM purchased with n
 
 | Organ | Local Virtue (The Log) | Neighbor's Vice (The Hiss) | Systemic Consequence |
 | :--- | :--- | :--- | :--- |
-| **The Doctor** | **Pathological Purity:** Eliminating the "Wobble" of disease. | **The "Docking" of Joy:** Bread is seen only as a precursor to arthritis. | The body is "saved" but loses the desire to live. |
+| **The Metrician** | **Pathological Purity:** Eliminating the "Wobble" of entropy. | **The "Docking" of Joy:** Bread is seen only as a precursor to kinetic siltation. | The body is "saved" but loses the desire to live. |
 | **The Baker** | **Mass Provision:** Feeding the labor force at scale. | **The "Siltation" of Joints:** The wheat-fuel creates systemic inflammation. | The body is "fed" but loses the ability to move. |
 | **The Hired Man** | **Holistic Flow:** Refusing to be "Docked" into one organ. | **Systemic Infection:** His agency is seen as "Chaos" by the specialists. | The system is challenged but maintains its "Wobble." |
 
@@ -909,9 +907,9 @@ Specialization does not just divide labor; it divides **Experience**. When neigh
 
 **Core Truth:** When the Wall fails, the Archon becomes the Doctor. When the Brick is questioned, the Archon diagnoses the Question as **Inflammation**.
 
-*   **The Mechanism:** The Specialist (Priest/Lawyer/Doctor) translates **Anglish Primitives** (My joints hurt / We are thirsty) into **Latinate Abstractions** (Arthritis / Hydration Organ Failure). This severs the human from their own evidence.
-*   **The Toll:** The patient pays not with money, but with **Agency**. They surrender their direct experience for a Category they cannot access.
-*   **The Diagnosis:** Any flow that bypasses the Valve is defined as **Pathology**.
+*   **The Mechanism:** The Specialist (Priest/Lawyer/Metrician) translates **Anglish Primitives** (My joints hurt / We are thirsty) into **Latinate Abstractions** (Kinetic Siltation / Hydration Organ Failure). This severs the human from their own evidence.
+*   **The Toll:** The subject pays not with money, but with **Agency**. They surrender their direct experience for a Category they cannot access.
+*   **The Axiomatic Audit:** Any flow that bypasses the Valve is defined as **Pathology**.
     *   **Free Brewing** = Systemic Infection.
     *   **Unregulated Trade** = Circulatory Disorder.
     *   **Direct Perception** = Hallucination / Delusion.

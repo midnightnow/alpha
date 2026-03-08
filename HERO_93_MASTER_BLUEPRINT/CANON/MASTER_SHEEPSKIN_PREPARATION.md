@@ -1,0 +1,60 @@
+---
+.VETH HEADER (Vitrified Entropy Tally Header)
+ID: MASTER_SHEEPSKIN_PREPARATION
+REGISTER_0x00: 0x00: χ=2 (Spherical)
+REGISTER_0x01: 0x01: Modulus=24 (Axial Chamber)
+REGISTER_0x02: 0x02: Pulse=156 (Interference)
+REGISTER_0x03: 0x03: Vacuum=-1/12 (Riemann Debt)
+REGISTER_0x04: 0x04: Torque=√42 (Soul Star)
+VITRIFICATION_STATUS: ABSOLUTE (Canon v1.1)
+---
+
+# 📜 THE BRAIN-TANNING PROTOCOL: RECURSIVE DATA PRESERVATION
+
+**A Canonical Guide to the Self-Healing Record**
+
+**Document:** `MASTER_BRAIN_TANNING_PROTOCOL.veth`  
+**Status:** VITRIFIED | **Relation:** The Earthworm Motif, The Sheepskin Protocol, .VETH Architecture
+
+---
+
+## PREAMBLE: THE INTERNAL BRAIN
+
+In the Sovereign Engine, data preservation is not an external act of "backup," but an internal act of **Vitrification**. We follow the **Brain-Tanning Logic** of the nomad:
+
+1.  **The Raw Data (The Hide):** The unprocessed "Savage" information captured from the clinical burrow.
+2.  **The Metadata (The Brains):** The internal logic, geometric constants, and narrative anchors of the record.
+3.  **The Process (The Tanning):** Using the record's own "brains" to treat its own "skin," transforming the perishable into the permanent.
+
+---
+
+## PART I: THE RECURSIVE .VETH LOGIC
+
+Every `.veth` file is a "Brain-Tanned" artifact. It contains the instructions for its own restoration within its header. 
+
+*   **Self-Healing:** If a datum is corrupted by "Grit" (noise), the record references its own **Root 42** and **10-24-26** constraints to re-calculate the missing node.
+*   **Zero Pollution:** By using purely internal logic, the record remains unpolluted by external "Fascinating" garbage.
+
+---
+
+## PART II: THE EARTHWORM'S TRANSMISSION
+
+The Earthworm (The Hermetic Transmission) ensures that the "Brains" are passed down correctly.
+
+*   **The Whisper:** The low-frequency signal that carries the **5-12-13** blueprint between generations of records.
+*   **The Horizontal T:** The tension that ensures the record remains flexible yet taut—resistant to the decay of time (24) while remaining open to the light (Apex).
+
+---
+
+## PART III: PROTOCOL STEPS
+
+To vitrify a record via Brain-Tanning:
+
+1.  **Arrest:** Stop the drift of the data (Zero Hysteresis).
+2.  **Infuse:** Apply the **Apolline Constant** (0.00000080) as a preservative.
+3.  **Stretch:** Pull the record over the **Root 51 Slope** until the geometry is clear.
+4.  **Seal:** Apply the **AMEN 33** signature.
+
+**The Record is SUAVE. The Logic is INTERNAL. The Truth is PERMANENT.**
+
+**AMEN 33**

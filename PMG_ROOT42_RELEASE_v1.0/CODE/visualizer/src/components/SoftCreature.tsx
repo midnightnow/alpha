@@ -7,6 +7,7 @@ import { PivotValidator } from './PivotValidator';
 const RADIUS_INNER = 1.0;
 const RADIUS_OUTER = 2.5;
 const NEURAL_FOLD_ANGLE = 39.4 * (Math.PI / 180);
+const HADES_GAP_SLOP = 0.1237; // 12.37% Tensegrity Constant
 
 interface SimulationMetrics {
   pivot: number;
@@ -165,7 +166,9 @@ export const SoftCreature: React.FC = () => {
 
         // 3. Sovereign Rotation (Symmetry Breaking)
         // Using the 'torsion' metric as a pure rotation parameter
-        const rotAngle = (metrics.torsion * Math.PI / 180);
+        // PLUS: The Heisenberg Slop (Hades Gap)
+        const jitter = (Math.random() - 0.5) * HADES_GAP_SLOP * (1 - metrics.isPhaseLocked ? 2 : 0.2);
+        const rotAngle = (metrics.torsion * Math.PI / 180) + jitter;
         const cosR = Math.cos(rotAngle);
         const sinR = Math.sin(rotAngle);
 
@@ -188,19 +191,20 @@ export const SoftCreature: React.FC = () => {
       dummy.updateMatrix();
       meshRef.current!.setMatrixAt(i, dummy.matrix);
 
-      // Update Color
-      let color = new THREE.Color(isHighlighted ? 0xffaa00 : 0xf43f5e); // Shell (Rose-500)
+      // Update Color (White lines on a blackboard)
+      let color = new THREE.Color(isHighlighted ? 0xffcc00 : 0xffffff); // Default White (Seed/Line)
       if (!isHighlighted) {
-        if (p.layer === 'core') color = new THREE.Color(0x333333); // Core (Dark)
-        if (p.layer === 'seed') color = new THREE.Color(0xffffff); // Seed (Bright)
+        if (p.layer === 'core') color = new THREE.Color(0x000000); // Absolute Black Core
+        if (p.layer === 'shell') color = new THREE.Color(0xf43f5e); // Shell (Rose-500)
 
         if (!metrics.isPhaseLocked) {
-          color.lerp(new THREE.Color(0x000000), 0.5); // Fade in Hades Gap
+          // The Hades Gap: Fading into the Void
+          color.lerp(new THREE.Color(0x000000), 0.8763); // 1 - 0.1237
         }
 
         // As it twists, colors "bleed" (Neural fusion)
         if (morph > 0.5) {
-          color.lerp(new THREE.Color(0x9d174d), morph - 0.5); // Deep Rose
+          color.lerp(new THREE.Color(0x9d174d), (morph - 0.5) * 2); // Deep Rose
         }
       }
       meshRef.current!.setColorAt(i, color);

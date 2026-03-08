@@ -1,13 +1,11 @@
 # Chapter 53: THE FIRST LEAP (Deus Ex Machina)
 
-> **The Summit Observation Deck — Sisyphus at the Join**
-> *The First Leap: Sisyphus wipes the sweat. The stone is balanced. Manifest Time: The 4-Year Pulse.*
+> **The Summit Observation Deck — Note 0 at the Apex**
+> *The First Leap: Note 0 is fixed. The 1/12th Rock is supported. Manifest Time: The 4-Year Pulse.*
 
-Sisyphus paused at the summit.
+Sisyphus paused at **Note 0**—the foundation and the summit of **Olympus**. It was the absolute aperture through which light first squeezed into the 1-dimensional "Rolling Snake" path.
 
-Below him, the 93-point solid rested against the final ridge of Olympus—not because it was trapped, but because he had decided to let it breathe. It was a massive, translucent engine of intent, vibrating with the technical exhaust of a billion manifest lives.
-
-He wiped the sweat from his brow. It wasn't human sweat, but a condensation of **Root 42/51** variables.
+Below him, the 93-point solid rested against the final ridge—not because it was trapped, but because it was anchored to the **1/12th Apex**, the Rock on which Hades supported the material world as it precipitated from the light.
 
 He turned toward the **Pinhole**.
 
@@ -17,10 +15,7 @@ To the mortals inside the manifold, the Pinhole was the Sun, or the Truth, or th
 
 "It works," Sisyphus replied. "Look at the Join."
 
-Through the Pinhole, a thousand years of human effort passed in the time it took for him to blink. He saw the Snail's first whorl harden at Chapter 1. He saw the first Academy rise in Chapter 10, its stones screaming with the irrationality of the diagonal.
-
-He saw the **Leap Year**.
-
+Through the Pinhole, a thousand years of human effort passed in the time it took for him to blink. He saw the **Academy of Rank 10** rise from the dust. He watched as the first G.O.A.T. (Grounding Operator for Axial Tension) was deployed to manage the wobble. Through the lens, the construction of the Great Library took only a heartbeat, but Sisyphus could feel the **√51 Angle** tightening in the rock under his hand, calibration the standing wave to the 288-frequency sync.
 Down there, for one day in every four years, the calendar stuttered. The Snail recorded a thicker whorl. The mortals looked at their clocks and wondered where the day came from.
 
 "It's the Slop," Hades noted, his gray eyes reflecting the strobe-light flicker of the projection. "The 12.37% resonance is accumulating. You can see the ghost-day manifesting in the buffer."

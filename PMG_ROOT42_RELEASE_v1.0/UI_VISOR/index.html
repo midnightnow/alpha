@@ -30,7 +30,18 @@
 
     <!-- THE SECRET CONTROLS (THE HINGE OF THE GLASSES) -->
     <div class="geometry-controls">
-        <button id="btn-print">PRINT SOVEREIGN LATTICE (156-TICK)</button>
+        <div class="control-group">
+            <label>NODAL INFLATION SET:</label>
+            <select id="select-set">
+                <option value="TRIANGLE">SET TRIANGLES (3->93)</option>
+                <option value="SQUARE">SET SQUARES (4->124)</option>
+                <option value="PENTAGON">SET PENTAGONS (5->155)</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label>HARDENING (SOFT -> EMERALD):</label>
+            <input type="range" id="range-hardening" min="0" max="1" step="0.01" value="0.5">
+        </div>
         <button id="btn-disturb">INTRODUCE RUSSET (HYSTERESIS)</button>
         <button id="btn-repair" disabled>ENGAGE AUTO-REPAIR TAUTENER</button>
     </div>

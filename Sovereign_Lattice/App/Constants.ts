@@ -121,6 +121,13 @@ export const COLOR_SPIRIT = '#00FFFF';
 /** Deep void background */
 export const COLOR_VOID = '#050508';
 
+/** Pupil's Mode Colors — The transition from Soft to Hardened */
+export const PUPIL_COLORS = {
+    GRAPHENE: '#4A4A4A', // Soft carbon/sub-Hades
+    WOOD: '#8B4513',     // Natural tool / 12-measure
+    EMERALD: '#50C878',   // Vitrified / Sovereign
+} as const;
+
 // ============================================================================
 // 7. GEOMETRY INVARIANTS
 // ============================================================================
@@ -145,6 +152,14 @@ export const TIGER_STRIPE = {
     breakThreshold: 0.82,
     seventeen_fold: 17,
 } as const;
+
+/** Nodal Inflation Sets — The Geometric Capacitor models */
+export const INFLATION_SETS = {
+    TRIANGLE: { seed: 3, inflation: 90, total: 93, name: 'Set Triangles', spark: 171 },
+    SQUARE: { seed: 4, inflation: 120, total: 124, name: 'Set Squares', spark: 291 },
+    PENTAGON: { seed: 5, inflation: 150, total: 155, name: 'Set Pentagons', spark: 443 },
+} as const;
+Broadway
 
 // ============================================================================
 // 8. RESONANCE LADDER — The Phase Progression
@@ -244,4 +259,8 @@ export const SOVEREIGN_CONSTANTS = {
     BIFOLD_ARC,
     BIFOLD_CHORD,
     TENSION_COEFFICIENT,
+
+    // Pupil's Mode & Inflation
+    PUPIL_COLORS,
+    INFLATION_SETS,
 } as const;

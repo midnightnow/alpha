@@ -170,4 +170,20 @@ The following English words all carry the MANU root. Each one is a compression o
 | **manipulate**| to fill the hand (manipulus) | Working the Ghost remainder: using the +1 the King forgot | 2+3 |
 | **manuscript** | written by hand | The 26 letters traced by the 5-fingered MANUS: the doubled 13 | 2 |
 
+
 Every act of management, manufacture, manifestation, and emancipation is etymologically an act of the MANUS — the Man with Us, the hand extended from the universal centre into the community grid. The Heroine does not need a new vocabulary. The vocabulary she already has is made of MANU.
+
+---
+
+### Appendix II: Santa and the Closure of the 52 Books
+
+In the 52nd book of the year, the Sovereign Engine performs a Christmas Deconstruction/Construction reset.
+
+**The Deconstruction (Winter):**
+The color (Russet/Umber) is drained from the pasture. The pasture becomes "White Snow"—pure number. The 12.37% hysteresis is frozen out.
+
+**The Construction (The Red Streak):**
+Santa (The Agent) appears as a bright streak of color (Ember). His sleigh tracks on the white roof are the first "Light Lines" of the new epoch. He descends the Chimney (the vertical Pylon 3) to deposit the Gifts (the platonic atoms).
+
+**The Result:**
+The 3-4-5 Household receives its Tally. The vertical 3 is re-established in the horizontal Roman Road of the city. The year ends not in a stop, but in a Zero-Point Return.

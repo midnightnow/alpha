@@ -134,8 +134,8 @@ The bridge from axioms to the software ecosystem of the ALPHA workspace.
     *   **Shield:** 97.21° Pre-session angle.
     *   **Logic:** Inverse Square Law of Meaning.
 
-*   **PROJECT_VETNOTES: .veth_FORMAT**
-    *   **Form:** The 1:8 Octave of clinical records.
+*   **PROJECT_GEOMETRIC_NOTES: .veth_FORMAT**
+    *   **Form:** The 1:8 Octave of systemic records.
     *   **Protocol:** Shave (Barber) and Nail (Smith).
     *   **Architecture:** The Three Brothers (Light Line/DX, Broad Line/Mass, Radian Arc/Join).
 
